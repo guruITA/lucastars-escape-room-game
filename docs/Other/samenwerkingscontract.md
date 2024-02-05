@@ -3,7 +3,7 @@
 ## Wat is de bedoeling van dit document?
 In dit document wordt er duidelijk geschreven wat onze afspraken en eisen zullen zijn in verband met onze samenwerking het komende blok. Het contract bevat de code conventies, feedback punten, communicatie punten en de taken verdeling.<br>
 
-## Feedback
+## Feedback 
 - Wij spreken af dat wij feedback op een constructief  en professioneel wijze zullen delen met elkaar, met legitieme redenering inplaats van obstrucief tegen elkaar werken op basis van persoonlijke mening.<br>
 - Als feedback wordt gedeeld en er alsnog geen compromise wordt gesloten, documenteer het voor latere reference indien nodig.<br>
 
