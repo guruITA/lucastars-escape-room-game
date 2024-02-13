@@ -4,6 +4,9 @@
   - [Inhoudsopgave](#inhoudsopgave)
   - [Concept](#concept)
   - [Verhaallijn](#verhaallijn)
+- [Introductie](#introductie)
+- [Game Plot](#game-plot)
+- [Einde](#einde)
   - [Gameplay](#gameplay)
   - [Functies](#functies)
   - [Layout](#layout)
@@ -27,7 +30,12 @@
 Het concept is dat je speelt als een detective in 1932, tijdens de Grote Depressie in New York. Je hebt de keuze uit 1-3 zaken waarin je zelf onderzoek gaat doen. Je kunt ervoor kiezen om langs de plaats delict te gaan om bewijs te verzamelen en langs verschillende verdachten om vragen te stellen en, indien mogelijk, ze te confronteren op basis van het verzamelde bewijs.<br>
 
 ## Verhaallijn
+# Introductie
 Het is 1932 in New York, en je speelt als intern detective William McCarthy dat onder de begeleiding van John Manny, een van de meest successvolste detectives, werkt. Hij is bekend om de feit dat hij vreemde cases op zich neemt en alles heeft kunnen oplossen. Nu is het zo dat hij jaren lang een seriemoordenaar achtervolgt en eindelijk een locatie heeft kunnen vinden waar alles een einde aan de case kan zetten.<br>
+
+# Game Plot
+
+# Einde
 
 ## Gameplay
 William en John reizen richting een verlaten kasteel na dat ze een anoniem brief hadden gekregen. Zodra ze binnen stappen sluiten de deuren meteen en moeten ze binnen een timer een puzzel oplossen. Je hebt de volgende kamers:<br>
@@ -76,7 +84,7 @@ Hieronder noteren we de afgesproken items binnen de kamers.
 - 
 
 ## Images
-Hieronder noteren we de images die wij gaan gebruiken binnen de game. (Inclusief potentiële images)
+Hieronder noteren we de images die wij gaan gebruiken binnen de game. (Inclusief potentiële images)<br>
 ### Kamers
 #### Bedroom Image
 ![]()<br>
