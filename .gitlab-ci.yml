@@ -5,4 +5,3 @@ variables:
 include:
     - ".gitlab-ci.mkdocs.yml"
     #- ".gitlab-ci.hic.yml"
-
