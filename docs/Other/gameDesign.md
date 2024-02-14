@@ -139,13 +139,15 @@
 > *Blauwdruk (Blueprint):* De blauwdruk biedt een overzicht van de kasteelindeling en kan aanwijzingen bevatten over verborgen doorgangen of belangrijke locaties.
 Spelers moeten slim gebruik maken van deze middelen en aanwijzingen combineren om stap voor stap het grote mysterie van het kasteel te ontrafelen.
 >
-> > **Koppeling met andere kamers:** 
+> **Koppeling met andere kamers:** 
 > *Library:* De controlekamer biedt de locatie van de drie boeken die nodig zijn om de geheime kast in de bibliotheekkamer te openen. Dit vormt een essentiële schakel tussen de controlekamer en de bibliotheek.
 >
 > **Conclusie:** <br>
 > De controlekamer vormt het hart van het onderzoek naar het kasteelmysterie. Door strategisch objecten en aanwijzingen te gebruiken, kunnen spelers geleidelijk aan de geheimen van het oude kasteel onthullen. De meeslepende omgeving en complexe puzzels houden spelers betrokken terwijl ze de waarheid achterhalen en de spanning naar een climax opbouwen. 
 > # Einde
 > Na het onthullen van de waarheid en oplossen van alle mysteries, ontsnappen William en John uit het kasteel en slagen ze erin de dader te ontmaskeren. Met de waarheid aan het licht en gerechtigheid gediend, keren ze terug naar de bewoonde wereld, wetende dat ze een groot mysterie hebben opgelost.
+>
+> Met de gevonden cijfers van de pincode van de secret room, slagen William en John erin om de seriemoordenaar te confronteren en uiteindelijk te laten arresteren door de autoriteiten. Hun vastberadenheid en toewijding hebben geleid tot gerechtigheid, en ze kunnen terugkeren naar de bewoonde wereld in de wetenschap dat ze een groot mysterie hebben opgelost en de samenleving veiliger hebben gemaakt.
 > 
 > ## Gameplay
 > William en John reizen naar een verlaten kasteel nadat ze een anonieme brief hebben ontvangen. Zodra ze binnenstappen, sluiten de deuren meteen en staan ze voor de uitdaging om binnen een bepaalde tijd een puzzel op te lossen. Je hebt de volgende kamers:
@@ -161,6 +163,10 @@ Spelers moeten slim gebruik maken van deze middelen en aanwijzingen combineren o
 > Binnen deze 5 kamers moeten spelers verschillende puzzels oplossen door items te verzamelen en objecten te inspecteren. De bedoeling is dat je uiteindelijk binnen de Main Room de code zelf kunt invoeren via een machine. Als de combinatie correct is, opent een geheime kamer en wint de speler de game.
 > 
 > De gameplay is doordrenkt met spanning en mysterie, waarbij elke kamer nieuwe aanwijzingen en uitdagingen biedt. Door slim gebruik te maken van verzamelde informatie en observaties, kunnen spelers de waarheid onthullen en het kwaad dat het kasteel bewoont ontmaskeren. Succesvolle voltooiing van de puzzels leidt tot een spannende ontsnapping uit het kasteel en het ontmaskeren van de dader, waardoor gerechtigheid wordt gediend en het mysterie wordt opgelost.
+>
+> ## Layout
+* Kamer Map<br>
+![Kamer Layout](../Other/img/kamerLayout.png)<br>
 
 ## Functies
 
@@ -176,10 +182,6 @@ Spelers moeten slim gebruik maken van deze middelen en aanwijzingen combineren o
 - De Storage Room en Bedroom zijn meer zelfsprekend in de zin van dat ze meer bedoelt zijn om geinspecteerd te zijn voor objecten.<br>
 - Sommige objecten die je vind in kamers hebben niets te maken met de plek waar ze zijn gevonden, maar juist heel ergens anders. <br>
 (Bijvoorbeeld als je een stuk van een spiegel vindt binnen de storage room moet je het juist binnen de bedroom gebruiken.)<br>
-
-## Layout
-* Kamer Map<br>
-![Kamer Layout](../Other/img/kamerLayout.png)<br>
 
 * Figma Storyboard<br>
 [Link Figma](https://www.figma.com/file/wD1ZWz86XNqWshWgEOX6RZ/Untitled?type=design&node-id=0%3A1&mode=design&t=V2ffvexNHoPi7Yau-1)<br>
