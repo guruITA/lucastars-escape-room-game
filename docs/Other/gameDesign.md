@@ -60,7 +60,7 @@
 > De Slaapkamer binnen het herenhuis lijkt recent gebruikt te zijn; stof zweeft in de lucht en de enige verlichting komt van de zonnestralen die door het raam schijnen.
 >
 > **Plot:**
-> **Geen zicht:** Tijdens het onderzoeken van de slaapkamer valt McCarthy op dat het moeilijk te doorzoeken is vanwege de beperkte verlichting. Gelukkig vindt hij batterijen in het nachtkastje, waarmee hij de zaklamp kan gebruiken om de kamer verder te onderzoeken.
+> *Geen zicht:* Tijdens het onderzoeken van de slaapkamer valt McCarthy op dat het moeilijk te doorzoeken is vanwege de beperkte verlichting. Gelukkig vindt hij batterijen in het nachtkastje, waarmee hij de zaklamp kan gebruiken om de kamer verder te onderzoeken.
 >
 > *Het verloren boek:* Terwijl McCarthy de slaapkamer doorzoekt, ontdekt hij onder het bed een verloren boek. Dit boek bevat een cruciaal stukje code voor de pincode van de bibliotheek, waardoor McCarthy dichter bij het oplossen van het mysterie komt.
 >
