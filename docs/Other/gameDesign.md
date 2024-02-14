@@ -6,6 +6,7 @@
   - [Verhaallijn](#verhaallijn)
 - [Introductie](#introductie)
 - [Game Plot](#game-plot)
+    - [Slaapkamer](#slaapkamer)
     - [Bibliotheek](#bibliotheek)
     - [Storage Room](#storage-room)
     - [Control Room](#control-room)
@@ -23,8 +24,7 @@
     - [Kamers](#kamers)
       - [Bedroom Image](#bedroom-image)
       - [Storage Room Image](#storage-room-image)
-      - [Library Image #1](#library-image-1)
-      - [Library Image #2](#library-image-2)
+      - [Library Image](#library-image)
       - [Control Room Image](#control-room-image)
       - [Main Room Image](#main-room-image)
     - [Objecten](#objecten-1)
@@ -38,6 +38,20 @@ Het concept is dat je speelt als een detective in 1932, tijdens de Grote Depress
 Het is 1932 in New York, en je speelt als intern detective William McCarthy dat onder de begeleiding van John Manny, een van de meest successvolste detectives, werkt. Hij is bekend om de feit dat hij vreemde cases op zich neemt en alles heeft kunnen oplossen. Nu is het zo dat hij jaren lang een seriemoordenaar achtervolgt en eindelijk een locatie heeft kunnen vinden waar alles een einde aan de case kan zetten.<br>
 
 # Game Plot
+
+### Slaapkamer
+* Introductie:<br>
+
+De Slaapkamer binnen de herehuis lijkt recent toch wel gebruikt te zijn, stof hangt in het lucht en de enige verlichting is de zonnestraal vanuit de raam.
+
+* Plot
+
+**Geen zicht**: Tijdens het onderzoeken van de slaapkamer valt McCarthy het op dat het redelijk moeilijk te onderzoeken is vanwege de verlichting. Naast de bed heeft hij een zaklamp kunnen vinden die hij zou kunnen gebruiken om verder dingen te kunnen inspecteren.<br>
+
+**Het verloren boek**: Tijdens het onderzoeken van de bibliotheekkamer merkt McCarthy dat één van de benodigde boeken ontbreekt. Na onderzoek heeft hij een van de boeken kunnen vinden onder de bed binnen de slaapkamer wat een belangrijk stuk code bevat van de pincode binnen de bibliotheek.<br>
+
+**Achtergelaten fles**: Tijdens verdere inspectie van de slaapkamer vindt McCarthy een wijnfles binnen de kledingkast, waarschijnlijk heeft het een connectie met de opslag ruimte.<br>
+
 
 ### Bibliotheek
 * Introductie:<br>
@@ -155,15 +169,13 @@ Hieronder noteren we de images die wij gaan gebruiken binnen de game. (Inclusief
 #### Bedroom Image
 ![Bedroom](../Other/img/bedroom.png)<br>
 #### Storage Room Image
-![Storage Room](../Other/img/storage_room.png)<br>
-#### Library Image #1
+![Storage Room](../Other/img/storage_room.jpg)<br>
+#### Library Image
 ![Library #1](../Other/img/library.png)<br>
-#### Library Image #2
-![Library #2](../Other/img/library2.png)<br>
 #### Control Room Image
-![]()<br>
+![Control Room](../Other/img/controlroom.png)<br>
 #### Main Room Image
-![]()<br>
+![Main Hall](../Other/img/mainhall.png)<br>
 ### Objecten
 
 
