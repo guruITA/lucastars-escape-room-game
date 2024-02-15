@@ -252,22 +252,31 @@ Na het verzamelen van de boeken en de paginanummers, opent de speler eindelijk d
 > ### Sprint 1: 26 februari t/m 15 maart 2023 (3 weken)
 > Goal: Implementatie van de basiselementen van de kamers en de interacties met de objecten.
 > Backlog items:
-> - Gurpreet: 
-> - Umit:
-> - Daniel:
-> - Kamal:
-> - Julian: 
+> #### Gurpreet
+> - Als speler wil ik de mogelijkheid hebben om het licht in de bibliotheekkamer uit te schakelen om een verborgen pincode te onthullen.
+> - Als speler wil ik interactie kunnen hebben met de omgeving van de bibliotheekkamer, zoals het kunnen bekijken van specifieke boeken of objecten, om meer te leren over het verhaal en aanwijzingen te ontdekken.
+> - Als speler wil ik de bibliotheekkamer kunnen betreden om de drie boeken te vinden en de paginanummers te identificeren die nodig zijn voor de pincode van de geheime kast.
+> - Als speler wil ik een inventaris kunnen bijhouden van de items die ik heb verzameld, zoals de boeken en de pagina's met paginanummers.
+> #### Umit
+> - Is te zien in figma
+> #### Daniel
+> #### Kamal
+> #### Julian
 > ### Sprint 2: 18 maart t/m 5 april 2023 (3 weken)
 > Goal: Voltooien van de implementatie van alle kamers voor een werkendetext-based game en het testen van de gameplay.
 > Backlog items:
-> - Gurpreet: 
-> - Umit:
-> - Daniel:
-> - Kamal:
-> - Julian: 
+> #### Gurpreet
+> - Als speler wil ik hints ontvangen van de assistent(William McCarthy) dat me begeleidt tijdens mijn onderzoek in de bibliotheekkamer.
+> - Als speler wil ik de geheime kast kunnen openen met de pincode die is samengesteld uit de paginanummers van de drie boeken en de missende boek die in de bedroom zit.
+> - Als speler wil ik een puzzel kunnen oplossen nadat ik de geheime kast heb geopend om het ontbrekende cijfer van de pincode te vinden.
+> #### Umit:
+> #### Daniel:
+> #### Kamal:
+> - Is te zien in figma
+> #### Julian: 
 
 
-> ## Bronnen
+> # Bronnen
 > - [Figma](https://www.figma.com/)
 > - [Ai image generator](https://pixlr.com/image-generator/)
 > - [Google voor meerdere afbeeldingen](https://www.google.com/)
