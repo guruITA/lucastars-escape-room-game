@@ -1,7 +1,6 @@
 # Gamedesign
 
 > ## Inhoudsopgave
-> ## Inhoudsopgave
 > - [Gamedesign](#gamedesign)
 >   - [Inhoudsopgave](#inhoudsopgave)
 >   - [Verhaallijn](#verhaallijn)
