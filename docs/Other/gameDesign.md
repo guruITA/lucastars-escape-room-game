@@ -242,6 +242,9 @@ Na het verzamelen van de boeken en de paginanummers, opent de speler eindelijk d
 > ### Main hall entrance
 > - Code Device
 
+> # Planning
+> - 
+
 
 > ## Bronnen
 > - [Figma](https://www.figma.com/)
