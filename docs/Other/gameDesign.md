@@ -20,6 +20,7 @@
 >   - [Control room](#control-room-1)
 >   - [Library](#library-1)
 >   - [Main Room](#main-room-1)
+> - [Sprint Planning:](#sprint-planning)
 > - [Bronnen](#bronnen)
 
 > ## Verhaallijn
@@ -56,7 +57,7 @@
 > # Game Plot
 > 
 > ## Main hall entrance
-> ![Main hall entrance](./img/mainhall.png)<br>
+> ![Main hall entrance](./img/main_entrance.png)<br>
 > 
 > ### Introductie:
 > De Main Hall van het verlaten kasteel is een majestueuze ruimte, met hoge plafonds en donkere, statige muren die getuigen van vervlogen glorie. Een imposante kroonluchter hangt in het midden van de hal, haar kristallen glinsteren zwak in het schaarse licht dat door de ramen valt. De Main Hall lijkt het hart van het kasteel te zijn, een centrale ontmoetingsplaats die ooit levendig was maar nu doordrenkt is van stilte en mysterie.
@@ -76,8 +77,8 @@
 > Na het ontrafelen van de laatste puzzels en het vinden van de ontbrekende stukjes van de puzzel, openen William en John uiteindelijk de geheime kamer in de Main Hall. Hier vinden ze niet alleen de laatste aanwijzingen die leiden tot de ontmaskering van de seriemoordenaar, maar ook een onthullende confrontatie die het ultieme slot vormt van hun avontuur.
 > 
 >
-> ## Control Room
-> ![Control room](./img/controlroom.png)<br>
+> ## Control room
+> ![Control room](./img/control_room.png)<br>
 > 
 > ### Introductie:
 > De controlekamer in het oude kasteel dient als het centrale commandocentrum waar alle activiteiten worden gemonitord en gecontroleerd. Een wirwar van bewakingscamera's, schermen en notities van eerdere onderzoekers vult de ruimte, waar de geheimen van het kasteel op het punt staan onthuld te worden.
@@ -241,8 +242,29 @@ Na het verzamelen van de boeken en de paginanummers, opent de speler eindelijk d
 > ### Main hall entrance
 > - Code Device
 
-> # Planning
-> - 
+> # Sprint Planning:
+> ## Sprint 0: 5 februari t/m 16 februari 2023 (2 weken)**
+> Goal: Opzetten van de projectstructuur en het verzamelen van de benodigde materialen.
+> Backlog items (Gurpreet, Umit, Kamal, Daniel en Julian):
+> - Onderzoek naar benodigde software en tools voor ontwikkeling.
+> - Verzamelen van materiaal voor het ontwerp van de kamers.
+> - Opstellen van de versie van de game design documentatie.
+> ### Sprint 1: 26 februari t/m 15 maart 2023 (3 weken)
+> Goal: Implementatie van de basiselementen van de kamers en de interacties met de objecten.
+> Backlog items:
+> - Gurpreet: 
+> - Umit:
+> - Daniel:
+> - Kamal:
+> - Julian: 
+> ### Sprint 2: 18 maart t/m 5 april 2023 (3 weken)
+> Goal: Voltooien van de implementatie van alle kamers voor een werkendetext-based game en het testen van de gameplay.
+> Backlog items:
+> - Gurpreet: 
+> - Umit:
+> - Daniel:
+> - Kamal:
+> - Julian: 
 
 
 > ## Bronnen
