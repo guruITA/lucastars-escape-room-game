@@ -10,7 +10,13 @@
 
 ## Uitkomst retrospective
 
-// Gebruik één van de restrospectives uit de Spotify retro-kit (<https://storage.googleapis.com/>production-eng/1/2017/12/retro-kit3.pdf) en plaats de uitkomsten hier.
+### Things you liked:
+
+**Gurpreet:** Ik vond het super leuk om het verhaal te bedenken! We creëerden een spannende wereld in het New York van 1932 met Detective McCarthy en zijn assistent John. Het schrijven van de intro gaf me een creatief gevoel en het gaf ons project een coole context. Het bedenken van personages en het verhaal was echt tof. Ik kijk uit naar meer van dit soort creatieve dingen!
+
+### Things to change:
+**Gurpreet:** Ik vond dat we niet goed samenwerkten en communiceerden tijdens de eerste sprint. Het leek alsof we niet goed begrepen wat we moesten doen. Laten we erover praten en proberen het te verbeteren. Ik denk dat als we beter communiceren en meer samenwerken, we succesvoller zullen zijn in de volgende sprints.
+
 
 ## Verbeterpunten voor de volgende sprint
 
