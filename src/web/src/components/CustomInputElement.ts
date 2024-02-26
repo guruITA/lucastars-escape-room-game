@@ -1,5 +1,5 @@
 import { html, LitElement, TemplateResult } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, state } from "lit/decorators.js";
 import "./CustomInputElement";
 
 @customElement("custom-input-element")

@@ -1,5 +1,5 @@
 import { css, html, LitElement, TemplateResult } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, state } from "lit/decorators.js";
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
 import "./CustomInputElement";
 import { addGameObject } from "../services/routeService";
