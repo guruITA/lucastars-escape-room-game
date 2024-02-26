@@ -1,5 +1,5 @@
 export type GameObjectFormResult = {
-    additionalField: any;
+    id?: number;
     alias: string;
     name: string;
     description: string;
