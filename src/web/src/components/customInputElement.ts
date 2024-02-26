@@ -1,6 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import "./CustomInputElement";
+import "./customInputElement";
 
 @customElement("custom-input-element")
 export class CustomInputElement extends LitElement {

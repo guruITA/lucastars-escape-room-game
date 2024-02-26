@@ -1,4 +1,4 @@
-import { GameObjectFormResult } from "../../../shared/GameObjectFormResult";
+import { GameObjectFormResult } from "../components/GameObjectFormResult";
 
 export async function addGameObject(formData: GameObjectFormResult): Promise<boolean> {
     try {

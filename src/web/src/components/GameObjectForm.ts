@@ -1,7 +1,7 @@
 import { css, html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
-import "./CustomInputElement";
+import "./customInputElement";
 import { addGameObject } from "../services/routeService";
 
 @customElement("gameobject-form")
