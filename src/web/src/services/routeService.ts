@@ -1,14 +1,18 @@
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
 
+
 export async function addGameObject(formData: GameObjectFormResult): Promise<boolean> {
+
     try {
         
         const response: Response = await fetch(`${viteConfiguration.API_URL}gameobject/add`, {
+
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(formData),
+
         });
 
         if (response.ok) {
@@ -22,14 +26,18 @@ export async function addGameObject(formData: GameObjectFormResult): Promise<boo
         }
 
     } catch (error) {
+
         console.error("Error adding game object:", error);
         return false;
+
     }
 }
 
 
 export async function getGameObjects(): Promise<false | GameObjectFormResult[] | null> {
+    
     try {
+        
         const response: Response = await fetch(`${viteConfiguration.API_URL}gameobject/getAll`, {
             method: "GET",
             headers: {
@@ -49,7 +57,10 @@ export async function getGameObjects(): Promise<false | GameObjectFormResult[] |
         }
 
     } catch (error) {
+
         console.error("Error getting game objects:", error);
         return false;
+
     }
+
 }
