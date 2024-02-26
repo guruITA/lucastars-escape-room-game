@@ -2,6 +2,7 @@ import { css, html, LitElement, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
 import "./CustomInputElement";
+import "./GameObjectData";
 import { addGameObject } from "../services/routeService";
 
 
@@ -142,6 +143,8 @@ export class GameObjectForm extends LitElement {
                 </div>` : ""}
                 <button type="button" id="submitButton" @click="${this.handleButtonClick}">Add ${this.selectedType}</button>
             </form>
+
+            <game-object-data></game-object-data>
         `;
 
         /** In Lit wordt @change gebruikt om te luisteren naar veranderingen in invoerelementen, zoals tekstvelden of keuzelijsten.

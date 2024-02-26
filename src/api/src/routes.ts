@@ -81,6 +81,7 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
              * Dit is het tegenovergestelde van rollback, waarbij alle wijzigingen worden teruggedraaid.
             */
             await connection.commit();
+            console.log("Commit");
 
             console.log("Inserted successfully");
             res.status(204).end();
@@ -116,6 +117,8 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
              * tegelijkertijd vasthoudt.
              */
             connection.release();
+            console.log("Connection released");
+
         }
 
     }
@@ -134,7 +137,7 @@ router.get("/gameobject/getAll", asyncHandler(async (_req, res) => {
         connection = await getConnection();
 
         const resultAllGameObject: any[] = await queryDatabase(connection,
-            "SELECT g.id, g.alias, g.name, g.description, i.price, c.hp FROM gameobject AS g LEFT JOIN item AS i ON g.id = i.id LEFT JOIN room AS r ON g.id = r.id LEFT JOIN \`character\` AS c ON g.id = c.id;"
+            "SELECT g.id, g.alias, g.name, g.description, i.price, c.hp FROM gameobject AS g LEFT JOIN item AS i ON g.id = i.id LEFT JOIN room AS r ON g.id = r.id LEFT JOIN `character` AS c ON g.id = c.Id ORDER BY g.id ASC;"
         );
 
         if(resultAllGameObject !== undefined){
@@ -162,7 +165,7 @@ router.get("/gameobject/getAll", asyncHandler(async (_req, res) => {
         if (connection) {
 
             connection.release();
-            console.log("\n connection released \n");
+            console.log("Connection released");
 
         }
 
