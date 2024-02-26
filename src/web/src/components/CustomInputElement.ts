@@ -1,13 +1,13 @@
 import { html, LitElement, TemplateResult } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import "./CustomInputElement";
 
 @customElement("custom-input-element")
 export class CustomInputElement extends LitElement {
 
-    @state() private label: string = "";
-    @state() private type: string = "";
-    @state() private Id: string = "";
+    @property() private label: string = "";
+    @property() private type: string = "";
+    @property() private Id: string = "";
     @state() public value: string = "";
 
     
