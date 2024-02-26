@@ -1,14 +1,18 @@
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
 import { Router } from "express";
 import asyncHandler from "express-async-handler";
-import { getConnection, queryDatabase } from "./services/databaseService"; 
+import { getConnection, queryDatabase } from "./services/databaseService";
 import { ResultSetHeader, PoolConnection } from "mysql2/promise";
+
 
 export const router: Router = Router();
 
+
+
 router.post("/gameobject/add", asyncHandler(async (req, res) => {
+
     const formData: GameObjectFormResult = req.body as GameObjectFormResult;
-    
+
     if (!formData.alias || !formData.name || !formData.description || !formData.type) {
         res.status(400).send("Alias, name, description, and type are required.");
         return;
@@ -18,6 +22,7 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
         res.status(400).send(formData.type === "Item" ? "Price is required for an Item." : "HP is required for a Character.");
         return;
     }
+
 
     let connection: PoolConnection | undefined = undefined;
 
@@ -32,19 +37,40 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
         */
         await connection.beginTransaction();
 
-
-        const gameObjectQueryResult: ResultSetHeader = await queryDatabase(connection, "INSERT INTO gameobject (alias, name, description) VALUES (?, ?, ?)", formData.alias, formData.name, formData.description);
+        const gameObjectQueryResult: ResultSetHeader = await queryDatabase(connection,
+            "INSERT INTO gameobject (alias, name, description) VALUES (?, ?, ?)",
+            formData.alias,
+            formData.name,
+            formData.description
+        );
 
         const gameObjectId: number | undefined = gameObjectQueryResult.insertId;
 
         if (gameObjectId !== undefined) {
 
             if (formData.type === "Item") {
-                await queryDatabase(connection, "INSERT INTO item (id, price) VALUES (?, ?)", gameObjectId, formData.price);
+
+                await queryDatabase(connection,
+                    "INSERT INTO item (id, price) VALUES (?, ?)",
+                    gameObjectId,
+                    formData.price
+                );
+
             } else if (formData.type === "Character") {
-                await queryDatabase(connection, "INSERT INTO `character` (id, hp) VALUES (?, ?)", gameObjectId ,formData.hp);
+
+                await queryDatabase(connection,
+                    "INSERT INTO `character` (id, hp) VALUES (?, ?)",
+                    gameObjectId,
+                    formData.hp
+                );
+
             } else if (formData.type === "Room") {
-                await queryDatabase(connection, "INSERT INTO room (id) VALUES (?)", gameObjectId);
+
+                await queryDatabase(connection,
+                    "INSERT INTO room (id) VALUES (?)",
+                    gameObjectId
+                );
+
             }
 
             /** 
@@ -57,12 +83,17 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
             await connection.commit();
 
             console.log("Inserted successfully");
-            res.status(204).end(); 
+            res.status(204).end();
+
         } else {
+
             console.error("Failed to retrieve the inserted GameObject ID.");
             res.status(500).send("Failed to insert data.");
+
         }
+
     } catch (error) {
+
         console.error(error);
 
         /** 
@@ -70,9 +101,11 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
          * Stel je voor dat we een aantal dingen in een database veranderen, maar er gaat iets mis. Met connection.rollback() kunnen we die veranderingen ongedaan maken en de database 
          * terugzetten naar hoe het was voordat we begonnen met die veranderingen. Het is als een "terug" knop voor de database. 
         */
-        if (connection) await connection.rollback(); 
-        res.status(500).send("Internal Server Error"); 
+        if (connection) await connection.rollback();
+        res.status(500).send("Internal Server Error");
+
     } finally {
+
         if (connection) {
 
             /**
@@ -84,5 +117,55 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
              */
             connection.release();
         }
+
     }
+
+}));
+
+
+
+router.get("/gameobject/getAll", asyncHandler(async (_req, res) => {
+
+    let connection: PoolConnection | undefined = undefined;
+
+
+    try {
+
+        connection = await getConnection();
+
+        const resultAllGameObject: any[] = await queryDatabase(connection,
+            "SELECT g.id, g.alias, g.name, g.description, i.price, c.hp FROM gameobject AS g LEFT JOIN item AS i ON g.id = i.id LEFT JOIN room AS r ON g.id = r.id LEFT JOIN \`character\` AS c ON g.id = c.id;"
+        );
+
+        if(resultAllGameObject !== undefined){
+
+            res.json(resultAllGameObject);
+
+            console.log("Data selected successfully");
+            res.status(204).end();
+
+        } else {
+
+            console.error("Failed to get data.");
+            res.status(500).send("Failed to get data.");
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+        if (connection) await connection.rollback();
+        res.status(500).send("Internal Server Error");
+
+    } finally {
+
+        if (connection) {
+
+            connection.release();
+            console.log("\n connection released \n");
+
+        }
+
+    }
+
 }));
