@@ -1,6 +1,11 @@
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
 
 
+/**
+ * Voegt een gameobject toe aan de database.
+ * @param formData De gegevens van het toe te voegen gameobject.
+ * @returns Een Promise<boolean> die aangeeft of de toevoeging succesvol was.
+ */
 export async function addGameObject(formData: GameObjectFormResult): Promise<boolean> {
 
     try {
@@ -34,7 +39,11 @@ export async function addGameObject(formData: GameObjectFormResult): Promise<boo
 }
 
 
-export async function getGameObjects(): Promise<false | GameObjectFormResult[] | null> {
+/**
+ * Haalt alle gameobjecten op uit de database.
+ * @returns Een Promise<any> met het array van gameobjecten als de operatie succesvol is, anders wordt false geretourneerd.
+ */
+export async function getGameObjects(): Promise<any> {
     
     try {
         
