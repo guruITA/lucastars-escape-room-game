@@ -1,1 +1,23 @@
-console.log("Sprint 0");
+import express, { Express } from "express";
+import { config } from "dotenv";
+import cors from "cors";
+
+export const app: Express = express();
+
+config();
+config({ path: ".env.local", override: true });
+
+app.use(cors());
+app.use(express.json());
+
+//TODO: Code voor je endpoints
+app.get("/", (req, res) => {
+    res.json({
+        hello: "world",
+    });
+});
+const port: number = (process.env.PORT || 8080) as number;
+
+app.listen(port, () => {
+    console.log(`API is running on http://localhost:${port}`);
+});
