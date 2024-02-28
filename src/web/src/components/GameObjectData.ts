@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
-import { getGameObjects } from "../services/routeService";
+import { getGameObjects, deleteGameObject } from "../services/routeService";
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
+import { gameService } from "../services/GameServices";
 
 @customElement("game-object-data")
 export class LoadDatabase extends LitElement {
@@ -11,7 +13,7 @@ export class LoadDatabase extends LitElement {
 
 
     /**
-     * Zorgt ervoor dat de data beschikbaar is voor het renderen.
+     * Wordt aangeroepen zodra de eerste render plaatsvindt, zorgt ervoor dat de data beschikbaar is voor het renderen.
      */
     public async connectedCallback(): Promise<void> {
 
@@ -22,7 +24,7 @@ export class LoadDatabase extends LitElement {
 
 
     /**
-     * Haalt alle items op vanuit de database.
+     * 
      */
     private async getAllItems(): Promise<void> {
 
@@ -33,7 +35,7 @@ export class LoadDatabase extends LitElement {
 
         } catch (error) {
 
-            console.log(error);
+            console.log("Failed to get gameobject data: ", error);
 
         }
 
@@ -41,8 +43,64 @@ export class LoadDatabase extends LitElement {
 
 
     /**
-     * Render de tabel voor items.
-     * @returns Een TemplateResult voor de tabel met items.
+     * 
+    */
+    private async deleteData(id: number | undefined): Promise<void> {
+
+        try {
+
+            const confirmDelete: boolean = confirm("Are you sure you want to delete this?");
+
+            if (confirmDelete) {
+
+                await deleteGameObject(id);
+                location.reload();
+                console.log("Deleted succesfully");
+
+
+            } else {
+
+                console.log("Error while deleting");
+
+            }
+
+        } catch (error) {
+
+            console.log("Failed to delete gameobject data", error);
+
+        }
+
+    }
+
+
+    /**
+    * 
+    */
+    private showSelectedData(element: any) {
+
+        try {
+
+            console.log("test");
+
+            gameService.dispatchEvent("edit-form", { 
+                entry: element
+            });
+
+
+        } catch (error) {
+
+            console.log("Failed to update gameobject data", error);
+
+        }
+
+    }
+
+    
+
+
+    /**
+     * 
+     * @returns 
      */
     private renderItemTable(): TemplateResult {
         return html`
@@ -69,8 +127,8 @@ export class LoadDatabase extends LitElement {
                                 <td>${element.description}</td>
                                 <td>${element.type}</td>
                                 <td>${element.price}</td>
-                                <td><button type="button" id="updateButton">Update</button></td>
-                                <td><button type="button" id="deleteButton">Delete</button></td>
+                                <td><button type="button" @click="${() => this.showSelectedData(element)}" id="updateButton">Update</button></td>
+                                <td><button type="button" @click="${() => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
                             </tr>
                         `;
             } else {
@@ -83,8 +141,8 @@ export class LoadDatabase extends LitElement {
 
 
     /**
-     * Render de tabel voor kamers.
-     * @returns Een TemplateResult voor de tabel met kamers.
+     * 
+     * @returns 
      */
     private renderRoomTable(): TemplateResult {
         return html`
@@ -108,8 +166,8 @@ export class LoadDatabase extends LitElement {
                                 <td>${element.name}</td>
                                 <td>${element.description}</td>
                                 <td>${element.type}</td>
-                                <td><button type="button" id="updateButton">Update</button></td>
-                                <td><button type="button" id="deleteButton">Delete</button></td>
+                                <td><button type="button" @click="${() => this.showSelectedData(element)}" id="updateButton">Update</button></td>
+                                <td><button type="button" @click="${() => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
                             </tr>
                         `;
             } else {
@@ -122,8 +180,8 @@ export class LoadDatabase extends LitElement {
 
 
     /**
-     * Render de tabel voor karakters.
-     * @returns Een TemplateResult voor de tabel met karakters.
+     * 
+     * @returns 
      */
     private renderCharacterTable(): TemplateResult {
         return html`
@@ -135,6 +193,7 @@ export class LoadDatabase extends LitElement {
                     <th>Name</th>
                     <th>Description</th>
                     <th>Type</th>
+                    <th>HP</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -148,8 +207,8 @@ export class LoadDatabase extends LitElement {
                                 <td>${element.description}</td>
                                 <td>${element.type}</td>
                                 <td>${element.hp}</td>
-                                <td><button type="button" id="updateButton">Update</button></td>
-                                <td><button type="button" id="deleteButton">Delete</button></td>
+                                <td><button type="button" @click="${() => this.showSelectedData(element)}" id="updateButton">Update</button></td>
+                                <td><button type="button" @click="${() => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
                             </tr>
                         `;
             } else {
@@ -162,8 +221,8 @@ export class LoadDatabase extends LitElement {
 
 
     /**
-     * Render functie voor het component.
-     * @returns Een TemplateResult voor de render van het component.
+     * 
+     * @returns 
      */
     public render(): TemplateResult {
         return html`

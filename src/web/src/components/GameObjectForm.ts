@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { css, html, LitElement, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
 import "./CustomInputElement";
 import "./GameObjectData";
-import { addGameObject } from "../services/routeService";
+import { addGameObject, updateGameObject } from "../services/routeService";
+import { gameService } from "../services/GameServices";
 
 
 @customElement("gameobject-form")
@@ -14,12 +16,99 @@ export class GameObjectForm extends LitElement {
      * is op een Web Component. Een @state is puur voor intern gebruik. 
     */
 
+    @state() private gameObjectId: number | undefined = 0;
+    @state() private alias: string = "";
+    @state() private name: string = "";
+    @state() private type: string = "";
+    @state() private description: string = "";
+    @state() private price: number | undefined = 0;
+    @state() private hp: number | undefined = 0;
+
     @state() private selection: string = "";
     @state() private selectedType: string = "";
     @state() private isSuccess: boolean = false;
     @state() private isError: boolean = false;
 
+    /**
+    * Wordt aangeroepen zodra de eerste render plaatsvindt, zorgt ervoor dat de data beschikbaar is voor het renderen.
+    */
+    public connectedCallback() {
 
+        super.connectedCallback();
+
+        gameService.addEventListener("edit-form", (element: any) => {
+
+            console.log(element);
+
+            const showData: GameObjectFormResult = element.data.entry;
+            this.gameObjectId = showData.id;
+            this.alias = showData.alias;
+            this.name = showData.name;
+            this.description = showData.description;
+            this.type = showData.type;
+            this.price = showData.price;
+            this.hp = showData.hp;
+
+            switch (this.type) {
+
+                case "Item":
+                    this.selection = "1";
+                    this.price = showData.price;
+                    this.selectedType = "Item";
+                    break;
+
+                case "Room":
+                    this.selection = "2";
+                    this.selectedType = "Room";
+                    break;
+
+                case "Character":
+                    this.selection = "3";
+                    this.price = showData.hp;
+                    this.selectedType = "Character";
+                    break;
+
+            }
+
+
+        });
+
+    }
+
+    /**
+     * 
+    */
+    private async updateData(): Promise<void> {
+
+        const GameObjectFormResult: GameObjectFormResult = {
+            id: this.gameObjectId,
+            alias: this.alias,
+            name: this.name,
+            description: this.description,
+            type: this.selectedType,
+            price: this.selection === "1" ? this.price : undefined,
+            hp: this.selection === "3" ? this.hp : undefined
+        };
+
+        console.log("Form data:", GameObjectFormResult);
+
+        try {
+
+            const updateData: boolean = await updateGameObject(GameObjectFormResult);
+            console.log(updateData);
+
+        } catch (error) {
+
+            console.error("Failed to get gameobject data: ", error);
+
+        }
+
+    }
+
+
+    /**
+     * 
+     */
     private handleTypeChange(event: Event): void {
 
         /**
@@ -37,13 +126,13 @@ export class GameObjectForm extends LitElement {
         */
         this.selection = (event.target as HTMLSelectElement).value;
 
-        switch(this.selection) {
+        switch (this.selection) {
 
-            case "1" :
+            case "1":
                 this.selectedType = "Item";
                 break;
 
-            case "2" :
+            case "2":
                 this.selectedType = "Room";
                 break;
 
@@ -52,9 +141,14 @@ export class GameObjectForm extends LitElement {
                 break;
 
         }
-        
+
     }
 
+
+    /**
+     * 
+     * @param event 
+     */
     private async handleButtonClick(event: Event): Promise<void> {
 
         /**
@@ -65,39 +159,52 @@ export class GameObjectForm extends LitElement {
          * terwijl je de logica achter de actie controleert.
          */
         event.preventDefault();
-        
-        const aliasInput: HTMLInputElement = this.shadowRoot!.querySelector("#alias") as HTMLInputElement;
-        const nameInput: HTMLInputElement = this.shadowRoot!.querySelector("#name") as HTMLInputElement;
-        const descriptionInput: HTMLTextAreaElement = this.shadowRoot!.querySelector("#description") as HTMLTextAreaElement;
-        const priceInput: HTMLInputElement = this.shadowRoot!.querySelector("#price") as HTMLInputElement;
-        const hpInput: HTMLInputElement = this.shadowRoot!.querySelector("#hp") as HTMLInputElement;
 
         const GameObjectFormResult: GameObjectFormResult = {
-            alias: aliasInput.value,
-            name: nameInput.value,
-            description: descriptionInput.value,
+            alias: this.alias,
+            name: this.name,
+            description: this.description,
             type: this.selectedType,
-            price: this.selection === "1" ? parseFloat(priceInput.value) : undefined,
-            hp: this.selection === "3" ? parseInt(hpInput.value) : undefined
+            price: this.selection === "1" ? this.price : undefined,
+            hp: this.selection === "3" ? this.hp : undefined
         };
 
         console.log("Form data:", GameObjectFormResult);
 
-        const success: boolean = await addGameObject(GameObjectFormResult);
 
-        if (success) {
-            this.isSuccess = true;
-            this.isError = false;
-            console.log("Added succesfully");
-        } else {
-            this.isSuccess = false;
-            this.isError = true;
-            console.log("Failed adding");
+
+
+        try {
+
+            const success: boolean = await addGameObject(GameObjectFormResult);
+
+            if (success) {
+
+                this.isSuccess = true;
+                this.isError = false;
+                console.log("Added succesfully");
+                window.location.reload();
+
+            } else {
+
+                this.isSuccess = false;
+                this.isError = true;
+                console.log("Failed adding");
+
+            }
+
+        } catch (error) {
+
+            console.error("Failed to add game object:", error);
+
         }
-    
+
     }
 
 
+    /**
+     * 
+     */
     public static styles = css`
     .success {
         color: green;
@@ -106,26 +213,50 @@ export class GameObjectForm extends LitElement {
     .error {
         color: red;
     }
-`;
+    `;
+
+    private input(event: InputEvent): void {
+        const target: HTMLInputElement | HTMLTextAreaElement = event.target as HTMLInputElement | HTMLTextAreaElement;
+        const id: string = target.id;
+        const value: string = target.value;
+
+        switch (id) {
+            case "alias":
+                this.alias = value;
+                break;
+            case "name":
+                this.name = value;
+                break;
+            case "description":
+                this.description = value;
+                break;
+            case "price":
+                this.price = parseFloat(value);
+                break;
+            case "hp":
+                this.hp = parseInt(value);
+                break;
+            default:
+                break;
+        }
+    }
 
 
-    public render(): TemplateResult<1> {
-
+    public gameObjectForm(): TemplateResult<1> {
         return html`
             <h2>Game Object Form</h2>
             ${this.isSuccess ? html`<div class="success">Successfully added!</div>` : ""}
             ${this.isError ? html`<div class="error">Failed to add. Please check your data.</div>` : ""}
             <form>
-                <custom-input-element label="Alias" type="text" Id="alias"></custom-input-element>
-                <custom-input-element label="Name" type="text" Id="name"></custom-input-element>
+                <custom-input-element label="Alias" type="text" Id="alias" @input=${this.input} .value=${this.alias}></custom-input-element>
+                <custom-input-element label="Name" type="text" Id="name" @input=${this.input} .value=${this.name}></custom-input-element>
                 <div>
                     <label for="description">Description:</label>
-                    <textarea id="description" name="description" rows="4"></textarea>
+                    <textarea id="description" name="description" rows="4" @input=${this.input} .value=${this.description}></textarea>
                 </div>
                 <div>
                     <label for="type">Type:</label>
-                    <select id="type" name="type" @change="${this.handleTypeChange}">
-                        <option value=""></option>
+                    <select id="type" name="type" @change="${this.handleTypeChange}" .value=${this.selection} >
                         <option value="1">Item</option>
                         <option value="2">Room</option>
                         <option value="3">Character</option>
@@ -134,17 +265,28 @@ export class GameObjectForm extends LitElement {
                 ${this.selection === "1" ? html`                
                 <div id="priceField">
                     <label for="price">Price:</label>
-                    <input type="number" id="price" name="price" min="0" step="0.01">
+                    <input type="number" id="price" name="price" min="0" step="0.01" @input=${this.input} .value=${this.price}>
                 </div>` : ""}
                 ${this.selection === "3" ? html`
                 <div id="hpField">
                     <label for="hp">HP:</label>
-                    <input type="number" id="hp" name="hp" min="0" step="1">
+                    <input type="number" id="hp" name="hp" min="0" step="1" @input=${this.input} .value=${this.price}>
                 </div>` : ""}
                 <button type="button" id="submitButton" @click="${this.handleButtonClick}">Add ${this.selectedType}</button>
+                <button type="button" id="updateButton" @click="${this.updateData}">Update ${this.selectedType}</button>
             </form>
+        `;
+    }
 
-            <game-object-data></game-object-data>
+
+    /**
+     * 
+     * @returns 
+     */
+    public render(): TemplateResult<1> {
+
+        return html`
+        ${this.gameObjectForm()}
         `;
 
         /** In Lit wordt @change gebruikt om te luisteren naar veranderingen in invoerelementen, zoals tekstvelden of keuzelijsten.

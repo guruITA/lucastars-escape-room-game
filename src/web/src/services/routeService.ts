@@ -73,3 +73,78 @@ export async function getGameObjects(): Promise<any> {
     }
 
 }
+
+
+/**
+ * Verwijdert een gameobject uit de database.
+ * @param id Met behulp van de id kan je de gameobject verwijderen.
+ * @returns Een Promise<boolean> die aangeeft of het verwijderen succesvol was.
+ */
+export async function deleteGameObject(id: number | undefined): Promise<boolean> {
+
+    try {
+        
+        const response: Response = await fetch(`${viteConfiguration.API_URL}gameobject/delete`, {
+
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({id: id}),
+
+        });
+
+        if (response.ok) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    } catch (error) {
+
+        console.error("Error deleting game object:", error);
+        return false;
+
+    }
+}
+
+/**
+ * Update een gameobject uit de database.
+ * @param formData De gegevens van het gameobject.
+ * @returns Een Promise<boolean> die aangeeft of het verwijderen succesvol was.
+ */
+export async function updateGameObject(element: GameObjectFormResult): Promise<boolean> {
+
+    try {
+        
+        const response: Response = await fetch(`${viteConfiguration.API_URL}gameobject/update`, {
+
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(element),
+
+        });
+
+        if (response.ok) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    } catch (error) {
+
+        console.error("Error updating game object:", error);
+        return false;
+
+    }
+}

@@ -16,7 +16,7 @@ export class CustomInputElement extends LitElement {
         return html`
                 <div>
                     <label for="${this.label}">${this.label}</label>
-                    <input type="${this.type}" id="${this.Id}" @input="${this.getInputValue}">
+                    <input type="${this.type}" id="${this.Id}" @input="${this.getInputValue}" value="${this.value}">
                 </div>
         `;
 
