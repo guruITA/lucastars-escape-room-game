@@ -83,12 +83,24 @@ export class GameObjectForm extends LitElement {
     .error {
         color: red;
     }
+
+    .gameobjectContainer{
+        border: 1px solid;
+        border-color: black;
+        margin-bottom: 10px;
+    }
+
+    .dataContainer{
+        border: 1px solid;
+        border-color: black;
+    }
 `;
 
 
     public render(): TemplateResult<1> {
 
         return html`
+            <div class="gameobjectContainer">
             <h2>Game Object Form</h2>
             ${this.isSuccess ? html`<div class="success">Successfully added!</div>` : ""}
             ${this.isError ? html`<div class="error">Failed to add. Please check your data.</div>` : ""}
@@ -101,7 +113,7 @@ export class GameObjectForm extends LitElement {
                 </div>
                 <div>
                     <label for="type">Type:</label>
-                    <select id="type" name="type" @change="${this.handleTypeChange}">
+                    <select id="type" name="type" class="option" @change="${this.handleTypeChange}">
                         <option value=""></option>
                         <option value="1">Item</option>
                         <option value="2">Room</option>
@@ -120,6 +132,11 @@ export class GameObjectForm extends LitElement {
                 </div>` : ""}
                 <button type="button" id="submitButton" @click="${this.handleButtonClick}">Add ${this.selectedType}</button>
             </form>
+        </div>
+        
+        <div class="dataContainer">
+            <h2>Data</h2>
+        </div>
         `;
 
     }

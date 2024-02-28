@@ -1,6 +1,6 @@
 import { GameObjectFormResult } from "./components/GameObjectFormResult";
 import { Router } from "express";
-
+import asyncHandler from "express-async-handler";
 
 export const router: Router = Router();
 
