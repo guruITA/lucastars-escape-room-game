@@ -1,18 +1,18 @@
 import { css, html, LitElement, TemplateResult } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, state } from "lit/decorators.js";
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
-
-import { addGameObject } from "../../services/routeService";
+import "./CustomInputElement";
+import { addGameObject } from "../services/routeService";
 
 
 @customElement("gameobject-form")
 export class GameObjectForm extends LitElement {
 
 
-    @property() private selection: string = "";
-    @property() private selectedType: string = "";
-    @property() private isSuccess: boolean = false;
-    @property() private isError: boolean = false;
+    @state() private selection: string = "";
+    @state() private selectedType: string = "";
+    @state() private isSuccess: boolean = false;
+    @state() private isError: boolean = false;
 
 
     private handleTypeChange(event: Event): void {
