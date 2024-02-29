@@ -16,7 +16,7 @@ export class GameObjectForm extends LitElement {
     /**Lit heeft twee manieren om een reactieve field te maken: met een @property- of @state-decorator. De werking is van beide exact hetzelfde,
      *  alleen is @property bedoeld voor public fields, en @state voor private fields. Een @property maakt daarnaast van een field ook een tag die in te stellen 
      * is op een Web Component. Een @state is puur voor intern gebruik. 
-    */
+     */
 
     @state() private gameObjectId: number | undefined = 0;
     @state() private alias: string = "";
@@ -132,7 +132,7 @@ export class GameObjectForm extends LitElement {
 
 
     /**
-     * Deze functie wordt uitgevoerd wanneer er een verandering optreedt in het geselecteerde type.
+     * Deze functie wordt uitgevoerd wanneer er een verandering plaats vinden in het geselecteerde type.
      * Het vraagt aan de webcomponent om zichzelf bij te werken, zodat eventuele veranderingen worden weergegeven op de webpagina.
      * Het gebruikt het geselecteerde element van de keuzelijst om het gedrag van de rest van de applicatie aan te passen.
      * Het stelt ons in staat om bepaalde velden in het formulier weer te geven of te verbergen op basis van de selectie van de gebruiker.
@@ -182,9 +182,7 @@ export class GameObjectForm extends LitElement {
     private async handleButtonClick(event: Event): Promise<void> {
 
         /**
-         * event.preventDefault() wordt gebruikt om de normale actie van een gebeurtenis te stoppen wanneer deze wordt geactiveerd. 
-         * Bijvoorbeeld, als je op een link klikt, zal de browser normaal gesproken naar de gekoppelde pagina gaan. Met event.preventDefault()
-         *  kun je voorkomen dat de browser dit doet, zodat je JavaScript-code kunt uitvoeren in plaats van de standaardactie te laten plaatsvinden. 
+         * event.preventDefault() wordt gebruikt om de normale actie van een gebeurtenis te stoppen wanneer deze wordt geactiveerd. . 
          * Het wordt vaak gebruikt om te voorkomen dat formulieren worden verzonden of om te voorkomen dat links worden gevolgd, 
          * terwijl je de logica achter de actie controleert.
          */
