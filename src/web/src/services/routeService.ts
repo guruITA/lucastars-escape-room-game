@@ -57,7 +57,7 @@ export async function getGameObjects(): Promise<any> {
     }
 }
 
-    export async function UpdateGameObject(element: GameObjectFormResult): Promise<boolean> {
+    export async function updateGameObject(element: GameObjectFormResult): Promise<boolean> {
         try {
             // Een API-aanroep om een game object bij te werken.
             const response: Response = await fetch(`${viteConfiguration.API_URL}gameobject/update`, {
