@@ -8,11 +8,17 @@ import { ResultSetHeader, PoolConnection } from "mysql2/promise";
 export const router: Router = Router();
 
 
-
+/**
+ * Dit is een POST-verzoek om een nieuw gameobject toe te voegen.
+ */
 router.post("/gameobject/add", asyncHandler(async (req, res) => {
 
+    console.log("ADD DATA \n");
+
+    // Hier haal ik gegevens op metbehulp van de request en stop ik het in de GameObjectFormResult variabele
     const formData: GameObjectFormResult = req.body as GameObjectFormResult;
 
+    // Hier controleer ik of de velden zijn ingevuld krijg je een status melding 400 te zien
     if (!formData.alias || !formData.name || !formData.description || !formData.type) {
         res.status(400).send("Alias, name, description, and type are required.");
         return;
@@ -23,21 +29,20 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
         return;
     }
 
-
+    // Variabele voor de database verbinding
     let connection: PoolConnection | undefined = undefined;
 
     try {
+
+        // Variabele voor het krijgen van de databaseverbinding
         connection = await getConnection();
 
-        /**
-         * await connection.beginTransaction() is als het starten van een speciaal soort spel in een computerspel.
-         * Het betekent dat alle acties die je doet in dat spel bij elkaar horen en als één geheel worden uitgevoerd. 
-         * Als je begint met dit speciale spel, worden alle bewegingen die je maakt, zoals het verplaatsen van je personage of het verzamelen van voorwerpen, 
-         * onderdeel van dat speciale spel totdat je het spel beëindigt. Het helpt om te zorgen dat alles in de juiste volgorde en zonder problemen verloopt. 
-        */
+        // Als er iets misgaat kunnen je alle veranderingen die er gemaakt zijn ongedaan maken. 
+        // Het helpt om ervoor te zorgen dat de database altijd in een goede blijft zelfs als er problemen zijn tijdens het verwerken van gegevens.
         await connection.beginTransaction();
         console.log("Begin transaction");
 
+        // Hier zit de query om gegevens toe te kunnen voegen
         const gameObjectQueryResult: ResultSetHeader = await queryDatabase(connection,
             "INSERT INTO gameobject (alias, name, description, type) VALUES (?, ?, ?, ?)",
             formData.alias,
@@ -46,10 +51,13 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
             formData.type
         );
 
+        // Hier krijg de toe gevoegde gameobject insert id
         const gameObjectId: number | undefined = gameObjectQueryResult.insertId;
 
+        // Als je de id krijgt
         if (gameObjectId !== undefined) {
 
+            // Als forData.type (item, character of room) voeg ik het aan het juiste tabel toe
             if (formData.type === "Item") {
 
                 await queryDatabase(connection,
@@ -75,13 +83,7 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
 
             }
 
-            /** 
-             * await connection.commit() wordt gebruikt om alle wijzigingen die binnen een database transactie zijn gemaakt permanent te maken. 
-             * Stel je voor dat je een lijst met taken hebt die je allemaal wilt uitvoeren, maar je wilt ze allemaal tegelijkertijd bevestigen of geen van allen. 
-             * Met await connection.commit() vertel je de database dat je alle wijzigingen die je in de transactie hebt gemaakt wilt behouden en permanent wilt maken.
-             * Dit betekent dat de database de veranderingen zal opslaan en ze niet ongedaan zal maken, zelfs als er een fout optreedt nadat de commit-opdracht is uitgevoerd.
-             * Dit is het tegenovergestelde van rollback, waarbij alle wijzigingen worden teruggedraaid.
-            */
+            // Dit bevestigt alle veranderingen die zijn aangebracht binnen de transactie en maakt ze permanent in de database.
             await connection.commit();
             console.log("Commit");
 
@@ -99,11 +101,7 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
 
         console.error(error);
 
-        /** 
-         * await connection.rollback() wordt gebruikt in databases om terug te gaan naar de manier waarop de database was voordat we begonnen met het doen van een aantal veranderingen.
-         * Stel je voor dat we een aantal dingen in een database veranderen, maar er gaat iets mis. Met connection.rollback() kunnen we die veranderingen ongedaan maken en de database 
-         * terugzetten naar hoe het was voordat we begonnen met die veranderingen. Het is als een "terug" knop voor de database. 
-        */
+        // Dit wordt gebruikt om alle wijzigingen die zijn aangebracht binnen de huidige transactie ongedaan te maken.
         if (connection) await connection.rollback();
         res.status(500).send("Internal Server Error");
 
@@ -111,13 +109,7 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
 
         if (connection) {
 
-            /**
-             * connection.release() wordt gebruikt om de databaseverbinding vrij te geven nadat we klaar zijn met het uitvoeren van onze databasebewerkingen.
-             * Stel je voor dat je een telefoonlijn gebruikt om met de database te praten. Nadat we onze boodschap hebben doorgegeven en onze taken zijn voltooid,
-             * hangen we eigenlijk de telefoon op zodat andere mensen deze kunnen gebruiken. Met connection.release() vertellen we de database dat we klaar zijn met de verbinding 
-             * en dat deze beschikbaar is voor andere taken of verzoeken. Dit helpt om middelen efficiënt te beheren en voorkomt dat de database te veel verbindingen 
-             * tegelijkertijd vasthoudt.
-             */
+            // Dit wordt gebruikt om de databaseverbinding vrij te geven nadat alle bewerkingen zijn uitgevoerd.
             connection.release();
             console.log("Connection released");
 
@@ -128,8 +120,12 @@ router.post("/gameobject/add", asyncHandler(async (req, res) => {
 }));
 
 
-
+/**
+ * Dit is een GET-verzoek om gegevens weer te kunnen geven.
+ */
 router.get("/gameobject/getAll", asyncHandler(async (_req, res) => {
+
+    console.log("GET DATA \n");
 
     let connection: PoolConnection | undefined = undefined;
 
@@ -164,6 +160,7 @@ router.get("/gameobject/getAll", asyncHandler(async (_req, res) => {
     } catch (error) {
 
         console.error(error);
+        
         if (connection) await connection.rollback();
         res.status(500).send("Internal Server Error");
 
@@ -181,7 +178,12 @@ router.get("/gameobject/getAll", asyncHandler(async (_req, res) => {
 }));
 
 
+/**
+ * Dit is een POST-verzoek om een gameobject te kunnen verwijderen.
+ */
 router.post("/gameobject/delete", asyncHandler(async (req, res) => {
+
+    console.log("DELETE \n");
 
     const formData: GameObjectFormResult = req.body as GameObjectFormResult;
 
@@ -223,14 +225,12 @@ router.post("/gameobject/delete", asyncHandler(async (req, res) => {
 
         console.error(error);
 
-
         if (connection) await connection.rollback();
         res.status(500).send("Internal Server Error");
 
     } finally {
 
         if (connection) {
-
 
             connection.release();
             console.log("Connection released");
@@ -242,7 +242,9 @@ router.post("/gameobject/delete", asyncHandler(async (req, res) => {
 }));
 
 
-
+/**
+ * Dit is een POST-verzoek om een gameobject te kunnen bewerken.
+ */
 router.post("/gameobject/update", asyncHandler(async (req, res) => {
 
     console.log("UPDATE \n");
@@ -252,6 +254,7 @@ router.post("/gameobject/update", asyncHandler(async (req, res) => {
     let connection: PoolConnection | undefined = undefined;
 
     try {
+
         connection = await getConnection();
 
         await connection.beginTransaction();
@@ -265,7 +268,6 @@ router.post("/gameobject/update", asyncHandler(async (req, res) => {
             formData.type,
             formData.id
         );
-        console.log(formData.id);
 
         console.log(updateGameObjectQuery);
 
@@ -323,7 +325,6 @@ router.post("/gameobject/update", asyncHandler(async (req, res) => {
     } finally {
 
         if (connection) {
-
 
             connection.release();
             console.log("Connection released");
