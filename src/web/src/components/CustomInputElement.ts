@@ -4,13 +4,17 @@ import { customElement, property, state } from "lit/decorators.js";
 @customElement("custom-input-element")
 export class CustomInputElement extends LitElement {
 
+    // Dit zijn de attributen voor de input
     @property() private label: string = "";
     @property() private type: string = "";
     @property() private Id: string = "";
     @state() public value: string = "";
 
-    
 
+    /**
+     * Rendert voor het weergeven van de input.
+     * @returns TemplateResult
+     */
     public render(): TemplateResult<1> {
         
         return html`
@@ -22,6 +26,10 @@ export class CustomInputElement extends LitElement {
 
     }
 
+    /**
+     * Functie om de waarde van de input te krijgen.
+     * @param event de input
+     */
     private getInputValue(event: Event): void {
 
         this.requestUpdate();

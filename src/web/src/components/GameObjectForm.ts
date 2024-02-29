@@ -133,11 +133,10 @@ export class GameObjectForm extends LitElement {
 
     /**
      * Deze functie wordt uitgevoerd wanneer er een verandering plaats vinden in het geselecteerde type.
-     * Het vraagt aan de webcomponent om zichzelf bij te werken, zodat eventuele veranderingen worden weergegeven op de webpagina.
      * Het gebruikt het geselecteerde element van de keuzelijst om het gedrag van de rest van de applicatie aan te passen.
      * Het stelt ons in staat om bepaalde velden in het formulier weer te geven of te verbergen op basis van de selectie van de gebruiker.
      * 
-     * @param event Het gebeurtenisobject dat wordt gegenereerd wanneer een verandering optreedt in het geselecteerde type.
+     * @param event Het object dat wordt gegenereerd wanneer een verandering optreedt in het geselecteerde type.
      */
     private handleTypeChange(event: Event): void {
 
@@ -249,9 +248,9 @@ export class GameObjectForm extends LitElement {
 
     /**
      * Deze functie wordt uitgevoerd wanneer er iets wordt ingevoerd in een Inputelement of TextAreaElement enzovoort.
-     * Het haalt de ingevoerde waarde van de elementen op en stopt het in de variabele van de velden.
+     * Het haalt de waarde van de elementen op en stopt het in de variabele van de velden.
      * 
-     * @param event Het gebeurtenisobject dat wordt gegenereerd wanneer er iets wordt ingevoerd in een Inputelement of TextAreaElement enzovoort.
+     * @param event Het object dat wordt gegenereerd wanneer er iets wordt ingevoerd in een Inputelement of TextAreaElement enzovoort.
      */
     private input(event: InputEvent): void {
 
