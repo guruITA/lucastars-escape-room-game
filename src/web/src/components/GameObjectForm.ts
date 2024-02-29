@@ -33,14 +33,14 @@ export class GameObjectForm extends LitElement {
 
 
     /**
-     * Dit wordt uitgevoerd wanneer dit deel van de website op het scherm komt.
-     * Het zorgt ervoor dat de informatie die nodig is om iets te laten zien op het scherm beschikbaar is.
-     */
+    * Deze actie gebeurt wanneer het onderdeel in de component wordt toegevoegd.
+    */
     public connectedCallback(): void {
 
+        // Zorgt ervoor dat de Originele connectedCallback functie eerst word uitgevoerd, voordat mijn toegevoegde functie(s) worden uitgevoerd.
         super.connectedCallback();
 
-        // Hier haal ik de waarde van de geselecteerde gameobject op en stop ik het in de gameobject element om het te kunne weergeven
+        // Hier haal ik de waarde van de geselecteerde gameobject op met behulp van de Dispatcht uit GameObjectData bestand en stop ik het in de gameobject element om te kunnen weergeven
         gameService.addEventListener("edit-form", (element: any) => {
 
             console.log(element);
