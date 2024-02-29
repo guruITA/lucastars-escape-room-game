@@ -100,15 +100,15 @@ export class GameObjectForm extends LitElement {
     public render(): TemplateResult<1> {
 
         return html`
-            <div class="gameobjectContainer">
             <h2>Game Object Form</h2>
+            <div class="gameobjectContainer">
             ${this.isSuccess ? html`<div class="success">Successfully added!</div>` : ""}
             ${this.isError ? html`<div class="error">Failed to add. Please check your data.</div>` : ""}
             <form>
-                <custom-input-element label="Alias" type="text" Id="alias"></custom-input-element>
-                <custom-input-element label="Name" type="text" Id="name"></custom-input-element>
+                <custom-input-element label="Name: " type="text" Id="name"></custom-input-element>
+                <custom-input-element label="Alias: " type="text" Id="alias"><br></custom-input-element>
                 <div>
-                    <label for="description">Description:</label>
+                    <label for="description">Description:<br></label>
                     <textarea id="description" name="description" rows="4"></textarea>
                 </div>
                 <div>
@@ -131,11 +131,14 @@ export class GameObjectForm extends LitElement {
                     <input type="number" id="hp" name="hp" min="0" step="1">
                 </div>` : ""}
                 <button type="button" id="submitButton" @click="${this.handleButtonClick}">Add ${this.selectedType}</button>
+                <button type="button" id="UpdateButtonForm" @click="${this.handleUpdateClick}">Update ${this.selectedType}</button>
             </form>
         </div>
-        
+        <h2>Data</h2>
         <div class="dataContainer">
-            <h2>Data</h2>
+        <h3>Character</h3>
+        <h3>Item</h3>
+        <h3>Room</h3>
         </div>
         `;
 
