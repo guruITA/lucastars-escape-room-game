@@ -4,7 +4,6 @@ import asyncHandler from "express-async-handler";
 import { getConnection, queryDatabase } from "/HBO ICT PB1-tafau/jooduumeenii48/src/api/src/services/databaseServices";
 import { ResultSetHeader, PoolConnection } from "mysql2/promise";
 
-
 export const router: Router = Router();
 
 
