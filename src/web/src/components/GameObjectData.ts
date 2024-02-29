@@ -75,7 +75,7 @@ export class LoadDatabase extends LitElement {
     /**
     * 
     */
-    private showSelectedData(element: any) {
+    private showSelectedData(element: any): void {
 
         try {
 
@@ -126,8 +126,8 @@ export class LoadDatabase extends LitElement {
                                 <td>${element.description}</td>
                                 <td>${element.type}</td>
                                 <td>${element.price}</td>
-                                <td><button type="button" @click="${() => this.showSelectedData(element)}" id="updateButton">Update</button></td>
-                                <td><button type="button" @click="${() => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
+                                <td><button type="button" @click="${(): void => this.showSelectedData(element)}" id="updateButton">Update</button></td>
+                                <td><button type="button" @click="${(): Promise<void> => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
                             </tr>
                         `;
             } else {
@@ -165,8 +165,8 @@ export class LoadDatabase extends LitElement {
                                 <td>${element.name}</td>
                                 <td>${element.description}</td>
                                 <td>${element.type}</td>
-                                <td><button type="button" @click="${() => this.showSelectedData(element)}" id="updateButton">Update</button></td>
-                                <td><button type="button" @click="${() => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
+                                <td><button type="button" @click="${(): void => this.showSelectedData(element)}" id="updateButton">Update</button></td>
+                                <td><button type="button" @click="${(): Promise<void> => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
                             </tr>
                         `;
             } else {
@@ -206,8 +206,8 @@ export class LoadDatabase extends LitElement {
                                 <td>${element.description}</td>
                                 <td>${element.type}</td>
                                 <td>${element.hp}</td>
-                                <td><button type="button" @click="${() => this.showSelectedData(element)}" id="updateButton">Update</button></td>
-                                <td><button type="button" @click="${() => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
+                                <td><button type="button" @click="${(): void => this.showSelectedData(element)}" id="updateButton">Update</button></td>
+                                <td><button type="button" @click="${(): Promise<void> => this.deleteData(element.id)}" id="deleteButton">Delete</button></td>
                             </tr>
                         `;
             } else {
