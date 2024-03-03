@@ -242,7 +242,7 @@ router.post("/gameobject/update", asyncHandler(async (req, res) => {
     try {
 
         connection = await getConnection();
-
+        console.log(connection);
         await connection.beginTransaction();
         console.log("Begin transaction");
 
@@ -270,7 +270,7 @@ router.post("/gameobject/update", asyncHandler(async (req, res) => {
             } else if (formData.type === "Character") {
 
                 await queryDatabase(connection,
-                    "UPDATE `character` SET hp = ? WHERE = ?",
+                    "UPDATE `character` SET hp = ? WHERE id = ?",
                     formData.hp,
                     formData.id
                 );
@@ -306,7 +306,7 @@ router.post("/gameobject/update", asyncHandler(async (req, res) => {
         console.error(error);
 
         if (connection) await connection.rollback();
-        res.status(500).send("Internal Server Error");
+        res.status(500).send("Internal Server Error");  
 
     } finally {
 
