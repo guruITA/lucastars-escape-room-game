@@ -1,10 +1,8 @@
 import { Router } from "express";
 import asyncHandler from "express-async-handler";
-import { getConnection, queryDatabase, ResultSetHeader } from "./services/databaseService";
+import { getConnection, queryDatabase } from "./services/databaseService";
+import { GameObjectFormResult } from "@shared/GameObjectFormResult";
 export const router: Router = Router();
-
-//Initiate database connection
-const db: any = getConnection();
 
 router.get("/", (_req, res) => {
     res.json("");
@@ -13,48 +11,68 @@ router.get("/", (_req, res) => {
 router.post(
     "/gameobject/add",
     asyncHandler(async (req, res) => {
+        const formData: GameObjectFormResult = req.body;
+
         if (
-            !req.body.alias ||
-            req.body.alias === "" ||
-            !req.body.name ||
-            req.body.name === "" ||
-            !req.body.description ||
-            req.body.description === "" ||
-            !req.body.type ||
-            req.body.type === "" ||
-            (req.body.type === "item" && (!req.body.price || req.body.price === 0)) ||
-            (req.body.type === "character" && (!req.body.hp || req.body.hp === 0))
+            !formData.alias ||
+            formData.alias === "" ||
+            !formData.name ||
+            formData.name === "" ||
+            !formData.description ||
+            formData.description === "" ||
+            !formData.type ||
+            formData.type === "" ||
+            (formData.type === "item" && (!formData.price || formData.price === 0)) ||
+            (formData.type === "character" && (!formData.hp || formData.hp === 0))
         ) {
             res.status(400);
         } else {
-            console.log(req.body);
-            const gameObjectResult: ResultSetHeader = await queryDatabase(
-                db,
-                "INSERT INTO gameobject (alias, name, description, type) VALUES (?,?,?,?)",
-                [req.body.alias, req.body.name, req.body.description, req.body.type]
-            );
+            //Initiate database connection
+            try {
+                const db: any = await getConnection();
 
-            let query: string = `INSERT INTO ${req.body.type} `;
-            let values: Array<string> = [gameObjectResult.insertId];
+                const gameObjectResult: ResultSetHeader = await queryDatabase(
+                    db,
+                    "INSERT INTO gameobject (alias, name, description) VALUES (?, ?, ?)",
+                    formData.alias,
+                    formData.name,
+                    formData.description
+                );
 
-            switch (req.body.type) {
-                case "item":
-                    query += "(id, price) VALUES (?,?)";
-                    values.push(req.body.price);
-                    break;
+                let resultSecond: any;
 
-                case "room":
-                    query += "(id) VALUES (?)";
-                    break;
-                case "character":
-                    query += "(id, hp) VALUES (?,?)";
-                    values.push(req.body.hp);
-                    break;
+                switch (formData.type) {
+                    case "item":
+                        resultSecond = await queryDatabase(
+                            db,
+                            "INSERT INTO `item` (id, price) VALUES (?, ?)",
+                            gameObjectResult.insertId,
+                            formData.price
+                        );
+                        break;
+
+                    case "room":
+                        resultSecond = await queryDatabase(
+                            db,
+                            "INSERT INTO `room` (id) VALUES (?)",
+                            gameObjectResult.insertId
+                        );
+                        break;
+                    case "character":
+                        resultSecond = await queryDatabase(
+                            db,
+                            "INSERT INTO `character` (id, hp) VALUES (?, 999)",
+                            gameObjectResult.insertId,
+                            formData.hp
+                        );
+                        break;
+                }
+
+                res.status(204);
+            } catch (error) {
+                console.log(error);
+                res.status(400);
             }
-
-            const typeInsertResult: ResultSetHeader = await queryDatabase(db, query, values);
-
-            res.status(204);
         }
 
         res.json("");
