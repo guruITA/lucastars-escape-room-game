@@ -18,3 +18,14 @@ export async function addGameObject(formData: GameObjectFormResult): Promise<boo
         return false;
     }
 }
+
+export async function getGameObjects(): Promise<any> {
+    const response: any = await fetch(`${viteConfiguration.API_URL}gameobject`, {
+        method: "get",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    return response.json();
+}
