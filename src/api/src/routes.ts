@@ -2,11 +2,32 @@ import { Router } from "express";
 import asyncHandler from "express-async-handler";
 import { getConnection, queryDatabase } from "./services/databaseService";
 import { GameObjectFormResult } from "@shared/GameObjectFormResult";
+import { ResultSetHeader } from "mysql2";
 export const router: Router = Router();
 
 router.get("/", (_req, res) => {
     res.json("");
 });
+
+router.get(
+    "/gameobject",
+    asyncHandler(async (req, res) => {
+        let data: Array<any>;
+
+        try {
+            const db: any = await getConnection();
+
+            const gameObjects: any = await queryDatabase(db, "SELECT * FROM gameobject");
+
+            res.status(200);
+            data = gameObjects;
+        } catch (error) {
+            console.log(error);
+        }
+
+        res.send(data);
+    })
+);
 
 router.post(
     "/gameobject/add",
