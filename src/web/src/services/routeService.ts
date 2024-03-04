@@ -29,3 +29,24 @@ export async function getGameObjects(): Promise<any> {
 
     return response.json();
 }
+
+export async function deleteGameObject(id: number): Promise<boolean> {
+    try {
+        const response: any = await fetch(`${viteConfiguration.API_URL}gameobject`, {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(id),
+        });
+
+        if (response.ok) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
