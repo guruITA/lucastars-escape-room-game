@@ -70,6 +70,10 @@ export class GameObjectTable extends LitElement {
     }
 
     private _deleteObject(id: number): void {
-        console.log(`Delete ${id}`);
+        if (confirm(`Weet je zeker dat je het object met id ${id} wilt verwijderen?`)) {
+            alert("Item verwijderd");
+        } else {
+            alert("Verwijderen geannuleerd");
+        }
     }
 }
