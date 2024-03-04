@@ -99,3 +99,36 @@ router.post(
         res.json("");
     })
 );
+
+router.delete(
+    "/gameobject",
+    asyncHandler(async (req, res) => {
+        try {
+            const db: any = await getConnection();
+
+            switch (req.body.type) {
+                case "item":
+                    console.log("item");
+                    break;
+                case "room":
+                    console.log("room");
+                    break;
+                case "character":
+                    console.log("character");
+                    break;
+            }
+
+            const deleteObjectResult: ResultSetHeader = await queryDatabase(
+                db,
+                "DELETE FROM gameobject WHERE gameobject.id = ?",
+                req.body
+            );
+
+            res.status(200);
+            res.json(deleteObjectResult);
+        } catch (error) {
+            res.status(500);
+            res.json(error);
+        }
+    })
+);
