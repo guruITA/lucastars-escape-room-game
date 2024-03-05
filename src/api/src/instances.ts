@@ -1,9 +1,10 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
-import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
+import { DetectiveCharacter, DetectiveCharacterAlias } from "./characters/Detective";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
-import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
+import { StickyNoteItem, StickyNoteItemAlias } from "./items/StickyNote";
+import { ControlRoom, ControlRoomAlias } from "./rooms/ControlRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
 
@@ -47,8 +48,8 @@ export function getRoomByAlias(alias: string): Room | undefined {
         case StartupRoomAlias:
             return new StartupRoom();
 
-        case ExampleRoomAlias:
-            return new ExampleRoom();
+        case ControlRoomAlias:
+            return new ControlRoom();
     }
 
     return undefined;
@@ -66,10 +67,13 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case ExampleItemAlias:
             return new ExampleItem();
 
-        case ExampleCharacterAlias:
-            return new ExampleCharacter();
+        case StickyNoteItemAlias:
+            return new StickyNoteItem();
+    
+        case DetectiveCharacterAlias:
+            return new DetectiveCharacter();
 
-        //NOTE: Fall back to rooms, since those are game objects too.
+        //NOTE: Fall back to rooms, since tho8se are game objects too.
         default:
             return getRoomByAlias(alias);
     }
