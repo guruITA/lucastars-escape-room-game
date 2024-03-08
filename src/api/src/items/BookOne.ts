@@ -20,7 +20,7 @@ export class BookOne extends Item implements Examine, Pickup {
 
     }
 
-    
+
     public name(): string {
 
         return "Book 1";
@@ -32,7 +32,7 @@ export class BookOne extends Item implements Examine, Pickup {
         
         return new ExamineActionResult(
             ["Book 1"],
-            ["example"]
+            ["book1"]
         );
 
     }

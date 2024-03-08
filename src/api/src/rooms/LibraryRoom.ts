@@ -109,7 +109,7 @@ export class LibraryRoom extends Room {
     public examine(): ActionResult | undefined {
 
         return new TextActionResult([
-            "Owh! This library is so big and dark, with rows of towering bookshelves. The air is thick with the smell of old paper, and shadows dance in the corners. There's a desk in the center of the room, there is too much to explore. Where should I begin to search? hmmmmm lets begin!"
+            "Owh! This library is so big, with rows of towering bookshelves. The air is thick with the smell of old paper, and shadows dance in the corners. There's a desk in the center of the room, there is too much to explore. Where should I begin to search? hmmmmm lets begin!"
         ]);
         
     }
