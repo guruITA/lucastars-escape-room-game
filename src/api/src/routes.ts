@@ -17,9 +17,8 @@ import {
     getGameObjectsByAliases,
 } from "./instances";
 import { PlayerSession } from "./types";
-import { ExampleAction, ExampleActionAlias } from "./actions/ExampleAction";
-import { PickUpAction, PickUpActionAlias } from "./actions/PickUp";
-import { ShowImageAction, ShowImageActionAlias } from "./actions/ShowImage";
+import { PickUpAction, PickUpActionAlias } from "./actions/PickUpAction";
+import { ExamineImageResult } from "./base/actionResults/ExamineImageResult";
 
 export const router: Router = Router();
 
@@ -118,14 +117,10 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         case ExamineActionAlias:
             return ExamineAction.handle(gameObjects[0]);
 
-        case ExampleActionAlias:
-            return ExampleAction.handle(gameObjects[0]);
-
         case PickUpActionAlias:
             return PickUpAction.handle(gameObjects[0]);
             
-        case ShowImageActionAlias:
-            return ShowImageAction.handle(gameObjects[0]);
+
     }
 
     return CustomAction.handle(alias, gameObjects);
@@ -141,18 +136,21 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         return undefined;
     }
 
-    let actions: ActionReference[];
+    let actions: ActionReference[] = room.actions().map((e) => e.toReference());
+    let images: string[] = room.images();
 
     if (actionResult instanceof TalkActionResult) {
         actions = actionResult.choices.map((e) => e.toReference(actionResult.character));
-    } else {
-        actions = room.actions().map((e) => e.toReference());
+    }
+    else if(actionResult instanceof ExamineImageResult) {
+        images = [...room.images(), ...actionResult.images];
+
     }
 
     return {
         roomAlias: room.alias,
         roomTitle: room.name(),
-        roomImages: room.images(),
+        roomImages: images,
         text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."],
         actions: actions,
         objects: room.objects().map((e) => e.toReference()),

@@ -34,6 +34,11 @@ export class GameCanvas extends LitElement {
             height: auto;
             image-rendering: pixelated;
         }
+        .img {
+            width: 60%;
+            height: auto;
+            image-rendering: pixelated;
+        }
 
         .header img:nth-child(n + 2) {
             position: absolute;
@@ -47,28 +52,15 @@ export class GameCanvas extends LitElement {
         }
 
         .content p {
-        overflow: hidden;
-        margin: 0 0 10px 0;
-        opacity: 1; /* Start with text hidden */
-        white-space: nowrap; /* Prevent wrapping to multiple lines */
-        display: inline-block; /* Ensure text appears in a single line */
-        animation: 
-            typing 3.5s steps(40, end) forwards, /* Typing effect */
-            fadeInText 3.5s ease forwards, /* Gradually reveal text */
-            blink-caret 0.75s step-end infinite; /* Cursor animation */
+            overflow: hidden;
+            margin: 0 0 10px 0;
+            opacity: 1;
+            display: inline-block;
         }
 
-        /* The typing effect */
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
 
-        /* The typewriter cursor effect */
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: orange; }
-        }
+
+
 
         .content p:last-of-type {
             margin: 0;
@@ -80,7 +72,7 @@ export class GameCanvas extends LitElement {
             border: 1px solid #332c57;
             margin-top: 10px;
             display: flex;
-            height: 105px;
+            height: 150px;
         }
 
         .footer .buttons {

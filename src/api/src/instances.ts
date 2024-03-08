@@ -2,7 +2,12 @@ import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { DetectiveCharacter, DetectiveCharacterAlias } from "./characters/Detective";
-import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
+import { BluePrintItem, BluePrintItemAlias } from "./items/BluePrint";
+import { Cam1Item, Cam1ItemAlias } from "./items/Cam1";
+import { Cam2Item, Cam2ItemAlias } from "./items/Cam2";
+import { Cam3Item, Cam3ItemAlias } from "./items/Cam3";
+import { Cam4Item, Cam4ItemAlias } from "./items/Cam4";
+import { LockedCabinetItemAlias, LockedCabinetItem } from "./items/Locked_Cabinet";
 import { StickyNoteItem, StickyNoteItemAlias } from "./items/StickyNote";
 import { ControlRoom, ControlRoomAlias } from "./rooms/ControlRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
@@ -64,12 +69,28 @@ export function getRoomByAlias(alias: string): Room | undefined {
  */
 export function getGameObjectByAlias(alias: string): GameObject | undefined {
     switch (alias) {
-        case ExampleItemAlias:
-            return new ExampleItem();
 
         case StickyNoteItemAlias:
             return new StickyNoteItem();
+
+        case BluePrintItemAlias:
+            return new BluePrintItem();
     
+        case Cam1ItemAlias:
+            return new Cam1Item();
+
+        case Cam2ItemAlias:
+            return new Cam2Item();
+        
+        case Cam3ItemAlias:
+            return new Cam3Item();
+
+        case Cam4ItemAlias:
+            return new Cam4Item();
+
+        case LockedCabinetItemAlias:
+            return new LockedCabinetItem();
+
         case DetectiveCharacterAlias:
             return new DetectiveCharacter();
 
