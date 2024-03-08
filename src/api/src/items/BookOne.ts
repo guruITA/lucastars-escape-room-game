@@ -8,17 +8,25 @@ import { getPlayerSession } from "../instances";
 import { PlayerSession } from "../types";
 // import { resetPlayerSession } from "../instances";
 
+
 export const BookOneAlias: string = "book-1-item";
+
 
 export class BookOne extends Item implements Examine, Pickup {
 
     public constructor() {
+
         super(BookOneAlias, ExamineActionAlias, PickupActionAlias);
+
     }
 
+    
     public name(): string {
+
         return "Book 1";
+
     }
+
 
     public examine(): ActionResult | undefined {
         
@@ -26,25 +34,27 @@ export class BookOne extends Item implements Examine, Pickup {
             ["Book 1"],
             ["example"]
         );
+
     }
+
 
     public pickup(): ActionResult | undefined {
 
         const playerSession: PlayerSession = getPlayerSession();
-
+    
         if (!playerSession.inventory.includes(BookOneAlias)) {
 
             playerSession.inventory.push(BookOneAlias);
-
-            return new TextActionResult(["You picked up the first book that you needed"]);
+            return new TextActionResult(["You picked up the first book. Well done!"]);
 
         } else {
-
-            return new TextActionResult(["You have already picked up the first book that you needed"]);
+            
+            return new TextActionResult(["You already have the first book in your inventory."]);
 
         }
 
     }
+    
 
     // public example(): ActionResult | undefined {
     //     resetPlayerSession();
