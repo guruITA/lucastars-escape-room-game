@@ -1,18 +1,22 @@
-import { ExampleAction } from "../actions/ExampleAction";
-import { PickUpAction } from "../actions/PickUp";
-import { ShowImageAction } from "../actions/ShowImage";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
-import { ImageActionResult } from "../base/actionResults/ImageActionResult";
-import { Action } from "../base/actions/Action";
 import { ExamineAction } from "../base/actions/ExamineAction";
-import { TalkAction } from "../base/actions/TalkAction";
+import { Action } from "../base/actions/Action";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { DetectiveCharacter } from "../characters/Detective";
-import { getGameObjectsFromInventory } from "../instances";
-import { ExampleItem } from "../items/ExampleItem";
-import { StickyNoteItem } from "../items/StickyNote";
+import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { StickyNoteItem, StickyNoteItemAlias } from "../items/StickyNote";
+import { BluePrintItem } from "../items/BluePrint";
+import { Cam1Item } from "../items/Cam1";
+import { Cam2Item } from "../items/Cam2";
+import { Cam3Item } from "../items/Cam3";
+import { Cam4Item } from "../items/Cam4";
+import { PlayerSession } from "../types";
+import { PickUpAction } from "../actions/PickUpAction";
+import { TalkAction } from "../base/actions/TalkAction";
+import { LockedCabinetItem } from "../items/Locked_Cabinet";
+
 
 export const ControlRoomAlias: string = "Control-room";
 
@@ -30,26 +34,36 @@ export class ControlRoom extends Room {
     }
 
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new ExampleAction(), new PickUpAction(), new ShowImageAction];
+        return [
+            new ExamineAction(),
+            new TalkAction(), 
+            new PickUpAction()];        
     }
 
     public objects(): GameObject[] {
-        const inventoryItems: GameObject[] = getGameObjectsFromInventory();
+        const playerSession: PlayerSession = getPlayerSession();
+        const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
 
-        return [this, ...inventoryItems, new ExampleItem(), new DetectiveCharacter(), new StickyNoteItem()];
+        if (!playerSession.inventory.includes(StickyNoteItemAlias)){
+            objects.push(new StickyNoteItem());
+        }
+        
+        objects.push( 
+            new DetectiveCharacter(),  
+            new BluePrintItem(), 
+            new Cam1Item(),
+            new Cam2Item(),
+            new Cam3Item(),
+            new Cam4Item(),
+            new LockedCabinetItem(),
+        );
+
+        return objects;
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["Welcome to the Control Room, the heart of the castle."]);
+        return new TextActionResult(["The control room in the old castle serves as the nerve center for the entire establishment.As the players, you must navigate through a series of clues left behind in the room to uncover the mysteries surrounding the castle.The control room is equipped with surveillance cameras, monitors, and a multitude of sticky notes left behind by the previous occupants. Players must decipher the cryptic messages and piece together the clues to solve the overarching mystery."]);
     }
 
-    public example(): ActionResult | undefined {
-        return new TextActionResult(["This is an example action executed on a room."]);
-    }
-    public PickUp(): ActionResult | undefined {
-        return new TextActionResult(["This is an example action executed on a room."]);
-    }
-    public Showimage(): ActionResult | undefined {
-        return new ImageActionResult("Control_Room.png");
-    }
+
 }
