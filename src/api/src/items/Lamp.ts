@@ -6,44 +6,64 @@ import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { Talk, TalkChoiceAction } from "../base/actions/TalkAction";
 import { Item } from "../base/gameObjects/Item";
 
-export const LampAlias: string = "Lamp-item";
 
+export const LampAlias: string = "Lamp-item";
 export let lampOn: boolean = false;
 
+
 export class Lamp extends Item implements Examine, Talk {
+
     public constructor() {
+
         super(LampAlias, ExamineActionAlias);
+
     }
+
 
     public name(): string {
+
         return "Lamp";
+
     }
+
 
     public examine(): ActionResult | undefined {
+        
         return new TalkActionResult(
             this,
-            ["Wat wil je met de lamp doen?"],
-            [new TalkChoiceAction(1, "Lamp aan"), new TalkChoiceAction(2, "Lamp uit")]
+            ["What do you want to do with the lamp?"],
+            [new TalkChoiceAction(1, "Turn it on"), new TalkChoiceAction(2, "Turn it off")]
         );
+
     }
 
+
     public talk(_choiceId?: number | undefined): ActionResult | undefined {
+
         if (_choiceId === 1) {
+
             lampOn = true;
+
             return new ExamineActionResult(
-                ["De lamp is nu aan"],
+                ["The room is illuminated by the lamp. You can now search more easily."],
                 ["library_room"]
             );
+
         } else if (_choiceId === 2) {
+
             lampOn = false;
+
             return new ExamineActionResult(
-                ["De lamp is nu uit"],
+                ["The room plunges into darkness as the lamp goes off."],
                 ["library_room_dark"]
             );
+
         }
 
         return new TextActionResult(
-            ["Kan niet met lamp praten"],
+            ["You can't talk to a lamp"],
         );
+
     }
+
 }
