@@ -83,13 +83,14 @@ export class LibraryRoom extends Room {
         }
 
         return objects;
+
     }
 
 
     public examine(): ActionResult | undefined {
 
         return new TextActionResult([
-            "Owh! This library is so big and has so many books and there is a desk in the center of the room. Where Should I begin to search    ? hmmmmmmm."
+            "Owh! This library is so big and has so many books and there is a desk in the center of the room. Where should I begin to search    ? hmmmmmmm."
         ]);
 
     }

@@ -35,6 +35,7 @@ export class Lamp extends Item implements Examine, Talk {
                 ["library_room"]
             );
         } else if (_choiceId === 2) {
+            lampOn = false;
             return new ExamineActionResult(
                 ["De lamp is nu uit"],
                 ["library_room_dark"]
