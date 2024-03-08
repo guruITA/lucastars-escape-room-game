@@ -3,20 +3,20 @@ import { Action } from "../base/actions/Action";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { castTo, implementsInterface } from "../base/helpers";
 
-export const ExampleActionAlias: string = "example-action";
+export const PickupActionAlias: string = "pickup-action";
 
-export interface Example {
-    example(): ActionResult | undefined;
+export interface Pickup {
+    pickup(): ActionResult | undefined;
 }
 
-export class ExampleAction extends Action {
+export class PickupAction extends Action {
     public constructor() {
-        super(ExampleActionAlias, "Example Action", true);
+        super(PickupActionAlias, "Pickup", true);
     }
 
     public static handle(gameObject: GameObject): ActionResult | undefined {
-        if (implementsInterface(gameObject, ExampleActionAlias)) {
-            return castTo<Example>(gameObject).example();
+        if (implementsInterface(gameObject, PickupActionAlias)) {
+            return castTo<Pickup>(gameObject).pickup();
         }
 
         return undefined;

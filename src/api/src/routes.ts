@@ -17,7 +17,8 @@ import {
     getGameObjectsByAliases,
 } from "./instances";
 import { PlayerSession } from "./types";
-import { ExampleAction, ExampleActionAlias } from "./actions/ExampleAction";
+import { PickupAction, PickupActionAlias } from "./actions/PickupAction";
+import { ExamineActionResult } from "./base/actionResults/ExamineActionResult";
 
 export const router: Router = Router();
 
@@ -116,8 +117,8 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         case ExamineActionAlias:
             return ExamineAction.handle(gameObjects[0]);
 
-        case ExampleActionAlias:
-            return ExampleAction.handle(gameObjects[0]);
+        case PickupActionAlias:
+            return PickupAction.handle(gameObjects[0]);
     }
 
     return CustomAction.handle(alias, gameObjects);
@@ -128,23 +129,26 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
     const playerSession: PlayerSession = getPlayerSession();
 
     const room: Room | undefined = getRoomByAlias(playerSession.currentRoom);
-
+ 
     if (!room) {
         return undefined;
     }
-
-    let actions: ActionReference[];
-
+ 
+    let actions: ActionReference[] = room.actions().map((e) => e.toReference());
+    let images: string[] = room.images();
+ 
     if (actionResult instanceof TalkActionResult) {
         actions = actionResult.choices.map((e) => e.toReference(actionResult.character));
-    } else {
-        actions = room.actions().map((e) => e.toReference());
     }
-
+    else if(actionResult instanceof ExamineActionResult) {
+        images = [...room.images(), ...actionResult.images];
+ 
+    }
+ 
     return {
         roomAlias: room.alias,
         roomTitle: room.name(),
-        roomImages: room.images(),
+        roomImages: images,
         text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."],
         actions: actions,
         objects: room.objects().map((e) => e.toReference()),

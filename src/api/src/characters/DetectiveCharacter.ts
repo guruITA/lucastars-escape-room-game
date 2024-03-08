@@ -5,18 +5,18 @@ import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../base/actions/TalkAction";
 import { Character } from "../base/gameObjects/Character";
 
-export const ExampleCharacterAlias: string = "example-character";
+export const DetectiveCharacterAlias: string = "detective-character";
 
-export class ExampleCharacter extends Character implements Examine {
+export class DetectiveCharacter extends Character implements Examine {
     public constructor() {
-        super(ExampleCharacterAlias, ExamineActionAlias);
+        super(DetectiveCharacterAlias, ExamineActionAlias);
     }
 
     public name(): string {
-        return "Example Character";
+        return "Detective William McCarthy";
     }
 
-    public examine(): ActionResult | undefined {
+    public examine(): ActionResult | undefined  {
         return new TextActionResult(["This is an example character."]);
     }
 
@@ -25,7 +25,7 @@ export class ExampleCharacter extends Character implements Examine {
             return new TextActionResult(["You greet the example character."]);
         }
         else if (_choiceId === 2) {
-            return new TextActionResult(["You do not wish to communicate any further."]);
+            return new TextActionResult([""]);
         }
 
         return new TalkActionResult(
