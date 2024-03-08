@@ -1,16 +1,16 @@
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
-import { ImageActionResult } from "../base/actionResults/ImageActionResult";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { PickUp, PickUpActionAlias } from "../actions/PickUp";
+import { PickUp, PickUpActionAlias } from "../actions/PickUpAction";
 import { Item } from "../base/gameObjects/Item";
-import { ShowImage, ShowImageActionAlias } from "../actions/ShowImage";
+import { PlayerSession } from "../types";
+import { getPlayerSession } from "../instances";
 
 export const StickyNoteItemAlias: string = "Sticky-Note";
 
-export class StickyNoteItem extends Item implements Examine, PickUp, ShowImage {
+export class StickyNoteItem extends Item implements Examine, PickUp {
     public constructor() {
-        super(StickyNoteItemAlias, ExamineActionAlias, PickUpActionAlias, ShowImageActionAlias);
+        super(StickyNoteItemAlias, ExamineActionAlias, PickUpActionAlias);
     }
 
     public name(): string {
@@ -21,9 +21,13 @@ export class StickyNoteItem extends Item implements Examine, PickUp, ShowImage {
         return new TextActionResult(["It's a Sticky Note."]);
     }
     public PickUp(): ActionResult | undefined {
-        return new TextActionResult(["You picked up the Sticky Note."]);
+        const playerSession : PlayerSession = getPlayerSession();
+        
+        if(!playerSession.inventory.includes(StickyNoteItemAlias)) {
+            playerSession.inventory.push(StickyNoteItemAlias);
+            return new TextActionResult(["You picked up the Sticky Note."]);
+        }
+        return undefined;
     }
-    public ShowImage(): ActionResult | undefined {
-        return new ImageActionResult("example.png");
-    }
+    
 }
