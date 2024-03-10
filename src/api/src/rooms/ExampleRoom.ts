@@ -36,7 +36,7 @@ export class ExampleRoom extends Room implements Example {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example room."]);
+        return new TextActionResult(["This is an example roomr."]);
     }
 
     public example(): ActionResult | undefined {

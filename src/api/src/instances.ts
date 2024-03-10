@@ -3,9 +3,12 @@ import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
+import { FlashLightItemAlias, FlashlightItem } from "./items/Flashlight";
+import { BedRoom, BedRoomAlias } from "./rooms/BedRoom";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
+import { JohnCharacter, JohnCharacterAlias } from "./characters/JohnCharacter";
 
 /**
  * Create a new player session object
@@ -49,6 +52,9 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case ExampleRoomAlias:
             return new ExampleRoom();
+
+        case BedRoomAlias:
+            return new BedRoom();
     }
 
     return undefined;
@@ -68,6 +74,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ExampleCharacterAlias:
             return new ExampleCharacter();
+
+        case FlashLightItemAlias:
+            return new FlashlightItem();
+
+        case JohnCharacterAlias:
+            return new JohnCharacter();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
