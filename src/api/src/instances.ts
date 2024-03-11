@@ -7,6 +7,7 @@ import { WineBottle1Item, WineBottle1ItemAlias } from "./items/WineBottle1Item";
 import { WineBottle2Item, WineBottle2ItemAlias } from "./items/WineBottle2Item";
 import { WineBottle3Item, WineBottle3ItemAlias } from "./items/WineBottle3Item";
 import { WineBottle4Item, WineBottle4ItemAlias } from "./items/WineBottle4Item";
+import { WineCellarItem, WineCellarItemAlias } from "./items/WineCellarItem";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { StorageRoom, StorageRoomAlias } from "./rooms/StorageRoom";
@@ -21,6 +22,7 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
+        openedWineCellar: false,
     };
 }
 
@@ -76,6 +78,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ExampleCharacterAlias:
             return new ExampleCharacter();
+
+        case WineCellarItemAlias:
+            return new WineCellarItem();
 
         case WineBottle1ItemAlias:
             return new WineBottle1Item();
