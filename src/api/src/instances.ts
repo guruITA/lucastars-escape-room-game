@@ -3,7 +3,10 @@ import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
-import { WineBottleItem, WineBottleItemAlias } from "./items/WineBottleItem";
+import { WineBottle1Item, WineBottle1ItemAlias } from "./items/WineBottle1Item";
+import { WineBottle2Item, WineBottle2ItemAlias } from "./items/WineBottle2Item";
+import { WineBottle3Item, WineBottle3ItemAlias } from "./items/WineBottle3Item";
+import { WineBottle4Item, WineBottle4ItemAlias } from "./items/WineBottle4Item";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { StorageRoom, StorageRoomAlias } from "./rooms/StorageRoom";
@@ -74,8 +77,14 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case ExampleCharacterAlias:
             return new ExampleCharacter();
 
-        case WineBottleItemAlias:
-            return new WineBottleItem();
+        case WineBottle1ItemAlias:
+            return new WineBottle1Item();
+        case WineBottle2ItemAlias:
+            return new WineBottle2Item();
+        case WineBottle3ItemAlias:
+            return new WineBottle3Item();
+        case WineBottle4ItemAlias:
+            return new WineBottle4Item();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
