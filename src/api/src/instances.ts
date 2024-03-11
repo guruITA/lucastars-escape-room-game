@@ -2,6 +2,7 @@ import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
+import { ChestItem, ChestItemAlias } from "./items/ChestItem";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
 import { WineBottle1Item, WineBottle1ItemAlias } from "./items/WineBottle1Item";
 import { WineBottle2Item, WineBottle2ItemAlias } from "./items/WineBottle2Item";
@@ -78,6 +79,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ExampleCharacterAlias:
             return new ExampleCharacter();
+
+        case ChestItemAlias:
+            return new ChestItem();
 
         case WineCellarItemAlias:
             return new WineCellarItem();
