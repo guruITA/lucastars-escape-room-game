@@ -3,10 +3,10 @@ import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { Pickup, PickupActionAlias } from "../base/actions/PickupAction";
 import { Item } from "../base/gameObjects/Item";
-import { getPlayerSession } from "../instances";
-import { PlayerSession } from "../types";
+// import { getPlayerSession } from "../instances";
+// import { PlayerSession } from "../types";
 
-export const WineBottle2ItemAlias: string = "wine-bottle-2";
+export const WineBottle2ItemAlias: string = "wine-bottle-2"; //1891
 
 export class WineBottle2Item extends Item implements Examine, Pickup {
     public constructor() {
@@ -14,20 +14,20 @@ export class WineBottle2Item extends Item implements Examine, Pickup {
     }
 
     public name(): string {
-        return "Wine bottle 2";
+        return "Wine bottle";
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["Hmm, this wine looks old. Bottle says 1891"]);
+        return new TextActionResult(["Hmm, this wine looks old."]);
     }
 
     public pickup(): ActionResult | undefined {
-        const playerSession: PlayerSession = getPlayerSession();
+        // const playerSession: PlayerSession = getPlayerSession();
 
-        if (!playerSession.inventory.includes(WineBottle2ItemAlias)) {
-            playerSession.inventory.push(WineBottle2ItemAlias);
-            return new TextActionResult(["You pick up the wine bottle"]);
-        }
+        // if (!playerSession.inventory.includes(WineBottle2ItemAlias)) {
+        //     playerSession.inventory.push(WineBottle2ItemAlias);
+        //     return new TextActionResult(["You pick up the wine bottle"]);
+        // }
 
         return undefined;
     }
