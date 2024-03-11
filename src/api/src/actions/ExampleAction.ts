@@ -11,7 +11,7 @@ export interface Example {
 
 export class ExampleAction extends Action {
     public constructor() {
-        super(ExampleActionAlias, "Example Action", true);
+        super(ExampleActionAlias, "Bestudeer", true);
     }
 
     public static handle(gameObject: GameObject): ActionResult | undefined {
