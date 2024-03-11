@@ -1,5 +1,6 @@
 import { Interact, InteractActionAlias } from "../../actions/InteractAction";
 import { ActionResult } from "../../base/actionResults/ActionResult";
+import { ImageActionResult } from "../../base/actionResults/ImageActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Item } from "../../base/gameObjects/Item";
@@ -20,6 +21,10 @@ export class FlashlightItem extends Item implements Examine, Interact {
 
     public examine(): ActionResult | undefined {
         return new TextActionResult(["It's a flashlight...", "*Click*", "Damn..! No luck, the batteries are dead but maybe I can find some new ones in here."]);
+    }
+
+    public ShowImage(): ActionResult | undefined {
+        return new ImageActionResult("flashlight.png");
     }
 
     public interact(): ActionResult | undefined {
