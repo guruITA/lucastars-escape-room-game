@@ -11,7 +11,6 @@ import { JohnCharacter } from "../characters/JohnCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { FlashLightItemAlias, FlashlightItem } from "../items/Items/Flashlight";
 import { PlayerSession } from "../types";
-import { ImageActionResult } from "../base/actionResults/ImageActionResult";
 
 export const BedRoomAlias: string = "bedroom";
 
@@ -51,10 +50,6 @@ export class BedRoom extends Room {
 
     public examine(): ActionResult | undefined {
         return new TextActionResult(["The bedroom, it looks like it hasn't been used in ages. There should still be important clues in here to help me reach my answer."]);
-    }
-
-    public ShowImage(): ActionResult | undefined {
-        return new ImageActionResult("flashlight.png");
     }
 
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
