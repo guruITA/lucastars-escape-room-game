@@ -5,13 +5,11 @@ import { ExamineAction } from "../base/actions/ExamineAction";
 import { PickupAction } from "../base/actions/PickupAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { WineCellarItem, WineCellarItemAlias } from "../items/WineCellarItem";
+import { WineCellarItem } from "../items/WineCellarItem";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { PlayerSession } from "../types";
-import { WineBottle1Item } from "../items/WineBottle1Item";
-import { WineBottle2Item } from "../items/WineBottle2Item";
-import { WineBottle3Item } from "../items/WineBottle3Item";
-import { WineBottle4Item } from "../items/WineBottle4Item";
+import { ChestItem } from "../items/ChestItem";
+import { OpenAction } from "../base/actions/OpenAction";
 
 export const StorageRoomAlias: string = "storage-room";
 
@@ -31,7 +29,7 @@ export class StorageRoom extends Room {
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();
 
-        const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
+        const objects: GameObject[] = [this, new ChestItem(), ...getGameObjectsFromInventory()];
 
         if (!playerSession.openedWineCellar) {
             objects.push(new WineCellarItem());
@@ -45,6 +43,6 @@ export class StorageRoom extends Room {
     }
 
     public actions(): Action[] {
-        return [new ExamineAction(), new PickupAction()];
+        return [new ExamineAction(), new OpenAction()];
     }
 }
