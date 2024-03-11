@@ -19,6 +19,7 @@ import {
 import { PlayerSession } from "./types";
 import { ExampleAction, ExampleActionAlias } from "./actions/ExampleAction";
 import { PickupAction, PickupActionAlias } from "./base/actions/PickupAction";
+import { OpenAction, OpenActionAlias } from "./base/actions/OpenAction";
 
 export const router: Router = Router();
 
@@ -121,6 +122,8 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
             return ExampleAction.handle(gameObjects[0]);
         case PickupActionAlias:
             return PickupAction.handle(gameObjects[0]);
+        case OpenActionAlias:
+            return OpenAction.handle(gameObjects[0]);
     }
 
     return CustomAction.handle(alias, gameObjects);
