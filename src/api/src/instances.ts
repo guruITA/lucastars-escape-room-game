@@ -3,7 +3,7 @@ import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
-import { FlashLightItemAlias, FlashlightItem } from "./items/Flashlight";
+import { FlashLightItemAlias, FlashlightItem } from "./items/Items/Flashlight";
 import { BedRoom, BedRoomAlias } from "./rooms/BedRoom";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
@@ -19,6 +19,7 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
+        pickedUpFlashlight: false, 
     };
 }
 

@@ -16,11 +16,11 @@ export class StartupRoom extends Room {
     }
 
     public name(): string {
-        return "Example Game";
+        return "Intro";
     }
 
     public images(): string[] {
-        return ["startup"];
+        return ["castle"];
     }
 
     public actions(): Action[] {
@@ -28,7 +28,7 @@ export class StartupRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example."]);
+        return new TextActionResult(["Press Start Game to play."]);
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
