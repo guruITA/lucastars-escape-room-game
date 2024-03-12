@@ -1,9 +1,7 @@
 ### Testplan voor de guerilla test
 
 **1. Doel van de Test**   
-We hebben een design gemaakt en zouden graag willen weten of mensen het figma design makkelijk vinden om te gebruiken en niet ergens vastlopen. Hierdoor kunnen we gelijk mensen hun mening weten over de gebruikersinterface zodat we dit in het echte project kunnen aanpassen.   
-
-Ik heb de eerste en laatste kamer (in 1), namelijk "the entrance" gemaakt en ik zou graag willen testen of gebruikers de doorloop en werking van de game duidelijk genoeg vinden en niet teveel vast lopen. Hierdoor kan ik verbeteringen maken om eventuele problemen te verwerken. 
+Wij hebben een eerste versie developed van de kamers voor onze game, en via testen kunnen wij het beste visualiseren wat onze games ontbreken en of wij wel het juiste richtlijn hebben voor onze doelgroepen.
 <br/>
 
 **2. Testmethode**    
@@ -11,8 +9,8 @@ Guerrilla testing hebben we toegepast. Dit houdt in dat we snel feedback verzame
 <br/>
 
 **3. Testmateriaal**   
-- Mijn gemaakte kamer (The bedroom), werkend op de browser.
-- We hebben de feedback genoteerd   
+- De Bedroom demo.
+- Guerilla test Template.   
 <br/>
 
 **4. Doelgroep**   
@@ -44,11 +42,6 @@ Willekeurige HBO-ICT studenten.
 Alle verzamelde feedback, observaties en conclusies zijn gedocumenteerd zodat we altijd ernaar terug kunnen kijken.   
 <br/>
 
-### sprint 1
-We hebben de gebruiker een laptop gegeven met game open op "the entrance" en hebben de gebruiker vertelt om met een aantal objecten te interacten. Ook hebben we de gebruiker gevraagd of ze de volledige "talk" interactie kunnen doorlopen met de npc, en het puzzel element op te lossen (eerste cijfer van de code vinden). We hebben hierbij verder niks anders vertelt/geholpen en hebben genoteerd hoe lang ze hierover deden en of dit vlot ging of niet. We hebben daarna vragen gesteld wat ze er van vonden en hebben gevraagd over hoe tevreden ze waren met de opdrachten die we hun gaven met een cijfer tussen 1 t/m 10.
-
-<br/>
-
 ### Guerilla Test
 De feedback die we hebben gekregen bij de guerilla tests zijn dit: 
 
@@ -57,9 +50,9 @@ De feedback die we hebben gekregen bij de guerilla tests zijn dit:
 ##### Wat waren de 3 doelen en 2 tevredenheidsvragen? 
 Gebruikersdoel: Interact met een aantal objecten.<br>   
 
-Gebruikersdoel: Doorloop de gehele "talk to" interactie met Edward, de NPC.<br>   
+Gebruikersdoel: Doorloop de gehele "talk to" interactie met John, de NPC en guide.<br>   
 
-Gebruikersdoel: Voltooi de puzzel - Vind het eerste gedeelte van de code.<br>   
+Gebruikersdoel: Probeer een item te showen naar John voor een speciale interactie.<br>   
 
 
 #### persoon 1
@@ -68,19 +61,19 @@ Gebruikersdoel: Voltooi de puzzel - Vind het eerste gedeelte van de code.<br>
 |-------|------------------------------------------|---------------|----------------------|--------------|
 |       |   Wat moet je gebruiker kunnen bereiken? | Doel behaald? |   Tijd               |     /10      |
 |   1   |   Interact met objecten                  |   ja          |   20 sec             |     9/10     |
-|   2   |   "Talk to" NPC                          |   ja          |   5  sec             |     8/10    |
+|   2   |   "Talk to" NPC                          |   ja          |   5  sec             |     8/10     |
 |   3   |   Show gevonden voorwerpen aan de NPC    |   ja          |   30 sec             |     10/10    |
 
 
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
-- Hij leek geirriteerd door de hoeveelheid text
-- 
+- Hij leek geirriteerd door de hoeveelheid text in de karakter conversaties.
 
 
 #### Algemene feedback: 
-- Voeg meer dingen toe
-- Maak meer functionaliteiten voor 1 object
+- Voeg meer funcionaliteiten toe in de game zelf.
+- Maak meer functionaliteiten voor 1 object.
+- 
  
 <br/>
 
@@ -98,10 +91,9 @@ Gebruikersdoel: Voltooi de puzzel - Vind het eerste gedeelte van de code.<br>
 
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
-- hij experimenteerde wel meer met de game
-- 
+- hij experimenteerde met de game vooral om te kijken welke functies wat deden.
 
 
 #### Algemene feedback: 
-- uitdagender maken
-- Doel is niet duidelijk
+- De game kan meer uitdagender worden.
+- De doel is niet duidelijk en de speler kan zich verdwalen in de kamer.
