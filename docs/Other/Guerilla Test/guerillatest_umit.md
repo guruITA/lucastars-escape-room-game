@@ -9,41 +9,41 @@ Guerrilla testing hebben we toegepast. Dit houdt in dat we snel feedback verzame
 <br/>
 
 **3. Testmateriaal**   
-- De Bedroom demo.
-- Guerilla test Template.   
+- De Bedroom demo.<br>
+- Guerilla test Template.<br>
 <br/>
 
 **4. Doelgroep**   
-Willekeurige HBO-ICT studenten.   
+Willekeurige HBO-ICT studenten.
 <br/>
 
 **5. Testprocedure**   
-- Zoek een drukke plek met veel mensen
-- Vraag of mensen willen deelnemen aan onze korte guerilla test
-- Geef ze een simpele opdracht en noteer hoe lang dit duurt en dus hoe makkelijk dingen te vinden zijn.
-- Zet specifieke doelen voor de gebruiker, waarin ze interacten, examinen en praten met gewenste items/characters
-- Noteer alle feedback, suggesties, en observaties.
-- Toon de volledige (en werkende) kamer, en vraag om feedback. 
+- Zoek een drukke plek met veel mensen.<br>
+- Vraag of mensen willen deelnemen aan onze korte guerilla test.<br>
+- Geef ze een simpele opdracht en noteer hoe lang dit duurt en dus hoe makkelijk dingen te vinden zijn.<br>
+- Zet specifieke doelen voor de gebruiker, waarin ze interacten, examinen en praten met gewenste items/characters.<br>
+- Noteer alle feedback, suggesties, en observaties.<br>
+- Toon de volledige (en werkende) kamer, en vraag om feedback.<br> 
 <br/>
 
 **6. Meetbare Criteria**    
-- Begrijpelijkheid van de interface.
-- IntuÃ¯tie van de navigatie.
-- Eventuele verbeterpunten of problemen die gebruikers als feedback geven.   
+- Begrijpelijkheid van de interface.<br>
+- IntuÃ¯tie van de navigatie.<br>
+- Eventuele verbeterpunten of problemen die gebruikers als feedback geven.<br>
 <br/>
 
 **7. Feedback Verwerking**
-- Verzamel en analyseer alle feedback
-- Bespreek de resultaten met je team en hoe we dit kunnen verwerken
-- Pas de designs aan op basis van de verzamelde feedback   
+- Verzamel en analyseer alle feedback.<br>
+- Bespreek de resultaten met je team en hoe we dit kunnen verwerken.<br>
+- Pas de designs aan op basis van de verzamelde feedback.<br>
 <br/>
 
 **8. Documentatie**
-Alle verzamelde feedback, observaties en conclusies zijn gedocumenteerd zodat we altijd ernaar terug kunnen kijken.   
+Alle verzamelde feedback, observaties en conclusies zijn gedocumenteerd zodat we altijd ernaar terug kunnen kijken.<br>
 <br/>
 
 ### Guerilla Test
-De feedback die we hebben gekregen bij de guerilla tests zijn dit: 
+De feedback die we hebben gekregen bij de guerilla tests zijn dit: <br>
 
 ### Resultaten van de tests
 
@@ -67,17 +67,11 @@ Gebruikersdoel: Probeer een item te showen naar John voor een speciale interacti
 
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
-- Hij leek geirriteerd door de hoeveelheid text in de karakter conversaties.
-
+- Hij leek geirriteerd door de hoeveelheid text in de karakter conversaties.<br>
 
 #### Algemene feedback: 
-- Voeg meer funcionaliteiten toe in de game zelf.
-- Maak meer functionaliteiten voor 1 object.
-- 
- 
-<br/>
-
-#       
+- Voeg meer funcionaliteiten toe in de game zelf.<br>
+- Maak meer functionaliteiten voor 1 object.<br>
 
 #### persoon 2
 #### Resultaattabel
@@ -91,9 +85,13 @@ Gebruikersdoel: Probeer een item te showen naar John voor een speciale interacti
 
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
-- hij experimenteerde met de game vooral om te kijken welke functies wat deden.
+- hij experimenteerde met de game vooral om te kijken welke functies wat deden.<br>
 
 
 #### Algemene feedback: 
-- De game kan meer uitdagender worden.
-- De doel is niet duidelijk en de speler kan zich verdwalen in de kamer.
+- De game kan meer uitdagender worden.<br>
+- De doel is niet duidelijk en de speler kan zich verdwalen in de kamer.<br>
+
+## Verwerking Feedback
+* User Story #54: https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/54<br>
+* User Story #55: https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/55<br>
