@@ -6,6 +6,7 @@ import { GameObject } from "./GameObject";
  * Base class used to represent an item
  */
 export abstract class Item extends GameObject implements Talk {
+
     /**
      * Create a new instance of this character
      *
@@ -16,7 +17,16 @@ export abstract class Item extends GameObject implements Talk {
         super(alias, ...interfaces, TalkActionAlias);
     }
 
+
+    /**
+     * Handles the talk action on the item
+     * @param _choiceId The choice ID representing the player's selection
+     * @returns An action result for talking to the item
+     */
     public talk(_choiceId?: number): ActionResult | undefined {
+
+        // By default items do not respond to talk actions so return undefined
         return undefined;
+
     }
 }
