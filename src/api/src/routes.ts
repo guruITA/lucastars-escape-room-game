@@ -19,6 +19,7 @@ import {
 import { PlayerSession } from "./types";
 import { PickupAction, PickupActionAlias } from "./actions/PickupAction";
 import { ExamineActionResult } from "./base/actionResults/ExamineActionResult";
+import { ExamineCodeActionResult } from "./base/actionResults/ExamineCodeActionResult";
 
 export const router: Router = Router();
 
@@ -118,7 +119,7 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
             return ExamineAction.handle(gameObjects[0]);
 
         case PickupActionAlias:
-            return PickupAction.handle(gameObjects[0]);
+            return PickupAction.handle(gameObjects[0]);  
     }
 
     return CustomAction.handle(alias, gameObjects);
@@ -126,31 +127,61 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
 
 function convertActionResultToGameState(actionResult?: ActionResult): GameState | undefined {
     //NOTE: Seems like repeated code, but the room can have changed after performing an action!
+
+    // Retrieve the current player session
     const playerSession: PlayerSession = getPlayerSession();
 
+    // Find the room based on the player's current room alias
     const room: Room | undefined = getRoomByAlias(playerSession.currentRoom);
- 
+
+    // If no room is found, return undefined
     if (!room) {
         return undefined;
     }
- 
+
+    // Get the actions of the room and convert them to references
     let actions: ActionReference[] = room.actions().map((e) => e.toReference());
+
+    // Get the default images of the room
     let images: string[] = room.images();
- 
+
+    // Initialize the mini-game as undefined
+    let miniGame: string | undefined;
+
+    // If the action is a TalkActionResult
     if (actionResult instanceof TalkActionResult) {
+
+        // Replace the default actions with the choices from the TalkActionResult
         actions = actionResult.choices.map((e) => e.toReference(actionResult.character));
+
     }
+
+    // If the action is an ExamineActionResult
     else if(actionResult instanceof ExamineActionResult) {
+
+        // Add the additional images from the ExamineActionResult to the default images
         images = [...room.images(), ...actionResult.images];
- 
+
     }
- 
+
+    // If the action is an ExamineCodeActionResult
+    else if (actionResult instanceof ExamineCodeActionResult) {
+        
+        // Add the additional images from the ExamineCodeActionResult to the default images
+        images = [...room.images(), ...actionResult.images];
+
+        // Set the mini-game to "unlock-code"
+        miniGame = "unlock-code";
+
+    }
+
     return {
-        roomAlias: room.alias,
-        roomTitle: room.name(),
-        roomImages: images,
-        text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."],
-        actions: actions,
-        objects: room.objects().map((e) => e.toReference()),
+        roomAlias: room.alias, // Alias of the room
+        roomTitle: room.name(), // Name of the room
+        roomImages: images, // Images of the room
+        text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."], // Text of the action, if no text provided, return default text
+        actions: actions, // Actions in the room
+        objects: room.objects().map((e) => e.toReference()), // Objects in the room
+        miniGame: miniGame // Mini-game (if present)
     };
 }
