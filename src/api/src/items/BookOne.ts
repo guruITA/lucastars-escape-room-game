@@ -11,7 +11,10 @@ import { Talk, TalkActionAlias } from "../base/actions/TalkAction";
 // This import is for the base class representing game items.
 import { Item } from "../base/gameObjects/Item";
 
+// Import statement for retrieving the player session
 import { getPlayerSession } from "../instances";
+
+// Import statement for the PlayerSession type
 import { PlayerSession } from "../types";
 // import { resetPlayerSession } from "../instances";
 
@@ -88,7 +91,7 @@ export class BookOne extends Item implements Examine, Pickup, Talk {
     /**
      * Handles the talk action on the Book Case
      * @param _choiceId The choice ID representing the player's selection
-     * @returns An action result for talking to the Book Case
+     * @returns An action result for talking to Book 1
      */
     public talk(_choiceId?: number | undefined): ActionResult | undefined {
         return new TextActionResult(["You can't talk to book 1"]);
