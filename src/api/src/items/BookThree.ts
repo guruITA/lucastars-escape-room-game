@@ -30,7 +30,10 @@ export class BookThree extends Item implements Examine, Pickup, Talk {
      * Constructor for the BookThree class
      */
     public constructor() {
+
+        // Calling the constructor of the superclass (Item) with the book one alias, examine, pickup and talk action alias
         super(BookThreeAlias, ExamineActionAlias, PickupActionAlias, TalkActionAlias);
+        
     }
 
 
