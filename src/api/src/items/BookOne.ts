@@ -6,7 +6,7 @@ import { TextActionResult } from "../base/actionResults/TextActionResult";
 
 // These imports are for defining interfaces and aliases related to examining and talking actions.
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Talk } from "../base/actions/TalkAction";
+import { Talk, TalkActionAlias } from "../base/actions/TalkAction";
 
 // This import is for the base class representing game items.
 import { Item } from "../base/gameObjects/Item";
@@ -28,8 +28,8 @@ export class BookOne extends Item implements Examine, Pickup, Talk {
      */
     public constructor() {
 
-        // Calling the constructor of the superclass (Item) with the book one alias, examine and talk action alias
-        super(BookOneAlias, ExamineActionAlias, PickupActionAlias);
+        // Calling the constructor of the superclass (Item) with the book one alias, examine, pickup and talk action alias
+        super(BookOneAlias, ExamineActionAlias, PickupActionAlias, TalkActionAlias);
 
     }
 
