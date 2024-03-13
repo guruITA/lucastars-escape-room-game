@@ -3,23 +3,33 @@ import { ExamineActionResult } from "../base/actionResults/ExamineActionResult";
 import { TalkActionResult } from "../base/actionResults/TalkActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Talk, TalkChoiceAction } from "../base/actions/TalkAction";
+import { Talk, TalkActionAlias, TalkChoiceAction } from "../base/actions/TalkAction";
 import { Item } from "../base/gameObjects/Item";
 
-
+//
 export const LampAlias: string = "Lamp-item";
+
+//
 export let lampOn: boolean = false;
 
-
+//
 export class Lamp extends Item implements Examine, Talk {
 
+    /**
+     * Constructor for the Lamp item
+     */
     public constructor() {
 
-        super(LampAlias, ExamineActionAlias);
+        // Calling the constructor of the superclass (Item) with the lamp alias, examine action alias and talk action alias
+        super(LampAlias, ExamineActionAlias, TalkActionAlias);
 
     }
 
 
+    /**
+     * Returns the name of the Lamp
+     * @returns The name of the Lamp
+     */
     public name(): string {
 
         return "Lamp";
@@ -27,39 +37,59 @@ export class Lamp extends Item implements Examine, Talk {
     }
 
 
+    /**
+     * Handles the examine action on the Lamp
+     * @returns An action result for examining the Lamp
+     */
     public examine(): ActionResult | undefined {
-        
+
+        // Presents options for interacting with the lamp through talking
         return new TalkActionResult(
             this,
-            ["What do you want to do with the lamp?"],
-            [new TalkChoiceAction(1, "Turn it on"), new TalkChoiceAction(2, "Turn it off")]
+            ["What do you want to do with the lamp?"], // Text displayed to the player
+            [new TalkChoiceAction(1, "Turn it on"), new TalkChoiceAction(2, "Turn it off")] // Choices available to the player
         );
 
     }
 
 
+    /**
+     * Handles the talk action on the Lamp
+     * @param _choiceId The choice ID representing the player's selection
+     * @returns An action result based on the player's choice
+     */
     public talk(_choiceId?: number | undefined): ActionResult | undefined {
 
+        // If the player chooses to turn the lamp on
         if (_choiceId === 1) {
 
+            // Update lamp status to true
             lampOn = true;
 
+            // Return an action result indicating the room is illuminated
             return new ExamineActionResult(
-                ["The room is illuminated by the lamp. You can now search more easily."],
-                ["library_room"]
+                ["The room is illuminated by the lamp. You can now search more easily."], // Text displayed to the player
+                ["library_room"] // Image displayed of illuminated libray to the player
             );
 
-        } else if (_choiceId === 2) {
+        }
+        
+        // If the player chooses to turn the lamp off
+        else if (_choiceId === 2) { 
 
+            // Update lamp status to true
             lampOn = false;
 
+            // Return an action result indicating the room is dark but the player found a code that is needed to open de locked cabine in control room
             return new ExamineActionResult(
-                ["The room plunges into darkness as the lamp goes off."],
-                ["library_room_dark"]
+                ["The room plunges into darkness as the lamp goes off.", // Text displayed to the player
+                    "But you have found a code, it says 1234 with a camera icon. Well done!"],
+                ["library_room_dark"] // Image displayed of dark libray to the player
             );
 
         }
 
+        // If the player tries to talk to lamp return an action result indicating they can't talk to a lamp. Beacause lamp is an item
         return new TextActionResult(
             ["You can't talk to a lamp"],
         );
