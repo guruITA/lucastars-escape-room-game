@@ -13,13 +13,19 @@ import { Item } from "../base/gameObjects/Item";
 
 
 
-// Exporting the alias of the BookCase class
+/** 
+ * Exporting the alias of the BookCase class
+ */
 export const BookCaseAlias: string = "book-case";
 
-// Variable to track if the bookcase has been examined
+/** 
+ * Variable to track if the bookcase has been examined
+ */
 export let examined: boolean = false;
 
-// Class representing the BookCase item
+/** 
+ * Class representing the BookCase item
+ */
 export class BookCase extends Item implements Examine, Talk {
 
     /**

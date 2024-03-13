@@ -20,10 +20,14 @@ import { PlayerSession } from "../types";
 
 
 
-// Exporting the alias of the BookThree class
+/** 
+ * Exporting the alias of the BookThree class
+ */
 export const BookThreeAlias: string = "book-3-item";
 
-// Class representing BookThree
+/** 
+ * Class representing BookThree
+ */
 export class BookThree extends Item implements Examine, Pickup, Talk {
 
     /**
@@ -33,7 +37,7 @@ export class BookThree extends Item implements Examine, Pickup, Talk {
 
         // Calling the constructor of the superclass (Item) with the book one alias, examine, pickup and talk action alias
         super(BookThreeAlias, ExamineActionAlias, PickupActionAlias, TalkActionAlias);
-        
+
     }
 
 

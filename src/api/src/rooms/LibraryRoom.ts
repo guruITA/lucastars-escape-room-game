@@ -41,10 +41,14 @@ import { PlayerSession } from "../types";
 
 
 
-// Exporting the alias for the LibraryRoom class
+/**
+ * Exporting the alias for the LibraryRoom class
+ */
 export const LibraryRoomAlias: string = "library-room";
 
-// Class representing the Library room
+/** 
+ * Class representing the Library room
+ */
 export class LibraryRoom extends Room implements Examine {
 
     /**

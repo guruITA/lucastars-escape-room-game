@@ -12,10 +12,14 @@ import { Item } from "../base/gameObjects/Item";
  
 
 
-// Exporting the alias of the LockedCabinet class
+/** 
+ * Exporting the alias of the LockedCabinet class
+ */
 export const LockedCabinetItemAlias: string = "Locked Cabinet";
 
-// Class representing the Locked Cabinet item
+/** 
+ * Class representing the Locked Cabinet item
+ */
 export class LockedCabinetItem extends Item implements Examine, Talk {
 
     /**

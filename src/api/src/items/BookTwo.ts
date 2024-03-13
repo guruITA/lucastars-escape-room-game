@@ -21,10 +21,14 @@ import { PlayerSession } from "../types";
 
 
 
-// Exporting the alias of the BookTwo class
+/** 
+ * Exporting the alias of the BookTwo class
+ */
 export const BookTwoAlias: string = "book-2-item";
 
-// Class representing the BookTwo item
+/** 
+ * Class representing the BookTwo item
+ */
 export class BookTwo extends Item implements Examine, Pickup, Talk {
 
     /**

@@ -13,13 +13,19 @@ import { Item } from "../base/gameObjects/Item";
 
 
 
-// Exporting the alias of the Lamp class
+/** 
+ * Exporting the alias of the Lamp class
+ */
 export const LampAlias: string = "Lamp-item";
 
-// Variable to track if the lamp is on or off
+/**
+ * Variable to track if the lamp is on or off 
+ */
 export let lampOn: boolean = false;
 
-// Class representing the Lamp
+/** 
+ * Class representing the Lamp
+*/
 export class Lamp extends Item implements Examine, Talk {
 
     /**
@@ -52,7 +58,7 @@ export class Lamp extends Item implements Examine, Talk {
 
         // Presents options for interacting with the lamp through talking
         return new TalkActionResult(
-            this,
+            this, // Current item
             ["What do you want to do with the lamp?"], // Text displayed to the player
             [new TalkChoiceAction(1, "Turn it on"), new TalkChoiceAction(2, "Turn it off")] // Choices available to the player
         );
