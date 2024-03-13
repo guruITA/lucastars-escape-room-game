@@ -1,26 +1,51 @@
+// This import is for the PickupAction class.
 import { PickupAction } from "../actions/PickupAction";
+
+// This section imports necessary classes for handling different types of action results.
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
+
+// This import is for the base class representing actions.
 import { Action } from "../base/actions/Action";
-import { ExamineAction } from "../base/actions/ExamineAction";
+
+// These imports are for defining interfaces and aliases related to examining actions.
+import { Examine, ExamineAction } from "../base/actions/ExamineAction";
+
+// This import is for the TalkAction class.
 import { TalkAction } from "../base/actions/TalkAction";
+
+// This import is for the base class representing game objects.
 import { GameObject } from "../base/gameObjects/GameObject";
+
+// This import is for the base class representing rooms.
 import { Room } from "../base/gameObjects/Room";
+
+// This import is for the DetectiveCharacter class.
 import { DetectiveCharacter } from "../characters/DetectiveCharacter";
+
+// These imports are for getting player session data and game objects from inventory.
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+
+// This import is for the BookCase class.
 import { BookCase, examined } from "../items/BookCase";
+
+// These imports are for specific book items.
 import { BookOne, BookOneAlias } from "../items/BookOne";
-import { BookThree, BookThreeAlias } from "../items/BookThree";
 import { BookTwo, BookTwoAlias } from "../items/BookTwo";
+import { BookThree, BookThreeAlias } from "../items/BookThree";
 import { Lamp, lampOn } from "../items/Lamp";
 import { LockedCabinetItem } from "../items/LockedCabinet";
+
+// This import is for the PlayerSession type.
 import { PlayerSession } from "../types";
+
+
 
 // Exporting the alias for the LibraryRoom class
 export const LibraryRoomAlias: string = "library-room";
 
-// Defining the LibraryRoom class, extending from the Room class
-export class LibraryRoom extends Room {
+// Class representing the Library room
+export class LibraryRoom extends Room implements Examine {
 
     /**
      * Constructor for LibraryRoom class
