@@ -1,28 +1,30 @@
 // This import is for handling different types of action results.
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { ExamineCodeActionResult } from "../base/actionResults/ExamineCodeActionResult";
+import { TextActionResult } from "../base/actionResults/TextActionResult";
 
-// These imports are for defining interfaces and aliases related to examining actions.
+// These imports are for defining interfaces and aliases related to examining and talking actions.
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
+import { Talk, TalkActionAlias } from "../base/actions/TalkAction";
 
 // This import is for the base class representing game items.
 import { Item } from "../base/gameObjects/Item";
  
 
 
-// Exporting the alias for the LibraryRoom class
+// Exporting the alias of the LockedCabinet class
 export const LockedCabinetItemAlias: string = "Locked Cabinet";
 
 // Class representing the Locked Cabinet item
-export class LockedCabinetItem extends Item implements Examine {
+export class LockedCabinetItem extends Item implements Examine, Talk {
 
     /**
      * Constructor for the LockedCabinetItem class
      */
     public constructor() {
 
-        // Calling the constructor of the superclass (Item) with the locked cabinet alias, examine action alias
-        super(LockedCabinetItemAlias, ExamineActionAlias);
+        // Calling the constructor of the superclass (Item) with the locked cabinet alias, examine and talk action alias
+        super(LockedCabinetItemAlias, ExamineActionAlias, TalkActionAlias);
     }
  
     /**
@@ -42,6 +44,16 @@ export class LockedCabinetItem extends Item implements Examine {
             ["Unlock the locked cabinet to find the second number of secret room"], // Text displayed to the player
             ["locked-cabinet"] // Image displayed of locked cabinet to the player
             );
+    }
+
+     
+    /**
+     * Handles the talk action on the Book Case
+     * @param _choiceId The choice ID representing the player's selection
+     * @returns An action result for talking to the Locked Cabinet
+     */
+    public talk(_choiceId?: number | undefined): ActionResult | undefined {
+        return new TextActionResult(["You can't talk to a locked cabinet "]);
     }
  
    

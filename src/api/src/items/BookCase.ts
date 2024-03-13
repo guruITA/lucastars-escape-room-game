@@ -1,16 +1,30 @@
+// This import is for handling different types of action results.
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
+
+// These imports are for defining interfaces and aliases related to examining and talking actions.
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
+import { Talk } from "../base/actions/TalkAction";
+
+// This import is for the base class representing game items.
 import { Item } from "../base/gameObjects/Item";
+
 // import { resetPlayerSession } from "../instances";
 
 
+
+// Exporting the alias of the BookCase class
 export const BookCaseAlias: string = "book-case";
+
+// Variable to track if the bookcase has been examined
 export let examined: boolean = false;
 
+// Class representing the BookCase item
+export class BookCase extends Item implements Examine, Talk {
 
-export class BookCase extends Item implements Examine {
-
+    /**
+     * Constructor for the BookCase class
+     */
     public constructor() {
         
         super(BookCaseAlias, ExamineActionAlias);
@@ -18,6 +32,10 @@ export class BookCase extends Item implements Examine {
     }
 
 
+    /**
+     * Returns the name of the Book Case
+     * @returns The name of the Book Case
+     */
     public name(): string {
 
         return "Book case";
@@ -25,21 +43,37 @@ export class BookCase extends Item implements Examine {
     }
 
 
+    /**
+     * Handles the examine action on the Book Case
+     * @returns An action result for examining the Book Case
+     */
     public examine(): ActionResult | undefined  {
 
+
+        // Check if the bookcase has been examined or not
         if (examined) {
 
-            return new TextActionResult(["You already found the books on the shelf."]);
+            // If examined, return a text action result indicating that the bookcase has already been examined
+            return new TextActionResult(["You have already examined the bookcase and you have already found the same similar books on the shelf."]);
 
-        } else {
+        } else { 
 
+            // Update examined status to false
             examined = true;
-            return new TextActionResult(["You examined the bookcase and notice several books on the shelves."]);
+
+            // If not examined, return a text action result describing the books on the shelves
+            return new TextActionResult(["You examined the bookcase and saw several similar books with numbers on the shelves."]);
 
         }
 
     }
 
+
+    /**
+     * Handles the talk action on the Book Case
+     * @param _choiceId The choice ID representing the player's selection
+     * @returns An action result for talking to the Book Case
+     */
     public talk(_choiceId?: number | undefined): ActionResult | undefined {
         return new TextActionResult(["You can't talk to a bookcase "]);
     }
