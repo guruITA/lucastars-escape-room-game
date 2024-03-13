@@ -7,6 +7,7 @@ import { BookOneAlias, BookOne } from "./items/BookOne";
 import { BookThree, BookThreeAlias } from "./items/BookThree";
 import { BookTwo, BookTwoAlias } from "./items/BookTwo";
 import { Lamp, LampAlias } from "./items/Lamp";
+import { LockedCabinetItem, LockedCabinetItemAlias } from "./items/LockedCabinet";
 import { LibraryRoom, LibraryRoomAlias } from "./rooms/LibraryRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
@@ -66,6 +67,8 @@ export function getRoomByAlias(alias: string): Room | undefined {
  * @returns Instance of the game object
  */
 export function getGameObjectByAlias(alias: string): GameObject | undefined {
+
+    // Check the provided alias and return the corresponding game object
     switch (alias) {
 
         case LampAlias:
@@ -77,14 +80,17 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case BookTwoAlias:
             return new BookTwo();
 
-            case BookThreeAlias:
-                return new BookThree();
+        case BookThreeAlias:
+            return new BookThree();
 
         case BookCaseAlias:
             return new BookCase();
 
         case DetectiveCharacterAlias:
             return new DetectiveCharacter();
+
+        case LockedCabinetItemAlias:
+            return new LockedCabinetItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
