@@ -48,14 +48,18 @@ export function resetPlayerSession(): void {
  * @returns Instance of the room
  */
 export function getRoomByAlias(alias: string): Room | undefined {
+
+    // Check the provided alias and return the corresponding room object
     switch (alias) {
         case StartupRoomAlias:
             return new StartupRoom();
 
+        //
         case LibraryRoomAlias:
             return new LibraryRoom();
     }
 
+    // If no matching room is found, return undefined
     return undefined;
 }
 
