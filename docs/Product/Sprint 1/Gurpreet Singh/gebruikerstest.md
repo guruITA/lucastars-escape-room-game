@@ -110,7 +110,7 @@ Gebruikersdoel: Oppakken van de boeken<br>
 - Text toevoegen dat je iets fout doet zodat de speler weet dat hij iets verkeerd doet.
 
 #### Verwerken van feedback
-- Ik ga de feedback bespreken met mijn team.
+- Ik ga de ontvangen feedback bespreken met mijn team.
 
 ### bronnen
 - [guerilla usability](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/gebruikers_interactie/realiseren/guerillatest/)
