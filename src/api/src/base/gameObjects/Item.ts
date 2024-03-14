@@ -8,10 +8,10 @@ import { GameObject } from "./GameObject";
 export abstract class Item extends GameObject implements Talk {
 
     /**
-     * Create a new instance of this character
+     * Create a new instance of this item
      *
      * @param alias Alias of this character
-     * @param interfaces List of interfaces this character implements
+     * @param interfaces List of interfaces this item implements
      */
     protected constructor(alias: string, ...interfaces: string[]) {
         super(alias, ...interfaces, TalkActionAlias);
