@@ -41,6 +41,9 @@
 > ```
 > ### Toelichting 
 > In dit voorbeeld zie je in de handleClickCodeOK() functie de logica voor het controleren van de ingevoerde code en het bijwerken van de UI. Het verbergt de details van hoe de code wordt gecontroleerd en wat er gebeurt als de code correct of incorrect is, waardoor het gemakkelijker wordt om alleen te focussen op wat er moet gebeuren wanneer de "OK" knop wordt geklikt.
+>
+> ### Bronnen 
+> [knowledgebase Abstraction](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/abstraction/)
 
 
 > ## Encapsulation
@@ -116,6 +119,9 @@
 > ```
 > ### Toelichting 
 > In dit voorden worden bepaalde variabelen en functies gemarkeerd als privé, wat betekent dat alleen de GameCanvas-klasse zelf ze kan gebruiken. Deze privévariabelen en -functies houden interne gegevens bij en voeren taken uit binnen de klasse, terwijl ze tegelijkertijd beschermen tegen directe toegang van buitenaf. Dit helpt om de code georganiseerd en veilig te houden.
+>
+> # Bronnen 
+> [knowledgebase Encapsulation](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/encapsulation/#inkapseling-encapsulation)
 
 
 > ## Inheritence
@@ -147,6 +153,9 @@
 > ```
 > ### Uitleg 
 > In dit voorbeeld wordt inheritance gebruikt, waarbij Item de hoofdklasse (superklasse) vertegenwoordigt en BookOne de subklasse is die ervan erft. De BookOne-klasse erft alle basisfuncties en eigenschappen van de hoofdklasse (Item), maar voegt ook specifieke acties toe, zoals onderzoeken, oppakken en praten, die uniek zijn voor dit boekobject. Dit helpt om de code georganiseerd te houden en bevordert het hergebruik van code.
+>
+> ### Bronnen
+> [knowledgebase Inheritence](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/inheritance/)
 
 
 
@@ -213,6 +222,9 @@
 >
 > ### Uitleg
 > In dit voorbeeld wordt polymorfisme gebruikt in de BookCase-klasse. Hoewel de boekenkast en andere objecten verschillende acties kunnen uitvoeren, zoals onderzoeken of praten, kunnen ze nog steeds op dezelfde manier worden behandeld. Dit betekent dat we dezelfde methode examine() en talk() kunnen gebruiken voor de boekenkast, zelfs als het gedrag anders is dan bij andere objecten. Hierdoor kunnen we efficiënter en flexibeler code schrijven.
+>
+> ### Bronnen
+> [knowledgebase Polymorfisme](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/polymorfisme/)
 
 
 
@@ -256,3 +268,6 @@
 >
 > ### Uitleg
 > In deze voorbeeld wordt een static functie gebruikt voor de "Pickup" actie die ik heb gemaakt. Het handelt de "Pickup" actie af voor een game object. Het kijkt eerst of het gekozen game object de mogelijkheid heeft om opgepakt te worden. Als dat zo is, wordt de "pickup" actie van het game object uitgevoerd. Zo niet, dan gebeurt er niets.
+>
+> ### Bronnen
+> [knowledgebase static functies](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/oop_concepten/oop_static/)
