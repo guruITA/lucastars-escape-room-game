@@ -9,7 +9,7 @@ import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Action } from "../base/actions/Action";
 
 // These imports are for defining interfaces and aliases related to examining actions.
-import { Examine, ExamineAction } from "../base/actions/ExamineAction";
+import { Examine, ExamineAction, ExamineActionAlias } from "../base/actions/ExamineAction";
 
 // This import is for the TalkAction class.
 import { TalkAction } from "../base/actions/TalkAction";
@@ -57,7 +57,7 @@ export class LibraryRoom extends Room implements Examine {
     public constructor() {
 
         // Calling the constructor of the superclass (Room)
-        super(LibraryRoomAlias);
+        super(LibraryRoomAlias, ExamineActionAlias);
 
     }
 
