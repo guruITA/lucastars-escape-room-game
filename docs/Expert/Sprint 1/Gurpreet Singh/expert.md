@@ -7,7 +7,7 @@
 
 
 > ## Abstarction
-> Abstractie verwijst naar het idee om complexe details te verbergen en alleen de relevante informatie bloot te stellen. Het maakt het mogelijk om te focussen op wat belangrijk is, zonder je zorgen te maken over de interne werking van een functie of proces.
+> In objectgeoriënteerd programmeren is ``abstractie`` het idee om alleen de belangrijkste dingen van een object te laten zien en de complexe details te verbergen. Het is het maken van een simpele samenvatting van iets moeilijk te begrijpen is, zodat je alleen op het belangrijkste kunt concentreren. Abstractie maakt moeilijke dingen begrijpelijk door alleen te kijken naar wat echt belangrijk is.
 > 
 > ```typescript 
 > /**
@@ -47,7 +47,7 @@
 
 
 > ## Encapsulation
-> Encapsulation betekent dat we bepaalde informatie en functies in een klasse verbergen voor de buitenwereld, zodat alleen de klasse er zelf toegang toe heeft. Dit helpt om onze code veiliger te maken en om te voorkomen dat externe code per ongeluk de interne werking van onze klasse verstoort.
+> In objectgeoriënteerd programmeren biedt ``Encapsulation`` kunnen we bepaalde informatie en functies in een klasse verbergen voor de buitenwereld, zodat alleen de klasse er zelf toegang toe heeft. Dit helpt om onze code veiliger te maken en om te voorkomen dat externe code per ongeluk de interne werking van onze klasse verstoort.
 > 
 > ```typescript 
 > export class GameCanvas extends LitElement {
@@ -125,7 +125,7 @@
 
 
 > ## Inheritence
-> Inheritance betekent dat een nieuwe klasse de eigenschappen en acties van een bestaande klasse erft. Dit helpt om code te hergebruiken en zorgt voor een logische structuur in ons programma.
+> In objectgeoriënteerd programmeren biedt ``inheritance`` een manier waarmee een klasse alle eigenschappen en methoden van een hoofd klasse kan overnemen. Dit bevordert codehergebruik door een nieuwe klasse te laten profiteren van de functionaliteit van een bestaande klasse.
 > 
 > ```typescript
 > /**
