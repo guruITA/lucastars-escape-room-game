@@ -17,21 +17,21 @@ export class DetectiveCharacter extends Character implements Examine {
     }
 
     public examine(): ActionResult | undefined  {
-        return new TextActionResult(["Detective William McCarthy was een man van weinig woorden maar onwrikbare vastberadenheid. Met een scherpe blik had hij een reputatie opgebouwd als een van de meest bekwame onderzoekers in New York City. Zijn stoïcijnse houding verborg de diepte van zijn toewijding aan gerechtigheid, en zijn vastberadenheid kende geen grenzen in zijn jacht op de waarheid. In zijn donkere ogen brandde een vlam van rechtvaardigheid die hem voortdreef, zelfs in de meest duistere tijden."]);
+        return new TextActionResult(["Ask Detective William McCarthy for hints!"]);
     }
 
     public talk(_choiceId?: number): ActionResult | undefined {
         if (_choiceId === 1) {
-            return new TextActionResult(["Hint 1"]);
+            return new TextActionResult(["Use the code provided on the sticky note to open the locked cabinet in the bedroom"]);
         }
         else if (_choiceId === 2) {
-            return new TextActionResult(["Hint 2"]);
+            return new TextActionResult(["The pin code that you need to open the locked cabinet is provided in the library"]);
         }
 
         return new TalkActionResult(
             this,
-            ["Hello!"],
-            [new TalkChoiceAction(1, "can i have a hint?"), new TalkChoiceAction(2, "I still don't get it, can i have another one?")]
+            ["How can I help you!"],
+            [new TalkChoiceAction(1, "can i have a hint?"), new TalkChoiceAction(2, "Can i have another hint?")]
         );
     }
 }
