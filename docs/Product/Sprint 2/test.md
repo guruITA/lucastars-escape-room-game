@@ -1,7 +1,7 @@
 ### Testplan voor de Guerrilla Test
 
 **1. Doel van de Test**   
-Het doel van deze test is om de gebruiksvriendelijkheid van het kamer-design te beoordelen en te evalueren of gebruikers moeiteloos door de kamer kunnen navigeren zonder vast te lopen.
+Het doel van deze test is om de gebruiksvriendelijkheid van het kamer-design te beoordelen en te evalueren of gebruikers moeiteloos door de kamer kunnen navigeren.
 
 **2. Testmethode**    
 We hebben guerrilla testing toegepast om snel feedback te verzamelen van willekeurige studenten van onze school.
