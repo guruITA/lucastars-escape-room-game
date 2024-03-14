@@ -5,6 +5,7 @@ import { PickUp, PickUpActionAlias } from "../actions/PickUpAction";
 import { Item } from "../base/gameObjects/Item";
 import { PlayerSession } from "../types";
 import { getPlayerSession } from "../instances";
+import { ExamineImageResult } from "../base/actionResults/ExamineImageResult";
 
 export const StickyNoteItemAlias: string = "Sticky-Note";
 
@@ -18,7 +19,7 @@ export class StickyNoteItem extends Item implements Examine, PickUp {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["It's a Sticky Note."]);
+        return new ExamineImageResult(["You examine the sticky note. Perhaps you see something interesting..."], ["StickyNote"]);
     }
     public PickUp(): ActionResult | undefined {
         const playerSession : PlayerSession = getPlayerSession();
