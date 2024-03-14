@@ -160,7 +160,7 @@
 
 
 > ## Polymorfisme
-> Polymorfisme betekent dat je verschillende dingen kunt doen met objecten van verschillende klassen, zelfs als ze dezelfde naam hebben voor een bepaalde actie, zoals een methode. Dus zelfs als twee klassen dezelfde methode hebben, kunnen ze die methode anders uitvoeren, afhankelijk van hoe ze zijn gedefinieerd. Dit maakt het gemakkelijk om op een consistente manier met verschillende soorten objecten te werken, zelfs als ze verschillende gedrag hebben.
+> ``Polymorfisme`` betekent dat je verschillende dingen kunt doen met objecten van verschillende klassen, zelfs als ze dezelfde naam hebben voor een bepaalde actie, zoals een methode. Dus zelfs als twee klassen dezelfde methode hebben, kunnen ze die methode anders uitvoeren, afhankelijk van hoe ze zijn gedefinieerd. Dit maakt het gemakkelijk om op een consistente manier met verschillende soorten objecten te werken, zelfs als ze verschillende gedrag hebben.
 >
 > ```typescript 
 > import { ActionResult } from "../base/actionResults/ActionResult";
@@ -229,7 +229,7 @@
 
 
 > ## Static functies
-> Statische functies zijn speciale taken die horen bij een hele groep dingen, niet alleen bij één specifiek ding. Je kunt deze taken direct op de groep toepassen, zonder dat je één specifiek ding nodig hebt. Ze zijn handig voor speciale klusjes die te maken hebben met de hele groep, niet alleen met één ding.
+> ``Statische functies`` zijn speciale taken die horen bij een hele groep dingen, niet alleen bij één specifiek ding. Je kunt deze taken direct op de groep toepassen, zonder dat je één specifiek ding nodig hebt. Ze zijn handig voor speciale klusjes die te maken hebben met de hele groep, niet alleen met één ding.
 >
 > ```typescript
 > import { ActionResult } from "../base/actionResults/ActionResult";
