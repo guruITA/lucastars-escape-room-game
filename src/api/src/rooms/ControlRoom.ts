@@ -37,7 +37,8 @@ export class ControlRoom extends Room {
         return [
             new ExamineAction(),
             new TalkAction(), 
-            new PickUpAction()];        
+            new PickUpAction(),
+            ];       
     }
 
     public objects(): GameObject[] {
@@ -62,7 +63,7 @@ export class ControlRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["The control room in the old castle serves as the nerve center for the entire establishment.As the players, you must navigate through a series of clues left behind in the room to uncover the mysteries surrounding the castle.The control room is equipped with surveillance cameras, monitors, and a multitude of sticky notes left behind by the previous occupants. Players must decipher the cryptic messages and piece together the clues to solve the overarching mystery."]);
+        return new TextActionResult(["The control room serves as the nerve center for the entire castle.As the players, you must navigate through a series of clues left behind in the room to uncover the mysteries surrounding the castle.The control room is equipped with surveillance cameras, monitors and sticky notes left behind by the previous occupants. you must decipher the cryptic messages and piece together the clues to get to the pin code to open the secret room."]);
     }
 
 
