@@ -44,15 +44,7 @@ Naarmate we verder kwamen in het project, merkten we dat we de *"stormfase"* bet
 Gelukkig slaagden we erin om deze moeilijke periode te overwinnen en begonnen we langzaam de *"normeringsfase"* te betreden. Tijdens deze fase begonnen we meer begrip te tonen voor elkaars standpunten en werkwijzen. Er ontstond een gevoel van samenwerking en solidariteit binnen het team. We stelden gezamenlijke normen en waarden vast, en er ontstond meer structuur in ons werkproces. <br><br>
 
 ## Aandeel Storypoints teamleden
-
-```mermaid
-pie 
-    title Storypoins per Teamlid   
-    "Gurpreet" : 18 
-    "Umit" : 12
-    "Kamal" : 23
-    "Daniël" : 12
-```
+![Alt text](image.png)
 Op basis van een schaal van 1/10.<br>
 ### Toelichting Storypoints
 
