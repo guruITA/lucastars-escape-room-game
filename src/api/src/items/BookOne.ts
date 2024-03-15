@@ -75,7 +75,7 @@ export class BookOne extends Item implements Examine, Pickup, Talk {
         // Retrieve the player session
         const playerSession: PlayerSession = getPlayerSession();
     
-        // Check if the BookOne item is already in the player's inventory// Check if the BookOne item is already in the player's inventory
+        // Check if the BookOne item is already in the player's inventory
         if (!playerSession.inventory.includes(BookOneAlias)) {
 
             // If the BookOne item is not in the inventory, add it to the inventory
