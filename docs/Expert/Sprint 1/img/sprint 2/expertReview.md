@@ -1,11 +1,12 @@
 ## Expert Review
 
 ### Inhoudsopgave
-1. [Wat wil ik met dit document laten zien?](#wat-wil-ik-met-dit-document-laten-zien)<br>
-2. [Learning Stories](#learning-stories)
-3. [OOP](#object-georienteerd-programmeren)
-4. 
-5. []
+1. [Expert Review](#expert-review)<br>
+2. [Wat wil met dit document laten zien?](#wat-wil-ik-met-dit-document-laten-zien)<br>
+3. [Learning Stories](#learning-stories)<br>
+4. [OOP](#object-georienteerd-programmeren)
+
+
 ## Wat wil ik met dit document laten zien?
 
 ### Learning Stories
@@ -18,6 +19,38 @@
 Met het onderdeel "K5 Object georiënteerd programmeren" geef ik bewijs dat ik volgens [de richtlijnen van de opleiding HBO-ICT Object geörienteerd programmeren](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/0_oop_intro/) gewerkt heb. Dat doe ik door de "Object georiënteerd programmeren" per onderdeel te benoem met voorbeelden uit het project als bewijs.<br>
 
 ### Static
+Een statische functie is een functie die aan de klasse zelf is gekoppeld, niet aan een specifiek object/instantie van die klasse. Dit betekent dat je een statische functie kunt aanroepen zonder een instantie van de klasse te maken. In de code snippet die volgt zal dit verder worden toegelicht. 
+
+```ts
+export const PickupActionAlias: string = "pickup";
+
+export interface Pickup {
+    pickup(): ActionResult | undefined;
+}
+
+export class PickupAction extends Action {
+    public constructor() {
+        super(PickupActionAlias, "Pickup", true);
+    }
+
+    public static handle(gameObject: GameObject): ActionResult | undefined {
+        if (implementsInterface(gameObject, PickupActionAlias)) {
+            return castTo<Pickup>(gameObject).pickup();
+        }
+
+        return undefined;
+    }
+}
+```
+* Toelichting:
+
+The static function handle is verantwoordelijk voor het verwerken van een GameObject om een ​​PickupAction uit te voeren.
+Er is een GameObject als parameter nodig.<br>
+
+Het controleert of het meegeleverde GameObject de Pickup-interface implementeert met behulp van de implementsInterface-helperfunction.
+Als het GameObject de Pickup-interface implementeert, cast het het GameObject naar Pickup met behulp van de castTo-functie en roept vervolgens de pickup-methode erop aan.<br>
+
+Als het GameObject de Pickup-interface niet implementeert, of als er een andere reden is dat het niet kan worden opgehaald, returnd hey undefined, wat aangeeft dat er geen actie is uitgevoerd.<br>
 
 #### Bronnen
 * https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/oop_concepten/oop_static/<br>
@@ -49,13 +82,14 @@ Objecten(): returnt een array van GameObject-objecten die in de kamer aanwezig z
 * https://blog.jetbrains.com/webstorm/2019/02/write-object-oriented-typescript-abstraction/<br>
   
 ### Encapsulation
-Encapsulation is een van de key components en pillars van de OOP principe. Encapsulation houd in dat gegevens in een class die niet direct aangepast mogen worden vanaf buiten de class worden afgeschermd. Hierdoor beperk je de toegang en is het alleen nog mogelijk om dan de afgeschermde informatie via methodes van de class te krijgen.
+Encapsulation is een van de key components en pillars van de OOP principe. Encapsulation houd in dat gegevens in een class die niet direct aangepast mogen worden vanaf buiten de class worden afgeschermd. Hierdoor beperk je de toegang en is het alleen nog mogelijk om dan de afgeschermde informatie via methodes van de class te krijgen.<br>
 
-Bij encapsulation wordt gebruik gemaakt van public, private, en protected.
-* "public" houdt in dat deze eigenschap of methode toegankelijk is voor de code buiten deze class. Als niks staat aangeduid dan is het in typescript standaard public.
-* "private" houdt in dat deze eigenschap of methode niet toegankelijk is voor code buiten deze class en ook niet voor de child via inheritance.
+Bij encapsulation wordt gebruik gemaakt van public, private, en protected.<br>
+* "public" houdt in dat deze eigenschap of methode toegankelijk is voor de code buiten deze class. Als niks staat aangeduid dan is het in typescript standaard public.<br>
+* "private" houdt in dat deze eigenschap of methode niet toegankelijk is voor code buiten deze class en ook niet voor de child via inheritance.<br>
 * "protected" houdt in dat deze code niet voor alle code buiten deze class beschikbaar is, maar wel voor de child classes via inheritance.<br>
-* Snippet:
+
+* Snippet:<br>
 ```ts
 export const BedRoomAlias: string = "bedroom";
 
