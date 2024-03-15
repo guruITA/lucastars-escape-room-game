@@ -229,7 +229,7 @@
 
 
 > ## Static functies
-> ``Statische functies`` zijn speciale taken die horen bij een hele groep dingen, niet alleen bij één specifiek ding. Je kunt deze taken direct op de groep toepassen, zonder dat je één specifiek ding nodig hebt. Ze zijn handig voor speciale klusjes die te maken hebben met de hele groep, niet alleen met één ding.
+> Een ``statis function`` is een functie die aan de klasse zelf is gekoppeld, in plaats van aan een specifiek object (instantie) van die klasse. Dit betekent dat je de functie kunt aanroepen zonder een instantie van de klasse te maken. Een statische functie wordt vaak gebruikt voor taken die gerelateerd zijn aan de klasse als geheel
 >
 > ```typescript
 > import { ActionResult } from "../base/actionResults/ActionResult";
