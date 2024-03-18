@@ -94,26 +94,9 @@ export class GameCanvas extends LitElement {
         background-color: #332c57;
     }
     
-    /* CSS styles for the pin container in the aside */
-    .aside .pin-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 5px;
-        font-size: 17px;
-        padding: 10px;
-        margin: 0 2px;
-    }
+   
     
-    /* CSS styles for the pin code button */
-    .aside .buttons .pin-container .pin-code {
-        border: 1px solid #332c57;
-        padding: 5px 10px;
-        margin: 0;
-        text-align: center;
-        cursor: pointer;
-        user-select: none;
-        background-color: #78757d;
-    }
+    =
     .aside .buttons .action-button {
         background-color: #545357;
         
@@ -240,7 +223,6 @@ export class GameCanvas extends LitElement {
     private selectedActionButton?: ActionReference;
     private selectedGameObjectButtons: Set<GameObjectReference> = new Set<GameObjectReference>();
 
-    private miniGame?: string;
 
     // Lifecycle method to fetch initial state
     public async connectedCallback(): Promise<void> {
@@ -265,12 +247,6 @@ export class GameCanvas extends LitElement {
         this.selectedActionButton = undefined;
         this.selectedGameObjectButtons.clear();
 
-        this.miniGame = state.miniGame;
-
-        // Reset pin variables if unlock code mini game is not enabled
-        if (!this.unlockCodeMiniGameEnabled) {
-            this.resetPinVariables();
-        }
         // Request update to reflect state changes in the UI
         this.requestUpdate();
     }
@@ -319,12 +295,13 @@ export class GameCanvas extends LitElement {
                 ${this.renderTitle()} 
                 ${this.renderHeader()} 
                 ${this.renderContent()} 
-                ${this.renderaside()}
+                ${this.renderAside()}
                 ${this.renderFooter()}
             </div>
         `;
     }
 
+    // Method to render the title
     // Method to render the title
     private renderTitle(): TemplateResult {
         if (this.roomTitle) {
@@ -336,21 +313,12 @@ export class GameCanvas extends LitElement {
     // Method to render the header
     private renderHeader(): TemplateResult {
         if (this.roomImages && this.roomImages.length > 0) {
-            if (this.roomImages.length >= 2) {
-                const secondImageUrl: string = this.roomImages[1];
-                return html`
-                    <div class="header">
-                        <img src="/assets/img/rooms/${secondImageUrl}.png" />
-                    </div>
-                `;
-            } else {
-                const firstImageUrl: string = this.roomImages[0];
-                return html`
-                    <div class="header">
-                        <img src="/assets/img/rooms/${firstImageUrl}.png" />
-                    </div>
-                `;
-            }
+            const imageUrl: string = this.roomImages[0];
+            return html`
+            <div class="header">
+                <img src="/assets/img/rooms/${imageUrl}.png" />
+            </div>
+        `;
         }
         return html`${nothing}`;
     }
@@ -358,175 +326,72 @@ export class GameCanvas extends LitElement {
     // Method to render the content
     private renderContent(): TemplateResult {
         return html`
-            <div class="content">
-                ${this.contentText?.map((text) => html`<p>${text}</p>`)}
-                ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
-                ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
-                ${this.isCodeCorrect ? html`<p>Good job the second number of secret room is ${this.secretCode}</p>` : nothing}
-            </div>
-        `;
+        <div class="content">
+            ${this.contentText?.map((text) => html`<p>${text}</p>`)}
+        </div>
+    `;
     }
 
     // Method to render the aside component
-    private renderaside(): TemplateResult {
-        const isUnlockCodeMiniGameEnabled: boolean = this.unlockCodeMiniGameEnabled;
-
-        if (isUnlockCodeMiniGameEnabled) {
-            return html`
-                <div class="aside">
-                    <div class="buttons">
-                        ${this.actionButtons?.map(
-                (button) => html`<a
-                                    class="button action-button ${this.selectedActionButton === button ? "active" : ""}"
-                                    @click=${(): void => void this.handleClickAction(button)}
-                                    >${button.label}</a
-                                >`
-            )}
-                    </div>
-                    <div>
-                        ${this.selectedActionButton
-                    ? this.gameObjectButtons?.map(
-                        (button) => html`<a
-                                        class="button object-button ${this.selectedGameObjectButtons.has(button) ? "active" : ""}"
-                                        @click=${(): void => void this.handleClickObject(button)}
-                                        >${button.name}</a>`
-                    )
-                    : nothing}
-                    </div>
-                    <div class="pin-container">
-                        ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => html`
-                                <a class="button pin-code" @click=${(): void => this.handleClickCode(num.toString())}>${num}</a>
-                            `)}
-                        <a class="button pin-code" @click=${(): void => this.handleBackspace()}>Backspace</a>
-                        <a class="button pin-code" @click=${(): void => this.handleClickCodeOK()}>OK</a>
-                    </div>
-                </div>
-            `;
-        }
-
+    private renderAside(): TemplateResult {
         return html`
-            <div class="aside">
-                <div class="buttons">
-                    <div>
-                        ${this.actionButtons?.map(
-            (button) => html`<a
-                                class="button action-button ${this.selectedActionButton === button ? "active" : ""}"
-                                @click=${(): void => void this.handleClickAction(button)}
-                                >${button.label}</a>`
+        <div class="aside">
+            <div class="buttons">
+                ${this.actionButtons?.map(
+            (button) => html`
+                        <a class="button action-button ${this.selectedActionButton === button ? "active" : ""}"
+                            @click=${(): void => void this.handleClickAction(button)}>
+                            ${button.label}
+                        </a>
+                    `
         )}
-                    </div>
-                    <div>
-                        ${this.selectedActionButton
+            </div>
+            <div>
+                ${this.selectedActionButton
                 ? this.gameObjectButtons?.map(
-                    (button) => html`<a
-                                    class="button object-button ${this.selectedGameObjectButtons.has(button) ? "active" : ""}"
-                                    @click=${(): void => void this.handleClickObject(button)}
-                                    >${button.name}</a>`
+                    (button) => html`
+                            <a class="button object-button ${this.selectedGameObjectButtons.has(button) ? "active" : ""}"
+                                @click=${(): void => void this.handleClickObject(button)}>
+                                ${button.name}
+                            </a>
+                        `
                 )
                 : nothing}
-                    </div>
-                </div>
             </div>
-        `;
+        </div>
+    `;
     }
 
     // Method to render the footer
     private renderFooter(): TemplateResult {
-    return html`
+        return html`
         <div class="footer-section">
             <div class="tasks-heading">
                 <h3 @click=${this.toggleTasksVisibility}>Tasks</h3>
                 <span class="arrow ${this.tasksVisible ? "up" : "down"}"></span>
             </div>
             <ul style=${this.tasksVisible ? "" : "display: none;"}>
-                <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
-                <li><input type="checkbox" id="task2" /><label for="task2">Examine Cams</label></li>
-                <li><input type="checkbox" id="task3" /><label for="task3">Examine BluePrint</label></li>
-                <li><input type="checkbox" id="task1" /><label for="task4">Examine Sticky note</label></li>
-                <li><input type="checkbox" id="task2" /><label for="task5">Examine locked cabinet</label></li>
-                <li><input type="checkbox" id="task3" /><label for="task6">Talk to Detective if Hints are needed</label></li>
+                <li><input type="checkbox" id="task1" /><label for="task1">Your own task</label></li>
+                <li><input type="checkbox" id="task2" /><label for="task2">Your own task</label></li>
+                <li><input type="checkbox" id="task3" /><label for="task3">Your own task</label></li>
+                <li><input type="checkbox" id="task4" /><label for="task4">Your own task</label></li>
+                <li><input type="checkbox" id="task5" /><label for="task5">Your own task</label></li>
+                <li><input type="checkbox" id="task6" /><label for="task6">Your own task</label></li>
             </ul>
-            </div>
-           
         </div>
-            <div class="footer-buttons">
-                <p>click on the arrow to display tasks</p>
-                <p>Displaying tasks can make the game easier.</p>
-                <button @click=${(): void => void this.resetPlayerSession()}>reset</button>
-                <button @click=${this.exitRoom}>Exit Room</button>
-
-            </div>
+        <div class="footer-buttons">
+            <p>Click on the arrow to display tasks.</p>
+            <p>Displaying tasks can make the game easier.</p>
         </div>
     `;
-}
-
-
-    private async resetPlayerSession(): Promise<void> {
-        const state: GameState | undefined = await performAction("reset");
-
-        this.requestUpdate();
-
-        if (state === undefined) {
-            return;
-        }
-
-        this.updateState(state);
     }
+
     // Variable to track visibility of tasks
     private tasksVisible: boolean = false;
 
     // Method to toggle visibility of tasks
     private toggleTasksVisibility(): void {
         this.tasksVisible = !this.tasksVisible;
-        this.requestUpdate();
-    }
-
-    // Methods for footer buttons
-    
-    private exitRoom: string = "";
-
-    // Variables for handling pin code
-    private codeAttempted: boolean = false;
-    private codeSoFar: string = "";
-    private isCodeCorrect: boolean = false;
-    private secretCode: string = "5";
-    
-    // Method to reset pin variables
-    private resetPinVariables(): void {
-        this.codeSoFar = "";
-        this.isCodeCorrect = false;
-        this.secretCode = "2";
-        this.codeAttempted = false;
-    }
-
-    // Method to handle click on pin code
-    private handleClickCode(code: string): void {
-        this.codeSoFar += code;
-        this.codeAttempted = true;
-        this.requestUpdate();
-    }
-    
-    // Method to handle click on OK button for pin code
-    private handleClickCodeOK(): void {
-        if (this.codeSoFar === "2222") {
-            console.log("Send unlock-code action to API with code: " + this.codeSoFar);
-            this.isCodeCorrect = true;
-        } else {
-            console.log("Incorrect code entered try again.");
-            this.isCodeCorrect = false;
-            this.codeAttempted = true;
-        }
-        this.requestUpdate();
-    }
-
-    // Getter method to check if unlock code mini game is enabled
-    private get unlockCodeMiniGameEnabled(): boolean {
-        return this.miniGame === "unlock-code";
-    }
-
-    // Method to handle backspace in pin code
-    private handleBackspace(): void {
-        this.codeSoFar = this.codeSoFar.slice(0, -1);
         this.requestUpdate();
     }
 }
