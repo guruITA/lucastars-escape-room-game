@@ -13,7 +13,6 @@
 * Als student wil ik leren hoe ik de OO-principes abstraction, encapsulation en inheritance toepas in mijn code.<br>
 * Als student wil ik leren hoe ik het OO-principe polymorfisme toepas in mijn code.<br>
 * Als student wil ik leren hoe ik static functies en variabelen gebruik in mijn code<br>
-  
 
 ## Object Georienteerd Programmeren 
 Met het onderdeel "K5 Object georiënteerd programmeren" geef ik bewijs dat ik volgens [de richtlijnen van de opleiding HBO-ICT Object geörienteerd programmeren](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/0_oop_intro/) gewerkt heb. Dat doe ik door de "Object georiënteerd programmeren" per onderdeel te benoem met voorbeelden uit het project als bewijs.<br>
@@ -58,6 +57,7 @@ Als het GameObject de Pickup-interface niet implementeert, of als er een andere 
 ### Abstraction
 Abstraction is een van de key components en pillars van de OOP principe. Abstractie is het concept waarbij de complexiteit van een systeem wordt verborgen en alleen de relevante details aan de gebruiker worden getoond. Het stelt programmeurs in staat om zich te concentreren op de belangrijkste aspecten van een object of concept, terwijl de onnodige details worden verborgen. Bekijk de code snippet hieronder.<br>
 
+Een abstracte klasse is als een basis voor andere klassen. Het bevat algemene logica en methoden die gedeeld worden door de klassen die ervan erven. Als je een klasse maakt die van een abstracte klasse erft, moet je de ontbrekende stukken invullen, zoals het implementeren van bepaalde methoden. Het helpt bij het organiseren en hergebruiken van code in een gestructureerde manier.<br>
 * Snippet:<br>
 ```ts
     public actions(): Action[] {
