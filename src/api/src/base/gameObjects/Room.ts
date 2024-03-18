@@ -1,5 +1,6 @@
 import { ActionResult } from "../actionResults/ActionResult";
 import { Action } from "../actions/Action";
+import { Custom, CustomActionAlias } from "../actions/CustomAction";
 import { Examine, ExamineActionAlias } from "../actions/ExamineAction";
 import { GameObject } from "./GameObject";
 
@@ -8,7 +9,7 @@ import { GameObject } from "./GameObject";
  *
  * @remarks Implements the Examine action by default
  */
-export abstract class Room extends GameObject implements Examine {
+export abstract class Room extends GameObject implements Examine, Custom {
     /**
      * Create a new instance of this room
      *
@@ -16,7 +17,7 @@ export abstract class Room extends GameObject implements Examine {
      * @param interfaces List of interfaces this room implements
      */
     protected constructor(alias: string, ...interfaces: string[]) {
-        super(alias, ...interfaces, ExamineActionAlias, );
+        super(alias, ...interfaces, ExamineActionAlias, CustomActionAlias);
     }
 
     /**
