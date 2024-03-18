@@ -200,6 +200,34 @@ export class GameCanvas extends LitElement {
     .footer-buttons button {
         margin-right: 60px;
     }
+
+    /* CSS styles for the arrow */
+    .tasks-heading {
+        display: flex;
+        align-items: center;
+    }
+
+    .arrow {
+        position: absolute;
+        left: 170px;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+    }
+
+    .arrow.up {
+        border-bottom: 6px solid #000; /* Change color as per your design */
+    }
+
+    .arrow.down {
+        border-top: 6px solid #000; /* Change color as per your design */
+    }
+    .footer-buttons p {
+        font-size: 12px;
+        color: black;
+    }
+
     
     `;
 
@@ -404,24 +432,34 @@ export class GameCanvas extends LitElement {
 
     // Method to render the footer
     private renderFooter(): TemplateResult {
-        return html`
-            <div class="footer-section">
+    return html`
+        <div class="footer-section">
+            <div class="tasks-heading">
                 <h3 @click=${this.toggleTasksVisibility}>Tasks</h3>
-                <ul style=${this.tasksVisible ? "" : "display: none;"}>
-                    <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
-                    <li><input type="checkbox" id="task2" /><label for="task2">Examine Cams</label></li>
-                    <li><input type="checkbox" id="task3" /><label for="task3">Examine BluePrint</label></li>
-                    <li><input type="checkbox" id="task1" /><label for="task4">Examine Sticky note</label></li>
-                    <li><input type="checkbox" id="task2" /><label for="task5">Examine locked cabinet</label></li>
-                    <li><input type="checkbox" id="task3" /><label for="task6">Talk to Detective if Hints are needed</label></li>
-                </ul>
-                <div class="footer-buttons">
+                <span class="arrow ${this.tasksVisible ? "up" : "down"}"></span>
+            </div>
+            <ul style=${this.tasksVisible ? "" : "display: none;"}>
+                <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
+                <li><input type="checkbox" id="task2" /><label for="task2">Examine Cams</label></li>
+                <li><input type="checkbox" id="task3" /><label for="task3">Examine BluePrint</label></li>
+                <li><input type="checkbox" id="task1" /><label for="task4">Examine Sticky note</label></li>
+                <li><input type="checkbox" id="task2" /><label for="task5">Examine locked cabinet</label></li>
+                <li><input type="checkbox" id="task3" /><label for="task6">Talk to Detective if Hints are needed</label></li>
+            </ul>
+            </div>
+           
+        </div>
+            <div class="footer-buttons">
+                <p>click on the arrow to display tasks</p>
+                <p>Displaying tasks can make the game easier.</p>
                 <button @click=${(): void => void this.resetPlayerSession()}>reset</button>
                 <button @click=${this.exitRoom}>Exit Room</button>
-                </div>
+
             </div>
-        `;
-    }
+        </div>
+    `;
+}
+
 
     private async resetPlayerSession(): Promise<void> {
         const state: GameState | undefined = await performAction("reset");

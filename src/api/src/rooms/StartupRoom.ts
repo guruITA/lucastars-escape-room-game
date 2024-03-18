@@ -15,11 +15,11 @@ export class StartupRoom extends Room {
     }
 
     public name(): string {
-        return "Control Room";
+        return "Example game";
     }
 
     public images(): string[] {
-        return ["Control_Room"];
+        return ["startup"];
     }
 
     public actions(): Action[] {
