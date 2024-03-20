@@ -27,13 +27,13 @@ import { DetectiveCharacter } from "../characters/DetectiveCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 
 // This import is for the BookCase class.
-import { BookCase, examined } from "../items/BookCase";
+import { BookCase } from "../items/BookCase";
 
 // These imports are for specific book items.
 import { BookOne, BookOneAlias } from "../items/BookOne";
 import { BookTwo, BookTwoAlias } from "../items/BookTwo";
 import { BookThree, BookThreeAlias } from "../items/BookThree";
-import { Lamp, lampOn } from "../items/Lamp";
+import { Lamp } from "../items/Lamp";
 import { LockedCabinetItem } from "../items/LockedCabinet";
 
 // This import is for the PlayerSession type.
@@ -45,6 +45,8 @@ import { PlayerSession } from "../types";
  * Exporting the alias for the LibraryRoom class
  */
 export const LibraryRoomAlias: string = "library-room";
+
+
 
 /** 
  * Class representing the Library room
@@ -77,7 +79,9 @@ export class LibraryRoom extends Room implements Examine {
      */
     public images(): string[] {
 
-        if (lampOn) {
+        const playerSession: PlayerSession = getPlayerSession();
+
+        if (playerSession.isLampOn) {
 
             // If the lamp is on show the image with illuminated library
             return ["library_room"];
@@ -98,20 +102,20 @@ export class LibraryRoom extends Room implements Examine {
      */
     public actions(): Action[] {
 
-        return [
+        const playerSession: PlayerSession = getPlayerSession();
+        const actions: Action[] = [];
 
-            // Allows the player to examine the surroundings
-            new ExamineAction(),
+        // Allows the player to examine the surroundings and talk to detective
+        actions.push(new ExamineAction(), new TalkAction());
 
-            // Allows the player to engage in conversation
-            new TalkAction(),
-
+        if (playerSession.showPickupAction) {
             // Allows the player to pick up items in the room
-            new PickupAction()
+            actions.push(new PickupAction());
+        }
 
-        ];
-
+        return actions;
     }
+
 
 
     /**
@@ -145,10 +149,10 @@ export class LibraryRoom extends Room implements Examine {
         const lamp: Lamp = new Lamp(); // Creating a new Lamp object
 
         // Checking if the lamp is on
-        if (lampOn === true) {
+        if (playerSession.isLampOn === true) {
 
             // Checking if the bookcase has been examined
-            if (examined === true) {
+            if (playerSession.isBookCaseExamined === true) {
 
                 // Checking if BookOne isn't in the player's inventory
                 if (!playerSession.inventory.includes(BookOneAlias)) {

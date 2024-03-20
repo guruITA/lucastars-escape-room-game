@@ -80,7 +80,23 @@ export class BookOne extends Item implements Examine, Pickup, Talk {
 
             // If the BookOne item is not in the inventory, add it to the inventory
             playerSession.inventory.push(BookOneAlias);
-            return new TextActionResult([" Well done! You picked up the first book."]);
+
+            playerSession.pickedUpBookOne = true;
+
+            if(playerSession.pickedUpBookOne && playerSession.pickedUpBookTwo && playerSession.pickedUpBookThree) {
+
+                playerSession.pickedUpAllBooks = true;
+            
+            }
+
+            console.log(playerSession.pickedUpAllBooks);
+            
+
+            if (playerSession.pickedUpAllBooks) {
+                return new TextActionResult(["Good job! we found a locked cabinet"]);
+            }
+
+            return new TextActionResult(["Well done! You picked up the first book."]);
 
         } else {
             

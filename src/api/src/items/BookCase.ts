@@ -8,6 +8,8 @@ import { Talk, TalkActionAlias } from "../base/actions/TalkAction";
 
 // This import is for the base class representing game items.
 import { Item } from "../base/gameObjects/Item";
+import { getPlayerSession } from "../instances";
+import { PlayerSession } from "../types";
 
 // import { resetPlayerSession } from "../instances";
 
@@ -17,11 +19,6 @@ import { Item } from "../base/gameObjects/Item";
  * Exporting the alias of the BookCase class
  */
 export const BookCaseAlias: string = "book-case";
-
-/** 
- * Variable to track if the bookcase has been examined
- */
-export let examined: boolean = false;
 
 /** 
  * Class representing the BookCase item
@@ -56,9 +53,10 @@ export class BookCase extends Item implements Examine, Talk {
      */
     public examine(): ActionResult | undefined  {
 
+        const playerSession: PlayerSession = getPlayerSession();
 
         // Check if the bookcase has been examined or not
-        if (examined) {
+        if (playerSession.isBookCaseExamined) {
 
             // If examined, return a text action result indicating that the bookcase has already been examined
             return new TextActionResult(["You have already examined the bookcase and you have already found the same similar books on the shelf."]);
@@ -66,7 +64,7 @@ export class BookCase extends Item implements Examine, Talk {
         } else { 
 
             // Update examined status to false
-            examined = true;
+            playerSession.isBookCaseExamined = true;
 
             // If not examined, return a text action result describing the books on the shelves
             return new TextActionResult(["You examined the bookcase and saw several similar books with numbers on the shelves."]);

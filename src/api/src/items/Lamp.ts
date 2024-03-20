@@ -10,6 +10,8 @@ import { Talk, TalkActionAlias, TalkChoiceAction } from "../base/actions/TalkAct
 
 // This import is for the base class representing game items.
 import { Item } from "../base/gameObjects/Item";
+import { getPlayerSession } from "../instances";
+import { PlayerSession } from "../types";
 
 
 
@@ -17,11 +19,6 @@ import { Item } from "../base/gameObjects/Item";
  * Exporting the alias of the Lamp class
  */
 export const LampAlias: string = "Lamp-item";
-
-/**
- * Variable to track if the lamp is on or off 
- */
-export let lampOn: boolean = false;
 
 /** 
  * Class representing the Lamp
@@ -73,11 +70,13 @@ export class Lamp extends Item implements Examine, Talk {
      */
     public talk(_choiceId?: number | undefined): ActionResult | undefined {
 
+        const playerSession: PlayerSession = getPlayerSession();
+
         // If the player chooses to turn the lamp on
         if (_choiceId === 1) {
 
             // Update lamp status to true
-            lampOn = true;
+            playerSession.isLampOn = true;
 
             // Return an action result indicating the room is illuminated
             return new ExamineActionResult(
@@ -91,7 +90,7 @@ export class Lamp extends Item implements Examine, Talk {
         else if (_choiceId === 2) { 
 
             // Update lamp status to true
-            lampOn = false;
+            playerSession.isLampOn = false;
 
             // Return an action result indicating the room is dark but the player found a code that is needed to open de locked cabine in control room
             return new ExamineActionResult(

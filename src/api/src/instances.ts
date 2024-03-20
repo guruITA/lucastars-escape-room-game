@@ -21,6 +21,13 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
+        pickedUpBookOne: false,
+        pickedUpBookTwo: false,
+        pickedUpBookThree: false,
+        pickedUpAllBooks: false,
+        isBookCaseExamined: false,
+        isLampOn: false,
+        showPickupAction: false,
     };
 }
 
