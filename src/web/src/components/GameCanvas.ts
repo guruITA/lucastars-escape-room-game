@@ -86,6 +86,7 @@ export class GameCanvas extends LitElement {
         display: inline-block;
         user-select: none;
         text-align: center;
+        font-size: 20px;
     }
     
     /* CSS styles for the active or hover state of buttons in the aside */
@@ -482,8 +483,8 @@ export class GameCanvas extends LitElement {
                 <div class="footer-buttons">
                     <p>click on the arrow to display tasks</p>
                     <p>Displaying tasks can make the game easier.</p>
-                    <button @click=${this.handleResetButtonClick}>Reset Game</button>
-                    <button @click=${this.exitRoom}>Exit Room</button>
+                    <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
+                    <button @click=${this.exitRoom}>Exit Room🚪</button>
 
                 </div>
             </div>

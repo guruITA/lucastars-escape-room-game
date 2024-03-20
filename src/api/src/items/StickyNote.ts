@@ -15,7 +15,7 @@ export class StickyNoteItem extends Item implements Examine, PickUp {
     }
 
     public name(): string {
-        return "Sticky Note";
+        return "Sticky Note📃";
     }
 
     public examine(): ActionResult | undefined {

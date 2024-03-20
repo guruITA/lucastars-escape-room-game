@@ -11,7 +11,7 @@ export class Cam4Item extends Item implements Examine {
     }
 
     public name(): string {
-        return "Cam4";
+        return "Cam4🎥";
     }
 
     public examine(): ActionResult | undefined {

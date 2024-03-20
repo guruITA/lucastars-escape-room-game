@@ -26,7 +26,7 @@ export class ControlRoom extends Room {
     }
 
     public name(): string {
-        return "Control Room";
+        return "Control Room⚙️";
     }
 
     public images(): string[] {

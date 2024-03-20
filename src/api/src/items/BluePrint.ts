@@ -11,7 +11,7 @@ export class BluePrintItem extends Item implements Examine {
     }
 
     public name(): string {
-        return "BluePrint";
+        return "BluePrint🔠";
     }
 
     public examine(): ActionResult | undefined {

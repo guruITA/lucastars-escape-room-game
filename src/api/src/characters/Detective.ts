@@ -13,7 +13,7 @@ export class DetectiveCharacter extends Character implements Examine {
     }
 
     public name(): string {
-        return "Detective William McCarthy";
+        return "Detective William McCarthy🕵️‍♂️";
     }
 
     public examine(): ActionResult | undefined  {
