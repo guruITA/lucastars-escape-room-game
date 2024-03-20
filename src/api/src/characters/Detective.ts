@@ -31,7 +31,7 @@ export class DetectiveCharacter extends Character implements Examine {
         return new TalkActionResult(
             this,
             ["How can I help you!"],
-            [new TalkChoiceAction(1, "can i have a hint?"), new TalkChoiceAction(2, "Can i have another hint?")]
+            [new TalkChoiceAction(1, "can I have a hint1?"), new TalkChoiceAction(2, "Can I have  hint2?")]
         );
     }
 }
