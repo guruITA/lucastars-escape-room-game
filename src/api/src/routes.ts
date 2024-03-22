@@ -136,10 +136,10 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
             return ExamineAction.handle(gameObjects[0]);
 
         case PickUpActionAlias:
-            return PickUpAction.handle(gameObjects[0]);  
+            return PickUpAction.handle(gameObjects[0]);
 
         case PickUpActionLibraryAlias:
-                return PickUpActionLibrary.handle(gameObjects[0]); 
+            return PickUpActionLibrary.handle(gameObjects[0]);
     }
 
     // Handle custom actions
@@ -179,7 +179,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
     }
 
     // If the action is an ExamineActionResult
-    else if(actionResult instanceof ExamineActionResult) {
+    else if (actionResult instanceof ExamineActionResult) {
 
         // Add the additional images from the ExamineActionResult to the default images
         images = [...room.images(), ...actionResult.images];
@@ -188,7 +188,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
 
     // If the action is an ExamineCodeActionResult
     else if (actionResult instanceof ExamineCodeActionResult) {
-        
+
         // Add the additional images from the ExamineCodeActionResult to the default images
         images = [...room.images(), ...actionResult.images];
 

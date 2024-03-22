@@ -14,44 +14,51 @@ export class GameCanvas extends LitElement {
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto auto auto auto;
         position: relative;
+        grid-gap: 50px;
     }    
     
     /* CSS styles for the title */
     .title {
         text-align: center;
+        display: flex; /* Use flexbox */
+        justify-content: center;
         position: absolute;
-        top: 10px;
-        left: 70%; 
-        transform: translateX(-50%);
+        top: 5px;
         z-index: 1;
         white-space: nowrap; 
     }
+    
     
     /* CSS styles for the header */
     .header {
         grid-column: 2;
         grid-row: 1;
         position: relative;
-        max-width: 100%; 
-        height: auto; 
-        max-height: calc(100vh - 20px); 
+        max-width: 100%;
+        height: auto;
+        max-height: calc(100vh - 20px);
     }
     
     /* CSS styles for the header image */
+    .header-image {
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        height: 100%; /* Fill the entire height of the parent */
+        margin-top: 20px;
+    }
+    
     .header img {
-        max-width: 100%; 
-        height: auto; 
+        max-width: 100%;
+        height: auto;
         image-rendering: pixelated;
-        display: block;
-        margin: 50px 50px 30px 50px ; 
+        /* Remove margin here, you can adjust margin in the parent container if needed */
     }
     
     /* CSS styles for the content */
     .content {
         grid-column: 2;
         grid-row: 2;
-        margin-top: -20px;
-        padding: 0 40px;
         position: relative;
         width: 100%;
         max-width: calc(150% - 100px);
@@ -128,20 +135,17 @@ export class GameCanvas extends LitElement {
     .footer-section {
         grid-column: 1;
         background-image: url('/public/assets/img/rooms/note1.png');
-        padding: 10px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
         overflow-y: auto;
         position: relative;
         background-size: cover;
         color: black;
         max-height: calc(100vh - 20px); 
-        width: 100%;
+        width: auto;
         height: 285px;
         margin-left: -8px;
-        margin-top: -60px; 
+        margin-top: -50px; 
     }
     
     /* CSS styles for the footer section heading */
@@ -156,7 +160,7 @@ export class GameCanvas extends LitElement {
     .footer-section ul {
         list-style-type: none;
         padding: 1;
-        margin: 0;
+        margin-top: 15px;
         font-size: 14px;
     }
     
@@ -202,14 +206,23 @@ export class GameCanvas extends LitElement {
     .footer-buttons {
         position: absolute;
         bottom: 10px;
-        left: 20px;
+        left: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-text {
+        position: absolute;
+        bottom: 30px;
+        left: 40px;
+        display: flex;
+        justify-content: center;
     }
     
     /* CSS styles for the buttons in the footer */
     .footer-buttons button {
-        margin-right: 60px;
         background-color: blue;
-
+        color: white;
     }
 
     /* CSS styles for the arrow */
@@ -234,7 +247,7 @@ export class GameCanvas extends LitElement {
     .arrow.down {
         border-top: 6px solid #000; 
     }
-    .footer-buttons p {
+    .footer-text {
         font-size: 15px;
         color: red;
     }
@@ -390,20 +403,12 @@ export class GameCanvas extends LitElement {
     protected render(): TemplateResult {
         return html`
             <div class="game">
-                ${this.renderTitle()} 
                 ${this.renderHeader()} 
                 ${this.renderContent()} 
                 ${this.renderaside()}
                 ${this.renderFooter()} <!-- Pass notes to the renderFooter method -->
             </div>
         `;
-    }
-    // Method to render the title
-    private renderTitle(): TemplateResult {
-        if (this.roomTitle) {
-            return html`<div class="title">${this.roomTitle}</div>`;
-        }
-        return html`${nothing}`;
     }
 
     // Method to render the header
@@ -412,21 +417,28 @@ export class GameCanvas extends LitElement {
             if (this.roomImages.length >= 2) {
                 const secondImageUrl: string = this.roomImages[1];
                 return html`
-                        <div class="header">
-                            <img src="/assets/img/rooms/${secondImageUrl}.png" />
-                        </div>
-                    `;
+                <div class="header">
+                    <div class="header-image">
+                    <div class="title">${this.roomTitle}</div>
+                        <img src="/assets/img/rooms/${secondImageUrl}.png" />
+                    </div>
+                </div>
+            `;
             } else {
                 const firstImageUrl: string = this.roomImages[0];
                 return html`
-                        <div class="header">
-                            <img src="/assets/img/rooms/${firstImageUrl}.png" />
-                        </div>
-                    `;
+                <div class="header">
+                    <div class="header-image">
+                    <div class="title">${this.roomTitle}</div>
+                        <img src="/assets/img/rooms/${firstImageUrl}.png" />
+                    </div>
+                </div>
+            `;
             }
         }
         return html`${nothing}`;
     }
+
 
     // Method to render the content
     private renderContent(): TemplateResult {
@@ -520,15 +532,16 @@ export class GameCanvas extends LitElement {
                         @input=${this.handleNoteInputChange}
                         ></textarea><!-- Initialize textarea with notes value -->
                 ` : nothing}
-
+                    <div class="footer-text">                    
+                        ${this.tasksVisible ? html`
+                            <p>Note: when leaving a room,<br>tasks will be cleared</p>
+                        ` : html`
+                            <p>Display tasks by clicking &#9660;</p>
+                            <!-- Text input field for notes -->
+                            
+                        `}
+                    </div>
                 <div class="footer-buttons">
-                    ${this.tasksVisible ? html`
-                        <p>Note: when leaving a room,<br>tasks will be cleared</p>
-                    ` : html`
-                        <p>Display tasks by clicking &#9660;</p>
-                        <!-- Text input field for notes -->
-                        
-                    `}
                     <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
                     <button @click=${this.exitRoom}>Exit Room🚪</button>
                 </div>
@@ -593,7 +606,7 @@ export class GameCanvas extends LitElement {
     }
 
 
-   
+
 
     // Getter method to check if unlock code mini game is enabled
     private get unlockCodeMiniGameEnabled(): boolean {
