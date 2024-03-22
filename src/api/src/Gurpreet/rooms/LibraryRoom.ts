@@ -21,7 +21,7 @@ import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
 
 // This import is for the DetectiveCharacter class.
-import { DetectiveCharacter } from "../characters/DetectiveCharacter";
+import { DetectiveCharacterLibrary } from "../characters/DetectiveCharacterLibrary";
 
 // These imports are for getting player session data and game objects from inventory.
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
@@ -189,12 +189,12 @@ export class LibraryRoom extends Room implements Examine {
             }
 
             // Adding the Lamp Item, Detective Character and Bookcase to the object array when the bookcase isn't examined
-            objects.push(bookCase, lamp, new DetectiveCharacter());
+            objects.push(bookCase, lamp, new DetectiveCharacterLibrary());
 
         } else {
 
             // Adding the Lamp Item and Detective Character to the object array when the lamp is off
-            objects.push(lamp, new DetectiveCharacter());
+            objects.push(lamp, new DetectiveCharacterLibrary());
 
         }
 

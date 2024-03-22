@@ -4,7 +4,7 @@ import { ExamineAction } from "../../base/actions/ExamineAction";
 import { Action } from "../../base/actions/Action";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
-import { DetectiveCharacter } from "../characters/Detective";
+import { DetectiveCharacterControlRoom } from "../characters/DetectiveCharacterControlRoom";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { StickyNoteItem, StickyNoteItemAlias } from "../items/StickyNote";
 import { BluePrintItem } from "../items/BluePrint";
@@ -49,7 +49,7 @@ export class ControlRoom extends Room {
         }
         
         objects.push( 
-            new DetectiveCharacter(),  
+            new DetectiveCharacterControlRoom(),  
             new BluePrintItem(), 
             new Cam1Item(),
             new Cam2Item(),

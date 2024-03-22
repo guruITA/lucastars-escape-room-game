@@ -1,7 +1,7 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
-import { DetectiveCharacter, DetectiveCharacterAlias } from "./kamal/characters/Detective";
+import { DetectiveCharacterControlRoom, DetectiveCharacterControlRoomAlias } from "./kamal/characters/DetectiveCharacterControlRoom";
 import { BluePrintItem, BluePrintItemAlias } from "./kamal/items/BluePrint";
 import { Cam1Item, Cam1ItemAlias } from "./kamal/items/Cam1";
 import { Cam2Item, Cam2ItemAlias } from "./kamal/items/Cam2";
@@ -14,8 +14,10 @@ import { Lamp, LampAlias } from "./Gurpreet/items/Lamp";
 import { LockedCabinetItemAlias, LockedCabinetItem } from "./kamal/items/Locked_Cabinet";
 import { StickyNoteItem, StickyNoteItemAlias } from "./kamal/items/StickyNote";
 import { ControlRoom, ControlRoomAlias } from "./kamal/rooms/ControlRoom";
-import { StartupRoom, StartupRoomAlias } from "./kamal/rooms/StartupRoom";
+import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
+import { LibraryRoom, LibraryRoomAlias } from "./Gurpreet/rooms/LibraryRoom";
+import { DetectiveCharacterLibrary, DetectiveCharacterLibraryAlias } from "./Gurpreet/characters/DetectiveCharacterLibrary";
 
 /**
  * Create a new player session object
@@ -69,7 +71,7 @@ export function getRoomByAlias(alias: string): Room | undefined {
         //
         case LibraryRoomAlias:
             return new LibraryRoom();
-            
+
         case ControlRoomAlias:
             return new ControlRoom();
     }
@@ -89,10 +91,10 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
     // Check the provided alias and return the corresponding game object
     switch (alias) {
-		
-		case StickyNoteItemAlias:
+
+        case StickyNoteItemAlias:
             return new StickyNoteItem();
-            
+
         case LampAlias:
             return new Lamp();
 
@@ -108,15 +110,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case BookCaseAlias:
             return new BookCase();
 
-        case DetectiveCharacterAlias:
-            return new DetectiveCharacter();
-
         case LockedCabinetItemAlias:
             return new LockedCabinetItem();
 
         case BluePrintItemAlias:
             return new BluePrintItem();
-    
+
         case Cam1ItemAlias:
             return new Cam1Item();
 
@@ -129,8 +128,11 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case LockedCabinetItemAlias:
             return new LockedCabinetItem();
 
-        case DetectiveCharacterAlias:
-            return new DetectiveCharacter();
+        case DetectiveCharacterLibraryAlias:
+            return new DetectiveCharacterLibrary();
+
+        case DetectiveCharacterControlRoomAlias:
+            return new DetectiveCharacterControlRoom();
 
         //NOTE: Fall back to rooms, since tho8se are game objects too.
         default:

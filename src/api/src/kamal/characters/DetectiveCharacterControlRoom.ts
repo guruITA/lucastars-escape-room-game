@@ -5,11 +5,11 @@ import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
 
-export const DetectiveCharacterAlias: string = "detective-character";
+export const DetectiveCharacterControlRoomAlias: string = "detective-character-control-room";
 
-export class DetectiveCharacter extends Character implements Examine {
+export class DetectiveCharacterControlRoom extends Character implements Examine {
     public constructor() {
-        super(DetectiveCharacterAlias, ExamineActionAlias);
+        super(DetectiveCharacterControlRoomAlias, ExamineActionAlias);
     }
 
     public name(): string {

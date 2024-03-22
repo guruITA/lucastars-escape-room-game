@@ -19,7 +19,6 @@ import {
 } from "./instances";
 import { PlayerSession } from "./types";
 import { PickUpAction, PickUpActionAlias } from "./kamal/actions/PickUpAction";
-import { ExamineImageResult } from "./base/actionResults/ExamineImageResult";
 import { ExamineActionResult } from "./base/actionResults/ExamineActionResult";
 import { ExamineCodeActionResult } from "./base/actionResults/ExamineCodeActionResult";
 
@@ -135,8 +134,8 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         case ExamineActionAlias:
             return ExamineAction.handle(gameObjects[0]);
 
-        case PickupActionAlias:
-            return PickupAction.handle(gameObjects[0]);  
+        case PickUpActionAlias:
+            return PickUpAction.handle(gameObjects[0]);  
     }
 
     // Handle custom actions

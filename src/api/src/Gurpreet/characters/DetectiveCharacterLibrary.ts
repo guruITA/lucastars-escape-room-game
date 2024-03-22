@@ -16,12 +16,12 @@ import { PlayerSession } from "../../types";
 /** 
  * Alias for the DetectiveCharacter class
  */
-export const DetectiveCharacterAlias: string = "detective-character";
+export const DetectiveCharacterLibraryAlias: string = "detective-character-library";
 
 /**
  * Class representing DetectiveCharacter
  */
-export class DetectiveCharacter extends Character implements Examine, Talk {
+export class DetectiveCharacterLibrary extends Character implements Examine, Talk {
 
     /**
      * Constructor for the DetectiveCharacter class
@@ -29,7 +29,7 @@ export class DetectiveCharacter extends Character implements Examine, Talk {
     public constructor() {
 
         // Calling the constructor of the superclass (Character) with the detective character alias, examine and talk action alias
-        super(DetectiveCharacterAlias, ExamineActionAlias, TalkActionAlias);
+        super(DetectiveCharacterLibraryAlias, ExamineActionAlias, TalkActionAlias);
 
     }
 
