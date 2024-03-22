@@ -1,15 +1,15 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
-import { DetectiveCharacter, DetectiveCharacterAlias } from "./characters/Detective";
-import { BluePrintItem, BluePrintItemAlias } from "./items/BluePrint";
-import { Cam1Item, Cam1ItemAlias } from "./items/Cam1";
-import { Cam2Item, Cam2ItemAlias } from "./items/Cam2";
-import { Cam3Item, Cam3ItemAlias } from "./items/Cam3";
-import { LockedCabinetItemAlias, LockedCabinetItem } from "./items/Locked_Cabinet";
-import { StickyNoteItem, StickyNoteItemAlias } from "./items/StickyNote";
-import { ControlRoom, ControlRoomAlias } from "./rooms/ControlRoom";
-import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
+import { DetectiveCharacter, DetectiveCharacterAlias } from "./kamal/characters/Detective";
+import { BluePrintItem, BluePrintItemAlias } from "./kamal/items/BluePrint";
+import { Cam1Item, Cam1ItemAlias } from "./kamal/items/Cam1";
+import { Cam2Item, Cam2ItemAlias } from "./kamal/items/Cam2";
+import { Cam3Item, Cam3ItemAlias } from "./kamal/items/Cam3";
+import { LockedCabinetItemAlias, LockedCabinetItem } from "./kamal/items/Locked_Cabinet";
+import { StickyNoteItem, StickyNoteItemAlias } from "./kamal/items/StickyNote";
+import { ControlRoom, ControlRoomAlias } from "./kamal/rooms/ControlRoom";
+import { StartupRoom, StartupRoomAlias } from "./kamal/rooms/StartupRoom";
 import { PlayerSession } from "./types";
 
 /**
