@@ -16,25 +16,28 @@ export class StartupRoom extends Room {
     }
 
     public name(): string {
-        return "Example game";
+        return "Twilight Quest: The Hunt for the Serial Menace";
     }
 
     public images(): string[] {
-        return ["startup"];
+        return ["castle"];
     }
 
     public actions(): Action[] {
         return [new CustomAction("start-game", "Start Game", false)];
     }
-
+    
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example."]);
+        return new TextActionResult([
+            "Welcome to 'City of Shadows: McCarthy's Confrontation'!",
+            "You, William McCarthy, are the dedicated assistant to Detective John Manny, embarking on a thrilling adventure in the wintry New York of 1932. Your mission? Unravel the mystery of a relentless serial killer terrorizing the city. In each room, you must uncover a digit crucial to accessing the secret chamber where justice awaits. With Detective Manny by your side, can you crack the code and reveal the truth?"
+        ]);
     }
-
+    
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "start-game") {
             
-            const room: Room = new ControlRoom();
+            const room: Room = new LibraryRoom();
             //Set the current room to the example room
             getPlayerSession().currentRoom = room.alias;
 

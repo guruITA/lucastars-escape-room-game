@@ -21,9 +21,10 @@ export class GameCanvas extends LitElement {
         text-align: center;
         position: absolute;
         top: 10px;
-        left: 70%;
+        left: 70%; 
         transform: translateX(-50%);
         z-index: 1;
+        white-space: nowrap; 
     }
     
     /* CSS styles for the header */
@@ -54,7 +55,7 @@ export class GameCanvas extends LitElement {
         position: relative;
         width: 100%;
         max-width: calc(150% - 100px);
-        overflow-y: auto; /* Add this line to make content scrollable */
+        overflow-y: auto; 
     }
     
     /* CSS styles for the aside container */
@@ -136,11 +137,11 @@ export class GameCanvas extends LitElement {
         position: relative;
         background-size: cover;
         color: black;
-        max-height: calc(100vh - 20px); /* Set max-height to 100% viewport height minus header height */
+        max-height: calc(100vh - 20px); 
         width: 100%;
         height: 285px;
         margin-left: -8px;
-        margin-top: -60px; /* Align footer to the bottom of the screen */
+        margin-top: -60px; 
     }
     
     /* CSS styles for the footer section heading */
@@ -187,7 +188,7 @@ export class GameCanvas extends LitElement {
     /* CSS styles for the checked state of the checkbox input */
     .footer-section input[type="checkbox"]:checked + label:before {
         background-color: #4CAF50;
-        content: '✔️'; /* Insert the emoji as content */
+        content: '✔️';
 
     }
     
@@ -227,11 +228,11 @@ export class GameCanvas extends LitElement {
     }
 
     .arrow.up {
-        border-bottom: 6px solid #000; /* Change color as per your design */
+        border-bottom: 6px solid #000;
     }
 
     .arrow.down {
-        border-top: 6px solid #000; /* Change color as per your design */
+        border-top: 6px solid #000; 
     }
     .footer-buttons p {
         font-size: 15px;
