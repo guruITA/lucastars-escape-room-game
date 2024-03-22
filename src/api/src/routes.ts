@@ -17,7 +17,7 @@ import {
     getGameObjectsByAliases,
 } from "./instances";
 import { PlayerSession } from "./types";
-import { PickupAction, PickupActionAlias } from "./actions/PickupAction";
+import { PickupAction, PickupActionAlias } from "./Gurpreet/actions/PickupAction";
 import { ExamineActionResult } from "./base/actionResults/ExamineActionResult";
 import { ExamineCodeActionResult } from "./base/actionResults/ExamineCodeActionResult";
 

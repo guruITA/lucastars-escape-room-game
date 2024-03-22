@@ -1,15 +1,15 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
-import { DetectiveCharacter, DetectiveCharacterAlias } from "./characters/DetectiveCharacter";
-import { BookCase, BookCaseAlias } from "./items/BookCase";
-import { BookOneAlias, BookOne } from "./items/BookOne";
-import { BookThree, BookThreeAlias } from "./items/BookThree";
-import { BookTwo, BookTwoAlias } from "./items/BookTwo";
-import { Lamp, LampAlias } from "./items/Lamp";
-import { LockedCabinetItem, LockedCabinetItemAlias } from "./items/LockedCabinet";
-import { LibraryRoom, LibraryRoomAlias } from "./rooms/LibraryRoom";
-import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
+import { DetectiveCharacter, DetectiveCharacterAlias } from "./Gurpreet/characters/DetectiveCharacter";
+import { BookCase, BookCaseAlias } from "./Gurpreet/items/BookCase";
+import { BookOneAlias, BookOne } from "./Gurpreet/items/BookOne";
+import { BookThree, BookThreeAlias } from "./Gurpreet/items/BookThree";
+import { BookTwo, BookTwoAlias } from "./Gurpreet/items/BookTwo";
+import { Lamp, LampAlias } from "./Gurpreet/items/Lamp";
+import { LockedCabinetItem, LockedCabinetItemAlias } from "./Gurpreet/items/LockedCabinet";
+import { LibraryRoom, LibraryRoomAlias } from "./Gurpreet/rooms/LibraryRoom";
+import { StartupRoom, StartupRoomAlias } from "./Gurpreet/rooms/StartupRoom";
 import { PlayerSession } from "./types";
 
 /**

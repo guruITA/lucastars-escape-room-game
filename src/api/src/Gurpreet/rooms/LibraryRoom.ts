@@ -2,29 +2,29 @@
 import { PickupAction } from "../actions/PickupAction";
 
 // This section imports necessary classes for handling different types of action results.
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
 
 // This import is for the base class representing actions.
-import { Action } from "../base/actions/Action";
+import { Action } from "../../base/actions/Action";
 
 // These imports are for defining interfaces and aliases related to examining actions.
-import { Examine, ExamineAction, ExamineActionAlias } from "../base/actions/ExamineAction";
+import { Examine, ExamineAction, ExamineActionAlias } from "../../base/actions/ExamineAction";
 
 // This import is for the TalkAction class.
-import { TalkAction } from "../base/actions/TalkAction";
+import { TalkAction } from "../../base/actions/TalkAction";
 
 // This import is for the base class representing game objects.
-import { GameObject } from "../base/gameObjects/GameObject";
+import { GameObject } from "../../base/gameObjects/GameObject";
 
 // This import is for the base class representing rooms.
-import { Room } from "../base/gameObjects/Room";
+import { Room } from "../../base/gameObjects/Room";
 
 // This import is for the DetectiveCharacter class.
 import { DetectiveCharacter } from "../characters/DetectiveCharacter";
 
 // These imports are for getting player session data and game objects from inventory.
-import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 
 // This import is for the BookCase class.
 import { BookCase } from "../items/BookCase";
@@ -37,7 +37,7 @@ import { Lamp } from "../items/Lamp";
 import { LockedCabinetItem } from "../items/LockedCabinet";
 
 // This import is for the PlayerSession type.
-import { PlayerSession } from "../types";
+import { PlayerSession } from "../../types";
 
 
 
