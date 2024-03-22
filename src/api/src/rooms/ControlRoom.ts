@@ -11,7 +11,6 @@ import { BluePrintItem } from "../items/BluePrint";
 import { Cam1Item } from "../items/Cam1";
 import { Cam2Item } from "../items/Cam2";
 import { Cam3Item } from "../items/Cam3";
-import { Cam4Item } from "../items/Cam4";
 import { PlayerSession } from "../types";
 import { PickUpAction } from "../actions/PickUpAction";
 import { TalkAction } from "../base/actions/TalkAction";
@@ -55,7 +54,6 @@ export class ControlRoom extends Room {
             new Cam1Item(),
             new Cam2Item(),
             new Cam3Item(),
-            new Cam4Item(),
             new LockedCabinetItem(),
         );
 

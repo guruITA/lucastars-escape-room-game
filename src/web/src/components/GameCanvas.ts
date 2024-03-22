@@ -9,6 +9,7 @@ export class GameCanvas extends LitElement {
     public static styles = css`
     /* CSS styles for the game container */
     .game {
+        
         height: 100vh;
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -34,6 +35,7 @@ export class GameCanvas extends LitElement {
         grid-column: 2;
         grid-row: 1;
         position: relative;
+        
     }
     
     /* CSS styles for the header image */
@@ -80,7 +82,7 @@ export class GameCanvas extends LitElement {
         background-color: #78757d;
         border: 1px solid #332c57;
         padding: 1px 1px;
-        margin: 0 0 10px 9px;
+        margin: 7px 9px 5px 9px;
         text-transform: uppercase;
         cursor: pointer;
         display: inline-block;
@@ -91,7 +93,7 @@ export class GameCanvas extends LitElement {
     
     /* CSS styles for the active or hover state of buttons in the aside */
     .aside .button.active,
-    .aside .button:hover {
+    .aside .buttons .object-button:hover {
         background-color: #332c57;
     }
     
@@ -118,6 +120,10 @@ export class GameCanvas extends LitElement {
     .aside .buttons .action-button {
         background-color: #545357;
         
+    }
+    .aside .button.active,
+    .aside .buttons .action-button:hover {
+        background-color: #332c57;
     }
     
     /* CSS styles for the footer section */
@@ -182,6 +188,8 @@ export class GameCanvas extends LitElement {
     /* CSS styles for the checked state of the checkbox input */
     .footer-section input[type="checkbox"]:checked + label:before {
         background-color: #4CAF50;
+        content: '✔️'; /* Insert the emoji as content */
+
     }
     
     /* CSS styles for the unchecked state of the checkbox input */
@@ -200,6 +208,8 @@ export class GameCanvas extends LitElement {
     /* CSS styles for the buttons in the footer */
     .footer-buttons button {
         margin-right: 60px;
+        background-color: blue;
+
     }
 
     /* CSS styles for the arrow */
@@ -225,8 +235,24 @@ export class GameCanvas extends LitElement {
         border-top: 6px solid #000; /* Change color as per your design */
     }
     .footer-buttons p {
+        font-size: 15px;
+        color: red;
+    }
+    .footer-section textarea {
+        width: 75%;
+        height: 100px;
+        margin-top: -10px;
+        resize: none;
         font-size: 12px;
-        color: black;
+        padding: 10px;
+        margin-right: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: transparent;
+
+    
     }
 
     
@@ -318,35 +344,60 @@ export class GameCanvas extends LitElement {
         }
     }
 
+    private resetFooter(): void {
+        // Reset tasks visibility
+        this.tasksVisible = false;
+
+        // Uncheck all checkboxes
+        const checkboxes: NodeListOf<Element> | undefined = this.shadowRoot?.querySelectorAll(".footer-section input[type=\"checkbox\"]");
+        if (checkboxes) {
+            checkboxes.forEach((checkbox) => {
+                (checkbox as HTMLInputElement).checked = false;
+            });
+        }
+
+        // Other footer variables if any
+        this.requestUpdate();
+    }
+
+
+
     private async resetGame(): Promise<void> {
         console.log("Resetting game...");
-        localStorage.clear(); // Leeg de lokale opslag
+        localStorage.clear(); // Clear local storage
 
         const state: GameState | undefined = await performAction("reset");
 
         if (state !== undefined) {
             console.log("State after reset:", state);
             this.updateState(state);
+            this.resetFooter(); // Reset the footer
             console.log("Reset successful.");
         } else {
             console.log("Reset failed.");
         }
     }
-    
+    private handleNoteInputChange(event: Event): void {
+        const textarea: HTMLTextAreaElement = event.target as HTMLTextAreaElement;
+        const inputValue: string = textarea.value;
+
+        // Save the input value to localStorage
+        localStorage.setItem("notes", inputValue);
+    }
+
 
     // Render method to render the component template
     protected render(): TemplateResult {
         return html`
-                <div class="game">
-                    ${this.renderTitle()} 
-                    ${this.renderHeader()} 
-                    ${this.renderContent()} 
-                    ${this.renderaside()}
-                    ${this.renderFooter()}
-                </div>
-            `;
+            <div class="game">
+                ${this.renderTitle()} 
+                ${this.renderHeader()} 
+                ${this.renderContent()} 
+                ${this.renderaside()}
+                ${this.renderFooter()} <!-- Pass notes to the renderFooter method -->
+            </div>
+        `;
     }
-
     // Method to render the title
     private renderTitle(): TemplateResult {
         if (this.roomTitle) {
@@ -392,68 +443,68 @@ export class GameCanvas extends LitElement {
     // Method to render the aside component
     private renderaside(): TemplateResult {
         const isUnlockCodeMiniGameEnabled: boolean = this.unlockCodeMiniGameEnabled;
-    
+
         if (isUnlockCodeMiniGameEnabled) {
             return html`
                 <div class="aside">
                     <div class="buttons">
                         ${this.actionButtons?.map(
-                            (button) => html`<a
+                (button) => html`<a
                                 class="button action-button ${this.selectedActionButton === button ? "active" : ""}"
                                 @click=${(): void => void this.handleClickAction(button)}
                             >${button.label}</a>`
-                        )}
+            )}
                     </div>
                     <div>
                         ${this.selectedActionButton
-                            ? this.gameObjectButtons?.map(
-                                (button) => html`<a
+                    ? this.gameObjectButtons?.map(
+                        (button) => html`<a
                                     class="button object-button ${this.selectedGameObjectButtons.has(button) ? "active" : ""}"
                                     @click=${(): void => void this.handleClickObject(button)}
                                 >${button.name}</a>`
-                            )
-                            : nothing}
+                    )
+                    : nothing}
                     </div>
                     <div class="pin-container">
                         ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => html`
                             <a class="button pin-code" @click=${(): void => this.handleClickCode(num.toString())}>${num}</a>
                         `)}
-                        <a class="button pin-code" @click=${(): void => this.handleBackspace()}>Backspace</a>
-                        <a class="button pin-code" @click=${(): void => this.handleClickCodeOK()}>OK</a>
-                        <a class="button" @click=${(): void => this.handleLeave()}>Leave</a>
+                        <a class="button pin-code" @click=${(): void => this.handleBackspace()}>⌫</a>
+                        <a class="button pin-code" @click=${(): void => this.handleClickCodeOK()}>✔</a>
+                        <a class="button" @click=${(): void => this.handleLeave()}>🔙</a>
                     </div>
                 </div>
             `;
         } else {
             this.resetPinVariables();
-    
+
             return html`
                 <div class="aside">
                     <div class="buttons">
                         <div>
                             ${this.actionButtons?.map(
-                                (button) => html`<a
+                (button) => html`<a
                                     class="button action-button ${this.selectedActionButton === button ? "active" : ""}"
                                     @click=${(): void => void this.handleClickAction(button)}
                                 >${button.label}</a>`
-                            )}
+            )}
                         </div>
                         <div>
                             ${this.selectedActionButton
-                                ? this.gameObjectButtons?.map(
-                                    (button) => html`<a
+                    ? this.gameObjectButtons?.map(
+                        (button) => html`<a
                                         class="button object-button ${this.selectedGameObjectButtons.has(button) ? "active" : ""}"
                                         @click=${(): void => void this.handleClickObject(button)}
                                     >${button.name}</a>`
-                                )
-                                : nothing}
+                    )
+                    : nothing}
                         </div>
                     </div>
                 </div>
             `;
         }
     }
-    
+
     private handleLeave(): void {
         // Hide the pin buttons by resetting relevant variables or setting a flag
         // For example:
@@ -462,34 +513,48 @@ export class GameCanvas extends LitElement {
     }
 
     // Method to render the footer
+    // Method to render the footer
     private renderFooter(): TemplateResult {
+        const storedNotes: string | null = localStorage.getItem("notes");
+        const notes: string = storedNotes ? storedNotes : "";
         return html`
-            <div class="footer-section">
-                <div class="tasks-heading">
-                    <h3 @click=${this.toggleTasksVisibility}>Tasks</h3>
-                    <span class="arrow ${this.tasksVisible ? "up" : "down"}"></span>
-                </div>
-                <ul style=${this.tasksVisible ? "" : "display: none;"}>
-                    <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
-                    <li><input type="checkbox" id="task2" /><label for="task2">Examine Cams</label></li>
-                    <li><input type="checkbox" id="task3" /><label for="task3">Examine BluePrint</label></li>
-                    <li><input type="checkbox" id="task1" /><label for="task4">Examine Sticky note</label></li>
-                    <li><input type="checkbox" id="task2" /><label for="task5">Examine locked cabinet</label></li>
-                    <li><input type="checkbox" id="task3" /><label for="task6">Talk to Detective if Hints are needed</label></li>
-                </ul>
-                </div>
+        <div class="footer-section">
+            <div class="tasks-heading">
+                <h3 @click=${this.toggleTasksVisibility}>Tasks</h3>
+                <span class="arrow ${this.tasksVisible ? "up" : "down"}" @click=${this.toggleTasksVisibility}></span>
+            </div>
+            <ul style=${this.tasksVisible ? "" : "display: none;"}>
+                <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
+                <li><input type="checkbox" id="task2" /><label for="task2">Examine Cams</label></li>
+                <li><input type="checkbox" id="task3" /><label for="task3">Examine BluePrint</label></li>
+                <li><input type="checkbox" id="task1" /><label for="task4">Examine Sticky note</label></li>
+                <li><input type="checkbox" id="task2" /><label for="task5">Examine locked cabinet</label></li>
+                <li><input type="checkbox" id="task3" /><label for="task6">Talk to Detective if Hints are needed</label></li>
+            </ul>
+            ${!this.tasksVisible ? html`
+                    <textarea 
+                        placeholder="Write your notes here if needed..."
+                        .value=${notes}  
+                        @input=${this.handleNoteInputChange}
+                        ></textarea><!-- Initialize textarea with notes value -->
+                ` : nothing}
+            </div>
+        
+        </div>
+        <div class="footer-buttons">
+        ${this.tasksVisible ? html`
+            <p>Note: when leaving a room,<br>tasks will be cleared</p>
+        ` : html`
+            <p>Display tasks by clicking &#9660;</p>
+            <!-- Text input field for notes -->
             
-            </div>
-                <div class="footer-buttons">
-                    <p>click on the arrow to display tasks</p>
-                    <p>Displaying tasks can make the game easier.</p>
-                    <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
-                    <button @click=${this.exitRoom}>Exit Room🚪</button>
-
-                </div>
-            </div>
-        `;
+        `}
+        <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
+        <button @click=${this.exitRoom}>Exit Room🚪</button>
+    </div>
+    `;
     }
+
 
 
 
@@ -501,6 +566,8 @@ export class GameCanvas extends LitElement {
         this.tasksVisible = !this.tasksVisible;
         this.requestUpdate();
     }
+
+
 
     // Methods for footer buttons
 
@@ -545,7 +612,7 @@ export class GameCanvas extends LitElement {
     }
 
 
-   
+
 
     // Getter method to check if unlock code mini game is enabled
     private get unlockCodeMiniGameEnabled(): boolean {

@@ -6,7 +6,6 @@ import { BluePrintItem, BluePrintItemAlias } from "./items/BluePrint";
 import { Cam1Item, Cam1ItemAlias } from "./items/Cam1";
 import { Cam2Item, Cam2ItemAlias } from "./items/Cam2";
 import { Cam3Item, Cam3ItemAlias } from "./items/Cam3";
-import { Cam4Item, Cam4ItemAlias } from "./items/Cam4";
 import { LockedCabinetItemAlias, LockedCabinetItem } from "./items/Locked_Cabinet";
 import { StickyNoteItem, StickyNoteItemAlias } from "./items/StickyNote";
 import { ControlRoom, ControlRoomAlias } from "./rooms/ControlRoom";
@@ -81,12 +80,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case Cam2ItemAlias:
             return new Cam2Item();
-        
+
         case Cam3ItemAlias:
             return new Cam3Item();
-
-        case Cam4ItemAlias:
-            return new Cam4Item();
 
         case LockedCabinetItemAlias:
             return new LockedCabinetItem();
