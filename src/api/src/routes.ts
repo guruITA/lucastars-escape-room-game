@@ -17,9 +17,16 @@ import {
     getGameObjectsByAliases,
 } from "./instances";
 import { PlayerSession } from "./types";
+<<<<<<< HEAD
 import { PickupAction, PickupActionAlias } from "./actions/PickupAction";
 import { ExamineActionResult } from "./base/actionResults/ExamineActionResult";
 import { ExamineCodeActionResult } from "./base/actionResults/ExamineCodeActionResult";
+=======
+import { InteractAction, InteractActionAlias } from "./actions/InteractAction";
+import { ExamineImageResult } from "./base/actionResults/ImageActionResult";
+// import { ExamineCodeActionResult } from "./base/actionResults/ExamineCodeActionResult";
+
+>>>>>>> Umit/Bedroom
 
 export const router: Router = Router();
 
@@ -118,8 +125,15 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         case ExamineActionAlias:
             return ExamineAction.handle(gameObjects[0]);
 
+<<<<<<< HEAD
         case PickupActionAlias:
             return PickupAction.handle(gameObjects[0]);  
+=======
+        case InteractActionAlias:
+            return InteractAction.handle(gameObjects[0]);
+            
+
+>>>>>>> Umit/Bedroom
     }
 
     return CustomAction.handle(alias, gameObjects);
@@ -139,8 +153,14 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         return undefined;
     }
 
+<<<<<<< HEAD
     // Get the actions of the room and convert them to references
     let actions: ActionReference[] = room.actions().map((e) => e.toReference());
+=======
+    let actions: ActionReference[] = room.actions().map((e) => e.toReference());
+    let images: string[] = room.images();
+    // let miniGame: string | undefined; // Step 1: Initialize the flag
+>>>>>>> Umit/Bedroom
 
     // Get the default images of the room
     let images: string[] = room.images();
@@ -153,6 +173,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
 
         // Replace the default actions with the choices from the TalkActionResult
         actions = actionResult.choices.map((e) => e.toReference(actionResult.character));
+<<<<<<< HEAD
 
     }
 
@@ -173,9 +194,19 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         // Set the mini-game to "unlock-code"
         miniGame = "unlock-code";
 
+=======
+>>>>>>> Umit/Bedroom
     }
+    else if(actionResult instanceof ExamineImageResult) {
+        images = [...room.images(), ...actionResult.images];
+
+    }
+    // else if (actionResult instanceof ExamineCodeActionResult) {
+    //     miniGame = "unlock-code";
+    // }
 
     return {
+<<<<<<< HEAD
         roomAlias: room.alias, // Alias of the room
         roomTitle: room.name(), // Name of the room
         roomImages: images, // Images of the room
@@ -183,5 +214,14 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         actions: actions, // Actions in the room
         objects: room.objects().map((e) => e.toReference()), // Objects in the room
         miniGame: miniGame // Mini-game (if present)
+=======
+        roomAlias: room.alias,
+        roomTitle: room.name(),
+        roomImages: images,
+        text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."],
+        actions: actions,
+        objects: room.objects().map((e) => e.toReference()),
+        // miniGame: miniGame 
+>>>>>>> Umit/Bedroom
     };
 }

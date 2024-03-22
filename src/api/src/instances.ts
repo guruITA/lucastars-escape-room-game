@@ -1,6 +1,7 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
+<<<<<<< HEAD
 import { DetectiveCharacter, DetectiveCharacterAlias } from "./characters/DetectiveCharacter";
 import { BookCase, BookCaseAlias } from "./items/BookCase";
 import { BookOneAlias, BookOne } from "./items/BookOne";
@@ -9,8 +10,16 @@ import { BookTwo, BookTwoAlias } from "./items/BookTwo";
 import { Lamp, LampAlias } from "./items/Lamp";
 import { LockedCabinetItem, LockedCabinetItemAlias } from "./items/LockedCabinet";
 import { LibraryRoom, LibraryRoomAlias } from "./rooms/LibraryRoom";
+=======
+import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
+import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
+import { FlashLightItemAlias, FlashlightItem } from "./items/Items/Flashlight";
+import { BedRoom, BedRoomAlias } from "./rooms/BedRoom";
+import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
+>>>>>>> Umit/Bedroom
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
+import { JohnCharacter, JohnCharacterAlias } from "./characters/JohnCharacter";
 
 /**
  * Create a new player session object
@@ -21,6 +30,7 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
+<<<<<<< HEAD
         pickedUpBookOne: false,
         pickedUpBookTwo: false,
         pickedUpBookThree: false,
@@ -28,6 +38,9 @@ export function createNewPlayerSession(): PlayerSession {
         isBookCaseExamined: false,
         isLampOn: false,
         showPickupAction: false,
+=======
+        pickedUpFlashlight: false, 
+>>>>>>> Umit/Bedroom
     };
 }
 
@@ -61,9 +74,17 @@ export function getRoomByAlias(alias: string): Room | undefined {
         case StartupRoomAlias:
             return new StartupRoom();
 
+<<<<<<< HEAD
         //
         case LibraryRoomAlias:
             return new LibraryRoom();
+=======
+        case ExampleRoomAlias:
+            return new ExampleRoom();
+
+        case BedRoomAlias:
+            return new BedRoom();
+>>>>>>> Umit/Bedroom
     }
 
     // If no matching room is found, return undefined
@@ -102,6 +123,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case LockedCabinetItemAlias:
             return new LockedCabinetItem();
+
+        case FlashLightItemAlias:
+            return new FlashlightItem();
+
+        case JohnCharacterAlias:
+            return new JohnCharacter();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

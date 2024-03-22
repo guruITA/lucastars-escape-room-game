@@ -5,7 +5,12 @@ import { CustomAction } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getPlayerSession } from "../instances";
+<<<<<<< HEAD
 import { LibraryRoom } from "./LibraryRoom";
+=======
+import { BedRoom } from "./BedRoom";
+
+>>>>>>> Umit/Bedroom
 
 export const StartupRoomAlias: string = "startup";
 
@@ -15,11 +20,11 @@ export class StartupRoom extends Room {
     }
 
     public name(): string {
-        return "Example Game";
+        return "Intro";
     }
 
     public images(): string[] {
-        return ["startup"];
+        return ["castle"];
     }
 
     public actions(): Action[] {
@@ -27,12 +32,16 @@ export class StartupRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example."]);
+        return new TextActionResult(["Press Start Game to play."]);
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "start-game") {
+<<<<<<< HEAD
             const room: LibraryRoom = new LibraryRoom();
+=======
+            const room: BedRoom = new BedRoom();
+>>>>>>> Umit/Bedroom
 
             //Set the current room to the example room
             getPlayerSession().currentRoom = room.alias;
