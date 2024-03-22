@@ -51,14 +51,17 @@ export class BookThree extends Item implements Examine, Pickup, Talk {
 
 
     /**
-     * Handles the examine action on the BookThree
-     * @returns An action result for examining the BookThree
+     * Handles the examine action on the BookOne
+     * @returns An action result for examining the BookOne
      */
     public examine(): ActionResult | undefined {
 
         return new ExamineActionResult(
-            ["You are now examining the second book."], // Text displayed to the player
-            ["book1"] // Image displayed of book three to the player
+            [
+                "[Assistant]: Detective, I found something in book 1! There's a number written inside: number 4",
+                "[Detective]: Let me see that. Hmm, number 4, you say? Interesting. This might be a clue. Let's keep it in mind as we continue our investigation."
+            ], // Text displayed to the player
+            ["book1"] // Image displayed of book one to the player
         );
 
     }
@@ -90,10 +93,13 @@ export class BookThree extends Item implements Examine, Pickup, Talk {
             console.log(playerSession.pickedUpAllBooks);
 
             if (playerSession.pickedUpAllBooks) {
-                return new TextActionResult(["You unlocked cabinet"]);
+                return new TextActionResult([
+                    "[Assistant]: Detective, I've found something behind the books! There's a locked cabinet here.",
+                    "[Detective]: Excellent work, Assistant! You have a keen eye for detail. Let's see if we can find a way to unlock it."
+                ]);
             }
 
-            return new TextActionResult(["Well done! You picked up the third book."]);
+            return new TextActionResult(["[Assistant]: Detective, I've picked up the third book, just as you suggested. Maybe it can help us further."]);
 
         } else {
 

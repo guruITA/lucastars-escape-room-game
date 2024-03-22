@@ -59,7 +59,11 @@ export class BookCase extends Item implements Examine, Talk {
         if (playerSession.isBookCaseExamined) {
 
             // If examined, return a text action result indicating that the bookcase has already been examined
-            return new TextActionResult(["You have already examined the bookcase and you have already found the same similar books on the shelf."]);
+            return new TextActionResult([
+                "[Detective]: Assistant, have you already looked at the bookcase?",
+                "[Assistant]: Yes, Detective. I examined the bookcase earlier and found similar books with numbers on the spines.",
+                "[Detective]: Understood. We've already checked it out. Let's focus on other areas for now."
+            ]);
 
         } else { 
 
@@ -67,7 +71,10 @@ export class BookCase extends Item implements Examine, Talk {
             playerSession.isBookCaseExamined = true;
 
             // If not examined, return a text action result describing the books on the shelves
-            return new TextActionResult(["You examined the bookcase and saw several similar books with numbers on the shelves."]);
+            return new TextActionResult([
+                "[Assistant]: Detective, I examined the bookcase and found books that appear to be the same type of books, with numbers on the spines.",
+                "[Detective]: Good work, Assistant. Those numbered books might hold a clue. Let's take a closer look at them and see if we can find anything significant."
+            ]);
 
         }
 

@@ -384,8 +384,8 @@ export class GameCanvas extends LitElement {
             <div class="content">
                 ${this.contentText?.map((text) => html`<p>${text}</p>`)}
                 ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
-                ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
-                ${this.isCodeCorrect ? html`<p>Good job the second number of secret room is ${this.secretCode}</p>` : nothing}
+                ${this.codeAttempted && !this.isCodeCorrect ? html`<p>[Detective]: "Incorrect code entered. Please try again." are you sure you are putting the right code</p>` : nothing}
+                ${this.isCodeCorrect ? html`<p>[Detective]: Good job the second number of secret room is ${this.secretCode}</p>` : nothing}
             </div>
         `;
     }
@@ -534,7 +534,7 @@ export class GameCanvas extends LitElement {
 
 
     private handleClickCodeOK(): void {
-        if (this.codeSoFar === "2222") {
+        if (this.codeSoFar === "3241") {
             console.log("Send unlock-code action to API with code: " + this.codeSoFar);
             this.isCodeCorrect = true;
         } else {

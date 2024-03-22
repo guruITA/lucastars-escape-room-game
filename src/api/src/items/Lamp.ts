@@ -80,22 +80,36 @@ export class Lamp extends Item implements Examine, Talk {
 
             // Return an action result indicating the room is illuminated
             return new ExamineActionResult(
-                ["The room is illuminated by the lamp. You can now search more easily."], // Text displayed to the player
+                [
+                    "[Assistant]: This library is so big, with rows of towering bookshelves.",
+                    "[Assistant]: The air is thick with the smell of old paper, and shadows dance in the corners.",
+                    "[Assistant]: There's a desk in the center of the room, there is too much to explore. Where should I begin to search? Hmm, let's begin!",
+                    "[Detective]: Start by checking the bookshelves. We often find valuable clues hidden among the books.",
+                    "[Assistant]: Understood, Detective. I'll start there and then move on to the desk.",
+                    "[Detective]: Remember to be thorough. We can't afford to miss anything."
+                ], // Text displayed to the player
                 ["library_room"] // Image displayed of illuminated libray to the player
             );
 
         }
-        
+
         // If the player chooses to turn the lamp off
-        else if (_choiceId === 2) { 
+        else if (_choiceId === 2) {
 
             // Update lamp status to true
             playerSession.isLampOn = false;
 
             // Return an action result indicating the room is dark but the player found a code that is needed to open de locked cabine in control room
             return new ExamineActionResult(
-                ["The room plunges into darkness as the lamp goes off.", // Text displayed to the player
-                    "But you have found a code, it says 1234 with a camera icon. Well done!"],
+                [
+                    "[Assistant]: Owh, this room is dark. It's hard to see anything in here.",
+                    "[Detective]: Maybe we should find a lamp to shed some light on the situation.",
+                    "[Assistant]: Agreed. Let's search around for any source of light. Perhaps there's a lamp or a switch nearby.",
+                    "[Detective]: Keep an eye out for any clues while we're at it. The darkness might be hiding something important.",
+                    "[Assistant]: Will do, Detective. I'll be sure to inspect every nook and cranny.",
+                    "As you search for a light source, you stumble upon the lamp on the desk. Upon closer inspection, you notice something unusual about it. There's an engraved code on it: '1234' with an icon of a camera.",
+                    "[Assistant]: Detective, I think I've found something on the lamp. It's a code: '1234' with a camera icon."
+                ],
                 ["library_room_dark"] // Image displayed of dark libray to the player
             );
 
