@@ -6,6 +6,11 @@ import { BluePrintItem, BluePrintItemAlias } from "./kamal/items/BluePrint";
 import { Cam1Item, Cam1ItemAlias } from "./kamal/items/Cam1";
 import { Cam2Item, Cam2ItemAlias } from "./kamal/items/Cam2";
 import { Cam3Item, Cam3ItemAlias } from "./kamal/items/Cam3";
+import { BookCase, BookCaseAlias } from "./Gurpreet/items/BookCase";
+import { BookOneAlias, BookOne } from "./Gurpreet/items/BookOne";
+import { BookThree, BookThreeAlias } from "./Gurpreet/items/BookThree";
+import { BookTwo, BookTwoAlias } from "./Gurpreet/items/BookTwo";
+import { Lamp, LampAlias } from "./Gurpreet/items/Lamp";
 import { LockedCabinetItemAlias, LockedCabinetItem } from "./kamal/items/Locked_Cabinet";
 import { StickyNoteItem, StickyNoteItemAlias } from "./kamal/items/StickyNote";
 import { ControlRoom, ControlRoomAlias } from "./kamal/rooms/ControlRoom";
@@ -21,6 +26,13 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
+        pickedUpBookOne: false,
+        pickedUpBookTwo: false,
+        pickedUpBookThree: false,
+        pickedUpAllBooks: false,
+        isBookCaseExamined: false,
+        isLampOn: false,
+        showPickupAction: false,
     };
 }
 
@@ -48,14 +60,21 @@ export function resetPlayerSession(): void {
  * @returns Instance of the room
  */
 export function getRoomByAlias(alias: string): Room | undefined {
+
+    // Check the provided alias and return the corresponding room object
     switch (alias) {
         case StartupRoomAlias:
             return new StartupRoom();
 
+        //
+        case LibraryRoomAlias:
+            return new LibraryRoom();
+            
         case ControlRoomAlias:
             return new ControlRoom();
     }
 
+    // If no matching room is found, return undefined
     return undefined;
 }
 
@@ -67,10 +86,33 @@ export function getRoomByAlias(alias: string): Room | undefined {
  * @returns Instance of the game object
  */
 export function getGameObjectByAlias(alias: string): GameObject | undefined {
-    switch (alias) {
 
-        case StickyNoteItemAlias:
+    // Check the provided alias and return the corresponding game object
+    switch (alias) {
+		
+		case StickyNoteItemAlias:
             return new StickyNoteItem();
+            
+        case LampAlias:
+            return new Lamp();
+
+        case BookOneAlias:
+            return new BookOne();
+
+        case BookTwoAlias:
+            return new BookTwo();
+
+        case BookThreeAlias:
+            return new BookThree();
+
+        case BookCaseAlias:
+            return new BookCase();
+
+        case DetectiveCharacterAlias:
+            return new DetectiveCharacter();
+
+        case LockedCabinetItemAlias:
+            return new LockedCabinetItem();
 
         case BluePrintItemAlias:
             return new BluePrintItem();

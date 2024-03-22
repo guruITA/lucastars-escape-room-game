@@ -6,19 +6,27 @@ import { GameObject } from "./GameObject";
  * Base class used to represent an item
  */
 export abstract class Item extends GameObject implements Talk {
+
     /**
      * Create a new instance of this item
-     * @param alias Alias of this item
+     *
+     * @param alias Alias of this character
      * @param interfaces List of interfaces this item implements
      */
     protected constructor(alias: string, ...interfaces: string[]) {
         super(alias, ...interfaces, TalkActionAlias);
     }
 
-    // Implement the talk method from the Talk interface
-    public talk(choiceId?: number): ActionResult | undefined {
-        // Use choiceId if necessary
-        console.log(choiceId);
+
+    /**
+     * Handles the talk action on the item
+     * @param _choiceId The choice ID representing the player's selection
+     * @returns An action result for talking to the item
+     */
+    public talk(_choiceId?: number): ActionResult | undefined {
+
+        // By default items do not respond to talk actions so return undefined
         return undefined;
+
     }
 }

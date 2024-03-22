@@ -9,7 +9,6 @@ export class GameCanvas extends LitElement {
     public static styles = css`
     /* CSS styles for the game container */
     .game {
-        
         height: 100vh;
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -35,7 +34,6 @@ export class GameCanvas extends LitElement {
         grid-column: 2;
         grid-row: 1;
         position: relative;
-        
     }
     
     /* CSS styles for the header image */
@@ -567,8 +565,6 @@ export class GameCanvas extends LitElement {
         this.requestUpdate();
     }
 
-
-
     // Methods for footer buttons
 
     private exitRoom: string = "";
@@ -600,7 +596,7 @@ export class GameCanvas extends LitElement {
 
 
     private handleClickCodeOK(): void {
-        if (this.codeSoFar === "2222") {
+        if (this.codeSoFar === "3241") {
             console.log("Send unlock-code action to API with code: " + this.codeSoFar);
             this.isCodeCorrect = true;
         } else {
@@ -612,7 +608,7 @@ export class GameCanvas extends LitElement {
     }
 
 
-
+   
 
     // Getter method to check if unlock code mini game is enabled
     private get unlockCodeMiniGameEnabled(): boolean {
