@@ -7,7 +7,7 @@ import { GameObject } from "./GameObject";
 /**
  * Base class used to represent a room
  *
- * @remarks Implements the Examine and Custom action by default
+ * @remarks Implements the Examine action by default
  */
 export abstract class Room extends GameObject implements Examine, Custom {
     /**

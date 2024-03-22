@@ -1,10 +1,15 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
-import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
-import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
-import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
-import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
+import { DetectiveCharacter, DetectiveCharacterAlias } from "./kamal/characters/Detective";
+import { BluePrintItem, BluePrintItemAlias } from "./kamal/items/BluePrint";
+import { Cam1Item, Cam1ItemAlias } from "./kamal/items/Cam1";
+import { Cam2Item, Cam2ItemAlias } from "./kamal/items/Cam2";
+import { Cam3Item, Cam3ItemAlias } from "./kamal/items/Cam3";
+import { LockedCabinetItemAlias, LockedCabinetItem } from "./kamal/items/Locked_Cabinet";
+import { StickyNoteItem, StickyNoteItemAlias } from "./kamal/items/StickyNote";
+import { ControlRoom, ControlRoomAlias } from "./kamal/rooms/ControlRoom";
+import { StartupRoom, StartupRoomAlias } from "./kamal/rooms/StartupRoom";
 import { PlayerSession } from "./types";
 
 /**
@@ -47,8 +52,8 @@ export function getRoomByAlias(alias: string): Room | undefined {
         case StartupRoomAlias:
             return new StartupRoom();
 
-        case ExampleRoomAlias:
-            return new ExampleRoom();
+        case ControlRoomAlias:
+            return new ControlRoom();
     }
 
     return undefined;
@@ -63,13 +68,29 @@ export function getRoomByAlias(alias: string): Room | undefined {
  */
 export function getGameObjectByAlias(alias: string): GameObject | undefined {
     switch (alias) {
-        case ExampleItemAlias:
-            return new ExampleItem();
 
-        case ExampleCharacterAlias:
-            return new ExampleCharacter();
+        case StickyNoteItemAlias:
+            return new StickyNoteItem();
 
-        //NOTE: Fall back to rooms, since those are game objects too.
+        case BluePrintItemAlias:
+            return new BluePrintItem();
+    
+        case Cam1ItemAlias:
+            return new Cam1Item();
+
+        case Cam2ItemAlias:
+            return new Cam2Item();
+
+        case Cam3ItemAlias:
+            return new Cam3Item();
+
+        case LockedCabinetItemAlias:
+            return new LockedCabinetItem();
+
+        case DetectiveCharacterAlias:
+            return new DetectiveCharacter();
+
+        //NOTE: Fall back to rooms, since tho8se are game objects too.
         default:
             return getRoomByAlias(alias);
     }
