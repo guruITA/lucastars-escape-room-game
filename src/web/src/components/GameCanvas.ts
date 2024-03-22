@@ -64,6 +64,10 @@ export class GameCanvas extends LitElement {
         max-width: calc(150% - 100px);
         overflow-y: auto; 
     }
+    .content p {
+        margin-bottom: 25px;
+        margin-top: 2px;
+    }
     
     /* CSS styles for the aside container */
     .aside {
