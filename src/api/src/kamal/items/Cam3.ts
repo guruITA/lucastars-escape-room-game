@@ -1,5 +1,5 @@
 import { ActionResult } from "../../base/actionResults/ActionResult";
-import { ExamineImageResult } from "../../base/actionResults/ExamineImageResult";
+import { ExamineActionResult } from "../../base/actionResults/ExamineActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Item } from "../../base/gameObjects/Item";
 
@@ -15,7 +15,7 @@ export class Cam3Item extends Item implements Examine {
     }
 
     public examine(): ActionResult | undefined {
-        return new ExamineImageResult(["You examine Cam4. Perhaps you see something interesting..."], ["MainHall_Room"]);
+        return new ExamineActionResult(["You examine Cam4. Perhaps you see something interesting..."], ["MainHall_Room"]);
     }
 
 }
