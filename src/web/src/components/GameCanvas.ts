@@ -237,7 +237,7 @@ export class GameCanvas extends LitElement {
 
     .arrow {
         position: absolute;
-        left: 170px;
+        left: 160px;
         width: 0;
         height: 0;
         border-left: 6px solid transparent;
@@ -538,9 +538,9 @@ export class GameCanvas extends LitElement {
                 ` : nothing}
                     <div class="footer-text">                    
                         ${this.tasksVisible ? html`
-                            <p>Note: when leaving a room,<br>tasks will be cleared</p>
+                            <p>Hide tasks by clicking  &#9651; <br>To continue writing notes</p>
                         ` : html`
-                            <p>Display tasks by clicking &#9660;</p>
+                            <p>Display tasks by clicking &#9661;</p>
                             <!-- Text input field for notes -->
                             
                         `}
