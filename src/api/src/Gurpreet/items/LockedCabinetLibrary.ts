@@ -15,12 +15,12 @@ import { Item } from "../../base/gameObjects/Item";
 /** 
  * Exporting the alias of the LockedCabinet class
  */
-export const LockedCabinetItemAlias: string = "Locked Cabinet";
+export const LockedCabinetLibraryAlias: string = "Locked Cabinet Controlroom";
 
 /** 
  * Class representing the Locked Cabinet item
  */
-export class LockedCabinetItem extends Item implements Examine, Talk {
+export class LockedCabinetLibrary extends Item implements Examine, Talk {
 
     /**
      * Constructor for the LockedCabinetItem class
@@ -28,7 +28,7 @@ export class LockedCabinetItem extends Item implements Examine, Talk {
     public constructor() {
 
         // Calling the constructor of the superclass (Item) with the locked cabinet alias, examine and talk action alias
-        super(LockedCabinetItemAlias, ExamineActionAlias, TalkActionAlias);
+        super(LockedCabinetLibraryAlias, ExamineActionAlias, TalkActionAlias);
     }
 
     /**

@@ -18,6 +18,7 @@ import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
 import { LibraryRoom, LibraryRoomAlias } from "./Gurpreet/rooms/LibraryRoom";
 import { DetectiveCharacterLibrary, DetectiveCharacterLibraryAlias } from "./Gurpreet/characters/DetectiveCharacterLibrary";
+import { LockedCabinetLibrary, LockedCabinetLibraryAlias } from "./Gurpreet/items/LockedCabinetLibrary";
 
 /**
  * Create a new player session object
@@ -127,6 +128,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case LockedCabinetItemAlias:
             return new LockedCabinetItem();
+
+        case LockedCabinetLibraryAlias:
+            return new LockedCabinetLibrary();
 
         case DetectiveCharacterLibraryAlias:
             return new DetectiveCharacterLibrary();

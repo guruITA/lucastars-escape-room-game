@@ -1,5 +1,5 @@
 // This import is for handling different types of action results.
-import { Pickup, PickupActionAlias } from "../actions/PickupAction";
+import { Pickup, PickUpActionLibraryAlias } from "../actions/PickupActionLibrary";
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { ExamineActionResult } from "../../base/actionResults/ExamineActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
@@ -36,7 +36,7 @@ export class BookThree extends Item implements Examine, Pickup, Talk {
     public constructor() {
 
         // Calling the constructor of the superclass (Item) with the book one alias, examine, pickup and talk action alias
-        super(BookThreeAlias, ExamineActionAlias, PickupActionAlias, TalkActionAlias);
+        super(BookThreeAlias, ExamineActionAlias, PickUpActionLibraryAlias, TalkActionAlias);
 
     }
 

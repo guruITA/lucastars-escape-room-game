@@ -88,7 +88,7 @@ export class Lamp extends Item implements Examine, Talk {
                     "[Assistant]: Understood, Detective. I'll start there and then move on to the desk.",
                     "[Detective]: Remember to be thorough. We can't afford to miss anything."
                 ], // Text displayed to the player
-                ["library_room"] // Image displayed of illuminated libray to the player
+                ["library_room_light"] // Image displayed of illuminated libray to the player
             );
 
         }

@@ -13,15 +13,12 @@ export class GameCanvas extends LitElement {
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto auto auto auto;
-        grid-column-gap: 1px;
-        grid-row-gap: 10px;
         position: relative;
     }    
     
     /* CSS styles for the title */
     .title {
         text-align: center;
-        margin-top: 10px;
         position: absolute;
         top: 10px;
         left: 70%;
@@ -34,15 +31,18 @@ export class GameCanvas extends LitElement {
         grid-column: 2;
         grid-row: 1;
         position: relative;
+        max-width: 100%; 
+        height: auto; 
+        max-height: calc(100vh - 20px); 
     }
     
     /* CSS styles for the header image */
     .header img {
-        width: 100%;
-        height: auto;
+        max-width: 100%; 
+        height: auto; 
         image-rendering: pixelated;
         display: block;
-        margin: 50px;
+        margin: 50px 50px 30px 50px ; 
     }
     
     /* CSS styles for the content */
@@ -54,6 +54,7 @@ export class GameCanvas extends LitElement {
         position: relative;
         width: 100%;
         max-width: calc(150% - 100px);
+        overflow-y: auto; /* Add this line to make content scrollable */
     }
     
     /* CSS styles for the aside container */
@@ -61,11 +62,9 @@ export class GameCanvas extends LitElement {
         grid-column: 1;
         background-image: url('/public/assets/img/rooms/ba.png');
         border: 1px solid #332c57;
-        height: 100%;
+        height: auto;
         position: relative;
         background-size: cover;
-        height: 450px;
-        width: 100%;
     }
     
     /* CSS styles for the buttons in the aside */
@@ -134,12 +133,14 @@ export class GameCanvas extends LitElement {
         justify-content: flex-start;
         align-items: flex-start;
         overflow-y: auto;
-        max-height: calc(150vh - 100px);
         position: relative;
         background-size: cover;
         color: black;
-        height: 255px;
+        max-height: calc(100vh - 20px); /* Set max-height to 100% viewport height minus header height */
         width: 100%;
+        height: 285px;
+        margin-left: -8px;
+        margin-top: -60px; /* Align footer to the bottom of the screen */
     }
     
     /* CSS styles for the footer section heading */
@@ -445,24 +446,6 @@ export class GameCanvas extends LitElement {
         if (isUnlockCodeMiniGameEnabled) {
             return html`
                 <div class="aside">
-                    <div class="buttons">
-                        ${this.actionButtons?.map(
-                (button) => html`<a
-                                class="button action-button ${this.selectedActionButton === button ? "active" : ""}"
-                                @click=${(): void => void this.handleClickAction(button)}
-                            >${button.label}</a>`
-            )}
-                    </div>
-                    <div>
-                        ${this.selectedActionButton
-                    ? this.gameObjectButtons?.map(
-                        (button) => html`<a
-                                    class="button object-button ${this.selectedGameObjectButtons.has(button) ? "active" : ""}"
-                                    @click=${(): void => void this.handleClickObject(button)}
-                                >${button.name}</a>`
-                    )
-                    : nothing}
-                    </div>
                     <div class="pin-container">
                         ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => html`
                             <a class="button pin-code" @click=${(): void => this.handleClickCode(num.toString())}>${num}</a>
@@ -536,20 +519,21 @@ export class GameCanvas extends LitElement {
                         @input=${this.handleNoteInputChange}
                         ></textarea><!-- Initialize textarea with notes value -->
                 ` : nothing}
+
+                <div class="footer-buttons">
+                    ${this.tasksVisible ? html`
+                        <p>Note: when leaving a room,<br>tasks will be cleared</p>
+                    ` : html`
+                        <p>Display tasks by clicking &#9660;</p>
+                        <!-- Text input field for notes -->
+                        
+                    `}
+                    <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
+                    <button @click=${this.exitRoom}>Exit Room🚪</button>
+                </div>
             </div>
         
         </div>
-        <div class="footer-buttons">
-        ${this.tasksVisible ? html`
-            <p>Note: when leaving a room,<br>tasks will be cleared</p>
-        ` : html`
-            <p>Display tasks by clicking &#9660;</p>
-            <!-- Text input field for notes -->
-            
-        `}
-        <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
-        <button @click=${this.exitRoom}>Exit Room🚪</button>
-    </div>
     `;
     }
 

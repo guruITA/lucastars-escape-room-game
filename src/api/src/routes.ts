@@ -21,6 +21,7 @@ import { PlayerSession } from "./types";
 import { PickUpAction, PickUpActionAlias } from "./kamal/actions/PickUpAction";
 import { ExamineActionResult } from "./base/actionResults/ExamineActionResult";
 import { ExamineCodeActionResult } from "./base/actionResults/ExamineCodeActionResult";
+import { PickUpActionLibrary, PickUpActionLibraryAlias } from "./Gurpreet/actions/PickupActionLibrary";
 
 // Create Express router
 export const router: Router = Router();
@@ -136,6 +137,9 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
 
         case PickUpActionAlias:
             return PickUpAction.handle(gameObjects[0]);  
+
+        case PickUpActionLibraryAlias:
+                return PickUpActionLibrary.handle(gameObjects[0]); 
     }
 
     // Handle custom actions

@@ -1,5 +1,5 @@
 // This import is for the PickupAction class.
-import { PickupAction } from "../actions/PickupAction";
+import { PickUpActionLibrary } from "../actions/PickupActionLibrary";
 
 // This section imports necessary classes for handling different types of action results.
 import { ActionResult } from "../../base/actionResults/ActionResult";
@@ -34,7 +34,7 @@ import { BookOne, BookOneAlias } from "../items/BookOne";
 import { BookTwo, BookTwoAlias } from "../items/BookTwo";
 import { BookThree, BookThreeAlias } from "../items/BookThree";
 import { Lamp } from "../items/Lamp";
-import { LockedCabinetItem } from "../items/LockedCabinet";
+import { LockedCabinetLibrary } from "../items/LockedCabinetLibrary";
 
 // This import is for the PlayerSession type.
 import { PlayerSession } from "../../types";
@@ -84,7 +84,7 @@ export class LibraryRoom extends Room implements Examine {
         if (playerSession.isLampOn) {
 
             // If the lamp is on show the image with illuminated library
-            return ["library_room"];
+            return ["library_room_light"];
 
         } else {
 
@@ -110,7 +110,7 @@ export class LibraryRoom extends Room implements Examine {
 
         if (playerSession.showPickupAction) {
             // Allows the player to pick up items in the room
-            actions.push(new PickupAction());
+            actions.push(new PickUpActionLibrary());
         }
 
         return actions;
@@ -182,7 +182,7 @@ export class LibraryRoom extends Room implements Examine {
                 if (this.allBooksCollected()) {
 
                     // Adding LockedCabinetItem to the objects array
-                    objects.push(new LockedCabinetItem);
+                    objects.push(new LockedCabinetLibrary);
 
                 }
 
