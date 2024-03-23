@@ -23,7 +23,7 @@ export class GameCanvas extends LitElement {
         display: flex; /* Use flexbox */
         justify-content: center;
         position: absolute;
-        top: 5px;
+        top: 1px;
         z-index: 1;
         white-space: nowrap; 
     }
@@ -97,7 +97,7 @@ export class GameCanvas extends LitElement {
         display: inline-block;
         user-select: none;
         text-align: center;
-        font-size: 20px;
+        font-size: 17px;
     }
     
     /* CSS styles for the active or hover state of buttons in the aside */
@@ -210,7 +210,7 @@ export class GameCanvas extends LitElement {
     .footer-buttons {
         position: absolute;
         bottom: 10px;
-        left: 50px;
+        left: 100px;
         display: flex;
         justify-content: center;
     }
@@ -237,7 +237,7 @@ export class GameCanvas extends LitElement {
 
     .arrow {
         position: absolute;
-        left: 170px;
+        left: 160px;
         width: 0;
         height: 0;
         border-left: 6px solid transparent;
@@ -542,16 +542,15 @@ export class GameCanvas extends LitElement {
                 ` : nothing}
                     <div class="footer-text">                    
                         ${this.tasksVisible ? html`
-                            <p>Note: when leaving a room,<br>tasks will be cleared</p>
+                            <p>Hide tasks by clicking  &#9651; <br>To continue writing notes</p>
                         ` : html`
-                            <p>Display tasks by clicking &#9660;</p>
+                            <p>Display tasks by clicking &#9661;</p>
                             <!-- Text input field for notes -->
                             
                         `}
                     </div>
                 <div class="footer-buttons">
                     <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
-                    <button @click=${this.exitRoom}>Exit Room🚪</button>
                 </div>
             </div>
         

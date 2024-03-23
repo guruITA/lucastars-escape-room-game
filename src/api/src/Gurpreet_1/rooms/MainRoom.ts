@@ -7,6 +7,8 @@ import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { LibraryRoom } from "../../Gurpreet/rooms/LibraryRoom";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { ControlRoom } from "../../kamal/rooms/ControlRoom";
+import { LockedCabinetItem } from "../LockedRoom";
+import { ExamineAction } from "../../base/actions/ExamineAction";
 
 export const MainRoomAlias: string = "main-room";
 
@@ -20,23 +22,26 @@ export class MainRoom extends Room {
     }
 
     public images(): string[] {
-        return ["main_room"];
+        return ["MainHall_Room"];
     }
 
     public actions(): Action[] {
         return [
-            new CustomAction("library-room", "Library room", false), 
-            new CustomAction("control-room", "Control room", false)
+            new ExamineAction(),
+            new CustomAction("library-room", "Library↜", false), 
+            new CustomAction("control-room", "Control Room↜", false)
         ];
     }
 
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
-        return [this, ...inventoryItems];
+
+        return [this, ...inventoryItems, new LockedCabinetItem()];
     }
 
+
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example room."]);
+        return new TextActionResult(["This is the entrance of the castle. Through here, you can enter rooms to solve the puzzle. Good luck!"]);
     }
 
     public custom(alias: string): ActionResult | undefined {
