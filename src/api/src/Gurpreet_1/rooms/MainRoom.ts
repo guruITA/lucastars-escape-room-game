@@ -20,7 +20,7 @@ export class MainRoom extends Room {
     }
 
     public images(): string[] {
-        return ["main_room"];
+        return ["MainHall_Room"];
     }
 
     public actions(): Action[] {
@@ -36,7 +36,7 @@ export class MainRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example room."]);
+        return new TextActionResult(["This is the entrance of the castle. Through here, you can enter rooms to solve the puzzle. Good luck!"]);
     }
 
     public custom(alias: string): ActionResult | undefined {
