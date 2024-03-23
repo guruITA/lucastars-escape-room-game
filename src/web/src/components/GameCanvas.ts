@@ -285,6 +285,7 @@ export class GameCanvas extends LitElement {
     private selectedGameObjectButtons: Set<GameObjectReference> = new Set<GameObjectReference>();
 
     private miniGame?: string;
+    private codeToCheck?: string;
 
     // Lifecycle method to fetch initial state
     public async connectedCallback(): Promise<void> {
@@ -310,6 +311,8 @@ export class GameCanvas extends LitElement {
         this.selectedGameObjectButtons.clear();
 
         this.miniGame = state.miniGame;
+        this.codeToCheck = state.codeToCheck;
+        
 
         // Reset pin variables if unlock code mini game is not enabled
         if (!this.unlockCodeMiniGameEnabled) {
@@ -451,7 +454,8 @@ export class GameCanvas extends LitElement {
                 ${this.contentText?.map((text) => html`<p>${text}</p>`)}
                 ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
                 ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
-                ${this.isCodeCorrect ? html`<p>Good job the second number of secret room is ${this.secretCode}</p>` : nothing}
+                ${this.isCodeCorrect && this.roomTitle === "Library room" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
+                ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
             </div>
         `;
     }
@@ -575,17 +579,16 @@ export class GameCanvas extends LitElement {
     private codeAttempted: boolean = false;
     private codeSoFar: string = "";
     private isCodeCorrect: boolean = false;
-    private secretCode: string = "5";
 
 
     // Method to reset pin variables
     private resetPinVariables(): void {
         this.codeSoFar = "";
         this.isCodeCorrect = false;
-        this.secretCode = "2";
         this.codeAttempted = false;
 
     }
+
 
     // Method to handle click on pin code
     private handleClickCode(code: string): void {
@@ -598,20 +601,17 @@ export class GameCanvas extends LitElement {
 
 
     private handleClickCodeOK(): void {
-        if (this.codeSoFar === "3241") {
-            console.log("Send unlock-code action to API with code: " + this.codeSoFar);
+        if (this.codeSoFar === this.codeToCheck) { 
+            console.log("Correct code entered.");
             this.isCodeCorrect = true;
         } else {
-            console.log("Incorrect code entered try again.");
+            console.log("Incorrect code entered. Please try again.");
             this.isCodeCorrect = false;
         }
         this.codeAttempted = true;
         this.requestUpdate();
     }
-
-
-
-
+    
     // Getter method to check if unlock code mini game is enabled
     private get unlockCodeMiniGameEnabled(): boolean {
         return this.miniGame === "unlock-code";

@@ -170,6 +170,8 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
     // Initialize the mini-game as undefined
     let miniGame: string | undefined;
 
+    let codeToCheck: string | undefined;
+
     // If the action is a TalkActionResult
     if (actionResult instanceof TalkActionResult) {
 
@@ -186,15 +188,19 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
 
     }
 
-    // If the action is an ExamineCodeActionResult
-    else if (actionResult instanceof ExamineCodeActionResult) {
+    const controlRoomCode: string = "1234";
+    const libraryRoomCode: string = "3241";
 
-        // Add the additional images from the ExamineCodeActionResult to the default images
-        images = [...room.images(), ...actionResult.images];
 
-        // Set the mini-game to "unlock-code"
-        miniGame = "unlock-code";
-
+    // Update miniGame field and code based on the current room
+    if (actionResult instanceof ExamineCodeActionResult) {
+        if (room.alias === "Control-room") {
+            miniGame = "unlock-code";
+            codeToCheck = controlRoomCode;
+        } else if (room.alias === "library-room") {
+            miniGame = "unlock-code";
+            codeToCheck = libraryRoomCode;
+        }
     }
 
     // Construct game state object
@@ -205,6 +211,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."], // Text of the action, if no text provided, return default text
         actions: actions, // Actions in the room
         objects: room.objects().map((e) => e.toReference()), // Objects in the room
-        miniGame: miniGame // Mini-game (if present)
+        miniGame: miniGame, // Mini-game (if present)
+        codeToCheck: codeToCheck
     };
 }
