@@ -23,7 +23,7 @@ export class GameCanvas extends LitElement {
         display: flex; /* Use flexbox */
         justify-content: center;
         position: absolute;
-        top: 5px;
+        top: 1px;
         z-index: 1;
         white-space: nowrap; 
     }
@@ -97,7 +97,7 @@ export class GameCanvas extends LitElement {
         display: inline-block;
         user-select: none;
         text-align: center;
-        font-size: 20px;
+        font-size: 17px;
     }
     
     /* CSS styles for the active or hover state of buttons in the aside */
@@ -210,7 +210,7 @@ export class GameCanvas extends LitElement {
     .footer-buttons {
         position: absolute;
         bottom: 10px;
-        left: 50px;
+        left: 100px;
         display: flex;
         justify-content: center;
     }
@@ -547,7 +547,6 @@ export class GameCanvas extends LitElement {
                     </div>
                 <div class="footer-buttons">
                     <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
-                    <button @click=${this.exitRoom}>Exit Room🚪</button>
                 </div>
             </div>
         
