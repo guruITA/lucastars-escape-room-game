@@ -3,11 +3,11 @@ import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Item } from "../../base/gameObjects/Item";
 import { ExamineCodeActionResult } from "../../base/actionResults/ExamineCodeActionResult";
 
-export const LockedCabinetItemAlias: string = "Locked Cabinet";
+export const LockedRoomItemAlias: string = "Locked Room";
 
-export class LockedCabinetItem extends Item implements Examine {
+export class LockedRoomItem extends Item implements Examine {
     public constructor() {
-        super(LockedCabinetItemAlias, ExamineActionAlias);
+        super(LockedRoomItemAlias, ExamineActionAlias);
     }
 
     public name(): string {

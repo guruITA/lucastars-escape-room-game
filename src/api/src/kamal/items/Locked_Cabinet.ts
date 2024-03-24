@@ -16,7 +16,7 @@ export class LockedCabinetItem extends Item implements Examine {
 
     public examine(): ActionResult | undefined {
 
-        return new ExamineCodeActionResult(["Unlock the Cabinet"], ["locked-cabinet"]);
+        return new ExamineCodeActionResult(["You approach the locked cabinet in the control room, its sturdy metal frame suggesting it holds something of significance."], ["locked-cabinet"]);
     }
 
     

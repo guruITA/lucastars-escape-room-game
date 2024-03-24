@@ -21,6 +21,8 @@ import { DetectiveCharacterLibrary, DetectiveCharacterLibraryAlias } from "./Gur
 import { LockedCabinetLibrary, LockedCabinetLibraryAlias } from "./Gurpreet/items/LockedCabinetLibrary";
 import { MainRoom, MainRoomAlias } from "./Gurpreet_1/rooms/MainRoom";
 import { LockedRoom, LockedRoomAlias } from "./kamal_1/rooms/LockedRoom";
+import { LockedRoomItem, LockedRoomItemAlias } from "./kamal_1/rooms/lockedRoom1";
+
 
 /**
  * Create a new player session object
@@ -145,6 +147,10 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DetectiveCharacterControlRoomAlias:
             return new DetectiveCharacterControlRoom();
+        
+         case LockedRoomItemAlias:
+            return new LockedRoomItem();
+    
 
         //NOTE: Fall back to rooms, since tho8se are game objects too.
         default:
