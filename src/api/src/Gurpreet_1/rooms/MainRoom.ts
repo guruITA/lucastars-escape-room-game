@@ -7,8 +7,8 @@ import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { LibraryRoom } from "../../Gurpreet/rooms/LibraryRoom";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { ControlRoom } from "../../kamal/rooms/ControlRoom";
-import { LockedCabinetItem } from "../LockedRoom";
-import { ExamineAction } from "../../base/actions/ExamineAction";
+import { LockedRoom } from "../../kamal_1/rooms/LockedRoom";
+
 
 export const MainRoomAlias: string = "main-room";
 
@@ -27,16 +27,17 @@ export class MainRoom extends Room {
 
     public actions(): Action[] {
         return [
-            new ExamineAction(),
             new CustomAction("library-room", "Library↜", false), 
-            new CustomAction("control-room", "Control Room↜", false)
+            new CustomAction("control-room", "Control Room↜", false),
+            new CustomAction("LockedRoom", "LockedRoom↜", false)
+
         ];
     }
 
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new LockedCabinetItem()];
+        return [this, ...inventoryItems];
     }
 
 
@@ -53,6 +54,9 @@ export class MainRoom extends Room {
                 break;
             case "control-room":
                 room = new ControlRoom();
+                break;
+            case "LockedRoom":
+                room = new LockedRoom();
                 break;
             
             default:

@@ -456,6 +456,8 @@ export class GameCanvas extends LitElement {
                 ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
                 ${this.isCodeCorrect && this.roomTitle === "Library room" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
                 ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
+                ${this.isCodeCorrect && this.roomTitle === "LockedRoom" ? html`<p>Good job</p>` : nothing}
+
             </div>
         `;
     }
@@ -572,7 +574,6 @@ export class GameCanvas extends LitElement {
 
     // Methods for footer buttons
 
-    private exitRoom: string = "";
 
     // Variables for handling pin code
     private codeAttempted: boolean = false;

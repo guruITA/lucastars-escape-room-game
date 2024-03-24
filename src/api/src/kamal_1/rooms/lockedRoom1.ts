@@ -1,7 +1,7 @@
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Item } from "../base/gameObjects/Item";
-import { ExamineCodeActionResult } from "../base/actionResults/ExamineCodeActionResult";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { Item } from "../../base/gameObjects/Item";
+import { ExamineCodeActionResult } from "../../base/actionResults/ExamineCodeActionResult";
 
 export const LockedCabinetItemAlias: string = "Locked Cabinet";
 

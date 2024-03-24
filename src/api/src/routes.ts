@@ -190,6 +190,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
 
     const controlRoomCode: string = "1234";
     const libraryRoomCode: string = "3241";
+    const LockedRoomCode: string = "2222";
 
 
     // Update miniGame field and code based on the current room
@@ -200,6 +201,9 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         } else if (room.alias === "library-room") {
             miniGame = "unlock-code";
             codeToCheck = libraryRoomCode;
+        }else if (room.alias === "LockedRoom") {
+            miniGame = "unlock-code";
+            codeToCheck = LockedRoomCode;
         }
     }
 

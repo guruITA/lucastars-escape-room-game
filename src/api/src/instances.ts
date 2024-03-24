@@ -20,6 +20,7 @@ import { LibraryRoom, LibraryRoomAlias } from "./Gurpreet/rooms/LibraryRoom";
 import { DetectiveCharacterLibrary, DetectiveCharacterLibraryAlias } from "./Gurpreet/characters/DetectiveCharacterLibrary";
 import { LockedCabinetLibrary, LockedCabinetLibraryAlias } from "./Gurpreet/items/LockedCabinetLibrary";
 import { MainRoom, MainRoomAlias } from "./Gurpreet_1/rooms/MainRoom";
+import { LockedRoom, LockedRoomAlias } from "./kamal_1/rooms/LockedRoom";
 
 /**
  * Create a new player session object
@@ -79,6 +80,9 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case MainRoomAlias:
             return new MainRoom();
+        
+        case LockedRoomAlias:
+            return new LockedRoom();
     }
 
     // If no matching room is found, return undefined
