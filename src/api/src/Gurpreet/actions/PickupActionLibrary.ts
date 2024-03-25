@@ -1,12 +1,12 @@
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { Action } from "../base/actions/Action";
-import { GameObject } from "../base/gameObjects/GameObject";
-import { castTo, implementsInterface } from "../base/helpers";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { Action } from "../../base/actions/Action";
+import { GameObject } from "../../base/gameObjects/GameObject";
+import { castTo, implementsInterface } from "../../base/helpers";
 
 /**
  * Alias for the PickupAction class
  */
-export const PickupActionAlias: string = "pickup-action";
+export const PickUpActionLibraryAlias: string = "pickup-action";
 
 /**
  * Interface indicating that an object can be picked up 
@@ -18,9 +18,9 @@ export interface Pickup {
 /**
  * Class representing the Pickup action 
 */
-export class PickupAction extends Action {
+export class PickUpActionLibrary extends Action {
     public constructor() {
-        super(PickupActionAlias, "Pickup", true); // Calling the constructor of the superclass
+        super(PickUpActionLibraryAlias, "Pickup", true); // Calling the constructor of the superclass
     }
 
     /**
@@ -30,7 +30,7 @@ export class PickupAction extends Action {
      */
     public static handle(gameObject: GameObject): ActionResult | undefined {
         // Checking if the game object implements the Pickup interface
-        if (implementsInterface(gameObject, PickupActionAlias)) {
+        if (implementsInterface(gameObject, PickUpActionLibraryAlias)) {
             // Casting the game object to Pickup interface and calling the pickup method
             return castTo<Pickup>(gameObject).pickup();
         }

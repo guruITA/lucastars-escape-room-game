@@ -1,17 +1,17 @@
 // This section imports necessary classes for handling different types of action results.
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { ExamineActionResult } from "../base/actionResults/ExamineActionResult";
-import { TalkActionResult } from "../base/actionResults/TalkActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { ExamineActionResult } from "../../base/actionResults/ExamineActionResult";
+import { TalkActionResult } from "../../base/actionResults/TalkActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
 
 // These imports are for defining interfaces and aliases related to examining and talking actions.
-import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Talk, TalkActionAlias, TalkChoiceAction } from "../base/actions/TalkAction";
+import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { Talk, TalkActionAlias, TalkChoiceAction } from "../../base/actions/TalkAction";
 
 // This import is for the base class representing game items.
-import { Item } from "../base/gameObjects/Item";
-import { getPlayerSession } from "../instances";
-import { PlayerSession } from "../types";
+import { Item } from "../../base/gameObjects/Item";
+import { getPlayerSession } from "../../instances";
+import { PlayerSession } from "../../types";
 
 
 
@@ -88,7 +88,7 @@ export class Lamp extends Item implements Examine, Talk {
                     "[Assistant]: Understood, Detective. I'll start there and then move on to the desk.",
                     "[Detective]: Remember to be thorough. We can't afford to miss anything."
                 ], // Text displayed to the player
-                ["library_room"] // Image displayed of illuminated libray to the player
+                ["library_room_light"] // Image displayed of illuminated libray to the player
             );
 
         }

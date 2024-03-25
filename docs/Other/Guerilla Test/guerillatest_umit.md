@@ -1,9 +1,7 @@
 ### Testplan voor de guerilla test
 
 **1. Doel van de Test**   
-We hebben een design gemaakt en zouden graag willen weten of mensen het figma design makkelijk vinden om te gebruiken en niet ergens vastlopen. Hierdoor kunnen we gelijk mensen hun mening weten over de gebruikersinterface zodat we dit in het echte project kunnen aanpassen.   
-
-Ik heb de eerste en laatste kamer (in 1), namelijk "the entrance" gemaakt en ik zou graag willen testen of gebruikers de doorloop en werking van de game duidelijk genoeg vinden en niet teveel vast lopen. Hierdoor kan ik verbeteringen maken om eventuele problemen te verwerken. 
+Wij hebben een eerste versie developed van de kamers voor onze game, en via testen kunnen wij het beste visualiseren wat onze games ontbreken en of wij wel het juiste richtlijn hebben voor onze doelgroepen.
 <br/>
 
 **2. Testmethode**    
@@ -11,55 +9,50 @@ Guerrilla testing hebben we toegepast. Dit houdt in dat we snel feedback verzame
 <br/>
 
 **3. Testmateriaal**   
-- Mijn gemaakte kamer (The bedroom), werkend op de browser.
-- We hebben de feedback genoteerd   
+- De Bedroom demo.<br>
+- Guerilla test Template.<br>
 <br/>
 
 **4. Doelgroep**   
-Willekeurige HBO-ICT studenten.   
+Willekeurige HBO-ICT studenten.
 <br/>
 
 **5. Testprocedure**   
-- Zoek een drukke plek met veel mensen
-- Vraag of mensen willen deelnemen aan onze korte guerilla test
-- Geef ze een simpele opdracht en noteer hoe lang dit duurt en dus hoe makkelijk dingen te vinden zijn.
-- Zet specifieke doelen voor de gebruiker, waarin ze interacten, examinen en praten met gewenste items/characters
-- Noteer alle feedback, suggesties, en observaties.
-- Toon de volledige (en werkende) kamer, en vraag om feedback. 
+- Zoek een drukke plek met veel mensen.<br>
+- Vraag of mensen willen deelnemen aan onze korte guerilla test.<br>
+- Geef ze een simpele opdracht en noteer hoe lang dit duurt en dus hoe makkelijk dingen te vinden zijn.<br>
+- Zet specifieke doelen voor de gebruiker, waarin ze interacten, examinen en praten met gewenste items/characters.<br>
+- Noteer alle feedback, suggesties, en observaties.<br>
+- Toon de volledige (en werkende) kamer, en vraag om feedback.<br> 
 <br/>
 
 **6. Meetbare Criteria**    
-- Begrijpelijkheid van de interface.
-- IntuÃ¯tie van de navigatie.
-- Eventuele verbeterpunten of problemen die gebruikers als feedback geven.   
+- Begrijpelijkheid van de interface.<br>
+- IntuÃ¯tie van de navigatie.<br>
+- Eventuele verbeterpunten of problemen die gebruikers als feedback geven.<br>
 <br/>
 
 **7. Feedback Verwerking**
-- Verzamel en analyseer alle feedback
-- Bespreek de resultaten met je team en hoe we dit kunnen verwerken
-- Pas de designs aan op basis van de verzamelde feedback   
+- Verzamel en analyseer alle feedback.<br>
+- Bespreek de resultaten met je team en hoe we dit kunnen verwerken.<br>
+- Pas de designs aan op basis van de verzamelde feedback.<br>
 <br/>
 
 **8. Documentatie**
-Alle verzamelde feedback, observaties en conclusies zijn gedocumenteerd zodat we altijd ernaar terug kunnen kijken.   
-<br/>
-
-### sprint 1
-We hebben de gebruiker een laptop gegeven met game open op "the entrance" en hebben de gebruiker vertelt om met een aantal objecten te interacten. Ook hebben we de gebruiker gevraagd of ze de volledige "talk" interactie kunnen doorlopen met de npc, en het puzzel element op te lossen (eerste cijfer van de code vinden). We hebben hierbij verder niks anders vertelt/geholpen en hebben genoteerd hoe lang ze hierover deden en of dit vlot ging of niet. We hebben daarna vragen gesteld wat ze er van vonden en hebben gevraagd over hoe tevreden ze waren met de opdrachten die we hun gaven met een cijfer tussen 1 t/m 10.
-
+Alle verzamelde feedback, observaties en conclusies zijn gedocumenteerd zodat we altijd ernaar terug kunnen kijken.<br>
 <br/>
 
 ### Guerilla Test
-De feedback die we hebben gekregen bij de guerilla tests zijn dit: 
+De feedback die we hebben gekregen bij de guerilla tests zijn dit: <br>
 
 ### Resultaten van de tests
 
 ##### Wat waren de 3 doelen en 2 tevredenheidsvragen? 
 Gebruikersdoel: Interact met een aantal objecten.<br>   
 
-Gebruikersdoel: Doorloop de gehele "talk to" interactie met Edward, de NPC.<br>   
+Gebruikersdoel: Doorloop de gehele "talk to" interactie met John, de NPC en guide.<br>   
 
-Gebruikersdoel: Voltooi de puzzel - Vind het eerste gedeelte van de code.<br>   
+Gebruikersdoel: Probeer een item te showen naar John voor een speciale interactie.<br>   
 
 
 #### persoon 1
@@ -68,23 +61,17 @@ Gebruikersdoel: Voltooi de puzzel - Vind het eerste gedeelte van de code.<br>
 |-------|------------------------------------------|---------------|----------------------|--------------|
 |       |   Wat moet je gebruiker kunnen bereiken? | Doel behaald? |   Tijd               |     /10      |
 |   1   |   Interact met objecten                  |   ja          |   20 sec             |     9/10     |
-|   2   |   "Talk to" NPC                          |   ja          |   5  sec             |     8/10    |
+|   2   |   "Talk to" NPC                          |   ja          |   5  sec             |     8/10     |
 |   3   |   Show gevonden voorwerpen aan de NPC    |   ja          |   30 sec             |     10/10    |
 
 
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
-- Hij leek geirriteerd door de hoeveelheid text
-- 
-
+- Hij leek geirriteerd door de hoeveelheid text in de karakter conversaties.<br>
 
 #### Algemene feedback: 
-- Voeg meer activiteiten toe.
-- Advies was dat er meerdere functionaliteiten zouden kunnen gekoppeld worden aan een object, zoals de flashlight.
- 
-<br/>
-
-#       
+- Voeg meer funcionaliteiten toe in de game zelf.<br>
+- Maak meer functionaliteiten voor 1 object.<br>
 
 #### persoon 2
 #### Resultaattabel
@@ -98,10 +85,13 @@ Gebruikersdoel: Voltooi de puzzel - Vind het eerste gedeelte van de code.<br>
 
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
-- hij experimenteerde wel meer met de game
-- 
+- hij experimenteerde met de game vooral om te kijken welke functies wat deden.<br>
 
 
 #### Algemene feedback: 
-- uitdagender maken
-- Doel is niet duidelijk, het is beter als er een vorm van richtlijn is richting de objectives van de game, misschien in een vorm van een lijst.
+- De game kan meer uitdagender worden.<br>
+- De doel is niet duidelijk en de speler kan zich verdwalen in de kamer.<br>
+
+## Verwerking Feedback
+* User Story #54: https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/54<br>
+* User Story #55: https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/55<br>

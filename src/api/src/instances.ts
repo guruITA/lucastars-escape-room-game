@@ -1,25 +1,28 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
-<<<<<<< HEAD
-import { DetectiveCharacter, DetectiveCharacterAlias } from "./characters/DetectiveCharacter";
-import { BookCase, BookCaseAlias } from "./items/BookCase";
-import { BookOneAlias, BookOne } from "./items/BookOne";
-import { BookThree, BookThreeAlias } from "./items/BookThree";
-import { BookTwo, BookTwoAlias } from "./items/BookTwo";
-import { Lamp, LampAlias } from "./items/Lamp";
-import { LockedCabinetItem, LockedCabinetItemAlias } from "./items/LockedCabinet";
-import { LibraryRoom, LibraryRoomAlias } from "./rooms/LibraryRoom";
-=======
-import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
-import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
-import { FlashLightItemAlias, FlashlightItem } from "./items/Items/Flashlight";
-import { BedRoom, BedRoomAlias } from "./rooms/BedRoom";
-import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
->>>>>>> Umit/Bedroom
+import { DetectiveCharacterControlRoom, DetectiveCharacterControlRoomAlias } from "./kamal/characters/DetectiveCharacterControlRoom";
+import { BluePrintItem, BluePrintItemAlias } from "./kamal/items/BluePrint";
+import { Cam1Item, Cam1ItemAlias } from "./kamal/items/Cam1";
+import { Cam2Item, Cam2ItemAlias } from "./kamal/items/Cam2";
+import { Cam3Item, Cam3ItemAlias } from "./kamal/items/Cam3";
+import { BookCase, BookCaseAlias } from "./Gurpreet/items/BookCase";
+import { BookOneAlias, BookOne } from "./Gurpreet/items/BookOne";
+import { BookThree, BookThreeAlias } from "./Gurpreet/items/BookThree";
+import { BookTwo, BookTwoAlias } from "./Gurpreet/items/BookTwo";
+import { Lamp, LampAlias } from "./Gurpreet/items/Lamp";
+import { LockedCabinetItemAlias, LockedCabinetItem } from "./kamal/items/Locked_Cabinet";
+import { StickyNoteItem, StickyNoteItemAlias } from "./kamal/items/StickyNote";
+import { ControlRoom, ControlRoomAlias } from "./kamal/rooms/ControlRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
-import { JohnCharacter, JohnCharacterAlias } from "./characters/JohnCharacter";
+import { LibraryRoom, LibraryRoomAlias } from "./Gurpreet/rooms/LibraryRoom";
+import { DetectiveCharacterLibrary, DetectiveCharacterLibraryAlias } from "./Gurpreet/characters/DetectiveCharacterLibrary";
+import { LockedCabinetLibrary, LockedCabinetLibraryAlias } from "./Gurpreet/items/LockedCabinetLibrary";
+import { MainRoom, MainRoomAlias } from "./Gurpreet_1/rooms/MainRoom";
+import { LockedRoom, LockedRoomAlias } from "./kamal_1/rooms/LockedRoom";
+import { LockedRoomItem, LockedRoomItemAlias } from "./kamal_1/rooms/lockedRoom1";
+
 
 /**
  * Create a new player session object
@@ -30,7 +33,6 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
-<<<<<<< HEAD
         pickedUpBookOne: false,
         pickedUpBookTwo: false,
         pickedUpBookThree: false,
@@ -38,9 +40,6 @@ export function createNewPlayerSession(): PlayerSession {
         isBookCaseExamined: false,
         isLampOn: false,
         showPickupAction: false,
-=======
-        pickedUpFlashlight: false, 
->>>>>>> Umit/Bedroom
     };
 }
 
@@ -74,17 +73,18 @@ export function getRoomByAlias(alias: string): Room | undefined {
         case StartupRoomAlias:
             return new StartupRoom();
 
-<<<<<<< HEAD
         //
         case LibraryRoomAlias:
             return new LibraryRoom();
-=======
-        case ExampleRoomAlias:
-            return new ExampleRoom();
 
-        case BedRoomAlias:
-            return new BedRoom();
->>>>>>> Umit/Bedroom
+        case ControlRoomAlias:
+            return new ControlRoom();
+
+        case MainRoomAlias:
+            return new MainRoom();
+        
+        case LockedRoomAlias:
+            return new LockedRoom();
     }
 
     // If no matching room is found, return undefined
@@ -103,6 +103,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
     // Check the provided alias and return the corresponding game object
     switch (alias) {
 
+        case StickyNoteItemAlias:
+            return new StickyNoteItem();
+
         case LampAlias:
             return new Lamp();
 
@@ -118,19 +121,38 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case BookCaseAlias:
             return new BookCase();
 
-        case DetectiveCharacterAlias:
-            return new DetectiveCharacter();
+        case LockedCabinetItemAlias:
+            return new LockedCabinetItem();
+
+        case BluePrintItemAlias:
+            return new BluePrintItem();
+
+        case Cam1ItemAlias:
+            return new Cam1Item();
+
+        case Cam2ItemAlias:
+            return new Cam2Item();
+
+        case Cam3ItemAlias:
+            return new Cam3Item();
 
         case LockedCabinetItemAlias:
             return new LockedCabinetItem();
 
-        case FlashLightItemAlias:
-            return new FlashlightItem();
+        case LockedCabinetLibraryAlias:
+            return new LockedCabinetLibrary();
 
-        case JohnCharacterAlias:
-            return new JohnCharacter();
+        case DetectiveCharacterLibraryAlias:
+            return new DetectiveCharacterLibrary();
 
-        //NOTE: Fall back to rooms, since those are game objects too.
+        case DetectiveCharacterControlRoomAlias:
+            return new DetectiveCharacterControlRoom();
+        
+         case LockedRoomItemAlias:
+            return new LockedRoomItem();
+    
+
+        //NOTE: Fall back to rooms, since tho8se are game objects too.
         default:
             return getRoomByAlias(alias);
     }

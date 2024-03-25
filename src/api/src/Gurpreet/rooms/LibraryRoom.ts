@@ -1,30 +1,30 @@
 // This import is for the PickupAction class.
-import { PickupAction } from "../actions/PickupAction";
+import { PickUpActionLibrary } from "../actions/PickupActionLibrary";
 
 // This section imports necessary classes for handling different types of action results.
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
 
 // This import is for the base class representing actions.
-import { Action } from "../base/actions/Action";
+import { Action } from "../../base/actions/Action";
 
 // These imports are for defining interfaces and aliases related to examining actions.
-import { Examine, ExamineAction, ExamineActionAlias } from "../base/actions/ExamineAction";
+import { Examine, ExamineAction, ExamineActionAlias } from "../../base/actions/ExamineAction";
 
 // This import is for the TalkAction class.
-import { TalkAction } from "../base/actions/TalkAction";
+import { TalkAction } from "../../base/actions/TalkAction";
 
 // This import is for the base class representing game objects.
-import { GameObject } from "../base/gameObjects/GameObject";
+import { GameObject } from "../../base/gameObjects/GameObject";
 
 // This import is for the base class representing rooms.
-import { Room } from "../base/gameObjects/Room";
+import { Room } from "../../base/gameObjects/Room";
 
 // This import is for the DetectiveCharacter class.
-import { DetectiveCharacter } from "../characters/DetectiveCharacter";
+import { DetectiveCharacterLibrary } from "../characters/DetectiveCharacterLibrary";
 
 // These imports are for getting player session data and game objects from inventory.
-import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 
 // This import is for the BookCase class.
 import { BookCase } from "../items/BookCase";
@@ -34,10 +34,10 @@ import { BookOne, BookOneAlias } from "../items/BookOne";
 import { BookTwo, BookTwoAlias } from "../items/BookTwo";
 import { BookThree, BookThreeAlias } from "../items/BookThree";
 import { Lamp } from "../items/Lamp";
-import { LockedCabinetItem } from "../items/LockedCabinet";
+import { LockedCabinetLibrary } from "../items/LockedCabinetLibrary";
 
 // This import is for the PlayerSession type.
-import { PlayerSession } from "../types";
+import { PlayerSession } from "../../types";
 
 
 
@@ -84,7 +84,7 @@ export class LibraryRoom extends Room implements Examine {
         if (playerSession.isLampOn) {
 
             // If the lamp is on show the image with illuminated library
-            return ["library_room"];
+            return ["library_room_light"];
 
         } else {
 
@@ -110,7 +110,7 @@ export class LibraryRoom extends Room implements Examine {
 
         if (playerSession.showPickupAction) {
             // Allows the player to pick up items in the room
-            actions.push(new PickupAction());
+            actions.push(new PickUpActionLibrary());
         }
 
         return actions;
@@ -182,19 +182,19 @@ export class LibraryRoom extends Room implements Examine {
                 if (this.allBooksCollected()) {
 
                     // Adding LockedCabinetItem to the objects array
-                    objects.push(new LockedCabinetItem);
+                    objects.push(new LockedCabinetLibrary);
 
                 }
 
             }
 
             // Adding the Lamp Item, Detective Character and Bookcase to the object array when the bookcase isn't examined
-            objects.push(bookCase, lamp, new DetectiveCharacter());
+            objects.push(bookCase, lamp, new DetectiveCharacterLibrary());
 
         } else {
 
             // Adding the Lamp Item and Detective Character to the object array when the lamp is off
-            objects.push(lamp, new DetectiveCharacter());
+            objects.push(lamp, new DetectiveCharacterLibrary());
 
         }
 

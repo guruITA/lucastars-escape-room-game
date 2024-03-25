@@ -13,47 +13,60 @@ export class GameCanvas extends LitElement {
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto auto auto auto;
-        grid-column-gap: 1px;
-        grid-row-gap: 10px;
         position: relative;
+        grid-gap: 50px;
     }    
     
     /* CSS styles for the title */
     .title {
         text-align: center;
-        margin-top: 10px;
+        display: flex; /* Use flexbox */
+        justify-content: center;
         position: absolute;
-        top: 10px;
-        left: 70%;
-        transform: translateX(-50%);
+        top: 1px;
         z-index: 1;
+        white-space: nowrap; 
     }
+    
     
     /* CSS styles for the header */
     .header {
         grid-column: 2;
         grid-row: 1;
         position: relative;
+        max-width: 100%;
+        height: auto;
+        max-height: calc(100vh - 20px);
     }
     
     /* CSS styles for the header image */
+    .header-image {
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        height: 100%; /* Fill the entire height of the parent */
+        margin-top: 20px;
+    }
+    
     .header img {
-        width: 100%;
+        max-width: 100%;
         height: auto;
         image-rendering: pixelated;
-        display: block;
-        margin: 50px;
+        /* Remove margin here, you can adjust margin in the parent container if needed */
     }
     
     /* CSS styles for the content */
     .content {
         grid-column: 2;
         grid-row: 2;
-        margin-top: -20px;
-        padding: 0 40px;
         position: relative;
         width: 100%;
         max-width: calc(150% - 100px);
+        overflow-y: auto; 
+    }
+    .content p {
+        margin-bottom: 25px;
+        margin-top: 2px;
     }
     
     /* CSS styles for the aside container */
@@ -61,11 +74,9 @@ export class GameCanvas extends LitElement {
         grid-column: 1;
         background-image: url('/public/assets/img/rooms/ba.png');
         border: 1px solid #332c57;
-        height: 100%;
+        height: auto;
         position: relative;
         background-size: cover;
-        height: 450px;
-        width: 100%;
     }
     
     /* CSS styles for the buttons in the aside */
@@ -80,17 +91,18 @@ export class GameCanvas extends LitElement {
         background-color: #78757d;
         border: 1px solid #332c57;
         padding: 1px 1px;
-        margin: 0 0 10px 9px;
+        margin: 7px 9px 5px 9px;
         text-transform: uppercase;
         cursor: pointer;
         display: inline-block;
         user-select: none;
         text-align: center;
+        font-size: 17px;
     }
     
     /* CSS styles for the active or hover state of buttons in the aside */
     .aside .button.active,
-    .aside .button:hover {
+    .aside .buttons .object-button:hover {
         background-color: #332c57;
     }
     
@@ -118,23 +130,26 @@ export class GameCanvas extends LitElement {
         background-color: #545357;
         
     }
+    .aside .button.active,
+    .aside .buttons .action-button:hover {
+        background-color: #332c57;
+    }
     
     /* CSS styles for the footer section */
     .footer-section {
         grid-column: 1;
         background-image: url('/public/assets/img/rooms/note1.png');
-        padding: 10px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
         overflow-y: auto;
-        max-height: calc(150vh - 100px);
         position: relative;
         background-size: cover;
         color: black;
-        height: 255px;
-        width: 100%;
+        max-height: calc(100vh - 20px); 
+        width: auto;
+        height: 285px;
+        margin-left: -8px;
+        margin-top: -50px; 
     }
     
     /* CSS styles for the footer section heading */
@@ -149,7 +164,7 @@ export class GameCanvas extends LitElement {
     .footer-section ul {
         list-style-type: none;
         padding: 1;
-        margin: 0;
+        margin-top: 15px;
         font-size: 14px;
     }
     
@@ -181,6 +196,8 @@ export class GameCanvas extends LitElement {
     /* CSS styles for the checked state of the checkbox input */
     .footer-section input[type="checkbox"]:checked + label:before {
         background-color: #4CAF50;
+        content: '✔️';
+
     }
     
     /* CSS styles for the unchecked state of the checkbox input */
@@ -193,12 +210,23 @@ export class GameCanvas extends LitElement {
     .footer-buttons {
         position: absolute;
         bottom: 10px;
-        left: 20px;
+        left: 100px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-text {
+        position: absolute;
+        bottom: 30px;
+        left: 40px;
+        display: flex;
+        justify-content: center;
     }
     
     /* CSS styles for the buttons in the footer */
     .footer-buttons button {
-        margin-right: 60px;
+        background-color: blue;
+        color: white;
     }
 
     /* CSS styles for the arrow */
@@ -209,7 +237,7 @@ export class GameCanvas extends LitElement {
 
     .arrow {
         position: absolute;
-        left: 170px;
+        left: 160px;
         width: 0;
         height: 0;
         border-left: 6px solid transparent;
@@ -217,15 +245,31 @@ export class GameCanvas extends LitElement {
     }
 
     .arrow.up {
-        border-bottom: 6px solid #000; /* Change color as per your design */
+        border-bottom: 6px solid #000;
     }
 
     .arrow.down {
-        border-top: 6px solid #000; /* Change color as per your design */
+        border-top: 6px solid #000; 
     }
-    .footer-buttons p {
+    .footer-text {
+        font-size: 15px;
+        color: red;
+    }
+    .footer-section textarea {
+        width: 75%;
+        height: 100px;
+        margin-top: -10px;
+        resize: none;
         font-size: 12px;
-        color: black;
+        padding: 10px;
+        margin-right: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: transparent;
+
+    
     }
 
     
@@ -241,6 +285,7 @@ export class GameCanvas extends LitElement {
     private selectedGameObjectButtons: Set<GameObjectReference> = new Set<GameObjectReference>();
 
     private miniGame?: string;
+    private codeToCheck?: string;
 
     // Lifecycle method to fetch initial state
     public async connectedCallback(): Promise<void> {
@@ -266,6 +311,8 @@ export class GameCanvas extends LitElement {
         this.selectedGameObjectButtons.clear();
 
         this.miniGame = state.miniGame;
+        this.codeToCheck = state.codeToCheck;
+        
 
         // Reset pin variables if unlock code mini game is not enabled
         if (!this.unlockCodeMiniGameEnabled) {
@@ -311,49 +358,64 @@ export class GameCanvas extends LitElement {
         this.updateState(state);
     }
 
-    private handleResetButtonClick(): void {
+    private async handleResetButtonClick(): Promise<void> {
         if (confirm("Are you sure you want to reset the game?")) {
-            void this.resetGame();
+            await this.resetGame();
         }
     }
 
-    // Method to reset the game
-    private async resetGame(): Promise<void> {
-        console.log("Resetting game...");
-        localStorage.clear();
-        const state: GameState | undefined = await performAction("reset");
+    private resetFooter(): void {
+        // Reset tasks visibility
+        this.tasksVisible = false;
 
-        console.log("State after reset:", state);
-
-        if (state === undefined) {
-            console.log("Reset failed.");
-            return;
+        // Uncheck all checkboxes
+        const checkboxes: NodeListOf<Element> | undefined = this.shadowRoot?.querySelectorAll(".footer-section input[type=\"checkbox\"]");
+        if (checkboxes) {
+            checkboxes.forEach((checkbox) => {
+                (checkbox as HTMLInputElement).checked = false;
+            });
         }
 
-        console.log("Reset successful.");
-        this.updateState(state);
+        // Other footer variables if any
+        this.requestUpdate();
+    }
+
+
+
+    private async resetGame(): Promise<void> {
+        console.log("Resetting game...");
+        localStorage.clear(); // Clear local storage
+
+        const state: GameState | undefined = await performAction("reset");
+
+        if (state !== undefined) {
+            console.log("State after reset:", state);
+            this.updateState(state);
+            this.resetFooter(); // Reset the footer
+            console.log("Reset successful.");
+        } else {
+            console.log("Reset failed.");
+        }
+    }
+    private handleNoteInputChange(event: Event): void {
+        const textarea: HTMLTextAreaElement = event.target as HTMLTextAreaElement;
+        const inputValue: string = textarea.value;
+
+        // Save the input value to localStorage
+        localStorage.setItem("notes", inputValue);
     }
 
 
     // Render method to render the component template
     protected render(): TemplateResult {
         return html`
-                <div class="game">
-                    ${this.renderTitle()} 
-                    ${this.renderHeader()} 
-                    ${this.renderContent()} 
-                    ${this.renderaside()}
-                    ${this.renderFooter()}
-                </div>
-            `;
-    }
-
-    // Method to render the title
-    private renderTitle(): TemplateResult {
-        if (this.roomTitle) {
-            return html`<div class="title">${this.roomTitle}</div>`;
-        }
-        return html`${nothing}`;
+            <div class="game">
+                ${this.renderHeader()} 
+                ${this.renderContent()} 
+                ${this.renderaside()}
+                ${this.renderFooter()} <!-- Pass notes to the renderFooter method -->
+            </div>
+        `;
     }
 
     // Method to render the header
@@ -362,21 +424,28 @@ export class GameCanvas extends LitElement {
             if (this.roomImages.length >= 2) {
                 const secondImageUrl: string = this.roomImages[1];
                 return html`
-                        <div class="header">
-                            <img src="/assets/img/rooms/${secondImageUrl}.png" />
-                        </div>
-                    `;
+                <div class="header">
+                    <div class="header-image">
+                    <div class="title">${this.roomTitle}</div>
+                        <img src="/assets/img/rooms/${secondImageUrl}.png" />
+                    </div>
+                </div>
+            `;
             } else {
                 const firstImageUrl: string = this.roomImages[0];
                 return html`
-                        <div class="header">
-                            <img src="/assets/img/rooms/${firstImageUrl}.png" />
-                        </div>
-                    `;
+                <div class="header">
+                    <div class="header-image">
+                    <div class="title">${this.roomTitle}</div>
+                        <img src="/assets/img/rooms/${firstImageUrl}.png" />
+                    </div>
+                </div>
+            `;
             }
         }
         return html`${nothing}`;
     }
+
 
     // Method to render the content
     private renderContent(): TemplateResult {
@@ -384,8 +453,11 @@ export class GameCanvas extends LitElement {
             <div class="content">
                 ${this.contentText?.map((text) => html`<p>${text}</p>`)}
                 ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
-                ${this.codeAttempted && !this.isCodeCorrect ? html`<p>[Detective]: "Incorrect code entered. Please try again." are you sure you are putting the right code</p>` : nothing}
-                ${this.isCodeCorrect ? html`<p>[Detective]: Good job the second number of secret room is ${this.secretCode}</p>` : nothing}
+                ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
+                ${this.isCodeCorrect && this.roomTitle === "Library room" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
+                ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
+                ${this.isCodeCorrect && this.roomTitle === "LockedRoom" ? html`<p>Good job</p>` : nothing}
+
             </div>
         `;
     }
@@ -393,68 +465,50 @@ export class GameCanvas extends LitElement {
     // Method to render the aside component
     private renderaside(): TemplateResult {
         const isUnlockCodeMiniGameEnabled: boolean = this.unlockCodeMiniGameEnabled;
-    
+
         if (isUnlockCodeMiniGameEnabled) {
             return html`
                 <div class="aside">
-                    <div class="buttons">
-                        ${this.actionButtons?.map(
-                            (button) => html`<a
-                                class="button action-button ${this.selectedActionButton === button ? "active" : ""}"
-                                @click=${(): void => void this.handleClickAction(button)}
-                            >${button.label}</a>`
-                        )}
-                    </div>
-                    <div>
-                        ${this.selectedActionButton
-                            ? this.gameObjectButtons?.map(
-                                (button) => html`<a
-                                    class="button object-button ${this.selectedGameObjectButtons.has(button) ? "active" : ""}"
-                                    @click=${(): void => void this.handleClickObject(button)}
-                                >${button.name}</a>`
-                            )
-                            : nothing}
-                    </div>
                     <div class="pin-container">
                         ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => html`
                             <a class="button pin-code" @click=${(): void => this.handleClickCode(num.toString())}>${num}</a>
                         `)}
-                        <a class="button pin-code" @click=${(): void => this.handleBackspace()}>Backspace</a>
-                        <a class="button pin-code" @click=${(): void => this.handleClickCodeOK()}>OK</a>
-                        <a class="button" @click=${(): void => this.handleLeave()}>Leave</a>
+                        <a class="button pin-code" @click=${(): void => this.handleBackspace()}>⌫</a>
+                        <a class="button pin-code" @click=${(): void => this.handleClickCodeOK()}>✔</a>
+                        <a class="button" @click=${(): void => this.handleLeave()}>🔙</a>
                     </div>
                 </div>
             `;
         } else {
             this.resetPinVariables();
-    
+
             return html`
                 <div class="aside">
                     <div class="buttons">
                         <div>
                             ${this.actionButtons?.map(
-                                (button) => html`<a
+                (button) => html`<a
                                     class="button action-button ${this.selectedActionButton === button ? "active" : ""}"
                                     @click=${(): void => void this.handleClickAction(button)}
                                 >${button.label}</a>`
-                            )}
+            )}
                         </div>
                         <div>
                             ${this.selectedActionButton
-                                ? this.gameObjectButtons?.map(
-                                    (button) => html`<a
+                    ? this.gameObjectButtons?.map(
+                        (button) => html`<a
                                         class="button object-button ${this.selectedGameObjectButtons.has(button) ? "active" : ""}"
                                         @click=${(): void => void this.handleClickObject(button)}
                                     >${button.name}</a>`
-                                )
-                                : nothing}
+                    )
+                    : nothing}
                         </div>
                     </div>
                 </div>
             `;
         }
     }
-    
+
     private handleLeave(): void {
         // Hide the pin buttons by resetting relevant variables or setting a flag
         // For example:
@@ -463,34 +517,49 @@ export class GameCanvas extends LitElement {
     }
 
     // Method to render the footer
+    // Method to render the footer
     private renderFooter(): TemplateResult {
+        const storedNotes: string | null = localStorage.getItem("notes");
+        const notes: string = storedNotes ? storedNotes : "";
         return html`
-            <div class="footer-section">
-                <div class="tasks-heading">
-                    <h3 @click=${this.toggleTasksVisibility}>Tasks</h3>
-                    <span class="arrow ${this.tasksVisible ? "up" : "down"}"></span>
-                </div>
-                <ul style=${this.tasksVisible ? "" : "display: none;"}>
-                    <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
-                    <li><input type="checkbox" id="task2" /><label for="task2">Examine Cams</label></li>
-                    <li><input type="checkbox" id="task3" /><label for="task3">Examine BluePrint</label></li>
-                    <li><input type="checkbox" id="task1" /><label for="task4">Examine Sticky note</label></li>
-                    <li><input type="checkbox" id="task2" /><label for="task5">Examine locked cabinet</label></li>
-                    <li><input type="checkbox" id="task3" /><label for="task6">Talk to Detective if Hints are needed</label></li>
-                </ul>
-                </div>
-            
+        <div class="footer-section">
+            <div class="tasks-heading">
+                <h3 @click=${this.toggleTasksVisibility}>Tasks</h3>
+                <span class="arrow ${this.tasksVisible ? "up" : "down"}" @click=${this.toggleTasksVisibility}></span>
             </div>
+            <ul style=${this.tasksVisible ? "" : "display: none;"}>
+                <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
+                <li><input type="checkbox" id="task2" /><label for="task2">Examine Cams</label></li>
+                <li><input type="checkbox" id="task3" /><label for="task3">Examine BluePrint</label></li>
+                <li><input type="checkbox" id="task1" /><label for="task4">Examine Sticky note</label></li>
+                <li><input type="checkbox" id="task2" /><label for="task5">Examine locked cabinet</label></li>
+                <li><input type="checkbox" id="task3" /><label for="task6">Talk to Detective if Hints are needed</label></li>
+            </ul>
+            ${!this.tasksVisible ? html`
+                    <textarea 
+                        placeholder="Write your notes here if needed..."
+                        .value=${notes}  
+                        @input=${this.handleNoteInputChange}
+                        ></textarea><!-- Initialize textarea with notes value -->
+                ` : nothing}
+                    <div class="footer-text">                    
+                        ${this.tasksVisible ? html`
+                            <p>Hide tasks by clicking  &#9651; <br>To continue writing notes</p>
+                        ` : html`
+                            <p>Display tasks by clicking &#9661;</p>
+                            <!-- Text input field for notes -->
+                            
+                        `}
+                    </div>
                 <div class="footer-buttons">
-                    <p>click on the arrow to display tasks</p>
-                    <p>Displaying tasks can make the game easier.</p>
-                    <button @click=${this.handleResetButtonClick}>Reset Game</button>
-                    <button @click=${this.exitRoom}>Exit Room</button>
-
+                    <button @click=${this.handleResetButtonClick}>Reset Game🔄</button>
                 </div>
             </div>
-        `;
+        
+        </div>
+    `;
     }
+
 
 
 
@@ -505,23 +574,21 @@ export class GameCanvas extends LitElement {
 
     // Methods for footer buttons
 
-    private exitRoom: string = "";
 
     // Variables for handling pin code
     private codeAttempted: boolean = false;
     private codeSoFar: string = "";
     private isCodeCorrect: boolean = false;
-    private secretCode: string = "5";
 
 
     // Method to reset pin variables
     private resetPinVariables(): void {
         this.codeSoFar = "";
         this.isCodeCorrect = false;
-        this.secretCode = "2";
         this.codeAttempted = false;
 
     }
+
 
     // Method to handle click on pin code
     private handleClickCode(code: string): void {
@@ -534,20 +601,17 @@ export class GameCanvas extends LitElement {
 
 
     private handleClickCodeOK(): void {
-        if (this.codeSoFar === "3241") {
-            console.log("Send unlock-code action to API with code: " + this.codeSoFar);
+        if (this.codeSoFar === this.codeToCheck) { 
+            console.log("Correct code entered.");
             this.isCodeCorrect = true;
         } else {
-            console.log("Incorrect code entered try again.");
+            console.log("Incorrect code entered. Please try again.");
             this.isCodeCorrect = false;
         }
         this.codeAttempted = true;
         this.requestUpdate();
     }
-
-
-   
-
+    
     // Getter method to check if unlock code mini game is enabled
     private get unlockCodeMiniGameEnabled(): boolean {
         return this.miniGame === "unlock-code";

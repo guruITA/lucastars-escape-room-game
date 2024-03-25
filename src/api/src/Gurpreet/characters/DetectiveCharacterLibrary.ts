@@ -1,27 +1,27 @@
 // This import is for handling different types of action results.
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
 
 // These imports are for defining interfaces and aliases related to examining and talking actions.
-import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Talk, TalkActionAlias } from "../base/actions/TalkAction";
+import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { Talk, TalkActionAlias } from "../../base/actions/TalkAction";
 
 // This import is for the base class representing game characters.
-import { Character } from "../base/gameObjects/Character";
-import { getPlayerSession } from "../instances";
-import { PlayerSession } from "../types";
+import { Character } from "../../base/gameObjects/Character";
+import { getPlayerSession } from "../../instances";
+import { PlayerSession } from "../../types";
 
 
 
 /** 
  * Alias for the DetectiveCharacter class
  */
-export const DetectiveCharacterAlias: string = "detective-character";
+export const DetectiveCharacterLibraryAlias: string = "detective-character-library";
 
 /**
  * Class representing DetectiveCharacter
  */
-export class DetectiveCharacter extends Character implements Examine, Talk {
+export class DetectiveCharacterLibrary extends Character implements Examine, Talk {
 
     /**
      * Constructor for the DetectiveCharacter class
@@ -29,7 +29,7 @@ export class DetectiveCharacter extends Character implements Examine, Talk {
     public constructor() {
 
         // Calling the constructor of the superclass (Character) with the detective character alias, examine and talk action alias
-        super(DetectiveCharacterAlias, ExamineActionAlias, TalkActionAlias);
+        super(DetectiveCharacterLibraryAlias, ExamineActionAlias, TalkActionAlias);
 
     }
 

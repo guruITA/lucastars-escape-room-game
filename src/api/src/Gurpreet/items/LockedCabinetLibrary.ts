@@ -1,26 +1,26 @@
 // This import is for handling different types of action results.
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { ExamineCodeActionResult } from "../base/actionResults/ExamineCodeActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { ExamineCodeActionResult } from "../../base/actionResults/ExamineCodeActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
 
 // These imports are for defining interfaces and aliases related to examining and talking actions.
-import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Talk, TalkActionAlias } from "../base/actions/TalkAction";
+import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { Talk, TalkActionAlias } from "../../base/actions/TalkAction";
 
 // This import is for the base class representing game items.
-import { Item } from "../base/gameObjects/Item";
+import { Item } from "../../base/gameObjects/Item";
 
 
 
 /** 
  * Exporting the alias of the LockedCabinet class
  */
-export const LockedCabinetItemAlias: string = "Locked Cabinet";
+export const LockedCabinetLibraryAlias: string = "Locked Cabinet Controlroom";
 
 /** 
  * Class representing the Locked Cabinet item
  */
-export class LockedCabinetItem extends Item implements Examine, Talk {
+export class LockedCabinetLibrary extends Item implements Examine, Talk {
 
     /**
      * Constructor for the LockedCabinetItem class
@@ -28,7 +28,7 @@ export class LockedCabinetItem extends Item implements Examine, Talk {
     public constructor() {
 
         // Calling the constructor of the superclass (Item) with the locked cabinet alias, examine and talk action alias
-        super(LockedCabinetItemAlias, ExamineActionAlias, TalkActionAlias);
+        super(LockedCabinetLibraryAlias, ExamineActionAlias, TalkActionAlias);
     }
 
     /**

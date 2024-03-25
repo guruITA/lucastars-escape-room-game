@@ -1,21 +1,21 @@
 // Import statements for handling different types of action results
-import { Pickup, PickupActionAlias } from "../actions/PickupAction";
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { ExamineActionResult } from "../base/actionResults/ExamineActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
+import { Pickup, PickUpActionLibraryAlias } from "../actions/PickupActionLibrary";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { ExamineActionResult } from "../../base/actionResults/ExamineActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
 
 // Import statements for defining interfaces and aliases related to examining and talking actions
-import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Talk, TalkActionAlias } from "../base/actions/TalkAction";
+import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { Talk, TalkActionAlias } from "../../base/actions/TalkAction";
 
 // Import statement for the base class representing game items
-import { Item } from "../base/gameObjects/Item";
+import { Item } from "../../base/gameObjects/Item";
 
 // Import statement for retrieving the player session
-import { getPlayerSession } from "../instances";
+import { getPlayerSession } from "../../instances";
 
 // Import statement for the PlayerSession type
-import { PlayerSession } from "../types";
+import { PlayerSession } from "../../types";
 
 // import { resetPlayerSession } from "../instances";
 
@@ -37,7 +37,7 @@ export class BookTwo extends Item implements Examine, Pickup, Talk {
     public constructor() {
 
         // Calling the constructor of the superclass (Item) with the book one alias, examine, pickup and talk action alias
-        super(BookTwoAlias, ExamineActionAlias, PickupActionAlias, TalkActionAlias);
+        super(BookTwoAlias, ExamineActionAlias, PickUpActionLibraryAlias, TalkActionAlias);
 
     }
 

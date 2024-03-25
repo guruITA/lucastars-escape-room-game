@@ -6,6 +6,7 @@ export type GameState = {
     actions: ActionReference[]; // Actions available to the player in the current room
     objects: GameObjectReference[]; // Objects present in the current room
     miniGame?: string; // Optional field indicating the type of mini-game currently active, if any
+    codeToCheck?: string;
 };
 
 export type GameObjectReference = {
