@@ -368,6 +368,9 @@ export class GameCanvas extends LitElement {
         // Reset tasks visibility
         this.tasksVisible = false;
 
+        localStorage.removeItem("notes");
+
+
         // Uncheck all checkboxes
         const checkboxes: NodeListOf<Element> | undefined = this.shadowRoot?.querySelectorAll(".footer-section input[type=\"checkbox\"]");
         if (checkboxes) {
