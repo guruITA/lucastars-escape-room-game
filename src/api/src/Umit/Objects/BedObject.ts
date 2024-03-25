@@ -27,6 +27,9 @@ export class BedObject extends Item implements Examine, Interact {
     public interact(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
 
+        if (!playerSession.pickedUpBook4 && playerSession.pickedUpFlashlight && playerSession.pickedUpBattery1 && !playerSession.pickedUpBattery2){
+            return new TextActionResult(["*Click, click*","No dice.. It's still out of juice, maybe if I got a second battery somewhere around here..!"]);
+        }
         if (!playerSession.pickedUpBook4 && playerSession.pickedUpFlashlight && playerSession.pickedUpBattery1 && playerSession.pickedUpBattery2){
             playerSession.inventory.push(Book4ItemAlias);
 
@@ -35,6 +38,7 @@ export class BedObject extends Item implements Examine, Interact {
         else{
             return new TextActionResult(["Hmm.. It's too dark for me to see anything, maybe if I had something to light it up."]);
         }
+
         return undefined;
     }
 

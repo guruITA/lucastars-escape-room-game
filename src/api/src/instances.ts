@@ -28,8 +28,9 @@ import { BedRoom, BedRoomAlias } from "./Umit/rooms/BedRoom";
 import { Book4Item, Book4ItemAlias } from "./Umit/items/Book4";
 import { BedObject, BedObjectAlias } from "./Umit/Objects/BedObject";
 import { ChestObject, ChestObjectAlias } from "./Umit/Objects/ChestObject";
-// import { Battery1Item, Battery1ItemAlias } from "./Umit/items/Battery1";
-// import { Battery2Item, Battery2ItemAlias } from "./Umit/items/Battery2";
+import { Battery1Item, Battery1ItemAlias } from "./Umit/items/Battery1";
+import { Battery2Item, Battery2ItemAlias } from "./Umit/items/Battery2";
+import { ClockObject, ClockObjectAlias } from "./Umit/Objects/ClockObject";
 
 
 /**
@@ -178,11 +179,14 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case ChestObjectAlias:
             return new ChestObject();
         
-        // case Battery1ItemAlias:
-        //     return new Battery1Item();
+        case ClockObjectAlias:
+            return new ClockObject();
+            
+        case Battery1ItemAlias:
+            return new Battery1Item();
         
-        // case Battery2ItemAlias:
-        //     return new Battery2Item();
+        case Battery2ItemAlias:
+            return new Battery2Item();
 
         case BedObjectAlias:
             return new BedObject();

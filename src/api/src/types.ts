@@ -1,5 +1,4 @@
 export type PlayerSession = {
-    pickedUpBook4: boolean;
     currentRoom: string;
     inventory: string[];
     pickedUpBookOne: boolean;
@@ -12,4 +11,5 @@ export type PlayerSession = {
     pickedUpFlashlight: boolean;
     pickedUpBattery1: boolean;
     pickedUpBattery2: boolean;
+    pickedUpBook4: boolean;
 };
