@@ -32,7 +32,7 @@ Willekeurige HBO-ICT studenten.
 **8. Documentatie**
 Alle verzamelde feedback, observaties en conclusies worden gedocumenteerd voor latere referentie.
 
-### Sprint 1
+### Sprint 2
 In deze sprint kregen gebruikers een laptop met de game en werden ze gevraagd om een object te onderzoeken, ermee te interacteren en de sleutel te vinden. We hebben alleen de benodigde instructies gegeven en hebben genoteerd hoe lang ze erover deden en of ze soepel konden navigeren. Vervolgens hebben we hen gevraagd naar hun tevredenheid met de opdrachten op een schaal van 1 tot 10.
 
 ### Guerrilla Test Resultaten
@@ -40,57 +40,29 @@ In deze sprint kregen gebruikers een laptop met de game en werden ze gevraagd om
 #### Resultaten van de tests
 
 ##### Wat waren de 3 doelen en 2 tevredenheidsvragen?
-Gebruikersdoel: Een object onderzoeken.
+Gebruikersdoel: Als speler wil ik het objects onderzoeken
 
-Gebruikersdoel: Interactie met een object.
+Gebruikersdoel: Als speler wil ik interacteren met het object
 
-Gebruikersdoel: De sleutel vinden.
+Gebruikersdoel: Als speler wil ik de gesloten kast openen 
 
 #### Persoon 1 - Wesley
 ##### Resultaattabel
-|   #   |   Doel/User Story        | Effectiviteit |   Efficientie   | Tevredenheid |
-|-------|--------------------------|---------------|-----------------|--------------|
-|   1   |   Object onderzoeken     |   Ja          |   5 seconden    |     8/10     |
-|   2   |   Interactie met object  |   Ja          |   5 seconden    |     9/10     |
-|   3   |   Openen van de kast     |   Ja          |   10 minuten    |     6/10     |
+|   #   |   Doel/User Story                              | Effectiviteit |   Efficientie   | Tevredenheid |
+|-------|------------------------------------------------|---------------|-----------------|--------------|
+|   1   |   Als speler wil ik het objects onderzoeken    |   -           |        -        |     -/10     |
+|   2   |   Als speler wil ik interacteren met het object|   -           |        -        |     -/10     |
+|   3   |   Als speler wil ik de gesloten kast openen    |   -           |        -        |     -/10     |
 
 ##### Observaties
-- Goed begrip van de opdrachten.
-- Hint heeft geholpen.
-- Mooie stijl.
+- 
+- 
+- 
 
 ##### Algemene feedback
-- Foto's moeten groter zijn.
-- Knoppen blijven hangen na het onderzoeken.
+-
+- 
 
-#### Persoon 2 - Jason
-##### Resultaattabel
-|   #   |   Doel/User Story        | Effectiviteit |   Efficientie   | Tevredenheid |
-|-------|--------------------------|---------------|-----------------|--------------|
-|   1   |   Object onderzoeken     |   Ja          |   10 seconden   |     10/10    |
-|   2   |   Interactie met object  |   Ja          |   10 seconden   |     8/10     |
-|   3   |   Openen van de kast     |   Ja          |   30 seconden   |     7/10     |
-
-##### Observaties
-- Geen specifieke observaties genoteerd.
-
-##### Algemene feedback
-- Tekst blijft hangen bij interactie met andere objecten.
-- Als alle hints zijn geopend, moeten ze niet meer zichtbaar zijn.
-
-#### Persoon 3 - Alessio
-##### Resultaattabel
-|   #   |   Doel/User Story        | Effectiviteit |   Efficientie   | Tevredenheid |
-|-------|--------------------------|---------------|-----------------|--------------|
-|   1   |   Object onderzoeken     |   Ja          |   30 seconden   |     5/10     |
-|   2   |   Interactie met object  |   Ja          |   5 seconden    |     10/10    |
-|   3   |   Openen van de kast     |   Ja          |   3 minuten     |     6/10     |
-
-##### Observaties
-- Geen specifieke observaties genoteerd.
-
-##### Algemene feedback
-- Duidelijkere hints vereist.
 
 ### Bronnen
 - [Guerilla Usability](https://www.userbrain.com/blog/7-step-guide-guerrilla-usability-testing-diy-usability-testing-method)
