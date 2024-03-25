@@ -27,7 +27,7 @@ export class LockedRoom extends Room {
     public actions(): Action[] {
         return [
             new ExamineAction(),
-            new CustomAction("MianRoom", "MianRoom↜", false), 
+            new CustomAction("exit-room", "Exit room↜", false), 
         ];
     }
 
@@ -49,7 +49,7 @@ export class LockedRoom extends Room {
         let room: Room | undefined;
         
         switch (alias) {
-            case "MianRoom":
+            case "exit-room":
                 room = new MainRoom();
                 break;
 

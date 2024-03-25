@@ -38,6 +38,8 @@ import { LockedCabinetLibrary } from "../items/LockedCabinetLibrary";
 
 // This import is for the PlayerSession type.
 import { PlayerSession } from "../../types";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
 
 
 
@@ -106,7 +108,7 @@ export class LibraryRoom extends Room implements Examine {
         const actions: Action[] = [];
 
         // Allows the player to examine the surroundings and talk to detective
-        actions.push(new ExamineAction(), new TalkAction());
+        actions.push(new ExamineAction(), new TalkAction(), new CustomAction("exit-room", "Exit room↜", false));
 
         if (playerSession.showPickupAction) {
             // Allows the player to pick up items in the room
@@ -114,6 +116,26 @@ export class LibraryRoom extends Room implements Examine {
         }
 
         return actions;
+    }
+
+    public custom(alias: string): ActionResult | undefined {
+        let room: Room | undefined;
+
+        switch (alias) {
+            case "exit-room":
+                room = new MainRoom();
+                break;
+
+            default:
+                return undefined;
+        }
+
+        if (room) {
+            getPlayerSession().currentRoom = room.alias;
+            return room.examine();
+        }
+
+        return undefined;
     }
 
 

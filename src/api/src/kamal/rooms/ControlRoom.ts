@@ -37,7 +37,7 @@ export class ControlRoom extends Room {
         return [
             new ExamineAction(),
             new TalkAction(), 
-            new CustomAction("MainRoom", "MainRoom↜", false)
+            new CustomAction("exit-room", "Exit room↜", false)
 
             ];       
     }
@@ -75,7 +75,7 @@ export class ControlRoom extends Room {
         let room: Room | undefined;
         
         switch (alias) {
-            case "MainRoom":
+            case "exit-room":
                 room = new MainRoom();
                 break;
             
