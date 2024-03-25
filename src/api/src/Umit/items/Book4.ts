@@ -5,3 +5,30 @@
 // import { Item } from "../../base/gameObjects/Item";
 // import { getPlayerSession } from "../../instances";
 // import { PlayerSession } from "../../types";
+
+// import { ActionResult } from "../../base/actionResults/ActionResult";
+// import { Examine } from "../../base/actions/ExamineAction";
+import { Item } from "../../base/gameObjects/Item";
+// import { Interact } from "../actions/InteractAction";
+
+export const Book4ItemAlias: string = "book4";
+
+export class Book4Item extends Item {
+    public constructor() {
+        super(Book4ItemAlias);
+    }
+
+    // interact(): ActionResult | undefined {
+    //     throw new Error("Method not implemented.");
+    // }
+
+    // examine(): ActionResult | undefined {
+    //     throw new Error("Method not implemented.");
+    // }
+    
+
+    public name(): string {
+        return "Book4";
+    }
+
+}

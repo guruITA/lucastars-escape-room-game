@@ -25,6 +25,11 @@ import { LockedRoomItem, LockedRoomItemAlias } from "./kamal_1/rooms/lockedRoom1
 import { JohnCharacter, JohnCharacterAlias } from "./Umit/characters/JohnCharacter";
 import { FlashLightItemAlias, FlashlightItem } from "./Umit/items/Flashlight";
 import { BedRoom, BedRoomAlias } from "./Umit/rooms/BedRoom";
+import { Book4Item, Book4ItemAlias } from "./Umit/items/Book4";
+import { BedObject, BedObjectAlias } from "./Umit/Objects/BedObject";
+import { ChestObject, ChestObjectAlias } from "./Umit/Objects/ChestObject";
+// import { Battery1Item, Battery1ItemAlias } from "./Umit/items/Battery1";
+// import { Battery2Item, Battery2ItemAlias } from "./Umit/items/Battery2";
 
 
 /**
@@ -44,6 +49,9 @@ export function createNewPlayerSession(): PlayerSession {
         isLampOn: false,
         showPickupAction: false,
         pickedUpFlashlight: false,
+        pickedUpBook4: false,
+        pickedUpBattery1: false,
+        pickedUpBattery2: false,
     };
 }
 
@@ -125,6 +133,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case BookThreeAlias:
             return new BookThree();
 
+        case Book4ItemAlias:
+            return new Book4Item();
+
         case BookCaseAlias:
             return new BookCase();
 
@@ -164,8 +175,19 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case LockedRoomItemAlias:
             return new LockedRoomItem();
 
+        case ChestObjectAlias:
+            return new ChestObject();
+        
+        // case Battery1ItemAlias:
+        //     return new Battery1Item();
+        
+        // case Battery2ItemAlias:
+        //     return new Battery2Item();
 
-        //NOTE: Fall back to rooms, since tho8se are game objects too.
+        case BedObjectAlias:
+            return new BedObject();
+
+        //NOTE: Fall back to rooms, since those are game objects too.
         default:
             return getRoomByAlias(alias);
     }

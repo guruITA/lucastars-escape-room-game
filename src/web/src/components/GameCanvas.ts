@@ -463,6 +463,7 @@ export class GameCanvas extends LitElement {
                 ${this.isCodeCorrect && this.roomTitle === "Library room" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
                 ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
                 ${this.isCodeCorrect && this.roomTitle === "LockedRoom" ? html`<p>Good job</p>` : nothing}
+                ${this.isCodeCorrect && this.roomTitle === "Bedroom" ? html`<p>Good job, the last number of the secret room is 7</p>` : nothing}
 
             </div>
         `;

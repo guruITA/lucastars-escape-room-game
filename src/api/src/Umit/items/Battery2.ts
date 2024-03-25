@@ -1,7 +1,25 @@
-// import { Pickup, PickupActionAlias } from "../../actions/InteractAction";
-// import { ActionResult } from "../../base/actionResults/ActionResult";
-// import { TextActionResult } from "../../base/actionResults/TextActionResult";
-// import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
+// import { Examine } from "../../base/actions/ExamineAction";
 // import { Item } from "../../base/gameObjects/Item";
-// import { getPlayerSession } from "../../instances";
-// import { PlayerSession } from "../../types";
+// import { Interact } from "../actions/InteractAction";
+
+// export const Battery2ItemAlias: string = "battery2";
+
+// export class Battery2Item extends Item implements Examine, Interact {
+//     public constructor() {
+//         super(Battery2ItemAlias);
+//     }
+
+//     // interact(): ActionResult | undefined {
+//     //     throw new Error("Method not implemented.");
+//     // }
+
+//     // examine(): ActionResult | undefined {
+//     //     throw new Error("Method not implemented.");
+//     // }
+    
+
+//     public name(): string {
+//         return "Battery2";
+//     }
+
+// }

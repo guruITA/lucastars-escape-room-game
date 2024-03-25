@@ -11,6 +11,11 @@ import { JohnCharacter } from "../characters/JohnCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { FlashLightItemAlias, FlashlightItem } from "../items/Flashlight";
 import { PlayerSession } from "../../types";
+// import { Book4ItemAlias } from "../items/Book4";
+import { BedObject } from "../Objects/BedObject";
+import { ChestObject } from "../Objects/ChestObject";
+// import { ChestObject } from "../Objects/ChestObject";
+// import { ClockObject } from "../Objects/ClockObject";
 
 export const BedRoomAlias: string = "bedroom";
 
@@ -36,9 +41,12 @@ export class BedRoom extends Room {
 
         if(!playerSession.inventory.includes(FlashLightItemAlias)){
             objects.push(new FlashlightItem());
-        }
-        
-        objects.push(new JohnCharacter());
+            
+        }   
+        objects.push(new BedObject(), new JohnCharacter(), new ChestObject());
+
+        // objects.push(new ChestObject());
+        // objects.push(new ClockObject());
         // return[this, new FlashlightItem(), new JohnCharacter()];
 
         return objects;
