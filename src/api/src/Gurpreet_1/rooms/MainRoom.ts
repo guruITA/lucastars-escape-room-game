@@ -8,6 +8,7 @@ import { LibraryRoom } from "../../Gurpreet/rooms/LibraryRoom";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { ControlRoom } from "../../kamal/rooms/ControlRoom";
 import { LockedRoom } from "../../kamal_1/rooms/LockedRoom";
+import { BedRoom } from "../../Umit/rooms/BedRoom";
 
 
 export const MainRoomAlias: string = "main-room";
@@ -27,9 +28,10 @@ export class MainRoom extends Room {
 
     public actions(): Action[] {
         return [
-            new CustomAction("library-room", "Library↜", false), 
+            new CustomAction("library-room", "Library↜", false),
             new CustomAction("control-room", "Control Room↜", false),
-            new CustomAction("LockedRoom", "LockedRoom↜", false)
+            new CustomAction("LockedRoom", "LockedRoom↜", false),
+            new CustomAction("Bedroom", "Bedroom↜", false)
 
         ];
     }
@@ -47,7 +49,7 @@ export class MainRoom extends Room {
 
     public custom(alias: string): ActionResult | undefined {
         let room: Room | undefined;
-        
+
         switch (alias) {
             case "library-room":
                 room = new LibraryRoom();
@@ -58,17 +60,20 @@ export class MainRoom extends Room {
             case "LockedRoom":
                 room = new LockedRoom();
                 break;
-            
+            case "Bedroom":
+                room = new BedRoom();
+                break;
+
             default:
-                return undefined; 
+                return undefined;
         }
-    
+
         if (room) {
             getPlayerSession().currentRoom = room.alias;
             return room.examine();
         }
-    
+
         return undefined;
     }
-    
+
 }

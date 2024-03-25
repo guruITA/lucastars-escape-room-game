@@ -1,12 +1,13 @@
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TalkActionResult } from "../base/actionResults/TalkActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
-import { ExamineActionAlias } from "../base/actions/ExamineAction";
-import { TalkChoiceAction } from "../base/actions/TalkAction";
-import { Character } from "../base/gameObjects/Character";
-import { getPlayerSession } from "../instances";
-import { FlashLightItemAlias } from "../items/Items/Flashlight";
-import { PlayerSession } from "../types";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TalkActionResult } from "../../base/actionResults/TalkActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
+import { ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { TalkChoiceAction } from "../../base/actions/TalkAction";
+import { Character } from "../../base/gameObjects/Character";
+import { getPlayerSession } from "../../instances";
+import { PlayerSession } from "../../types";
+import { FlashLightItemAlias } from "../items/Flashlight";
+
 
 export const JohnCharacterAlias: string = "john";
 

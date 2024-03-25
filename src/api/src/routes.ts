@@ -22,6 +22,8 @@ import { PickUpAction, PickUpActionAlias } from "./kamal/actions/PickUpAction";
 import { ExamineActionResult } from "./base/actionResults/ExamineActionResult";
 import { ExamineCodeActionResult } from "./base/actionResults/ExamineCodeActionResult";
 import { PickUpActionLibrary, PickUpActionLibraryAlias } from "./Gurpreet/actions/PickupActionLibrary";
+import { InteractActionAlias, InteractAction } from "./Umit/actions/InteractAction";
+import { ExamineImageResult } from "./base/actionResults/ExamineImageResult";
 
 // Create Express router
 export const router: Router = Router();
@@ -140,6 +142,9 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
 
         case PickUpActionLibraryAlias:
             return PickUpActionLibrary.handle(gameObjects[0]);
+
+        case InteractActionAlias:
+            return InteractAction.handle(gameObjects[0]);
     }
 
     // Handle custom actions
@@ -188,6 +193,11 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
 
     }
 
+    else if(actionResult instanceof ExamineImageResult) {
+        images = [...room.images(), ...actionResult.images];
+
+    }
+
     const controlRoomCode: string = "1234";
     const libraryRoomCode: string = "3241";
     const LockedRoomCode: string = "2222";
@@ -201,7 +211,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         } else if (room.alias === "library-room") {
             miniGame = "unlock-code";
             codeToCheck = libraryRoomCode;
-        }else if (room.alias === "LockedRoom") {
+        } else if (room.alias === "LockedRoom") {
             miniGame = "unlock-code";
             codeToCheck = LockedRoomCode;
         }

@@ -1,16 +1,16 @@
 import { InteractAction } from "../actions/InteractAction";
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
-import { Action } from "../base/actions/Action";
-import { CustomAction } from "../base/actions/CustomAction";
-import { ExamineAction } from "../base/actions/ExamineAction";
-import { TalkAction } from "../base/actions/TalkAction";
-import { GameObject } from "../base/gameObjects/GameObject";
-import { Room } from "../base/gameObjects/Room";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
+import { Action } from "../../base/actions/Action";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { ExamineAction } from "../../base/actions/ExamineAction";
+import { TalkAction } from "../../base/actions/TalkAction";
+import { GameObject } from "../../base/gameObjects/GameObject";
+import { Room } from "../../base/gameObjects/Room";
 import { JohnCharacter } from "../characters/JohnCharacter";
-import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { FlashLightItemAlias, FlashlightItem } from "../items/Items/Flashlight";
-import { PlayerSession } from "../types";
+import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
+import { FlashLightItemAlias, FlashlightItem } from "../items/Flashlight";
+import { PlayerSession } from "../../types";
 
 export const BedRoomAlias: string = "bedroom";
 

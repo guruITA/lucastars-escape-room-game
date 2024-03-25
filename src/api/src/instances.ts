@@ -22,6 +22,9 @@ import { LockedCabinetLibrary, LockedCabinetLibraryAlias } from "./Gurpreet/item
 import { MainRoom, MainRoomAlias } from "./Gurpreet_1/rooms/MainRoom";
 import { LockedRoom, LockedRoomAlias } from "./kamal_1/rooms/LockedRoom";
 import { LockedRoomItem, LockedRoomItemAlias } from "./kamal_1/rooms/lockedRoom1";
+import { JohnCharacter, JohnCharacterAlias } from "./Umit/characters/JohnCharacter";
+import { FlashLightItemAlias, FlashlightItem } from "./Umit/items/Flashlight";
+import { BedRoom, BedRoomAlias } from "./Umit/rooms/BedRoom";
 
 
 /**
@@ -40,6 +43,7 @@ export function createNewPlayerSession(): PlayerSession {
         isBookCaseExamined: false,
         isLampOn: false,
         showPickupAction: false,
+        pickedUpFlashlight: false,
     };
 }
 
@@ -82,9 +86,12 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case MainRoomAlias:
             return new MainRoom();
-        
+
         case LockedRoomAlias:
             return new LockedRoom();
+
+        case BedRoomAlias:
+            return new BedRoom();
     }
 
     // If no matching room is found, return undefined
@@ -147,10 +154,16 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DetectiveCharacterControlRoomAlias:
             return new DetectiveCharacterControlRoom();
-        
-         case LockedRoomItemAlias:
+
+        case JohnCharacterAlias:
+            return new JohnCharacter();
+
+        case FlashLightItemAlias:
+            return new FlashlightItem();
+
+        case LockedRoomItemAlias:
             return new LockedRoomItem();
-    
+
 
         //NOTE: Fall back to rooms, since tho8se are game objects too.
         default:

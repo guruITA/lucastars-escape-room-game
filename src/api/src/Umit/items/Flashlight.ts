@@ -1,11 +1,11 @@
-import { Interact, InteractActionAlias } from "../../actions/InteractAction";
+import { Interact, InteractActionAlias } from "../actions/InteractAction";
 import { ActionResult } from "../../base/actionResults/ActionResult";
-import { ExamineImageResult } from "../../base/actionResults/ImageActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Item } from "../../base/gameObjects/Item";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
+import { ExamineActionResult } from "../../base/actionResults/ExamineActionResult";
 
 export const FlashLightItemAlias: string = "flashlight";
 
@@ -20,7 +20,7 @@ export class FlashlightItem extends Item implements Examine, Interact {
     }
 
     public examine(): ActionResult | undefined {
-        return new ExamineImageResult(["It's a flashlight...", "*Click*", "Damn..! No luck, the batteries are dead but maybe I can find some new ones in here."], ["flashlight"]);
+        return new ExamineActionResult(["It's a flashlight...", "*Click*", "Damn..! No luck, the batteries are dead but maybe I can find some new ones in here."], ["flashlight"]);
     }
 
     public interact(): ActionResult | undefined {
