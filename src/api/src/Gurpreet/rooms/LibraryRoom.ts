@@ -13,7 +13,7 @@ import { Examine, ExamineAction, ExamineActionAlias } from "../../base/actions/E
 import { Custom, CustomAction, CustomActionAlias } from "../../base/actions/CustomAction";
 
 // This import is for the TalkAction class.
-import { TalkAction } from "../../base/actions/TalkAction";
+import { Talk, TalkAction, TalkActionAlias } from "../../base/actions/TalkAction";
 
 // This import is for the base class representing game objects.
 import { GameObject } from "../../base/gameObjects/GameObject";
@@ -55,7 +55,7 @@ export const LibraryRoomAlias: string = "library-room";
 /** 
  * Class representing the Library room
  */
-export class LibraryRoom extends Room implements Examine, Custom {
+export class LibraryRoom extends Room implements Examine, Custom, Talk {
 
     /**
      * Constructor for LibraryRoom class
@@ -63,7 +63,7 @@ export class LibraryRoom extends Room implements Examine, Custom {
     public constructor() {
 
         // Calling the constructor of the superclass (Room)
-        super(LibraryRoomAlias, ExamineActionAlias, CustomActionAlias);
+        super(LibraryRoomAlias, ExamineActionAlias, CustomActionAlias, TalkActionAlias);
 
     }
 
@@ -261,5 +261,20 @@ export class LibraryRoom extends Room implements Examine, Custom {
         }
 
     }
+
+        /**
+     * Handles the talk action on the Lamp
+     * @param _choiceId The choice ID representing the player's selection
+     * @returns An action result based on the player's choice
+     */
+        public talk(_choiceId?: number | undefined): ActionResult | undefined {
+
+    
+            // If the player tries to talk to the room return an action result indicating they can't talk to a room. Beacause room is an room
+            return new TextActionResult(
+                ["You can't talk to a room"],
+            );
+    
+        }
     
 }
