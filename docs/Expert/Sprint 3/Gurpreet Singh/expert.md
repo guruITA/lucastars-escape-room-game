@@ -6,7 +6,7 @@
 > - [#16 Als student wil ik leren wat generics zijn en hoe ik ze gebruik in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/16)
 
 > ## Abstract class (Deze sprint)
-> Een abstracte klasse is als een blauwdruk voor andere klassen. Je kunt er geen objecten rechtstreeks van maken, maar het definieert gemeenschappelijke eigenschappen en acties die andere klassen kunnen overnemen.
+> Een ``abstracte klasse`` is als een blauwdruk voor andere klassen. Je kunt er geen objecten rechtstreeks van maken, maar het definieert gemeenschappelijke eigenschappen en acties die andere klassen kunnen overnemen.
 >
 > ```typescript
 > /**
@@ -42,7 +42,7 @@
 
 
 > ## Interface (Deze sprint)
-> Een interface is als een contract waarin staat wat een object moet kunnen doen. Het vertelt andere delen van de code welke acties beschikbaar zijn, maar het geeft geen details over hoe die acties worden uitgevoerd.
+> Een ``interface`` is als een contract waarin staat wat een object moet kunnen doen. Het vertelt andere delen van de code welke acties beschikbaar zijn, maar het geeft geen details over hoe die acties worden uitgevoerd.
 >
 > ```typescript
 > /**
@@ -59,14 +59,14 @@
 > 
 > ```
 > ### Toelichting 
-> De Examine-interface definieert dat objecten de mogelijkheid moeten hebben om te worden onderzocht. Het zegt niet hoe elk object moet worden onderzocht, maar het zorgt ervoor dat alle objecten die deze interface implementeren, een examine-methode hebben om dat te doen.
+> De Examine-interface definieert dat objecten de mogelijkheid moeten hebben om te worden onderzocht. Het zegt niet hoe elk object moet worden onderzocht, maar het zorgt ervoor dat alle klasse's die deze interface implementeren, een examine-methode hebben om dat te doen.
 >
 > ### Bronnen 
 > [knowledgebase Interface](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/oop_concepten/oop_interface/)
 
 
 > ## Generics (Deze sprint)
-> x
+> Generics bieden een flexibele benadering om met verschillende datatypes te werken. Ze stellen je in staat om dynamische types te gebruiken, waardoor je functies of klassen kunt maken die met verschillende soorten data kunnen omgaan, zonder dat je het specifieke type vooraf hoeft te bepalen.
 >
 > ```typescript
 > /**
@@ -81,7 +81,7 @@
 > }
 > ```
 > ### Toelichting 
-> I
+> Generics bieden een flexibele manier om met verschillende datatypes te werken zonder specifieke typen vooraf te bepalen. De castTo-functie in deze code maakt gebruik van generics om een gegeven instantie van een klasse naar een specifiek type T om te zetten. Hierdoor kunnen functies of klassen worden gemaakt die dynamisch met verschillende soorten data kunnen omgaan.
 >
 > ### Bronnen 
 > [knowledgebase Generic](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/oop_concepten/oop_generic/)
