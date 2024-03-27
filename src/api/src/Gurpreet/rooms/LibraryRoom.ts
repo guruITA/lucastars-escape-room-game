@@ -10,6 +10,7 @@ import { Action } from "../../base/actions/Action";
 
 // These imports are for defining interfaces and aliases related to examining actions.
 import { Examine, ExamineAction, ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { Custom, CustomAction, CustomActionAlias } from "../../base/actions/CustomAction";
 
 // This import is for the TalkAction class.
 import { TalkAction } from "../../base/actions/TalkAction";
@@ -38,7 +39,8 @@ import { LockedCabinetLibrary } from "../items/LockedCabinetLibrary";
 
 // This import is for the PlayerSession type.
 import { PlayerSession } from "../../types";
-import { CustomAction } from "../../base/actions/CustomAction";
+
+// This import is for the mainRoom class to navigate
 import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
 
 
@@ -53,7 +55,7 @@ export const LibraryRoomAlias: string = "library-room";
 /** 
  * Class representing the Library room
  */
-export class LibraryRoom extends Room implements Examine {
+export class LibraryRoom extends Room implements Examine, Custom {
 
     /**
      * Constructor for LibraryRoom class
@@ -61,7 +63,7 @@ export class LibraryRoom extends Room implements Examine {
     public constructor() {
 
         // Calling the constructor of the superclass (Room)
-        super(LibraryRoomAlias, ExamineActionAlias);
+        super(LibraryRoomAlias, ExamineActionAlias, CustomActionAlias);
 
     }
 
@@ -122,7 +124,7 @@ export class LibraryRoom extends Room implements Examine {
         let room: Room | undefined;
 
         switch (alias) {
-            case "exit-room":
+            case "library-room":
                 room = new MainRoom();
                 break;
 
