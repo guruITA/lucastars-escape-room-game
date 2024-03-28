@@ -16,7 +16,7 @@ export class LockedRoomItem extends Item implements Examine {
 
     public examine(): ActionResult | undefined {
 
-        return new ExamineCodeActionResult(["Unlock the room"], ["locked-cabinet"]);
+        return new ExamineCodeActionResult(["Unlock the room"], ["lock"]);
     }
 
     

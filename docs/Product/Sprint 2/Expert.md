@@ -7,8 +7,12 @@ Hier toon ik de learning stories die ik gedaan heb. Eerst leg ik de onderdelen u
  
 
 > - [#11 Als student wil ik leren hoe ik de OO-principes abstraction, encapsulation en inheritance toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/11)
+> - [#12 Als student wil ik leren hoe ik het OO-principe polymorfisme toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/12)
 > - [#13 Als student wil ik leren hoe ik abstracte classes toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/13)
-> - [#8 Als student wil ik leren hoe ik User Centered Design methodes effectief inzet voor doelgericht onderzoek en het verzamelen van waardevolle gebruikersfeedback in mijn ontwerpproces.](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/8)
+>  - [#14 Als student wil ik leren hoe ik static functies en variabelen gebruik in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/14)
+>  - [#15 Als student wil ik leren hoe ik interfaces toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/15)
+>  - [#16 Als student wil ik leren wat generics zijn en hoe ik ze gebruik in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/16)
+
 
  
  
@@ -105,7 +109,45 @@ export class ControlRoom extends Room, implements Examine {
 ```
 </details>
  
-  
+#### Polymorphism
+Polymorfisme is het vermogen om dezelfde code te gebruiken voor verschillende datatypes. Het stelt objecten in staat om verschillende vormen of functionaliteiten te hebben, terwijl ze een gemeenschappelijke interface delen.
+
+<details>
+<summary>Code snippet Polymorphism</summary>
+
+```typescript
+// Parent class
+class Animal {
+    sound(): void {
+        console.log("Animal makes a sound");
+    }
+}
+
+// Child classes
+class Dog extends Animal {
+    sound(): void {
+        console.log("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    sound(): void {
+        console.log("Cat meows");
+    }
+}
+
+// Polymorphic function
+function makeSound(animal: Animal): void {
+    animal.sound();
+}
+
+// Using the function with different objects
+makeSound(new Dog()); // Output: Dog barks
+makeSound(new Cat()); // Output: Cat meows
+```
+
+</details>
+
 #### abstract
 Een abstracte functie is een functie die wordt gedeclareerd in een klasse, maar geen implementatie heeft binnen die Class. In plaats daarvan moet de implementatie worden geleverd door afgeleide Class. 
 <details>
@@ -135,22 +177,112 @@ export abstract class Room extends GameObject implements Examine {
 ```
 </details>
 
+#### Static functions and variables
+Static functions and variables belong to the class itself rather than instances of the class. They can be accessed without creating an instance of the class.
 
+<details>
+<summary>Code snippet Static functions and variables</summary>
 
-#### User Centered Design:
- ![voor user test](/src/web/wwwroot/public/assets/img/rooms/oldLayout.png)
+```typescript
+export class MathUtils {
+    // Static variable
+    static PI: number = 3.14159;
 
-Feedback: </br>
-User Lennard Fonteijn
-1- Is tasks niet een beetje walkthrough geintegreerd in de game? Of is examinen maar de helft van het werk?
-JE zou ervoor kunnen kiezen dat een speler die aan/uit kan zetten om echt helemaal in het diepe gegooid te worden.
+    // Static function to calculate the area of a circle
+    static calculateCircleArea(radius: number): number {
+        return this.PI * radius * radius;
+    }
+}
 
-2- Als je beetje een detective bent, zou je er als visual nog een notitieblokje van kunnen maken ipv. blauw vlak.
+// Accessing static variables and calling static functions
+console.log(MathUtils.PI); // Output: 3.14159
+console.log(MathUtils.calculateCircleArea(5)); // Output: 78.53975
 
+```
+
+</details>
+
+#### Interfaces
+Interfaces define a contract for classes to follow. They describe the structure that classes must adhere to, including properties and methods.
+
+<details>
+<summary>Code snippet Interfaces</summary>
+
+```typescript
+
+// Define an interface for a shape
+interface Shape {
+    calculateArea(): number;
+}
+
+// Implement the interface for a Circle class
+class Circle implements Shape {
+    constructor(private radius: number) {}
+
+    // Implementing the method required by the Shape interface
+    calculateArea(): number {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+
+// Implement the interface for a Rectangle class
+class Rectangle implements Shape {
+    constructor(private width: number, private height: number) {}
+
+    // Implementing the method required by the Shape interface
+    calculateArea(): number {
+        return this.width * this.height;
+    }
+}
+
+// Create instances of Circle and Rectangle
+const circle = new Circle(5);
+const rectangle = new Rectangle(4, 6);
+
+// Calculate and display the areas
+console.log(circle.calculateArea()); // Output: 78.53981633974483
+console.log(rectangle.calculateArea()); // Output: 24
+```
+</details>
+
+#### Generics
+Generics allow you to create flexible, reusable functions and classes that work with any data type.
+
+<details>
+<summary>Code snippet Generics</summary>
+
+```typescript
+Copy code
+// Define a generic class Box that can hold any type of value
+class Box<T> {
+    private value: T;
+
+    constructor(value: T) {
+        this.value = value;
+    }
+
+    // Method to get the value
+    getValue(): T {
+        return this.value;
+    }
+}
+
+// Create instances of Box with different types
+const stringBox = new Box<string>("Hello");
+const numberBox = new Box<number>(123);
+
+// Get and display the values
+console.log(stringBox.getValue()); // Output: Hello
+console.log(numberBox.getValue()); // Output: 123
+```
+
+</details>
 #### UML
- ![UML](/src/web/wwwroot/public/assets/img/rooms/src_diagram.png)
+ ![UML](src_diagram.png)
 
-![UML](/src/web/wwwroot/public/assets/img/rooms/uml.png)
+
+(![uml](image-1.png))
+![uml](image.png)
  
 
 #### Bronnen:
@@ -158,5 +290,6 @@ Knowledge base
 * [Knowledgebase HBO-ICT Abstraction ](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/abstraction/#abstractie-abstraction)
 * [Knowledgebase HBO-ICT Encapsulation](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/encapsulation/#inkapseling-encapsulation)
 * [Knowledgebase HBO-ICT Inheritance](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/inheritance/#overerving-inheritance)
-* * [Knowledgebase HBO-ICT Abstract](https://www.typescriptlang.org/docs/handbook/2/classes.html#abstract-classes-and-members)
- 
+* [Knowledgebase HBO-ICT Abstract](https://www.typescriptlang.org/docs/handbook/2/classes.html#abstract-classes-and-members)
+* [Knowledgebase HBO-ICT polymorfisme](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/polymorfisme/)
+* [Knowledgebase HBO-ICT Pijlers van OOP](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/pijlers_van_oop/0_pijlers_van_oop/)

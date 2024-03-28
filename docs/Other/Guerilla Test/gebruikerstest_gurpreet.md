@@ -61,12 +61,12 @@ Gebruikersdoel: Oppakken van de boeken<br>
 
 #### persoon 1 - Wesley
 #### Resultaattabel
-|   #   |   Doel/User Story                        | Effectiviteit |   Efficientie        | Tevredenheid |
-|-------|------------------------------------------|---------------|----------------------|--------------|
-|       |   Wat moet je gebruiker kunnen bereiken? | Doel behaald? |   Tijd               |     /10      |
-|   1   |   Lamp aan en uit doen                      |   ja          |   5 sec             |     10/10      |
-|   2   |   Examine van boeken                  |   ja      |   50 sec             |     2/10      |
-|   3   |   Oppakken van de boeken                             |   ja     |   2 min 30 sec            |     8/10      |
+| #   | Doel/User Story                        | Effectiviteit | Efficientie  | Tevredenheid |
+| --- | -------------------------------------- | ------------- | ------------ | ------------ |
+|     | Wat moet je gebruiker kunnen bereiken? | Doel behaald? | Tijd         | /10          |
+| 1   | Lamp aan en uit doen                   | ja            | 5 sec        | 10/10        |
+| 2   | Examine van boeken                     | ja            | 50 sec       | 2/10         |
+| 3   | Oppakken van de boeken                 | ja            | 2 min 30 sec | 8/10         |
 
 
 
@@ -80,12 +80,12 @@ Gebruikersdoel: Oppakken van de boeken<br>
 
 #### persoon 2 - Jayson
 #### Resultaattabel
-|   #   |   Doel/User Story                        | Effectiviteit |   Efficientie        | Tevredenheid |
-|-------|------------------------------------------|---------------|----------------------|--------------|
-|       |   Wat moet je gebruiker kunnen bereiken? | Doel behaald? |   Tijd               |     /10      |
-|   1   |   Lamp aan en uit doen                                |   ja     |   10 sec            |     8/10      |
-|   2   |   Examine van boeken                              |   ja      |    30sec             |     9/10      |
-|   3   |   Oppakken van de boeken                                |   ja     |   30 sec            |     6/10      |
+| #   | Doel/User Story                        | Effectiviteit | Efficientie | Tevredenheid |
+| --- | -------------------------------------- | ------------- | ----------- | ------------ |
+|     | Wat moet je gebruiker kunnen bereiken? | Doel behaald? | Tijd        | /10          |
+| 1   | Lamp aan en uit doen                   | ja            | 10 sec      | 8/10         |
+| 2   | Examine van boeken                     | ja            | 30sec       | 9/10         |
+| 3   | Oppakken van de boeken                 | ja            | 30 sec      | 6/10         |
 
 
 
@@ -99,12 +99,12 @@ Gebruikersdoel: Oppakken van de boeken<br>
 
 #### persoon 3 - Alessio
 #### Resultaattabel
-|   #   |   Doel/User Story                        | Effectiviteit |   Efficientie        | Tevredenheid |
-|-------|------------------------------------------|---------------|----------------------|--------------|
-|       |   Wat moet je gebruiker kunnen bereiken? | Doel behaald? |   Tijd               |     /10      |
-|   1   |   Lamp aan en uit doen                                |   ja     |   10 sec            |     10/10      |
-|   2   |   Examine van boeken                              |   ja      |   10 sec             |     8/10      |
-|   3   |   Oppakken van de boeken                                |   ja     |   30 sec            |     10/10      |
+| #   | Doel/User Story                        | Effectiviteit | Efficientie | Tevredenheid |
+| --- | -------------------------------------- | ------------- | ----------- | ------------ |
+|     | Wat moet je gebruiker kunnen bereiken? | Doel behaald? | Tijd        | /10          |
+| 1   | Lamp aan en uit doen                   | ja            | 10 sec      | 10/10        |
+| 2   | Examine van boeken                     | ja            | 10 sec      | 8/10         |
+| 3   | Oppakken van de boeken                 | ja            | 30 sec      | 10/10        |
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
 - Text toevoegen dat je iets fout doet zodat de speler weet dat hij iets verkeerd doet.

@@ -21,7 +21,7 @@ export class LockedRoom extends Room {
     }
 
     public images(): string[] {
-        return ["MainHall_Room"];
+        return ["LockedRoom"];
     }
 
     public actions(): Action[] {

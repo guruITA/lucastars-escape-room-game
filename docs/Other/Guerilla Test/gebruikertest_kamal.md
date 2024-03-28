@@ -48,19 +48,20 @@ Gebruikersdoel: Als speler wil ik de gesloten kast openen
 
 #### Persoon 1 - Wesley
 ##### Resultaattabel
-|   #   |   Doel/User Story                              | Effectiviteit |   Efficientie   | Tevredenheid |
-|-------|------------------------------------------------|---------------|-----------------|--------------|
-|   1   |   Als speler wil ik het objects onderzoeken    |   -           |        -        |     -/10     |
-|   2   |   Als speler wil ik interacteren met het object|   -           |        -        |     -/10     |
-|   3   |   Als speler wil ik de gesloten kast openen    |   -           |        -        |     -/10     |
+| #   | Doel/User Story                               | Effectiviteit | Efficientie | Tevredenheid |
+| --- | --------------------------------------------- | ------------- | ----------- | ------------ |
+| 1   | Als speler wil ik het objects onderzoeken     | ja            | -           | 10/10        |
+| 2   | Als speler wil ik interacteren met het object | ja            | -           | 10/10        |
+| 3   | Als speler wil ik de gesloten kast openen     | ja            | -           | 10/10        |
 
 ##### Observaties
-- 
+- layout is verwarent aan het begin
 - 
 - 
 
 ##### Algemene feedback
--
+-layout is orginaal
+- cams met foto laten zien is duidelijk
 - 
 
 
