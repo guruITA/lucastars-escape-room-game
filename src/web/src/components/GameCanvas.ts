@@ -72,7 +72,7 @@ export class GameCanvas extends LitElement {
     /* CSS styles for the aside container */
     .aside {
         grid-column: 1;
-        background-image: url('/public/assets/img/rooms/ba.png');
+        background-image: url('/assets/img/rooms/ba.png');
         border: 1px solid #332c57;
         height: auto;
         position: relative;
@@ -138,7 +138,7 @@ export class GameCanvas extends LitElement {
     /* CSS styles for the footer section */
     .footer-section {
         grid-column: 1;
-        background-image: url('/public/assets/img/rooms/note1.png');
+        background-image: url('/assets/img/rooms/note1.png');
         display: flex;
         flex-direction: column;
         overflow-y: auto;

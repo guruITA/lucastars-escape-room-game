@@ -61,15 +61,21 @@ Gebruikersdoel: Als speler wil ik met de chest kunnen interacten en unlocken met
 |-------|------------------------------------------|---------------|----------------------|--------------|
 |       |   Wat moet je gebruiker kunnen bereiken? | Doel behaald? |   Tijd               |     /10      |
 |   1   |   Interact met objecten                  |   ja          |   20 sec             |     9/10     |
-|   2   |   Interact met de NPC's voor unieke dialogue |   ja          |   5  sec             |     8/10     |
-|   3   |   Interact met de chest en unlock het    |   ja          |   30 sec             |     10/10    |
+|   2   |   Interact met de NPC's voor unieke dialogue |   ja      |   30  sec            |     9/10     |
+|   3   |   Interact met de chest en unlock het    |   ja          |   3 min              |     10/10    |
 
 
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
-
+Thomas kon redelijk verward raken als ik hem geen richtlijn gaf
 
 #### Algemene feedback: 
+De battery stacked infinitely op als je het opnieuw mee interact.
+Het zag er heel netjes, de kladblok en notes zagen er leuk uit.
+Het is leuk dat je unieke images krijgt per examine.
+Tip om een image van de detective te laten zien als je met hem interact.
+UX/UI zag er echt leuk uit.
+
 
 #### persoon 1
 #### Resultaattabel
