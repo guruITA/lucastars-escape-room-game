@@ -44,7 +44,13 @@ export class MainRoom extends Room {
 
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is the entrance of the castle. Through here, you can enter rooms to solve the puzzle. Good luck!"]);
+        return new TextActionResult([
+            "[Detective]: Welcome to the main room, McCarthy. Our investigation begins here.",
+            "[Assistant]: Thank you, Detective. It's chilling to think what secrets these walls might hold.",
+            "[Detective]: Indeed. We must be thorough in our search. Let's start by examining every corner of this room for any clues.",
+            "[Assistant]: Agreed. I'll keep an eye out for anything out of the ordinary.",
+            "[Detective]: And remember, Manny, every detail could be crucial to solving this case. Let's proceed with caution."
+        ]);
     }
 
     public custom(alias: string): ActionResult | undefined {
