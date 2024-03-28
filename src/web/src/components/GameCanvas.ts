@@ -77,6 +77,7 @@ export class GameCanvas extends LitElement {
         height: auto;
         position: relative;
         background-size: cover;
+        max-height: calc(370px - 20px); 
     }
     
     /* CSS styles for the buttons in the aside */
@@ -88,7 +89,7 @@ export class GameCanvas extends LitElement {
     
     /* CSS styles for the general buttons in the aside */
     .aside .button {
-        background-color: #78757d;
+        background-color: #C89567;
         border: 1px solid #332c57;
         padding: 1px 1px;
         margin: 7px 9px 5px 9px;
@@ -103,7 +104,7 @@ export class GameCanvas extends LitElement {
     /* CSS styles for the active or hover state of buttons in the aside */
     .aside .button.active,
     .aside .buttons .object-button:hover {
-        background-color: #332c57;
+        background-color: #573A20;
     }
     
     /* CSS styles for the pin container in the aside */
@@ -127,12 +128,12 @@ export class GameCanvas extends LitElement {
         background-color: #78757d;
     }
     .aside .buttons .action-button {
-        background-color: #545357;
+        background-color:#A76C38;
         
     }
     .aside .button.active,
     .aside .buttons .action-button:hover {
-        background-color: #332c57;
+        background-color: #573A20;
     }
     
     /* CSS styles for the footer section */
@@ -141,15 +142,14 @@ export class GameCanvas extends LitElement {
         background-image: url('/assets/img/rooms/note1.png');
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
-        position: relative;
+        position: fixed;
         background-size: cover;
         color: black;
-        max-height: calc(100vh - 20px); 
-        width: auto;
-        height: 285px;
-        margin-left: -8px;
-        margin-top: -50px; 
+        max-height: calc(300px - 20px); 
+        height: 300px;
+        max-width: calc(330px);
+        margin-left: 0px;
+        margin-top: 360px; 
     }
     
     /* CSS styles for the footer section heading */
@@ -167,6 +167,7 @@ export class GameCanvas extends LitElement {
         margin-top: 15px;
         font-size: 14px;
     }
+ 
     
     /* CSS styles for the footer section list items */
     .footer-section li {
@@ -225,7 +226,7 @@ export class GameCanvas extends LitElement {
     
     /* CSS styles for the buttons in the footer */
     .footer-buttons button {
-        background-color: blue;
+        background-color: #A76C38;
         color: white;
     }
 
@@ -253,7 +254,7 @@ export class GameCanvas extends LitElement {
     }
     .footer-text {
         font-size: 15px;
-        color: red;
+        color: #AF2A28;
     }
     .footer-section textarea {
         width: 75%;
@@ -271,7 +272,35 @@ export class GameCanvas extends LitElement {
 
     
     }
+    
+    /* CSS styles for the footer section list */
+    .footer-section .Tasks {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        overflow-y: auto; /* Add overflow-y property to enable vertical scrollbar */
+        max-height: 150px; /* Adjust the max-height as needed */
+        padding-right: -1px; /* Add padding to accommodate scrollbar on the right */
+    }
 
+    /* CSS styles for the scrollbar */
+    .footer-section .Tasks::-webkit-scrollbar {
+        width: 10px; /* Set the width of the scrollbar */
+        height: 30px; /* Set the height of the scrollbar */
+    }
+
+    
+
+    /* CSS styles for the scrollbar thumb */
+    .footer-section .Tasks::-webkit-scrollbar-thumb {
+        background-color: #AF2A28; /* Set color of the scrollbar thumb */
+        border-radius: 10px; /* Set border radius of the scrollbar thumb */
+    }
+        
+  
+    
+    
+   
     
     `;
 
@@ -312,7 +341,7 @@ export class GameCanvas extends LitElement {
 
         this.miniGame = state.miniGame;
         this.codeToCheck = state.codeToCheck;
-        
+
 
         // Reset pin variables if unlock code mini game is not enabled
         if (!this.unlockCodeMiniGameEnabled) {
@@ -396,7 +425,7 @@ export class GameCanvas extends LitElement {
             this.resetFooter();
             this.updateState(state);
             this.contentText = ["Welcome to 'City of Shadows: McCarthy's Confrontation'!",
-            " You, William McCarthy, are the dedicated assistant to Detective John Manny, embarking on a thrilling adventure in the wintry New York of 1932. Your mission? Unravel the mystery of a relentless serial killer terrorizing the city. In each room, you must uncover a digit crucial to accessing the secret chamber where justice awaits. With Detective Manny by your side, can you crack the code and reveal the truth?"];
+                " You, William McCarthy, are the dedicated assistant to Detective John Manny, embarking on a thrilling adventure in the wintry New York of 1932. Your mission? Unravel the mystery of a relentless serial killer terrorizing the city. In each room, you must uncover a digit crucial to accessing the secret chamber where justice awaits. With Detective Manny by your side, can you crack the code and reveal the truth?"];
 
             console.log("Reset successful.");
         } else {
@@ -534,13 +563,32 @@ export class GameCanvas extends LitElement {
                 <h3 @click=${this.toggleTasksVisibility}>Tasks</h3>
                 <span class="arrow ${this.tasksVisible ? "up" : "down"}" @click=${this.toggleTasksVisibility}></span>
             </div>
+            <li class="Tasks">
             <ul style=${this.tasksVisible ? "" : "display: none;"}>
+                <h4> _ _ _ _ _ _ _Main Room _ _ _ _ _ _ _</h4>
                 <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
-                <li><input type="checkbox" id="task2" /><label for="task2">Examine Cams</label></li>
-                <li><input type="checkbox" id="task3" /><label for="task3">Examine BluePrint</label></li>
-                <li><input type="checkbox" id="task1" /><label for="task4">Examine Sticky note</label></li>
-                <li><input type="checkbox" id="task2" /><label for="task5">Examine locked cabinet</label></li>
-                <li><input type="checkbox" id="task3" /><label for="task6">Talk to Detective if Hints are needed</label></li>
+                <li><input type="checkbox" id="task2" /><label for="task2">Explore the Bedroom</label></li>
+                <li><input type="checkbox" id="task3" /><label for="task3">Explore the Library</label></li>
+                <li><input type="checkbox" id="task4" /><label for="task4">Explore the Locked Room</label></li>
+                <li><input type="checkbox" id="task5" /><label for="task5">Search for the scattered pin-code</label></li>
+                <h4> _ _ _ _ _ Control Room⚙️ _ _ _ _ _ </h4>
+                <li><input type="checkbox" id="task6" /><label for="task6">Explore the control room</label></li>
+                <li><input type="checkbox" id="task7" /><label for="task7">Examine Cams</label></li>
+                <li><input type="checkbox" id="task8" /><label for="task8">Ask Detective for help</label></li>
+                <li><input type="checkbox" id="task9" /><label for="task9">Examine Sticky note</label></li>
+                <li><input type="checkbox" id="task10" /><label for="task10">Examine locked cabinet</label></li>
+                <h4> _ _ _ _ _ _ _Library _ _ _ _ _ _ _</h4>
+                <li><input type="checkbox" id="task11" /><label for="task11">Explore the control room</label></li>
+                <li><input type="checkbox" id="task12" /><label for="task12">Examine Cams</label></li>
+                <li><input type="checkbox" id="task13" /><label for="task13">Examine BluePrint</label></li>
+                <li><input type="checkbox" id="task14" /><label for="task14">Examine Sticky note</label></li>
+                <li><input type="checkbox" id="task15" /><label for="task15">Examine locked cabinet</label></li>
+                <h4>_ _ _ _ _ _ _  Bedroom _ _ _ _ _ _ _ </h4>
+                <li><input type="checkbox" id="task16" /><label for="task16">Explore the control room</label></li>
+                <li><input type="checkbox" id="task17" /><label for="task17">Examine Cams</label></li>
+                <li><input type="checkbox" id="task18" /><label for="task18">Examine BluePrint</label></li>
+                <li><input type="checkbox" id="task19" /><label for="task19">Examine Sticky note</label></li>
+                <li><input type="checkbox" id="task20" /><label for="task20">Examine locked cabinet</label></li>
             </ul>
             ${!this.tasksVisible ? html`
                     <textarea 
@@ -608,7 +656,7 @@ export class GameCanvas extends LitElement {
 
 
     private handleClickCodeOK(): void {
-        if (this.codeSoFar === this.codeToCheck) { 
+        if (this.codeSoFar === this.codeToCheck) {
             console.log("Correct code entered.");
             this.isCodeCorrect = true;
         } else {
@@ -618,7 +666,7 @@ export class GameCanvas extends LitElement {
         this.codeAttempted = true;
         this.requestUpdate();
     }
-    
+
     // Getter method to check if unlock code mini game is enabled
     private get unlockCodeMiniGameEnabled(): boolean {
         return this.miniGame === "unlock-code";
