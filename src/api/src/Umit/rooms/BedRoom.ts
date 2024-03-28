@@ -16,6 +16,7 @@ import { BedObject } from "../Objects/BedObject";
 import { ChestObject } from "../Objects/ChestObject";
 import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
 import { ClockObject } from "../Objects/ClockObject";
+import { PaintingObject } from "../Objects/PaintingObject";
 // import { ChestObject } from "../Objects/ChestObject";
 // import { ClockObject } from "../Objects/ClockObject";
 
@@ -45,7 +46,7 @@ export class BedRoom extends Room {
             objects.push(new FlashlightItem());
             
         }   
-        objects.push(new BedObject(), new JohnCharacter(), new ChestObject(), new ClockObject);
+        objects.push(new BedObject(), new JohnCharacter(), new ChestObject(), new ClockObject(), new PaintingObject());
 
         // objects.push(new ChestObject());
         // objects.push(new ClockObject());

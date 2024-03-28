@@ -28,6 +28,7 @@ export class ClockObject extends Item implements Examine, Interact {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (!playerSession.pickedUpBattery1 && playerSession.pickedUpFlashlight){
+            playerSession.pickedUpBattery1 = true;
             playerSession.inventory.push(Battery1ItemAlias);
         return new TextActionResult(["..!!", "After fidgeting with the clock I noticed there was something shiny stuck inside of it... A battery?? Neat, this is perfect!","[Will]: ?.. Ahh, got it..", "[John]: Noticed something, ain'cha?", "[Will]: That's right, across this battery, someone carved the number 1 across it in latin.. Meaning there is another one hidden somewhere around here.", "[John]: Great eye, Will. We're a step closer."]);
     }

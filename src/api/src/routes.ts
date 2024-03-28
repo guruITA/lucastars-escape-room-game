@@ -145,6 +145,9 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
 
         case InteractActionAlias:
             return InteractAction.handle(gameObjects[0]);
+        
+        // case ExamineCloseActionAlias:
+        //     return ExamineCloseAction.handle(gameObjects[0]);
     }
 
     // Handle custom actions

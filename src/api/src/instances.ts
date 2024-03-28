@@ -31,6 +31,7 @@ import { ChestObject, ChestObjectAlias } from "./Umit/Objects/ChestObject";
 import { Battery1Item, Battery1ItemAlias } from "./Umit/items/Battery1";
 import { Battery2Item, Battery2ItemAlias } from "./Umit/items/Battery2";
 import { ClockObject, ClockObjectAlias } from "./Umit/Objects/ClockObject";
+import { PaintingObject, PaintingObjectAlias } from "./Umit/Objects/PaintingObject";
 
 
 /**
@@ -134,7 +135,7 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case BookThreeAlias:
             return new BookThree();
 
-        case Book4ItemAlias:
+        case Book4ItemAlias:   
             return new Book4Item();
 
         case BookCaseAlias:
@@ -190,6 +191,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case BedObjectAlias:
             return new BedObject();
+        
+        case PaintingObjectAlias:
+            return new PaintingObject();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

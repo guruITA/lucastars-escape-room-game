@@ -28,11 +28,14 @@ export class BedObject extends Item implements Examine, Interact {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (!playerSession.pickedUpBook4 && playerSession.pickedUpFlashlight && playerSession.pickedUpBattery1 && !playerSession.pickedUpBattery2){
+            playerSession.pickedUpBattery1 = true;
             return new TextActionResult(["*Click, click*","No dice.. It's still out of juice, maybe if I got a second battery somewhere around here..!"]);
         }
         if (!playerSession.pickedUpBook4 && playerSession.pickedUpFlashlight && playerSession.pickedUpBattery1 && playerSession.pickedUpBattery2){
             playerSession.inventory.push(Book4ItemAlias);
-
+            playerSession.pickedUpFlashlight = true;
+            playerSession.pickedUpBattery1 = true;
+            playerSession.pickedUpBattery2 = true;
             return new TextActionResult(["Now that the flashlight's charged let's see if I can look under here..","*Click*","..!! There is a book..! Inside of it is a code, but what does this mean..?"]);
         }
         else{
