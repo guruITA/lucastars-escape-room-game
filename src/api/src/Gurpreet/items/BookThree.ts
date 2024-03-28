@@ -61,7 +61,7 @@ export class BookThree extends Item implements Examine, Pickup, Talk {
                 "[Assistant]: Detective, I found something in book 3! There's a number written inside: number 4",
                 "[Detective]: Let me see that. Hmm, number 4, you say? Interesting. This might be a clue. Let's keep it in mind as we continue our investigation."
             ], // Text displayed to the player
-            ["book1"] // Image displayed of book one to the player
+            ["book3"] // Image displayed of book one to the player
         );
 
     }
