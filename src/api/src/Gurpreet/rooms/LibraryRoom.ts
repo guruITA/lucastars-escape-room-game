@@ -155,7 +155,7 @@ export class LibraryRoom extends Room implements Examine {
             playerSession.inventory.includes(BookTwoAlias) &&
             playerSession.inventory.includes(BookThreeAlias)
         );
-
+        // playerSession.inventory.includes(Book4ItemAlias)
     }
 
 

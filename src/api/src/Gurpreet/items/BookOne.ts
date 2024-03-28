@@ -92,9 +92,6 @@ export class BookOne extends Item implements Examine, Pickup, Talk {
 
             }
 
-            console.log(playerSession.pickedUpAllBooks);
-
-
             if (playerSession.pickedUpAllBooks) {
                 return new TextActionResult([
                     "[Assistant]: Detective, I've found something behind the books! There's a locked cabinet here.",

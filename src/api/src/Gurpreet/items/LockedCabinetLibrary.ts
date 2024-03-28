@@ -1,5 +1,6 @@
 // This import is for handling different types of action results.
 import { ActionResult } from "../../base/actionResults/ActionResult";
+import { ExamineActionResult } from "../../base/actionResults/ExamineActionResult";
 import { ExamineCodeActionResult } from "../../base/actionResults/ExamineCodeActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 
@@ -9,6 +10,8 @@ import { Talk, TalkActionAlias } from "../../base/actions/TalkAction";
 
 // This import is for the base class representing game items.
 import { Item } from "../../base/gameObjects/Item";
+import { getPlayerSession } from "../../instances";
+import { PlayerSession } from "../../types";
 
 
 
@@ -44,13 +47,31 @@ export class LockedCabinetLibrary extends Item implements Examine, Talk {
      * @returns An action result for examining the Locked Cabinet
      */
     public examine(): ActionResult | undefined {
-        return new ExamineCodeActionResult(
-            [
-                "[Assistant]: Detective, remember those numbers we found in the books earlier? Maybe they're the code for this locked cabinet.",
-                "[Detective]: Hmm, it's worth a shot. Go ahead and try it, Assistant. You might be onto something."
+
+        // Retrieve the player session
+        const playerSession: PlayerSession = getPlayerSession();
+
+        if (playerSession.pickedUpBookOne && playerSession.pickedUpBookTwo && playerSession.pickedUpBookThree && playerSession.pickedUpBook4) {
+
+            return new ExamineCodeActionResult(
+                [
+                    "[Assistant]: Detective, remember those numbers we found in the books earlier? Maybe they're the code for this locked cabinet.",
+                    "[Detective]: Hmm, it's worth a shot. Go ahead and try it, Assistant. You might be onto something."
+                ], // Text displayed to the player
+                ["locked-cabinet"] // Image displayed of locked cabinet to the player
+            );
+
+        } else {
+
+            return new ExamineActionResult([
+                "[Detective]: Assistant, it seems we're missing a crucial piece of the puzzle. Without that missing book, we won't be able to unlock the four-digit code for the locked cabinet.",
+                "[Assistant]: I'll search every inch of this castle until I find it, Detective. There must be a clue somewhere.",
+                "[Detective]: That's the spirit, Assistant. Trust your instincts and leave no stone unturned. I have faith that you'll find the missing book so we can open this locked cabinet."
             ], // Text displayed to the player
-            ["locked-cabinet"] // Image displayed of locked cabinet to the player
-        );
+                ["locked-cabinet"] // Image displayed of locked cabinet to the player);
+
+            );
+        }
     }
 
 

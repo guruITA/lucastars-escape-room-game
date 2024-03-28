@@ -34,7 +34,7 @@ export class Book4Item extends Item implements Examine {
      }
 
     public name(): string {
-        return "Book4";
+        return "Book 4";
     }
 
 }
