@@ -206,6 +206,9 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
 
     // Update miniGame field and code based on the current room
     if (actionResult instanceof ExamineCodeActionResult) {
+
+        images = [...room.images(), ...actionResult.images];
+
         if (room.alias === "Control-room") {
             miniGame = "unlock-code";
             codeToCheck = controlRoomCode;
