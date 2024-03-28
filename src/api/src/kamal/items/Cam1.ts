@@ -15,7 +15,7 @@ export class Cam1Item extends Item implements Examine {
     }
 
     public examine(): ActionResult | undefined {
-        return new ExamineActionResult(["You examine Cam1. Perhaps you see something interesting..."], ["library_room1"]);
+        return new ExamineActionResult(["You examine Cam1. Perhaps you see something interesting..."], ["libraryHint"]);
     }
 
 }
