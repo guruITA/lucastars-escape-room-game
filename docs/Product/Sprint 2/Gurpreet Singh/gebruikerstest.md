@@ -75,7 +75,7 @@ Gebruikersdoel: Als speler wil ik de boeken kunnen oppakken<br>
 - Doodat de layout(gamecanvas) anders eruit ziet dan wat we hebben gekregen, moest hij even nadenken waar alles zat knoppen bijvoorbeeld. Hij was onder de indruk dat we de layout hadden aangepast
 - De foto's van de boeken missen als je examineert maar text is wel zichtbaar, had ik ook bij vorige gebruikertest gekregen maar toen had ik ook geen tekst
 - Ik zag aan zijn blik dat hij onder de indruk was van wat ik in mijn kamer en als layout had
-- Doordat hij niet las heb 
+- Doordat hij niet las heb ik heb ik hem na de test uitgelegd wat de verhaal was en laten zien wat eigenlijk de doel was in mijn room
 <br/>
 
 ### bronnen
