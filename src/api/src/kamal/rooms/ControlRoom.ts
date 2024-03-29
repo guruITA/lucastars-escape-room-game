@@ -10,12 +10,10 @@ import { BluePrintItem } from "../items/BluePrint";
 import { Cam1Item } from "../items/Cam1";
 import { Cam2Item } from "../items/Cam2";
 import { Cam3Item } from "../items/Cam3";
-import { PlayerSession } from "../../types";
 import { TalkAction } from "../../base/actions/TalkAction";
 import { LockedCabinetItem } from "../items/Locked_Cabinet";
 import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
 import { CustomAction } from "../../base/actions/CustomAction";
-import { Book4Item, Book4ItemAlias } from "../../Umit/items/Book4";
 
 
 export const ControlRoomAlias: string = "Control-room";
@@ -43,7 +41,7 @@ export class ControlRoom extends Room {
     }
 
     public objects(): GameObject[] {
-        const playerSession: PlayerSession = getPlayerSession();
+        
         const objects: GameObject[] = [this];
 
         
@@ -57,9 +55,7 @@ export class ControlRoom extends Room {
             new LockedCabinetItem(),
         );
         
-        if (playerSession.inventory.includes(Book4ItemAlias)){
-            objects.push(new Book4Item());
-        }
+   
         return objects;
     }
 
