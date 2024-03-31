@@ -3,7 +3,7 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Action } from "../../base/actions/Action";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
-import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
+import { getPlayerSession } from "../../instances";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { LockedRoomItem } from "../rooms/lockedRoom1";
 import { ExamineAction } from "../../base/actions/ExamineAction";
@@ -32,9 +32,8 @@ export class LockedRoom extends Room {
     }
 
     public objects(): GameObject[] {
-        const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new LockedRoomItem()];
+        return [this, new LockedRoomItem()];
     }
 
 

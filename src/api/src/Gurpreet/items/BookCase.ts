@@ -42,7 +42,7 @@ export class BookCase extends Item implements Examine, Talk {
      */
     public name(): string {
 
-        return "Book case";
+        return "Book case🗄️";
 
     }
 

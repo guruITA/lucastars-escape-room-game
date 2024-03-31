@@ -47,7 +47,7 @@ export class BookOne extends Item implements Examine, Pickup, Talk {
      */
     public name(): string {
 
-        return "Book 1";
+        return "Book 1📖";
 
     }
 

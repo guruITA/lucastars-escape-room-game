@@ -489,7 +489,7 @@ export class GameCanvas extends LitElement {
                 ${this.contentText?.map((text) => html`<p>${text}</p>`)}
                 ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
                 ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "Library room" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
+                ${this.isCodeCorrect && this.roomTitle === "Library room📚" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
                 ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
                 ${this.isCodeCorrect && this.roomTitle === "LockedRoom" ? html`<p>Good job</p>` : nothing}
                 ${this.isCodeCorrect && this.roomTitle === "Bedroom" ? html`<p>Good job, the last number of the secret room is 7</p>` : nothing}
@@ -565,24 +565,24 @@ export class GameCanvas extends LitElement {
             </div>
             <li class="Tasks">
             <ul style=${this.tasksVisible ? "" : "display: none;"}>
-                <h4> _ _ _ _ _ _ _Main Room _ _ _ _ _ _ _</h4>
+                <h4> _ _ _ _ _ _ _Main Room🏛️_ _ _ _ _ _ _</h4>
                 <li><input type="checkbox" id="task1" /><label for="task1">Explore the control room</label></li>
                 <li><input type="checkbox" id="task2" /><label for="task2">Explore the Bedroom</label></li>
                 <li><input type="checkbox" id="task3" /><label for="task3">Explore the Library</label></li>
                 <li><input type="checkbox" id="task4" /><label for="task4">Explore the Locked Room</label></li>
-                <li><input type="checkbox" id="task5" /><label for="task5">Search for the scattered pin-code</label></li>
+                <li><input type="checkbox" id="task5" /><label for="task5">Look for scattered pin-code</label></li>
                 <h4> _ _ _ _ _ Control Room⚙️ _ _ _ _ _ </h4>
                 <li><input type="checkbox" id="task6" /><label for="task6">Explore the control room</label></li>
                 <li><input type="checkbox" id="task7" /><label for="task7">Examine Cams</label></li>
                 <li><input type="checkbox" id="task8" /><label for="task8">Ask Detective for help</label></li>
                 <li><input type="checkbox" id="task9" /><label for="task9">Examine Sticky note</label></li>
                 <li><input type="checkbox" id="task10" /><label for="task10">Examine locked cabinet</label></li>
-                <h4> _ _ _ _ _ _ _Library _ _ _ _ _ _ _</h4>
-                <li><input type="checkbox" id="task11" /><label for="task11">Explore the control room</label></li>
-                <li><input type="checkbox" id="task12" /><label for="task12">Examine Cams</label></li>
-                <li><input type="checkbox" id="task13" /><label for="task13">Examine BluePrint</label></li>
-                <li><input type="checkbox" id="task14" /><label for="task14">Examine Sticky note</label></li>
-                <li><input type="checkbox" id="task15" /><label for="task15">Examine locked cabinet</label></li>
+                <h4> _ _ _ _ _ _ _Library📚_ _ _ _ _ _ _</h4>
+                <li><input type="checkbox" id="task11" /><label for="task11">Examine Lamp</label></li>
+                <li><input type="checkbox" id="task12" /><label for="task12">Examine BookCase</label></li>
+                <li><input type="checkbox" id="task13" /><label for="task13">Talk to Detective</label></li>
+                <li><input type="checkbox" id="task14" /><label for="task14">Pickup Books</label></li>
+                <li><input type="checkbox" id="task15" /><label for="task15">Examine Locked cabinet</label></li>
                 <h4>_ _ _ _ _ _ _  Bedroom _ _ _ _ _ _ _ </h4>
                 <li><input type="checkbox" id="task16" /><label for="task16">Explore the control room</label></li>
                 <li><input type="checkbox" id="task17" /><label for="task17">Examine Cams</label></li>

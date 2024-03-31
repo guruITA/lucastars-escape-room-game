@@ -5,13 +5,11 @@ import { Action } from "../../base/actions/Action";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
 import { DetectiveCharacterControlRoom } from "../characters/DetectiveCharacterControlRoom";
-import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
-import { StickyNoteItem, StickyNoteItemAlias } from "../items/StickyNote";
+import { getPlayerSession } from "../../instances";
 import { BluePrintItem } from "../items/BluePrint";
 import { Cam1Item } from "../items/Cam1";
 import { Cam2Item } from "../items/Cam2";
 import { Cam3Item } from "../items/Cam3";
-import { PlayerSession } from "../../types";
 import { TalkAction } from "../../base/actions/TalkAction";
 import { LockedCabinetItem } from "../items/Locked_Cabinet";
 import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
@@ -43,14 +41,12 @@ export class ControlRoom extends Room {
     }
 
     public objects(): GameObject[] {
-        const playerSession: PlayerSession = getPlayerSession();
-        const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
+        
+        const objects: GameObject[] = [this];
 
-        if (!playerSession.inventory.includes(StickyNoteItemAlias)){
-            objects.push(new StickyNoteItem());
-        }
         
         objects.push( 
+    
             new DetectiveCharacterControlRoom(),  
             new BluePrintItem(), 
             new Cam1Item(),
@@ -58,7 +54,8 @@ export class ControlRoom extends Room {
             new Cam3Item(),
             new LockedCabinetItem(),
         );
-
+        
+   
         return objects;
     }
 

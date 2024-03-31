@@ -20,7 +20,7 @@ export class MainRoom extends Room {
     }
 
     public name(): string {
-        return "Main room";
+        return "Main room🏛️";
     }
 
     public images(): string[] {

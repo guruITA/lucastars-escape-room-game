@@ -24,7 +24,7 @@ import { Room } from "../../base/gameObjects/Room";
 import { DetectiveCharacterLibrary } from "../characters/DetectiveCharacterLibrary";
 
 // These imports are for getting player session data and game objects from inventory.
-import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
+import { getPlayerSession } from "../../instances";
 
 // This import is for the BookCase class.
 import { BookCase } from "../items/BookCase";
@@ -40,6 +40,7 @@ import { LockedCabinetLibrary } from "../items/LockedCabinetLibrary";
 import { PlayerSession } from "../../types";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
+import { Book4ItemAlias, Book4Item } from "../../Umit/items/Book4";
 
 
 
@@ -71,7 +72,7 @@ export class LibraryRoom extends Room implements Examine {
      * @returns The name of the room
      */
     public name(): string {
-        return "Library room";
+        return "Library room📚";
     }
 
 
@@ -166,7 +167,7 @@ export class LibraryRoom extends Room implements Examine {
     public objects(): GameObject[] {
 
         const playerSession: PlayerSession = getPlayerSession(); // This retrieves the player session
-        const objects: GameObject[] = [this, ...getGameObjectsFromInventory()]; // Initializing objects array with the room and inventory items
+        const objects: GameObject[] = [this]; // Initializing objects array with the room and inventory items
         const bookCase: BookCase = new BookCase(); // Creating a new BookCase object
         const lamp: Lamp = new Lamp(); // Creating a new Lamp object
 
@@ -207,6 +208,7 @@ export class LibraryRoom extends Room implements Examine {
                     objects.push(new LockedCabinetLibrary);
 
                 }
+                
 
             }
 
@@ -219,6 +221,21 @@ export class LibraryRoom extends Room implements Examine {
             objects.push(lamp, new DetectiveCharacterLibrary());
 
         }
+        
+        if (playerSession.inventory.includes(BookOneAlias)){
+            objects.push(new BookOne());
+        }
+        if (playerSession.inventory.includes(BookTwoAlias)){
+            objects.push(new BookTwo());
+        }
+        if (playerSession.inventory.includes(BookThreeAlias)){
+            objects.push(new BookThree());
+        }
+        if (playerSession.inventory.includes(Book4ItemAlias)){
+            objects.push(new Book4Item());
+        }
+        
+        
 
         // Returning the final array of game objects
         return objects;

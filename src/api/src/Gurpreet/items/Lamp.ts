@@ -42,7 +42,7 @@ export class Lamp extends Item implements Examine, Talk {
      */
     public name(): string {
 
-        return "Lamp";
+        return "Lamp💡";
 
     }
 

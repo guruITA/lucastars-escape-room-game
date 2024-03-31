@@ -40,7 +40,7 @@ export class DetectiveCharacterLibrary extends Character implements Examine, Tal
      */
     public name(): string {
 
-        return "Detective William McCarthy";
+        return "Detective John🕵️";
 
     }
 

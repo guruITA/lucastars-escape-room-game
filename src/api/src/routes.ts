@@ -203,7 +203,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
 
     const controlRoomCode: string = "1234";
     const libraryRoomCode: string = "3241";
-    const LockedRoomCode: string = "2222";
+    const LockedRoomCode: string = "527";
     const chestCode: string = "1865";
 
 

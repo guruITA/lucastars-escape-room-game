@@ -46,7 +46,7 @@ export class BookThree extends Item implements Examine, Pickup, Talk {
      * @returns The name of BookThree
      */
     public name(): string {
-        return "Book 3";
+        return "Book 3📖";
     }
 
 
