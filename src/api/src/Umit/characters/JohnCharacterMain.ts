@@ -24,7 +24,17 @@ export class JohnMainCharacter extends Character implements Talk {
         return new TextActionResult(["It's John."]);
     }
 
+    public resetChoices(): void{
+        const playerSession: PlayerSession = getPlayerSession();
+        playerSession.mainroomDialogue1 = false;
+        playerSession.mainroomDialogue2 = false;
+        playerSession.mainroomDialogue3 = false;
+        playerSession.mainroomDialogue4 = false;
+        playerSession.mainroomDialogue5 = false;
+    }
+
     public talk(_choiceId?: number): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
         const askAdvice: string = `
         [John]: "Very well then, what do you wish to revisit?"
         `;
@@ -114,14 +124,14 @@ export class JohnMainCharacter extends Character implements Talk {
         <
         [John]: "Suit yourself."
         `;
-         const playerSession: PlayerSession = getPlayerSession();
+
 
          function getChoices(): TalkChoiceAction[] {
             const options: TalkChoiceAction[] = [];
             //  if (!playerSession.mainroomAdvice) {
             //     options.push(new TalkChoiceAction(0, "Ask for Advice"));
             // }
-            if (!playerSession.mainroomDialogue1 && playerSession.mainroomAdvice) {
+            if (!playerSession.mainroomDialogue1 ) {
                 options.push(new TalkChoiceAction(1, "[ EXAMINE ]"));
             }
             if (!playerSession.mainroomDialogue2) {
@@ -144,26 +154,27 @@ export class JohnMainCharacter extends Character implements Talk {
         getChoices();
     
         if (_choiceId === 1) {
-            // playerSession.mainroomDialogue1 = true;
+            playerSession.mainroomDialogue1 = true;
             return new TalkActionResult(this, [askExamine], [...getChoices()]);
         } else if (_choiceId === 2) {
-            // playerSession.mainroomDialogue2 = true;
+            playerSession.mainroomDialogue2 = true;
             return new TalkActionResult(this, [askTalk], [...getChoices()]);
         } else if (_choiceId === 3) {
-            // playerSession.mainroomDialogue3 = true;
+            playerSession.mainroomDialogue3 = true;
             return new TalkActionResult(this, [askPickUp], [...getChoices()]);
         } else if (_choiceId === 4) {
-            // playerSession.mainroomDialogue4 = true;
+            playerSession.mainroomDialogue4 = true;
             return new TalkActionResult(this, [askInteract], [...getChoices()]);
         } else if (_choiceId === 5) {
-            // playerSession.mainroomDialogue5 = true;
+            playerSession.mainroomDialogue5 = true;
             return new TalkActionResult(this, [askInspect], [...getChoices()]);
         } else if (_choiceId === 6) {
             // playerSession.exitDialogue = true;
+            this.resetChoices();
             return new TextActionResult([leaveDialogue]);
         }
         if (!getChoices){
-            return new TextActionResult(["You've got all the tips I've given to you."]);
+            return new TextActionResult([]);
         }
         
         return new TalkActionResult(this, [askAdvice], [...getChoices()]);
