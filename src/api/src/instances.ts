@@ -22,7 +22,7 @@ import { LockedCabinetLibrary, LockedCabinetLibraryAlias } from "./Gurpreet/item
 import { MainRoom, MainRoomAlias } from "./Gurpreet_1/rooms/MainRoom";
 import { LockedRoom, LockedRoomAlias } from "./kamal_1/rooms/LockedRoom";
 import { LockedRoomItem, LockedRoomItemAlias } from "./kamal_1/rooms/lockedRoom1";
-import { JohnCharacter, JohnCharacterAlias } from "./Umit/characters/JohnCharacter";
+import { JohnCharacter, JohnCharacterAlias } from "./Umit/characters/JohnCharacterBed";
 import { FlashLightItemAlias, FlashlightItem } from "./Umit/items/Flashlight";
 import { BedRoom, BedRoomAlias } from "./Umit/rooms/BedRoom";
 import { Book4Item, Book4ItemAlias } from "./Umit/items/Book4";
@@ -32,6 +32,7 @@ import { Battery1Item, Battery1ItemAlias } from "./Umit/items/Battery1";
 import { Battery2Item, Battery2ItemAlias } from "./Umit/items/Battery2";
 import { ClockObject, ClockObjectAlias } from "./Umit/Objects/ClockObject";
 import { PaintingObject, PaintingObjectAlias } from "./Umit/Objects/PaintingObject";
+import { JohnMainCharacter, JohnMainCharacterAlias } from "./Umit/characters/JohnCharacterMain";
 
 
 /**
@@ -54,6 +55,13 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpBook4: false,
         pickedUpBattery1: false,
         pickedUpBattery2: false,
+        mainroomAdvice: false,
+        mainroomDialogue1: false,
+        mainroomDialogue2: false,
+        mainroomDialogue3: false,
+        mainroomDialogue4: false,
+        mainroomDialogue5: false,
+        exitDialogue: false,
     };
 }
 
@@ -170,6 +178,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case JohnCharacterAlias:
             return new JohnCharacter();
+
+        case JohnMainCharacterAlias:
+            return new JohnMainCharacter();
 
         case FlashLightItemAlias:
             return new FlashlightItem();

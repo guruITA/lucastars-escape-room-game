@@ -7,7 +7,7 @@ import { ExamineAction } from "../../base/actions/ExamineAction";
 import { TalkAction } from "../../base/actions/TalkAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
-import { JohnCharacter } from "../characters/JohnCharacter";
+import { JohnCharacter } from "../characters/JohnCharacterBed";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { FlashLightItemAlias, FlashlightItem } from "../items/Flashlight";
 import { PlayerSession } from "../../types";

@@ -16,7 +16,7 @@ export class StartupRoom extends Room {
     }
 
     public name(): string {
-        return "Twilight Quest: The Hunt for the Serial Menace";
+        return "City of Shadows: McCarthy's Confrontation";
     }
 
     public images(): string[] {

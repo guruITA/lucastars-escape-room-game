@@ -12,4 +12,11 @@ export type PlayerSession = {
     pickedUpBattery1: boolean;
     pickedUpBattery2: boolean;
     pickedUpBook4: boolean;
+    mainroomAdvice: boolean;
+    mainroomDialogue1: boolean;
+    mainroomDialogue2: boolean;
+    mainroomDialogue3: boolean;
+    mainroomDialogue4: boolean;
+    mainroomDialogue5: boolean;
+    exitDialogue: boolean;
 };

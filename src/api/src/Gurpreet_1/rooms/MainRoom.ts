@@ -9,7 +9,8 @@ import { CustomAction } from "../../base/actions/CustomAction";
 import { ControlRoom } from "../../kamal/rooms/ControlRoom";
 import { LockedRoom } from "../../kamal_1/rooms/LockedRoom";
 import { BedRoom } from "../../Umit/rooms/BedRoom";
-
+import { TalkAction } from "../../base/actions/TalkAction";
+import { JohnMainCharacter } from "../../Umit/characters/JohnCharacterMain";
 
 export const MainRoomAlias: string = "main-room";
 
@@ -31,25 +32,29 @@ export class MainRoom extends Room {
             new CustomAction("library-room", "Library↜", false),
             new CustomAction("control-room", "Control Room↜", false),
             new CustomAction("LockedRoom", "LockedRoom↜", false),
-            new CustomAction("Bedroom", "Bedroom↜", false)
-
+            new CustomAction("Bedroom", "Bedroom↜", false),
+            new TalkAction()
         ];
+
     }
 
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems];
+        return [this, ...inventoryItems, new JohnMainCharacter()];
     }
 
 
     public examine(): ActionResult | undefined {
         return new TextActionResult([
-            "[Detective]: Welcome to the main room, McCarthy. Our investigation begins here.",
-            "[Assistant]: Thank you, Detective. It's chilling to think what secrets these walls might hold.",
-            "[Detective]: Indeed. We must be thorough in our search. Let's start by examining every corner of this room for any clues.",
-            "[Assistant]: Agreed. I'll keep an eye out for anything out of the ordinary.",
-            "[Detective]: And remember, Manny, every detail could be crucial to solving this case. Let's proceed with caution."
+            "[John]: Seems we've entered the main hall, Will. Our investigation begins here.",
+            "[Will]: About time, let's hope that anonymous tip didn't lead us to another red herring... It's chilling to think what secrets these walls might hold.",
+            "[John]: Indeed. We must be thorough in our search. Let us begin.",
+            "[Will]: Sounds good, I'll try my best, where do I even begin?",
+            "[John]: Before you start have you already mastered the basics?",
+            "[Will]: I believe I have..?",
+            "[John]: Mmm, I'll take your word for it, but if you're confused with certain actions feel free to use [ TALK ] for a refresh course.",
+            "[Will]: Thanks John, appreciate it."
         ]);
     }
 
