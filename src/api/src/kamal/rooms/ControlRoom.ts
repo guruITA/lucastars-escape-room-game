@@ -6,7 +6,6 @@ import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
 import { DetectiveCharacterControlRoom } from "../characters/DetectiveCharacterControlRoom";
 import { getPlayerSession } from "../../instances";
-import { BluePrintItem } from "../items/BluePrint";
 import { Cam1Item } from "../items/Cam1";
 import { Cam2Item } from "../items/Cam2";
 import { Cam3Item } from "../items/Cam3";
@@ -48,7 +47,6 @@ export class ControlRoom extends Room {
         objects.push( 
     
             new DetectiveCharacterControlRoom(),  
-            new BluePrintItem(), 
             new Cam1Item(),
             new Cam2Item(),
             new Cam3Item(),
