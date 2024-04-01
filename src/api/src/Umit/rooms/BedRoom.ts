@@ -39,14 +39,15 @@ export class BedRoom extends Room {
 
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();
+        const objects: GameObject[] = [this];
+          
+        objects.push(new BedObject(), new JohnCharacter(), new ChestObject(), new ClockObject(), new PaintingObject(), ...getGameObjectsFromInventory());
         
-        const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
 
         if(!playerSession.inventory.includes(FlashLightItemAlias)){
             objects.push(new FlashlightItem());
             
-        }   
-        objects.push(new BedObject(), new JohnCharacter(), new ChestObject(), new ClockObject(), new PaintingObject());
+        } 
 
         // objects.push(new ChestObject());
         // objects.push(new ClockObject());
