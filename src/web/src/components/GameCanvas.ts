@@ -247,11 +247,11 @@ export class GameCanvas extends LitElement {
     }
 
     .arrow.up {
-        border-bottom: 6px solid #000;
+        border-bottom: 6px solid #AF2A28;
     }
 
     .arrow.down {
-        border-top: 6px solid #000; 
+        border-top: 6px solid #AF2A28; 
     }
     .footer-text {
         font-size: 15px;
@@ -270,6 +270,7 @@ export class GameCanvas extends LitElement {
         left: 50%;
         transform: translate(-50%, -50%);
         background: transparent;
+        color: #AF2A28;
 
     
     }
@@ -280,31 +281,30 @@ export class GameCanvas extends LitElement {
         list-style-type: none;
         padding: 0;
         margin: 0;
-        overflow-y: auto; /* Add overflow-y property to enable vertical scrollbar */
-        max-height: 150px; /* Adjust the max-height as needed */
-        padding-right: -1px; /* Add padding to accommodate scrollbar on the right */
+        overflow-y: auto;
+        max-height: 150px;
+        padding-right: -1px;
     }
 
     /* CSS styles for the scrollbar */
     .footer-section .Tasks::-webkit-scrollbar {
-        width: 10px; /* Set the width of the scrollbar */
-        height: 30px; /* Set the height of the scrollbar */
+        width: 10px;
+        height: 30px;
     }
 
     
 
         /* CSS styles for the scrollbar thumb */
     .footer-section .Tasks::-webkit-scrollbar-thumb {
-        background-color: #AF2A28; /* Set color of the scrollbar thumb */
-        border-radius: 10px; /* Set border radius of the scrollbar thumb */
+        background-color: #AF2A28;
+        border-radius: 10px;
     }
             
     
         /* CSS styles for the scrollbar */
     .aside, .content {
-        /* Add scrollbar to the aside and content sections */
         scrollbar-width: thin;
-        scrollbar-color: #AF2A28 transparent; /* Set color of the scrollbar thumb */
+        scrollbar-color: #AF2A28 transparent;
     }
 
 
