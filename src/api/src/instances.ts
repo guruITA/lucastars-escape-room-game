@@ -62,6 +62,9 @@ export function createNewPlayerSession(): PlayerSession {
         mainroomDialogue4: false,
         mainroomDialogue5: false,
         exitDialogue: false,
+        isControlRoomCabinetExamined: false,
+        isLibraryCabinetExamined: false,
+        isBedRoomChestExamined: false,
     };
 }
 

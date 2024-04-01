@@ -47,9 +47,12 @@ export class LockedCabinetLibrary extends Item implements Examine, Talk {
      * @returns An action result for examining the Locked Cabinet
      */
     public examine(): ActionResult | undefined {
+        
+
 
         // Retrieve the player session
         const playerSession: PlayerSession = getPlayerSession();
+                playerSession.isLibraryCabinetExamined = true;
 
         if (playerSession.pickedUpBookOne && playerSession.pickedUpBookTwo && playerSession.pickedUpBookThree && playerSession.pickedUpBook4) {
 
@@ -71,6 +74,8 @@ export class LockedCabinetLibrary extends Item implements Examine, Talk {
                 ["locked-cabinet"] // Image displayed of locked cabinet to the player);
 
             );
+            
+
         }
     }
 
