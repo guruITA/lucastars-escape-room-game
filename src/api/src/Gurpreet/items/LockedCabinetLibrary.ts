@@ -58,8 +58,8 @@ export class LockedCabinetLibrary extends Item implements Examine, Talk {
 
             return new ExamineCodeActionResult(
                 [
-                    "[Assistant]: Detective, remember those numbers we found in the books earlier? Maybe they're the code for this locked cabinet.",
-                    "[Detective]: Hmm, it's worth a shot. Go ahead and try it, Assistant. You might be onto something."
+                    "[Will]: Detective, remember those numbers we found in the books earlier? Maybe they're the code for this locked cabinet.",
+                    "[John]: Hmm, it's worth a shot. Go ahead and try it, Assistant. You might be onto something."
                 ], // Text displayed to the player
                 ["locked-cabinet"] // Image displayed of locked cabinet to the player
             );
@@ -67,9 +67,9 @@ export class LockedCabinetLibrary extends Item implements Examine, Talk {
         } else {
 
             return new ExamineActionResult([
-                "[Detective]: Assistant, it seems we're missing a crucial piece of the puzzle. Without that missing book, we won't be able to unlock the four-digit code for the locked cabinet.",
-                "[Assistant]: I'll search every inch of this castle until I find it, Detective. There must be a clue somewhere.",
-                "[Detective]: That's the spirit, Assistant. Trust your instincts and leave no stone unturned. I have faith that you'll find the missing book so we can open this locked cabinet."
+                "[John]: Assistant, it seems we're missing a crucial piece of the puzzle. Without that missing book, we won't be able to unlock the four-digit code for the locked cabinet.",
+                "[Will]: I'll search every inch of this castle until I find it, Detective. There must be a clue somewhere.",
+                "[John]: That's the spirit, Assistant. Trust your instincts and leave no stone unturned. I have faith that you'll find the missing book so we can open this locked cabinet."
             ], // Text displayed to the player
                 ["locked-cabinet"] // Image displayed of locked cabinet to the player);
 

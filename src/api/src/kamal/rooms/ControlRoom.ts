@@ -58,13 +58,13 @@ export class ControlRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["[Assistant]: Wow, this control room is like the nerve center of the entire castle. It's filled with monitors, surveillance cameras, and sticky notes scattered around.",
+        return new TextActionResult(["[Will]: Wow, this control room is like the nerve center of the entire castle. It's filled with monitors, surveillance cameras, and sticky notes scattered around.",
         
-        "[Detective]: Looks like we've got our work cut out for us. Let's start by examining these monitors. They might give us some insight into what's been happening here.",
+        "[John]: Looks like we've got our work cut out for us. Let's start by examining these monitors. They might give us some insight into what's been happening here.",
         
-        "[Assistant]: Agreed. And these sticky notes could hold valuable clues. Let's make sure not to overlook anything.",
+        "[Will]: Agreed. And these sticky notes could hold valuable clues. Let's make sure not to overlook anything.",
         
-        "[Detective]: Keep an eye out for any cryptic messages or patterns. They could lead us to the pin code we need to unlock that secret room."]);
+        "[John]: Keep an eye out for any cryptic messages or patterns. They could lead us to the pin code we need to unlock that secret room."]);
     }
     public custom(alias: string): ActionResult | undefined {
         let room: Room | undefined;

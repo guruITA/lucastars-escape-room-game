@@ -66,22 +66,22 @@ export class DetectiveCharacterLibrary extends Character implements Examine, Tal
 
         // Check if the lights are on
         if (!playerSession.isLampOn) {
-            return new TextActionResult(["[Detective]: Have you turned on the lights? It might help us with our investigation in this room."]);
+            return new TextActionResult(["[John]: Have you turned on the lights? It might help us with our investigation in this room."]);
         }
 
         // Check if the bookcase has been examined
         if (!playerSession.isBookCaseExamined) {
-            return new TextActionResult(["[Detective]: Have you examined the bookcase?"]);
+            return new TextActionResult(["[John]: Have you examined the bookcase?"]);
         }
 
         // Check if all books have been picked up
         if (!playerSession.pickedUpAllBooks) {
             playerSession.showPickupAction = true;
-            return new TextActionResult(["[Detective]: You found similar books. Maybe you should pick them up."]);
+            return new TextActionResult(["[John]: You found similar books. Maybe you should pick them up."]);
         }
 
         // If the player has found the hidden cabinet
-        return new TextActionResult(["[Detective]: You've found the locked cabinet! The rest, you'll have to figure out on your own."]);
+        return new TextActionResult(["[John]: You've found the locked cabinet! The rest, you'll have to figure out on your own."]);
     }
 
 }

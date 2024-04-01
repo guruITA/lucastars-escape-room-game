@@ -252,25 +252,25 @@ export class LibraryRoom extends Room implements Examine {
 
             // Geef een beschrijving van de donkere kamer en laat de assistent spreken
             return new TextActionResult([
-                "[Assistant]: Owh, this room is dark. It's hard to see anything in here.",
-                "[Detective]: Maybe we should find a lamp to shed some light on the situation.",
-                "[Assistant]: Agreed. Let's search around for any source of light. Perhaps there's a lamp or a switch nearby.",
-                "[Detective]: Keep an eye out for any clues while we're at it. The darkness might be hiding something important.",
-                "[Assistant]: Will do, Detective. I'll be sure to inspect every nook and cranny.",
+                "[Will]: Owh, this room is dark. It's hard to see anything in here.",
+                "[John]: Maybe we should find a lamp to shed some light on the situation.",
+                "[Will]: Agreed. Let's search around for any source of light. Perhaps there's a lamp or a switch nearby.",
+                "[John]: Keep an eye out for any clues while we're at it. The darkness might be hiding something important.",
+                "[Will]: Will do, Detective. I'll be sure to inspect every nook and cranny.",
                 "As you search for a light source, you stumble upon the lamp on the desk. Upon closer inspection, you notice something unusual about it. There's an engraved code on it: '1234' with an icon of a camera.",
-                "[Assistant]: Detective, I think I've found something on the lamp. It's a code: '1234' with a camera icon."
+                "[Will]: Detective, I think I've found something on the lamp. It's a code: '1234' with a camera icon."
             ]);
             
         } else {
 
             // Geef een beschrijving van de kamer als het niet donker is en laat de assistent spreken
             return new TextActionResult([
-                "[Assistant]: This library is so big, with rows of towering bookshelves.",
-                "[Assistant]: The air is thick with the smell of old paper, and shadows dance in the corners.",
-                "[Assistant]: There's a desk in the center of the room, there is too much to explore. Where should I begin to search? Hmm, let's begin!",
-                "[Detective]: Start by checking the bookshelves. We often find valuable clues hidden among the books.",
-                "[Assistant]: Understood, Detective. I'll start there and then move on to the desk.",
-                "[Detective]: Remember to be thorough. We can't afford to miss anything."
+                "[Will]: This library is so big, with rows of towering bookshelves.",
+                "[Will]: The air is thick with the smell of old paper, and shadows dance in the corners.",
+                "[Will]: There's a desk in the center of the room, there is too much to explore. Where should I begin to search? Hmm, let's begin!",
+                "[John]: Start by checking the bookshelves. We often find valuable clues hidden among the books.",
+                "[Will]: Understood, Detective. I'll start there and then move on to the desk.",
+                "[John]: Remember to be thorough. We can't afford to miss anything."
             ]);
 
         }

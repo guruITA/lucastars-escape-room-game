@@ -61,8 +61,8 @@ export class BookTwo extends Item implements Examine, Pickup, Talk {
 
         return new ExamineActionResult(
             [
-                "[Assistant]: Detective, I found something in book 2! There's a number written inside: number 2",
-                "[Detective]: Let me see that. Hmm, number 2, you say? Interesting. This might be a clue. Let's keep it in mind as we continue our investigation."
+                "[Will]: Detective, I found something in book 2! There's a number written inside: number 2",
+                "[John]: Let me see that. Hmm, number 2, you say? Interesting. This might be a clue. Let's keep it in mind as we continue our investigation."
             ], // Text displayed to the player
             ["book2"] // Image displayed of book one to the player
         );
@@ -96,8 +96,8 @@ export class BookTwo extends Item implements Examine, Pickup, Talk {
 
             if (playerSession.pickedUpAllBooks) {
                 return new TextActionResult([
-                    "[Assistant]: Detective, I've found something behind the books! There's a locked cabinet here.",
-                    "[Detective]: Excellent work, Assistant! You have a keen eye for detail. Let's see if we can find a way to unlock it."
+                    "[Will]: Detective, I've found something behind the books! There's a locked cabinet here.",
+                    "[John]: Excellent work, Assistant! You have a keen eye for detail. Let's see if we can find a way to unlock it."
                 ]);
             }
 
