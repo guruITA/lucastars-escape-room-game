@@ -9,6 +9,7 @@ import { LockedRoomItem } from "../rooms/lockedRoom1";
 import { ExamineAction } from "../../base/actions/ExamineAction";
 import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
 import { PlayerSession } from "../../types";
+// import { LockedRoomCode } from "../../routes";
 
 export const LockedRoomAlias: string = "LockedRoom";
 
@@ -32,12 +33,12 @@ export class LockedRoom extends Room {
             if (playerSession.isControlRoomCabinetExamined === true && playerSession.isLibraryCabinetExamined === true && playerSession.isBedRoomChestExamined === true) {
                 actions.push(new ExamineAction());
             }
+            // if (playerSession.LockedRoomCode === true){
+
+            // }
             actions.push(new CustomAction("exit-room", "Exit room↜", false));
             return actions;
     }
-
-    
-
 
     public objects(): GameObject[] {
 
@@ -52,11 +53,6 @@ export class LockedRoom extends Room {
         }
         return objects;
     }
-
-
-
-
-
 
     public examine(): ActionResult | undefined {
         return new TextActionResult(["As you stand before the locked room, you realize that gaining access requires a combination of codes collected from various locked cabinets scattered throughout the castle.",

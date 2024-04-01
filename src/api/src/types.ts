@@ -22,4 +22,5 @@ export type PlayerSession = {
     isControlRoomCabinetExamined: boolean,
     isLibraryCabinetExamined: boolean,
     isBedRoomChestExamined: boolean
+    // LockedRoomCode: string
 };

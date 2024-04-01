@@ -65,6 +65,7 @@ export function createNewPlayerSession(): PlayerSession {
         isControlRoomCabinetExamined: false,
         isLibraryCabinetExamined: false,
         isBedRoomChestExamined: false,
+        // LockedRoomCode: false,
     };
 }
 

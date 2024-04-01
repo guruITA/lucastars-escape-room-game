@@ -30,7 +30,7 @@ export class Book4Item extends Item implements Examine {
     // }
     
     public examine(): ActionResult | undefined {
-        return new ExamineActionResult(["The fourth secret book.. It's containing some code, I believe solving this will bring us closer to the secret."], ["book4"]);
+        return new ExamineActionResult(["The fourth book.. It's best to check out it's contents.", "*Rustle, rustle*", ".. Got it. The last number is 1, that should solve the puzzle inside the library!"], ["book4"]);
      }
 
     public name(): string {
