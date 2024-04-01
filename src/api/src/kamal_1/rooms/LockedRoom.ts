@@ -26,10 +26,14 @@ export class LockedRoom extends Room {
     }
 
     public actions(): Action[] {
-        return [
-            new ExamineAction(),
-            new CustomAction("exit-room", "Exit room↜", false),
-        ];
+        const playerSession: PlayerSession = getPlayerSession(); // This retrieves the player session
+        const actions: Action[] = [];
+        
+            if (playerSession.isControlRoomCabinetExamined === true && playerSession.isLibraryCabinetExamined === true && playerSession.isBedRoomChestExamined === true) {
+                actions.push(new ExamineAction());
+            }
+            actions.push(new CustomAction("exit-room", "Exit room↜", false));
+            return actions;
     }
 
     
