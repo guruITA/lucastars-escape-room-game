@@ -3,7 +3,7 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Action } from "../../base/actions/Action";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
-import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
+import { getPlayerSession } from "../../instances";
 import { LibraryRoom } from "../../Gurpreet/rooms/LibraryRoom";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { ControlRoom } from "../../kamal/rooms/ControlRoom";
@@ -39,9 +39,8 @@ export class MainRoom extends Room {
     }
 
     public objects(): GameObject[] {
-        const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new JohnMainCharacter()];
+        return [new JohnMainCharacter()];
     }
 
 
