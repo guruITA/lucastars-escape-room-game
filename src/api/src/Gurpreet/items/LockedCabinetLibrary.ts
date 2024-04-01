@@ -52,7 +52,7 @@ export class LockedCabinetLibrary extends Item implements Examine, Talk {
 
         // Retrieve the player session
         const playerSession: PlayerSession = getPlayerSession();
-                playerSession.isLibraryCabinetExamined = true;
+        playerSession.isLibraryCabinetExamined = true;        
 
         if (playerSession.pickedUpBookOne && playerSession.pickedUpBookTwo && playerSession.pickedUpBookThree && playerSession.pickedUpBook4) {
 

@@ -40,7 +40,7 @@ export class LockedRoom extends Room {
         const playerSession: PlayerSession = getPlayerSession(); // This retrieves the player session
         const objects: GameObject[] = []; // Initializing objects array with the room and inventory items
 
-        if (playerSession.isControlRoomCabinetExamined === true && !playerSession.isLibraryCabinetExamined === true && playerSession.isBedRoomChestExamined === true){
+        if (playerSession.isControlRoomCabinetExamined === true && playerSession.isLibraryCabinetExamined === true && playerSession.isBedRoomChestExamined === true){
 
             // Adding BookOne to the objects array if it isn't in the inventory
             objects.push(new LockedRoomItem);
