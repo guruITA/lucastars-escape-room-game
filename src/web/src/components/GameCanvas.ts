@@ -612,11 +612,14 @@ export class GameCanvas extends LitElement {
                 <li><input type="checkbox" id="task14" /><label for="task14">Pickup Books</label></li>
                 <li><input type="checkbox" id="task15" /><label for="task15">Examine Locked cabinet</label></li>
                 <h4>_ _ _ _ _ _ _  Bedroom _ _ _ _ _ _ _ </h4>
-                <li><input type="checkbox" id="task16" /><label for="task16">Explore the control room</label></li>
-                <li><input type="checkbox" id="task17" /><label for="task17">Examine Cams</label></li>
-                <li><input type="checkbox" id="task18" /><label for="task18">Examine BluePrint</label></li>
-                <li><input type="checkbox" id="task19" /><label for="task19">Examine Sticky note</label></li>
-                <li><input type="checkbox" id="task20" /><label for="task20">Examine locked cabinet</label></li>
+                <li><input type="checkbox" id="task16" /><label for="task16">Explore the bedroom </label></li>
+                <li><input type="checkbox" id="task17" /><label for="task17">Examine Bed</label></li>
+                <li><input type="checkbox" id="task18" /><label for="task18">Interact Flashlight</label></li>
+                <li><input type="checkbox" id="task19" /><label for="task19">Interact Clock</label></li>
+                <li><input type="checkbox" id="task20" /><label for="task20">Interact Painting</label></li>
+                <li><input type="checkbox" id="task21" /><label for="task21">Interact Bed </label></li>
+                <li><input type="checkbox" id="task22" /><label for="task22">Examine Book</label></li>
+                <li><input type="checkbox" id="task23" /><label for="task23">Examine Chest</label></li>
             </ul>
             ${!this.tasksVisible ? html`
                     <textarea 

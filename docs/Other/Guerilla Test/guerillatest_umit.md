@@ -77,42 +77,6 @@ Tip om een image van de detective te laten zien als je met hem interact.
 UX/UI zag er echt leuk uit.
 
 
-#### persoon 1
-#### Resultaattabel
-|   #   |   Doel/User Story                        | Effectiviteit |   Efficientie        | Tevredenheid |
-|-------|------------------------------------------|---------------|----------------------|--------------|
-|       |   Wat moet je gebruiker kunnen bereiken? | Doel behaald? |   Tijd               |     /10      |
-|   1   |   Interact met objecten                  |   ja          |   20 sec             |     9/10     |
-|   2   |   Interact met de NPC's voor unieke dialogue |   ja          |   5  sec             |     8/10     |
-|   3   |   Interact met de chest en unlock het    |   ja          |   30 sec             |     10/10    |
-
-
-
-#### Observaties (wat deed en zei je testpersoon tijdens de test)
-
-
-#### Algemene feedback: 
-
-
-#### persoon 1
-#### Resultaattabel
-|   #   |   Doel/User Story                        | Effectiviteit |   Efficientie        | Tevredenheid |
-|-------|------------------------------------------|---------------|----------------------|--------------|
-|       |   Wat moet je gebruiker kunnen bereiken? | Doel behaald? |   Tijd               |     /10      |
-|   1   |   Interact met objecten                  |   ja          |   20 sec             |     9/10     |
-|   2   |   Interact met de NPC's voor unieke dialogue |   ja          |   5  sec             |     8/10     |
-|   3   |   Interact met de chest en unlock het    |   ja          |   30 sec             |     10/10    |
-
-
-
-#### Observaties (wat deed en zei je testpersoon tijdens de test)
-
-
-#### Algemene feedback: 
-
-
-
-
 ## Verwerking Feedback
 * User Story #54: https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/54<br>
 * User Story #55: https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/55<br>
