@@ -507,7 +507,7 @@ export class GameCanvas extends LitElement {
             // Return congratulatory message
             return html`
                 <div class="content">
-                    <p>You successfully enter the secret code and the door unlocks at last... What secret is the killer hiding here? Turns out that after me and John entered the secret room we discovered his base of operations. Hits, designated places where he'd strike you name it. Thank god we were right on time, it gave us the necessary amount of time to prepare and help prevent his next attack. I pray to god we'll make it. (The Game will restart in 15 seconds.)</p>
+                    <p>"You successfully enter the secret code and the door unlocks at last... What secret is the killer hiding here? Turns out that after me and John entered the secret room we discovered his base of operations. Hits, designated places where he'd strike you name it. Thank god we were right on time, it gave us the necessary amount of time to prepare and help prevent his next attack. I pray to god we'll make it. (The Game will restart in 15 seconds.)"</p>
                 </div>
             `;
         } else {
