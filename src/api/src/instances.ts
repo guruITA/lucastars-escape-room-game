@@ -2,7 +2,6 @@ import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { DetectiveCharacterControlRoom, DetectiveCharacterControlRoomAlias } from "./kamal/characters/DetectiveCharacterControlRoom";
-import { BluePrintItem, BluePrintItemAlias } from "./kamal/items/BluePrint";
 import { Cam1Item, Cam1ItemAlias } from "./kamal/items/Cam1";
 import { Cam2Item, Cam2ItemAlias } from "./kamal/items/Cam2";
 import { Cam3Item, Cam3ItemAlias } from "./kamal/items/Cam3";
@@ -63,6 +62,9 @@ export function createNewPlayerSession(): PlayerSession {
         mainroomDialogue4: false,
         mainroomDialogue5: false,
         exitDialogue: false,
+        isControlRoomCabinetExamined: false,
+        isLibraryCabinetExamined: false,
+        isBedRoomChestExamined: false,
     };
 }
 
@@ -155,9 +157,6 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case LockedCabinetItemAlias:
             return new LockedCabinetItem();
-
-        case BluePrintItemAlias:
-            return new BluePrintItem();
 
         case Cam1ItemAlias:
             return new Cam1Item();

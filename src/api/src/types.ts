@@ -19,4 +19,7 @@ export type PlayerSession = {
     mainroomDialogue4: boolean;
     mainroomDialogue5: boolean;
     exitDialogue: boolean;
+    isControlRoomCabinetExamined: boolean,
+    isLibraryCabinetExamined: boolean,
+    isBedRoomChestExamined: boolean
 };

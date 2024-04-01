@@ -78,6 +78,7 @@ export class GameCanvas extends LitElement {
         position: relative;
         background-size: cover;
         max-height: calc(370px - 20px); 
+        overflow-y: auto;
     }
     
     /* CSS styles for the buttons in the aside */
@@ -98,7 +99,7 @@ export class GameCanvas extends LitElement {
         display: inline-block;
         user-select: none;
         text-align: center;
-        font-size: 17px;
+        font-size: 16px;
     }
     
     /* CSS styles for the active or hover state of buttons in the aside */
@@ -246,11 +247,11 @@ export class GameCanvas extends LitElement {
     }
 
     .arrow.up {
-        border-bottom: 6px solid #000;
+        border-bottom: 6px solid #AF2A28;
     }
 
     .arrow.down {
-        border-top: 6px solid #000; 
+        border-top: 6px solid #AF2A28; 
     }
     .footer-text {
         font-size: 15px;
@@ -269,36 +270,44 @@ export class GameCanvas extends LitElement {
         left: 50%;
         transform: translate(-50%, -50%);
         background: transparent;
+        color: #AF2A28;
 
     
     }
     
     /* CSS styles for the footer section list */
+    
     .footer-section .Tasks {
         list-style-type: none;
         padding: 0;
         margin: 0;
-        overflow-y: auto; /* Add overflow-y property to enable vertical scrollbar */
-        max-height: 150px; /* Adjust the max-height as needed */
-        padding-right: -1px; /* Add padding to accommodate scrollbar on the right */
+        overflow-y: auto;
+        max-height: 150px;
+        padding-right: -1px;
     }
 
     /* CSS styles for the scrollbar */
     .footer-section .Tasks::-webkit-scrollbar {
-        width: 10px; /* Set the width of the scrollbar */
-        height: 30px; /* Set the height of the scrollbar */
+        width: 10px;
+        height: 30px;
     }
 
     
 
-    /* CSS styles for the scrollbar thumb */
+        /* CSS styles for the scrollbar thumb */
     .footer-section .Tasks::-webkit-scrollbar-thumb {
-        background-color: #AF2A28; /* Set color of the scrollbar thumb */
-        border-radius: 10px; /* Set border radius of the scrollbar thumb */
+        background-color: #AF2A28;
+        border-radius: 10px;
     }
-        
-  
+            
     
+        /* CSS styles for the scrollbar */
+    .aside, .content {
+        scrollbar-width: thin;
+        scrollbar-color: #AF2A28 transparent;
+    }
+
+
     
    
     
@@ -483,20 +492,39 @@ export class GameCanvas extends LitElement {
 
 
     // Method to render the content
-    private renderContent(): TemplateResult {
-        return html`
-            <div class="content">
-                ${this.contentText?.map((text) => html`<p>${text}</p>`)}
-                ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
-                ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "Library room📚" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "LockedRoom" ? html`<p>Good job</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "Bedroom" ? html`<p>Good job, the last number of the secret room is 7</p>` : nothing}
 
-            </div>
-        `;
+    private renderContent(): TemplateResult {
+        if (this.isCodeCorrect && this.roomTitle === "LockedRoom") {
+            // Show congratulatory message
+            const restartGame: () => Promise<void> = async () => {
+                await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 10 seconds
+                await this.resetGame(); // Reset the game
+            };
+
+            // Start the timer to restart the game
+            restartGame().catch(console.error); // Handle any potential errors
+
+            // Return congratulatory message
+            return html`
+                <div class="content">
+                    <p>Congratulations! You solved the mystery. The game will reset in 5 seconds.</p>
+                </div>
+            `;
+        } else {
+            // Render regular content
+            return html`
+                <div class="content">
+                    ${this.contentText?.map((text) => html`<p>${text}</p>`)}
+                    ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
+                    ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
+                    ${this.isCodeCorrect && this.roomTitle === "Library room📚" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
+                    ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
+                    ${this.isCodeCorrect && this.roomTitle === "Bedroom" ? html`<p>Good job, the last number of the secret room is 7</p>` : nothing}
+                </div>
+            `;
+        }
     }
+
 
     // Method to render the aside component
     private renderaside(): TemplateResult {

@@ -33,6 +33,7 @@ export class BedObject extends Item implements Examine, Interact {
         }
         if (!playerSession.pickedUpBook4 && playerSession.pickedUpFlashlight && playerSession.pickedUpBattery1 && playerSession.pickedUpBattery2){
             playerSession.inventory.push(Book4ItemAlias);
+            playerSession.pickedUpBook4 = true;
             playerSession.pickedUpFlashlight = true;
             playerSession.pickedUpBattery1 = true;
             playerSession.pickedUpBattery2 = true;
