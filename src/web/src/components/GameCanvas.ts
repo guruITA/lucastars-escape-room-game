@@ -78,6 +78,7 @@ export class GameCanvas extends LitElement {
         position: relative;
         background-size: cover;
         max-height: calc(370px - 20px); 
+        overflow-y: auto;
     }
     
     /* CSS styles for the buttons in the aside */
@@ -98,7 +99,7 @@ export class GameCanvas extends LitElement {
         display: inline-block;
         user-select: none;
         text-align: center;
-        font-size: 17px;
+        font-size: 16px;
     }
     
     /* CSS styles for the active or hover state of buttons in the aside */
@@ -274,6 +275,7 @@ export class GameCanvas extends LitElement {
     }
     
     /* CSS styles for the footer section list */
+    
     .footer-section .Tasks {
         list-style-type: none;
         padding: 0;
@@ -291,14 +293,21 @@ export class GameCanvas extends LitElement {
 
     
 
-    /* CSS styles for the scrollbar thumb */
+        /* CSS styles for the scrollbar thumb */
     .footer-section .Tasks::-webkit-scrollbar-thumb {
         background-color: #AF2A28; /* Set color of the scrollbar thumb */
         border-radius: 10px; /* Set border radius of the scrollbar thumb */
     }
-        
-  
+            
     
+        /* CSS styles for the scrollbar */
+    .aside, .content {
+        /* Add scrollbar to the aside and content sections */
+        scrollbar-width: thin;
+        scrollbar-color: #AF2A28 transparent; /* Set color of the scrollbar thumb */
+    }
+
+
     
    
     
@@ -491,10 +500,10 @@ export class GameCanvas extends LitElement {
                 await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 10 seconds
                 await this.resetGame(); // Reset the game
             };
-    
+
             // Start the timer to restart the game
             restartGame().catch(console.error); // Handle any potential errors
-    
+
             // Return congratulatory message
             return html`
                 <div class="content">
@@ -515,7 +524,7 @@ export class GameCanvas extends LitElement {
             `;
         }
     }
-    
+
 
     // Method to render the aside component
     private renderaside(): TemplateResult {
