@@ -11,7 +11,7 @@ export class LockedRoomItem extends Item implements Examine {
     }
 
     public name(): string {
-        return "Locked Room🔒";
+        return "Lock🔒";
     }
 
     public examine(): ActionResult | undefined {

@@ -483,20 +483,39 @@ export class GameCanvas extends LitElement {
 
 
     // Method to render the content
-    private renderContent(): TemplateResult {
-        return html`
-            <div class="content">
-                ${this.contentText?.map((text) => html`<p>${text}</p>`)}
-                ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
-                ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "Library room📚" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "LockedRoom" ? html`<p>Good job</p>` : nothing}
-                ${this.isCodeCorrect && this.roomTitle === "Bedroom" ? html`<p>Good job, the last number of the secret room is 7</p>` : nothing}
 
-            </div>
-        `;
+    private renderContent(): TemplateResult {
+        if (this.isCodeCorrect && this.roomTitle === "LockedRoom") {
+            // Show congratulatory message
+            const restartGame: () => Promise<void> = async () => {
+                await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 10 seconds
+                await this.resetGame(); // Reset the game
+            };
+    
+            // Start the timer to restart the game
+            restartGame().catch(console.error); // Handle any potential errors
+    
+            // Return congratulatory message
+            return html`
+                <div class="content">
+                    <p>Congratulations! You solved the mystery. The game will reset in 5 seconds.</p>
+                </div>
+            `;
+        } else {
+            // Render regular content
+            return html`
+                <div class="content">
+                    ${this.contentText?.map((text) => html`<p>${text}</p>`)}
+                    ${this.codeSoFar ? html`<p>Enter the code: ${this.codeSoFar}</p>` : nothing}
+                    ${this.codeAttempted && !this.isCodeCorrect ? html`<p>Incorrect code entered. Please try again.</p>` : nothing}
+                    ${this.isCodeCorrect && this.roomTitle === "Library room📚" ? html`<p>Good job the second number of secret room is 2</p>` : nothing}
+                    ${this.isCodeCorrect && this.roomTitle === "Control Room⚙️" ? html`<p>Good job the first number of secret room is 5</p>` : nothing}
+                    ${this.isCodeCorrect && this.roomTitle === "Bedroom" ? html`<p>Good job, the last number of the secret room is 7</p>` : nothing}
+                </div>
+            `;
+        }
     }
+    
 
     // Method to render the aside component
     private renderaside(): TemplateResult {
