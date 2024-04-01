@@ -54,7 +54,7 @@ export class MainRoom extends Room {
             "[John]: Before you start have you already mastered the basics?",
             "[Will]: I believe I have..?",
             "[John]: Mmm, I'll take your word for it, but if you're confused with certain actions feel free to use [ TALK ] for a refresh course.",
-            "[Will]: Thanks John, appreciate it."
+            "[Will]: Thanks John, appreciate it."   
         ]);
     }
 

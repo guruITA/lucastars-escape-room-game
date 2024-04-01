@@ -16,7 +16,7 @@ export class ChestObject extends Item implements Examine {
 
     public examine(): ActionResult | undefined {
 
-        return new ExamineCodeActionResult(["Unlock the chest"],["example"]);
+        return new ExamineCodeActionResult(["Unlock the chest"],["chestlock"]);
     }
 
     

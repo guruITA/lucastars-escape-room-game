@@ -33,6 +33,7 @@ import { Battery2Item, Battery2ItemAlias } from "./Umit/items/Battery2";
 import { ClockObject, ClockObjectAlias } from "./Umit/Objects/ClockObject";
 import { PaintingObject, PaintingObjectAlias } from "./Umit/Objects/PaintingObject";
 import { JohnMainCharacter, JohnMainCharacterAlias } from "./Umit/characters/JohnCharacterMain";
+import { GameoverRoom, GameoverRoomAlias } from "./base/Umit1/rooms/GameoverRoom";
 
 
 /**
@@ -110,6 +111,9 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case BedRoomAlias:
             return new BedRoom();
+        
+        case GameoverRoomAlias:
+            return new GameoverRoom();
     }
 
     // If no matching room is found, return undefined
