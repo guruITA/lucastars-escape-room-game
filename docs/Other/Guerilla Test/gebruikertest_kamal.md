@@ -40,28 +40,28 @@ In deze sprint kregen gebruikers een laptop met de game en werden ze gevraagd om
 #### Resultaten van de tests
 
 ##### Wat waren de 3 doelen en 2 tevredenheidsvragen?
-Gebruikersdoel: Als speler wil ik het objects onderzoeken
+Gebruikersdoel: Als speler wil ik objecten onderzoeken
 
-Gebruikersdoel: Als speler wil ik interacteren met het object
+Gebruikersdoel: Als speler wil ik interacteren met objecten
 
 Gebruikersdoel: Als speler wil ik de gesloten kast openen 
 
 #### Persoon 1 - Wesley
 ##### Resultaattabel
-|   #   |   Doel/User Story                              | Effectiviteit |   Efficientie   | Tevredenheid |
-|-------|------------------------------------------------|---------------|-----------------|--------------|
-|   1   |   Als speler wil ik het objects onderzoeken    |   -           |        -        |     -/10     |
-|   2   |   Als speler wil ik interacteren met het object|   -           |        -        |     -/10     |
-|   3   |   Als speler wil ik de gesloten kast openen    |   -           |        -        |     -/10     |
+| #   | Doel/User Story                             | Effectiviteit | Efficientie | Tevredenheid |
+| --- | ------------------------------------------- | ------------- | ----------- | ------------ |
+| 1   | Als speler wil ik objecten onderzoeken      | ja            | 50 sec      | 10/10        |
+| 2   | Als speler wil ik interacteren met objecten | ja            | 30 sec      | 10/10        |
+| 3   | Als speler wil ik de gesloten kast openen   | ja            | 20 sec      | 10/10        |
 
 ##### Observaties
-- 
-- 
-- 
+- layout is verwarent aan het begin
+
 
 ##### Algemene feedback
--
-- 
+- layout is orgineel
+- cams met foto laten zien is duidelijk
+- game is chalenging genoeg 
 
 
 ### Bronnen
