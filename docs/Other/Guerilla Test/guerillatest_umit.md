@@ -67,14 +67,15 @@ Gebruikersdoel: Als speler wil ik met de chest kunnen interacten en unlocken met
 
 
 #### Observaties (wat deed en zei je testpersoon tijdens de test)
-Thomas kon redelijk verward raken als ik hem geen richtlijn gaf
+Thomas kon redelijk verward raken als ik hem geen richtlijn gaf en moest het doel van de game duidelijk maken.<br>
 
 #### Algemene feedback: 
-De battery stacked infinitely op als je het opnieuw mee interact.
-Het zag er heel netjes, de kladblok en notes zagen er leuk uit.
-Het is leuk dat je unieke images krijgt per examine.
-Tip om een image van de detective te laten zien als je met hem interact.
-UX/UI zag er echt leuk uit.
+De battery stacked infinitely op als je het opnieuw mee interact.<br>
+Het zag er heel netjes, de kladblok en notes zagen er leuk uit.<br>
+Het is leuk dat je unieke images krijgt per examine.<br>
+Tip om een image van de detective te laten zien als je met hem interact.<br>
+UX/UI zag er echt leuk uit.<br>
+Het zou leuk zijn als er een vorm van consequentie zou zijn zoals een game over scherm.<br>
 
 
 ## Verwerking Feedback
