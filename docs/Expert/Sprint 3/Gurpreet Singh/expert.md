@@ -84,7 +84,7 @@
 >
 > ### Bronnen 
 > [knowledgebase Generic](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/oop_concepten/oop_generic/)
->
+
 > ## UML class diagram
 > ![class diagram](./class_diagram.drawio.png)
 
