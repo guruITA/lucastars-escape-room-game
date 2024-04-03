@@ -1,4 +1,4 @@
-## Expert Review
+## Expert Review Sprint 1
 
 ### Inhoudsopgave
 1. [Expert Review](#expert-review)<br>
@@ -18,7 +18,7 @@
 Met het onderdeel "K5 Object georiënteerd programmeren" geef ik bewijs dat ik volgens [de richtlijnen van de opleiding HBO-ICT Object geörienteerd programmeren](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/0_oop_intro/) gewerkt heb. Dat doe ik door de "Object georiënteerd programmeren" per onderdeel te benoem met voorbeelden uit het project als bewijs.<br>
 
 ### Static
-Een statische functie is een functie die aan de klasse zelf is gekoppeld, niet aan een specifiek object/instantie van die klasse. Dit betekent dat je een statische functie kunt aanroepen zonder een instantie van de klasse te maken. In de code snippet die volgt zal dit verder worden toegelicht. 
+Een statische functie is een functie die aan de klasse zelf is gekoppeld, niet aan een specifiek object/instantie van die klasse. Dit betekent dat je een statische functie kunt aanroepen zonder een instantie van de klasse te maken. In de code snippet die volgt zal dit verder worden toegelicht. <br>
 
 ```ts
 export const PickupActionAlias: string = "pickup";
