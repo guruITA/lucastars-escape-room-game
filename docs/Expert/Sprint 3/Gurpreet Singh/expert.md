@@ -12,7 +12,7 @@
 > /**
 >  * Base class used to represent a character
 >  *
->  * @remarks Implements the Talk action by default
+>  * @remarks Imp*-lements the Talk action by default
 >  */
 > export abstract class Character extends GameObject implements Talk {
 >     /**
@@ -84,11 +84,13 @@
 >
 > ### Bronnen 
 > [knowledgebase Generic](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/oop_concepten/oop_generic/)
-
-# Vorige learning stories
+>
+> ## UML class diagram
+> ![class diagram](./class_diagram.drawio.png)
+ries
 > ## Gekozen learning stories vorige expert
 > - [#11 Als student wil ik leren hoe ik de OO-principes abstraction, encapsulation en inheritance toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/11)
-> - [#12 Als student wil ik leren hoe ik het OO-principe polymorfisme toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/12)
+> - [#12 Als student wil  ik leren hoe ik het OO-principe polymorfisme toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/12)
 > - [#14 Als student wil ik leren hoe ik static functies en variabelen gebruik in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/14)
 
 > ## Abstarction (Vorige sprint)
