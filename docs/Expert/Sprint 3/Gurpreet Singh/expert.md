@@ -12,7 +12,7 @@
 > /**
 >  * Base class used to represent a character
 >  *
->  * @remarks Implements the Talk action by default
+>  * @remarks Imp*-lements the Talk action by default
 >  */
 > export abstract class Character extends GameObject implements Talk {
 >     /**
@@ -32,7 +32,6 @@
 >      */
 >     public abstract talk(choiceId?: number): ActionResult | undefined;
 > }
-> 
 > ```
 > ### Toelichting 
 > In dit voorbeeld helpt de Character-klasse ons om personages in een spel te maken bij mij is het de DetectiveCharacterLibrary-klasse. Het zegt dat elk personage de mogelijkheid moet hebben om te praten. Maar het zegt niet hoe elk personage moet praten, dat wordt later bepaald door de DetectiveCharacterLibrary-klasse die van deze abstracte klasse erft.
@@ -85,12 +84,14 @@
 >
 > ### Bronnen 
 > [knowledgebase Generic](https://knowledgebase.hbo-ict-hva.nl/1_beroepstaken/software/ontwerpen/oop/oop_concepten/oop_generic/)
+>
+> ## UML class diagram
+> ![class diagram](./class_diagram.drawio.png)
 
 > ## Gekozen learning stories vorige expert
 > - [#11 Als student wil ik leren hoe ik de OO-principes abstraction, encapsulation en inheritance toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/11)
-> - [#12 Als student wil ik leren hoe ik het OO-principe polymorfisme toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/12)
+> - [#12 Als student wil  ik leren hoe ik het OO-principe polymorfisme toepas in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/12)
 > - [#14 Als student wil ik leren hoe ik static functies en variabelen gebruik in mijn code](https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-d-se-gd/blok-3/jooduumeenii48/-/issues/14)
-
 
 > ## Abstarction (Vorige sprint)
 > In objectgeoriënteerd programmeren is ``abstractie`` het idee om alleen de belangrijkste dingen van een object te laten zien en de complexe details te verbergen. Het is het maken van een simpele samenvatting van iets moeilijk te begrijpen is, zodat je alleen op het belangrijkste kunt concentreren. Abstractie maakt moeilijke dingen begrijpelijk door alleen te kijken naar wat echt belangrijk is.
