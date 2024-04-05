@@ -84,11 +84,11 @@ Teamontwikkeling: Het team zou kunnen investeren in trainingen en workshops geri
 ## Aandeel teamleden
 
 ```mermaid
-pie 
-    Bijdrage per Teamlid   
-    "Teamlid 1" : 33,3%
-    "Teamlid 2" : 33,3%
-    "Teamlid 3" : 33,3%
+pie
+    title Aandeel teamleden
+    "Gurpreet" : 33.3
+    "Umit" : 33.3
+    "Kamal" : 33.3
 ```
 
 Wij hebben besloten als groep dat onze bijdrage wel heel erg gelijk was. Wat ons op viel was dat iedereen hun bijdrage in hun eige manier had kunnen opleveren, sommige waren bezig met styling, de andere meer richting de eind functies en de andere deed weer juist de extra toevoegingen. Waar wij heel blij mee waren was dat de manier van werking in onze product zo efficiënt was dat iedereen makkelijk kon volgen wat de andere deed en hun manier van uitvoeren.<br>
