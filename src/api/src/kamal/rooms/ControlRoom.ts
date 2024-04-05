@@ -13,6 +13,7 @@ import { TalkAction } from "../../base/actions/TalkAction";
 import { LockedCabinetItem } from "../items/Locked_Cabinet";
 import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
 import { CustomAction } from "../../base/actions/CustomAction";
+import { StickyNoteItem } from "../items/StickyNote";
 
 
 export const ControlRoomAlias: string = "Control-room";
@@ -51,6 +52,7 @@ export class ControlRoom extends Room {
             new Cam2Item(),
             new Cam3Item(),
             new LockedCabinetItem(),
+            new StickyNoteItem(),
         );
         
    
