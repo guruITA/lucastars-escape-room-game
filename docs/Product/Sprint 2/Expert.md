@@ -17,30 +17,43 @@ Hier toon ik de learning stories die ik gedaan heb. Eerst leg ik de onderdelen u
  
  
 #### Abstraction
-Abstractie houdt in dat je alleen de nodige informatie voor je programma in de classes stopt en dat je overbodige informatie weglaat.
- 
+het idee om alleen de belangrijkste dingen van een object te laten zien en de complexe details te verbergen.
+
 <details>
 <summary>Code snippet Abstraction</summary>  
  
-Hierbij wordt een class getoond die een child van de parent class Item is. Dit is terug te zien aan het woord "extends".
- 
-Bij het instantiëren van deze class worden alleen de benodigde informatie gebruikt, waardoor deze voldoet aan abstractie. Dit is terug te zien aan de constructor.
+In dit voorbeeld zie je in de handleClickCodeOK() functie de logica voor het controleren van de ingevoerde code en het bijwerken van de UI. Het verbergt de details van hoe de code wordt gecontroleerd en wat er gebeurt als de code correct of incorrect is, waardoor het gemakkelijker wordt om alleen te focussen op wat er moet gebeuren wanneer de "OK" knop wordt geklikt.
  
 ```typescript
-***
- 
 /**
-* The Cam1Item class, extending the Item class
-* This class implements the Examine interface, to handle the actions in the room.
-
-*/
-export class Cam1Item extends Item implements Examine {
-    public constructor() {
-        super(Cam1ItemAlias, ExamineActionAlias);
-    }
-    ***
+>  * Handelt een klikgebeurtenis op de "OK" knop voor de minigame af
+>  */
+ private handleClickCodeOK(): void {
  
-}
+     // Controleert of de ingevoerde code overeenkomt met de geheime code
+     if (this.codeSoFar === "4422") {
+ 
+         console.log("Stuur ontgrendelingscode-actie naar API met code: " + this.codeSoFar);
+ 
+         // Stelt isCodeCorrect in op true als de code correct is
+         this.isCodeCorrect = true;
+ 
+     } else {
+ 
+         console.log("Onjuiste code ingevoerd, probeer opnieuw.");
+ 
+        // Stelt isCodeCorrect in op false als de code onjuist is
+         this.isCodeCorrect = false;
+ 
+     }
+ 
+     // Reset de ingevoerde code
+     this.codeSoFar = "";
+ 
+     // Vraagt een update aan om de UI bij te werken
+    this.requestUpdate();
+ }
+
 ```
 </details>
  
@@ -199,25 +212,47 @@ export abstract class Room extends GameObject implements Examine {
 </details>
 
 #### Static functions and variables
-Static functions and variables belong to the class itself rather than instances of the class. They can be accessed without creating an instance of the class.
+Static function is een functie die aan de klasse zelf is gekoppeld, in plaats van aan een specifiek object (instantie) van die klasse. Dit betekent dat je de functie kunt aanroepen zonder een instantie van de klasse te maken. Een statische functie wordt vaak gebruikt voor taken die gerelateerd zijn aan de klasse als geheeland variables belong to the class itself rather than instances of the class. They can be accessed without creating an instance of the class.
+
+
+In deze voorbeeld wordt een static functie gebruikt voor de "Pickup" actie die ik heb gemaakt. Het handelt de "Pickup" actie af voor een game object. Het kijkt eerst of het gekozen game object de mogelijkheid heeft om opgepakt te worden. Als dat zo is, wordt de "pickup" actie van het game object uitgevoerd. Zo niet, dan gebeurt er niets.
 
 <details>
 <summary>Code snippet Static functions and variables</summary>
 
 ```typescript
-export class MathUtils {
-    // Static variable
-    static PI: number = 3.14159;
-
-    // Static function to calculate the area of a circle
-    static calculateCircleArea(radius: number): number {
-        return this.PI * radius * radius;
-    }
+ import { ActionResult } from "../base/actionResults/ActionResult";
+ import { Action } from "../base/actions/Action";
+ import { GameObject } from "../base/gameObjects/GameObject";
+ import { castTo, implementsInterface } from "../base/helpers";
+ 
+ /** Alias voor de PickupAction klasse */
+ export const PickupActionAlias: string = "pickup-action";
+ 
+ /** Interface die aangeeft dat een object kan worden opgepakt */
+ export interface Pickup {
+     pickup(): ActionResult | undefined;
+ }
+ 
+ /** Klasse die de Pickup-actie vertegenwoordigt */
+ export class PickupAction extends Action {
+     public constructor() {
+         super(PickupActionAlias, "Pickup", true);
+     }
+ 
+     /**
+      * Methode die de Pickup-actie afhandelt voor een game object
+      * @param gameObject Het game object waarop de actie wordt uitgevoerd
+      * @returns Een ActionResult voor het uitvoeren van de Pickup-actie op het gegeven game object
+      */
+     public static handle(gameObject: GameObject): ActionResult | undefined {
+         if (implementsInterface(gameObject, PickupActionAlias)) {
+             return castTo<Pickup>(gameObject).pickup();
+         }
+ 
+         return undefined;
+     }
 }
-
-// Accessing static variables and calling static functions
-console.log(MathUtils.PI); // Output: 3.14159
-console.log(MathUtils.calculateCircleArea(5)); // Output: 78.53975
 
 ```
 
@@ -281,7 +316,7 @@ export class ExamineAction extends Action {
 </details>
 
 #### Generics
-Generics allow you to create flexible, reusable functions and classes that work with any data type.
+Generics stellen je in staat om flexibele, herbruikbare functies en klassen te maken die werken met elk gegevenstype.
 
 <details>
 <summary>Code snippet Generics</summary>
