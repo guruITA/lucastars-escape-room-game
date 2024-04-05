@@ -1,46 +1,23 @@
-// This import is for the PickupAction class.
 import { PickUpActionLibrary } from "../actions/PickupActionLibrary";
-
-// This section imports necessary classes for handling different types of action results.
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
-
-// This import is for the base class representing actions.
-import { Action } from "../../base/actions/Action";
-
-// These imports are for defining interfaces and aliases related to examining actions.
-import { Examine, ExamineAction, ExamineActionAlias } from "../../base/actions/ExamineAction";
-
-// This import is for the TalkAction class.
+import { CustomAction } from "../../base/actions/CustomAction";
 import { TalkAction } from "../../base/actions/TalkAction";
-
-// This import is for the base class representing game objects.
+import { Action } from "../../base/actions/Action";
+import { Examine, ExamineAction, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
-
-// This import is for the base class representing rooms.
 import { Room } from "../../base/gameObjects/Room";
-
-// This import is for the DetectiveCharacter class.
 import { DetectiveCharacterLibrary } from "../characters/DetectiveCharacterLibrary";
-
-// These imports are for getting player session data and game objects from inventory.
 import { getPlayerSession } from "../../instances";
-
-// This import is for the BookCase class.
 import { BookCase } from "../items/BookCase";
-
-// These imports are for specific book items.
 import { BookOne, BookOneAlias } from "../items/BookOne";
 import { BookTwo, BookTwoAlias } from "../items/BookTwo";
 import { BookThree, BookThreeAlias } from "../items/BookThree";
 import { Lamp } from "../items/Lamp";
 import { LockedCabinetLibrary } from "../items/LockedCabinetLibrary";
-
-// This import is for the PlayerSession type.
-import { PlayerSession } from "../../types";
-import { CustomAction } from "../../base/actions/CustomAction";
-import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
 import { Book4ItemAlias, Book4Item } from "../../Umit/items/Book4";
+import { PlayerSession } from "../../types";
+import { MainRoom } from "../../Gurpreet_1/rooms/MainRoom";
 
 
 
@@ -119,26 +96,46 @@ export class LibraryRoom extends Room implements Examine {
         return actions;
     }
 
+
+    /**
+     * Performs a custom action based on the provided alias.
+     * 
+     * @param alias The alias of the action to perform.
+     * @returns An ActionResult if the action was executed successfully, otherwise undefined.
+     */
     public custom(alias: string): ActionResult | undefined {
+
+        // Initialize a variable to hold the room associated with the alias
         let room: Room | undefined;
 
+        // Determine the action to perform based on the provided alias
         switch (alias) {
+
             case "exit-room":
+
+                // If the alias is "exit-room", create a new MainRoom instance
                 room = new MainRoom();
                 break;
 
             default:
+
+                // If the alias does not match any known action, return undefined
                 return undefined;
         }
 
+        // If a valid room instance was created
         if (room) {
+
+            // Update the current room of the player session to the alias of the new room  
             getPlayerSession().currentRoom = room.alias;
+
+            // Execute the examine method of the new room and return the result
             return room.examine();
         }
 
+        // Return undefined if no valid action was performed
         return undefined;
     }
-
 
 
     /**
@@ -208,7 +205,7 @@ export class LibraryRoom extends Room implements Examine {
                     objects.push(new LockedCabinetLibrary);
 
                 }
-                
+
 
             }
 
@@ -221,21 +218,30 @@ export class LibraryRoom extends Room implements Examine {
             objects.push(lamp, new DetectiveCharacterLibrary());
 
         }
-        
-        if (playerSession.inventory.includes(BookOneAlias)){
+
+        // Check if the player session inventory includes BookOneAlias
+        if (playerSession.inventory.includes(BookOneAlias)) {
+            // If BookOneAlias is found, create a new instance of BookOne and push it into the objects array
             objects.push(new BookOne());
         }
-        if (playerSession.inventory.includes(BookTwoAlias)){
+
+        // Check if the player session inventory includes BookTwoAlias
+        if (playerSession.inventory.includes(BookTwoAlias)) {
+            // If BookTwoAlias is found, create a new instance of BookTwo and push it into the objects array
             objects.push(new BookTwo());
         }
-        if (playerSession.inventory.includes(BookThreeAlias)){
+
+        // Check if the player session inventory includes BookThreeAlias
+        if (playerSession.inventory.includes(BookThreeAlias)) {
+            // If BookThreeAlias is found, create a new instance of BookThree and push it into the objects array
             objects.push(new BookThree());
         }
-        if (playerSession.inventory.includes(Book4ItemAlias)){
+
+        // Check if the player session inventory includes Book4ItemAlias
+        if (playerSession.inventory.includes(Book4ItemAlias)) {
+            // If Book4ItemAlias is found, create a new instance of Book4Item and push it into the objects array
             objects.push(new Book4Item());
         }
-        
-        
 
         // Returning the final array of game objects
         return objects;
@@ -243,14 +249,20 @@ export class LibraryRoom extends Room implements Examine {
     }
 
 
+    /**
+     * Provides a description of the current room and initiates dialogue with the assistant.
+     * 
+     * @returns An `ActionResult` representing the description and dialogue, or `undefined` if the room cannot be examined.
+     */
     public examine(): ActionResult | undefined {
 
+        // Retrieve the player session
         const playerSession: PlayerSession = getPlayerSession();
 
-        // Controleer of de kamer donker is
+        // Check if the room is dark
         if (!playerSession.isLampOn) {
 
-            // Geef een beschrijving van de donkere kamer en laat de assistent spreken
+            // If the room is dark, describe the dark room and initiate dialogue
             return new TextActionResult([
                 "[Will]: Owh, this room is dark. It's hard to see anything in here.",
                 "[John]: Maybe we should find a lamp to shed some light on the situation.",
@@ -263,7 +275,7 @@ export class LibraryRoom extends Room implements Examine {
             
         } else {
 
-            // Geef een beschrijving van de kamer als het niet donker is en laat de assistent spreken
+            // If the room is not dark, describe the room and initiate dialogue
             return new TextActionResult([
                 "[Will]: This library is so big, with rows of towering bookshelves.",
                 "[Will]: The air is thick with the smell of old paper, and shadows dance in the corners.",
@@ -274,7 +286,7 @@ export class LibraryRoom extends Room implements Examine {
             ]);
 
         }
-
     }
-    
+
+
 }
