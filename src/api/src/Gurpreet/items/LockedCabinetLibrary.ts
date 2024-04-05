@@ -1,14 +1,9 @@
-// This import is for handling different types of action results.
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { ExamineActionResult } from "../../base/actionResults/ExamineActionResult";
 import { ExamineCodeActionResult } from "../../base/actionResults/ExamineCodeActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
-
-// These imports are for defining interfaces and aliases related to examining and talking actions.
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Talk, TalkActionAlias } from "../../base/actions/TalkAction";
-
-// This import is for the base class representing game items.
 import { Item } from "../../base/gameObjects/Item";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
