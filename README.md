@@ -34,14 +34,20 @@ mkdocs.yml, requirements.txt   settings and Python packages for the docs site
 ## What you need
 
 - Git
-- Node.js 18 or newer with npm. Tested with Node 18.20.8 (npm 10.8.2) and Node 22.22.1 (npm 9.2.0).
+- Node.js 18 or newer with npm. Tested on Linux with Node 18.20.8 (npm 10.8.2) and Node 22.22.1 (npm 9.2.0), and on Windows 11 with Node 22.23.4 (npm 10.9.9).
 - Internet access to npmjs.org and to `https://registry.hbo-ict.cloud/`. The ESLint rules of the HvA (`@hboictcloud/eslint-plugin`) come from that second registry. The file `.npmrc` points npm there.
 - Free ports 3000 (web page) and 3001 (API)
 - Only for the docs site: Python 3.12 or newer. Tested with Python 3.12, 3.13 and 3.14.
 
 ## Getting started
 
-The commands are the same in bash and in Windows PowerShell.
+The commands are the same in bash and in Windows PowerShell. By default Windows PowerShell blocks the `npm` script. Allow it for the current window first:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+Do this again in every new PowerShell window.
 
 ### 1. Get the code
 
@@ -115,7 +121,7 @@ pip install .\mdocotion
 mkdocs serve
 ```
 
-Open http://127.0.0.1:8000 and stop the server with Ctrl+C. Warnings about MkDocs 2 and duplicate image names do no harm.
+Open http://127.0.0.1:8000 and stop the server with Ctrl+C. If port 8000 is taken, use another port, for example `mkdocs serve -a 127.0.0.1:8001`. Warnings about MkDocs 2 and duplicate image names do no harm.
 
 ## Who did what
 
